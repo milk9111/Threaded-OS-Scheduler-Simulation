@@ -124,6 +124,15 @@ void osLoop () {
 			break;
 		}
 	}
+	
+	// join all of the threads.
+	pthread_join(timer, NULL);
+	pthread_join(iotrap, NULL);
+	pthread_join(iointerrupt, NULL);
+	
+	pthread_attr_destroy(&attr);
+	pthread_mutex_destroy(&schedulerMutex);
+	pthread_exit(NULL);
 }
 
 
