@@ -27,6 +27,7 @@ int currQuantumSize;
 int quantum_tick = 0; // Use for quantum length tracking
 int io_timer = 0;
 time_t t;
+pthread_mutex_t schedulerMutex;
 
 
 
@@ -40,11 +41,27 @@ time_t t;
 void osLoop () {
 	int totalProcesses = 0, iterationCount = 1;
 	thisScheduler = schedulerConstructor();
+	
+	pthread_t timer, iotrap, iointerrupt;
+	pthread_attr_t attr;
+	
+	pthread_mutex_init(&schedulerMutex, NULL);
+	pthread_attr_init(&attr);
+	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+	
+	pthread_create(&timer, &attr, timerInterrupt, (void *) thisScheduler);
+	pthread_create(&iotrap, &attr, ioTrap, (void *) thisScheduler);
+	pthread_create(&iointerrupt, &attr, ioInterrupt, (void *) thisScheduler);
+	
+	
 	totalProcesses += makePCBList(thisScheduler);
 	printSchedulerState(thisScheduler);
 	for(;;) {
 		if (thisScheduler->running != NULL) { // In case the first makePCBList makes 0 PCBs
-			thisScheduler->running->context->pc++;
+			if (pthread_mutex_trylock(&schedulerMutex)) {
+				thisScheduler->running->context->pc++;
+				pthread_mutex_unlock(&schedulerMutex);
+			}
 			
 			if (timerInterrupt(iterationCount) == 1) {
 				pseudoISR(thisScheduler, IS_TIMER);
@@ -116,8 +133,9 @@ void osLoop () {
 	the quantum tick to 0 and return 1 so the pseudoISR can occur.
 	If not, increase quantum tick by 1.
 */
-int timerInterrupt(int iterationCount)
+void * timerInterrupt(void * theScheduler)
 {
+	Scheduler scheduler = (Scheduler) theScheduler;
 	if (quantum_tick >= currQuantumSize)
 	{
 		printf("Iteration: %d\r\n", iterationCount);
@@ -138,7 +156,7 @@ int timerInterrupt(int iterationCount)
 	Checks if the current PCB's PC is one of the premade io_traps for this
 	PCB. If so, then return 1 so the pseudoISR can occur. If not, return 0.
 */
-int ioTrap(PCB current)
+void * ioTrap(PCB current)
 {
 	unsigned int the_pc = current->context->pc;
 	int c;
@@ -165,7 +183,7 @@ int ioTrap(PCB current)
 	Checks if the next up PCB in the Blocked queue has reached its max 
 	blocked_timer value yet. If so, return 1 and initiate the IO Interrupt.
 */
-int ioInterrupt(ReadyQueue the_blocked)
+void * ioInterrupt(ReadyQueue the_blocked)
 {
 	if (the_blocked->first_node != NULL && q_peek(the_blocked) != NULL)
 	{
