@@ -28,6 +28,7 @@ int quantum_tick = 0; // Use for quantum length tracking
 int io_timer = 0;
 time_t t;
 pthread_mutex_t schedulerMutex;
+phtread_cond_t trapCond;
 
 
 
@@ -48,6 +49,8 @@ void osLoop () {
 	pthread_mutex_init(&schedulerMutex, NULL);
 	pthread_attr_init(&attr);
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+	
+	pthread_cond_init(&trapCond, NULL);
 	
 	pthread_create(&timer, &attr, timerInterrupt, (void *) thisScheduler);
 	pthread_create(&iotrap, &attr, ioTrap, (void *) thisScheduler);
@@ -71,14 +74,7 @@ void osLoop () {
 			}
 
 			if (ioTrap(thisScheduler->running) == 1) {
-				printf("Iteration: %d\r\n", iterationCount);
-				printf("Initiating I/O Trap\r\n");
-				printf("PC when I/O Trap is Reached: %d\r\n", thisScheduler->running->context->pc);
-				pseudoISR(thisScheduler, IS_IO_TRAP);
-				
-				printSchedulerState(thisScheduler);
-				iterationCount++;
-				printf("Completed I/O Trap\n");
+				//This is now in the io trap thread.
 			}
 			
 			if (thisScheduler->running != NULL)
@@ -165,11 +161,36 @@ void * timerInterrupt(void * theScheduler)
 	Checks if the current PCB's PC is one of the premade io_traps for this
 	PCB. If so, then return 1 so the pseudoISR can occur. If not, return 0.
 */
-void * ioTrap(PCB current)
+void * ioTrap(void * currentScheduler)
 {
-	unsigned int the_pc = current->context->pc;
+	Scheduler curr = (Scheduler) currentScheduler;
+	
+	unsigned int the_pc = curr->running->context->pc;
 	int c;
-	for (c = 0; c < TRAP_COUNT; c++)
+	
+	//change this thread to only be executed when a new running is set?
+	for (;;) {
+		while (the_pc < curr->running->max_pc) {
+			pthread_cond_wait(&trapCond, &schedulerMutex);
+			printf("Trap signalled");
+		}
+		
+		printf("Iteration: %d\r\n", iterationCount);
+		printf("Initiating I/O Trap\r\n");
+		printf("PC when I/O Trap is Reached: %d\r\n", curr->running->context->pc);
+		
+		pthread_mutex_lock(schedulerMutex);
+		pseudoISR(thisScheduler, IS_IO_TRAP);
+		pthread_mutex_unlock(schedulerMutex);
+		
+		printSchedulerState(thisScheduler);
+		iterationCount++;
+		printf("Completed I/O Trap\n");
+	}
+	
+	
+	//should this go into it's own thread?
+	/*for (c = 0; c < TRAP_COUNT; c++)
 	{
 		if(the_pc == current->io_1_traps[c])
 		{
@@ -184,7 +205,7 @@ void * ioTrap(PCB current)
 			return 1;
 		}
 	}
-	return 0;
+	return 0;*/
 }
 
 
