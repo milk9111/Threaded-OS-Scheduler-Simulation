@@ -65,13 +65,14 @@ void osLoop () {
 				thisScheduler->running->context->pc++;
 				pthread_mutex_unlock(&schedulerMutex);
 			}
-			
+			/*
 			if (timerInterrupt(iterationCount) == 1) {
 				pseudoISR(thisScheduler, IS_TIMER);
 				printf("Completed Timer Interrupt\n");
 				printSchedulerState(thisScheduler);
 				iterationCount++;
 			}
+			*/
 
 			if (ioTrap(thisScheduler->running) == 1) {
 				//This is now in the io trap thread.
@@ -139,8 +140,21 @@ void osLoop () {
 	If not, increase quantum tick by 1.
 */
 void * timerInterrupt(void * theScheduler)
-{
-	Scheduler scheduler = (Scheduler) theScheduler;
+{	
+	struct timespec quantum;
+	quantum.tv_sec = 0;
+	for(;;)
+	{
+		quantum.tv_nsec = currQuantumSize;
+		nanosleep(quantum, NULL);
+		pthread_mutex_lock(schedulerMutex);
+		pseudoISR(thisScheduler, IS_TIMER);
+		printf("Completed Timer Interrupt\n");
+		printSchedulerState(thisScheduler);
+		iterationCount++;
+		pthread_mutex_unlock(schedulerMutex);
+	}
+	/*
 	if (quantum_tick >= currQuantumSize)
 	{
 		printf("Iteration: %d\r\n", iterationCount);
@@ -154,6 +168,7 @@ void * timerInterrupt(void * theScheduler)
 		quantum_tick++;
 		return 0;
 	}
+	*/
 }
 
 
