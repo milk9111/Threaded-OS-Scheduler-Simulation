@@ -26,9 +26,11 @@ int terminated = 0;
 int currQuantumSize;
 int quantum_tick = 0; // Use for quantum length tracking
 int io_timer = 0;
+int iterationCount = 1;
+
 time_t t;
 pthread_mutex_t schedulerMutex;
-phtread_cond_t trapCond;
+pthread_cond_t trapCond;
 
 
 
@@ -40,7 +42,7 @@ phtread_cond_t trapCond;
 	with the new process.
 */
 void osLoop () {
-	int totalProcesses = 0, iterationCount = 1;
+	int totalProcesses = 0;
 	thisScheduler = schedulerConstructor();
 	
 	pthread_t timer, iotrap, iointerrupt;
@@ -53,41 +55,43 @@ void osLoop () {
 	pthread_cond_init(&trapCond, NULL);
 	
 	pthread_create(&timer, &attr, timerInterrupt, (void *) thisScheduler);
-	pthread_create(&iotrap, &attr, ioTrap, (void *) thisScheduler);
 	pthread_create(&iointerrupt, &attr, ioInterrupt, (void *) thisScheduler);
 	
 	
 	totalProcesses += makePCBList(thisScheduler);
 	printSchedulerState(thisScheduler);
 	for(;;) {
+		//only create if PCB type is of io trap.
+		pthread_create(&iotrap, &attr, ioTrap, (void *) thisScheduler->running);
 		if (thisScheduler->running != NULL) { // In case the first makePCBList makes 0 PCBs
 			if (pthread_mutex_trylock(&schedulerMutex)) {
 				thisScheduler->running->context->pc++;
 				pthread_mutex_unlock(&schedulerMutex);
 			}
 			
-			if (timerInterrupt(iterationCount) == 1) {
+			/*if (timerInterrupt(iterationCount) == 1) {
 				pseudoISR(thisScheduler, IS_TIMER);
 				printf("Completed Timer Interrupt\n");
 				printSchedulerState(thisScheduler);
 				iterationCount++;
-			}
+			}*/
 
-			if (ioTrap(thisScheduler->running) == 1) {
-				//This is now in the io trap thread.
+			//lock this if statement?
+			if (trapFound(thisScheduler->running)) {
+				pthread_cond_signal(&trapCond); //signal the ioTrap thread that a trap pc was reached.
 			}
 			
 			if (thisScheduler->running != NULL)
 			{
+				pthread_mutex_lock(&schedulerMutex); //locks the mutex in order to do the if statement.
 				if (thisScheduler->running->context->pc >= thisScheduler->running->max_pc) {
-					printf("made it here\n");
-					//exit(0);
 					thisScheduler->running->context->pc = 0;
 					thisScheduler->running->term_count++;	//if terminate value is > 0
 				}
+				pthread_mutex_unlock(&schedulerMutex);
 			}
 			
-			if (ioInterrupt(thisScheduler->blocked) == 1) {
+			/*if (ioInterrupt(thisScheduler->blocked) == 1) {
 				printf("Iteration: %d\r\n", iterationCount);
 				printf("Initiating I/O Interrupt\n");
 				pseudoISR(thisScheduler, IS_IO_INTERRUPT);
@@ -95,12 +99,14 @@ void osLoop () {
 				printSchedulerState(thisScheduler);
 				iterationCount++;
 				printf("Completed I/O Interrupt\n");
-			}
+			}*/
 			
 			// if running PCB's terminate == running PCB's term_count, then terminate (for real).
 			terminate(thisScheduler);
 		} else {
+			pthread_mutex_lock(&schedulerMutex);
 			iterationCount++;
+			pthread_mutex_unlock(&schedulerMutex);
 			printf("Idle\n");
 		}
 	
@@ -108,22 +114,32 @@ void osLoop () {
 		if (!(iterationCount % RESET_COUNT)) {
 			printf("\r\nRESETTING MLFQ\r\n");
 			printf("iterationCount: %d\n", iterationCount);
+			
+			pthread_mutex_lock(&schedulerMutex); //coarse grain
 			resetMLFQ(thisScheduler);
+			pthread_mutex_unlock(&schedulerMutex);
 			if (rand() % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
+				pthread_mutex_lock(&schedulerMutex); //coarse grain
 				totalProcesses += makePCBList (thisScheduler);
+				pthread_mutex_unlock(&schedulerMutex);
 			}
 			printSchedulerState(thisScheduler);
+			
+			pthread_mutex_lock(&schedulerMutex);
 			iterationCount = 1;
+			pthread_mutex_unlock(&schedulerMutex);
 		}
 		if (totalProcesses >= MAX_PCB_TOTAL) {
 			printf("Reached max PCBs, ending Scheduler.\r\n");
 			break;
 		}
+		
+		pthread_join(iotrap, NULL);
+		//maybe join iointerrupt here too?
 	}
 	
 	// join all of the threads.
 	pthread_join(timer, NULL);
-	pthread_join(iotrap, NULL);
 	pthread_join(iointerrupt, NULL);
 	
 	pthread_attr_destroy(&attr);
@@ -158,39 +174,54 @@ void * timerInterrupt(void * theScheduler)
 
 
 /*
-	Checks if the current PCB's PC is one of the premade io_traps for this
-	PCB. If so, then return 1 so the pseudoISR can occur. If not, return 0.
+	The I/O Trap thread that will perform the context switching once the running PCB's 
+	PC reaches a predetermined I/O Trap PC location.
 */
-void * ioTrap(void * currentScheduler)
+void * ioTrap(void * runningPCB)
 {
-	Scheduler curr = (Scheduler) currentScheduler;
+	PCB curr = (PCB) runningPCB;
 	
-	unsigned int the_pc = curr->running->context->pc;
+	unsigned int the_pc = curr->context->pc;
 	int c;
 	
-	//change this thread to only be executed when a new running is set?
-	for (;;) {
-		while (the_pc < curr->running->max_pc) {
-			pthread_cond_wait(&trapCond, &schedulerMutex);
-			printf("Trap signalled");
-		}
-		
-		printf("Iteration: %d\r\n", iterationCount);
-		printf("Initiating I/O Trap\r\n");
-		printf("PC when I/O Trap is Reached: %d\r\n", curr->running->context->pc);
-		
-		pthread_mutex_lock(schedulerMutex);
-		pseudoISR(thisScheduler, IS_IO_TRAP);
-		pthread_mutex_unlock(schedulerMutex);
-		
-		printSchedulerState(thisScheduler);
-		iterationCount++;
-		printf("Completed I/O Trap\n");
+	//does this all need to be within another loop?
+	
+	//this acts like an if statement for the condition signal.
+	while (the_pc < curr->max_pc) {
+		pthread_cond_wait(&trapCond, &schedulerMutex); //after a trap pc is reached, the signal happens.
+		printf("Trap signalled");
 	}
 	
+	printf("Iteration: %d\r\n", iterationCount);
+	printf("Initiating I/O Trap\r\n");
+	printf("PC when I/O Trap is Reached: %d\r\n", curr->context->pc);
 	
-	//should this go into it's own thread?
-	/*for (c = 0; c < TRAP_COUNT; c++)
+	pthread_mutex_lock(&schedulerMutex); //lock scheduler to perform context switching. (coarse grain)
+	pseudoISR(thisScheduler, IS_IO_TRAP);
+	pthread_mutex_unlock(&schedulerMutex);
+	
+	printSchedulerState(thisScheduler);
+	
+	pthread_mutex_lock(&schedulerMutex); //maybe use a different mutex for the iterationCount?
+	iterationCount++;
+	pthread_mutex_unlock(&schedulerMutex);
+	
+	printf("Completed I/O Trap\n");
+	
+	pthread_exit(NULL);
+}
+
+
+/*
+	Checks if a trap location has been found. If so, then return 1. That will cause
+	the trap condition code to be set so that the ioTrap thread can perform the context
+	switching.
+*/
+int trapFound (PCB current) {
+	unsigned int the_pc = current->context->pc;
+	int c;
+	
+	for (c = 0; c < TRAP_COUNT; c++)
 	{
 		if(the_pc == current->io_1_traps[c])
 		{
@@ -205,7 +236,7 @@ void * ioTrap(void * currentScheduler)
 			return 1;
 		}
 	}
-	return 0;*/
+	return 0;
 }
 
 
@@ -213,8 +244,10 @@ void * ioTrap(void * currentScheduler)
 	Checks if the next up PCB in the Blocked queue has reached its max 
 	blocked_timer value yet. If so, return 1 and initiate the IO Interrupt.
 */
-void * ioInterrupt(ReadyQueue the_blocked)
+void * ioInterrupt(void * blocked)
 {
+	ReadyQueue the_blocked = (ReadyQueue) blocked;
+	
 	if (the_blocked->first_node != NULL && q_peek(the_blocked) != NULL)
 	{
 		PCB nextup = q_peek(the_blocked);
