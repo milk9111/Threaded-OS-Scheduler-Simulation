@@ -3,10 +3,6 @@
 	Authors: Connor Lundberg, Jacob Ackerman
  */
 
-#include <stdlib.h>
-#include <string.h>
-/* primarily for sprintf */
-#include <stdio.h>
 
 #include "fifo_queue.h"
 

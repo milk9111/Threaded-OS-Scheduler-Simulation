@@ -16,6 +16,7 @@
 
 //includes
 #include "priority_queue.h"
+#include "threads.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

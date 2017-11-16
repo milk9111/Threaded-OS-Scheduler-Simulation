@@ -7,6 +7,10 @@
 #define FIFO_QUEUE_H
 
 #include "pcb.h"
+#include <stdlib.h>
+#include <string.h>
+/* primarily for sprintf */
+#include <stdio.h>
 
 /* A node used in a fifo queue to store data, and the next node. */
 typedef struct node {

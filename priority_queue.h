@@ -8,6 +8,9 @@
 
 #include "pcb.h"
 #include "fifo_queue.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 typedef struct priority_queue {
     ReadyQueue     queues[NUM_PRIORITIES];

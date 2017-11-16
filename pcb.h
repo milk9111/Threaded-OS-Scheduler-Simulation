@@ -6,6 +6,12 @@
 #ifndef PCB_H  /* Include guard */
 #define PCB_H
 
+#include "threads.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<time.h>
+
 #define NUM_PRIORITIES 16
 #define TRAP_COUNT 4
 #define LARGEST_PC_POSSIBLE 1000
@@ -39,10 +45,25 @@ enum state_type {
     STATE_HALT
 };
 
+
+/*
+	COMP = Computationally heavy
+	IO = Lots of IO Traps
+	PAIR = Producer/Consumer
+	SHARED = Shared Resource pair
+*/
+enum pcb_type {
+	COMP,
+	IO,
+	PAIR,
+	SHARED
+};
+
 /* Process Control Block - Contains info required for executing processes. */
 typedef struct pcb {
     unsigned int pid; // process identification
     enum state_type state; // process state (running, waiting, etc.)
+	enum pcb_type role; // type of role in simulation
     unsigned int parent; // parent process pid
     unsigned char priority; // 0 is highest – 15 is lowest.
     unsigned char * mem; // start of process in memory
@@ -56,6 +77,9 @@ typedef struct pcb {
 	unsigned int io_1_traps[TRAP_COUNT];
 	unsigned int io_2_traps[TRAP_COUNT];
 	unsigned int blocked_timer;
+	
+	Mutex sharedMutex;
+	
     // if process is blocked, which queue it is in
     CPU_context_p context; // set of cpu registers
     // other items to be added as needed.
@@ -63,12 +87,19 @@ typedef struct pcb {
 
 typedef PCB_s * PCB;
 
+
 /*
  * Allocate a PCB and a context for that PCB.
  *
  * Return: NULL if context or PCB allocation failed, the new pointer otherwise.
  */
 PCB PCB_create();
+
+
+enum pcb_type chooseRole();
+
+
+void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutex);
 
 /*
  * Frees a PCB and its context.

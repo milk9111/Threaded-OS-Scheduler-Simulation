@@ -1,13 +1,9 @@
 /*
     10/28/2017
-	Authors: Connor Lundberg, Jacob Ackerman
+	Authors: Connor Lundberg, Jasmine Dacones, Jacob Ackerman
  */
 
-#include"pcb.h"
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<time.h>
+#include "pcb.h"
 
 int global_largest_PID = 0;
 
@@ -40,11 +36,65 @@ void initialize_data(/* in-out */ PCB pcb) {
 	pcb->termination = 0;
 	pcb->terminate = rand() % MAX_TERM_COUNT;
 	pcb->term_count = 0;
+	
+	
+}
+
+
+enum pcb_type chooseRole () {
+	int num = rand() % 200;
+	enum pcb_type newRole;
+	
+	if (num <= 100) {
+		newRole = COMP;
+	} else if (num > 100 && num <= 150) {
+		newRole = IO;
+	} else if (num > 150 && num <= 175) {
+		newRole = PAIR;
+	} else {
+		newRole = SHARED;
+	}
+	
+	return newRole;
+}
+
+
+/*
+	This will initialize the role type of the given PCB. If it is the first of the pair
+	that is created, then the role will be randomly chosen, otherwise the role will match 
+	the first one created. From there, if the role is IO, then the PCBs I/O Trap locations
+	will be initialized. If the role is PAIR or SHARED, then the 1st and 2nd PCBs contained 
+	within the given shared mutex will be set.
+*/
+void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutex) {
+	if (isFirst) {
+		pcb->role = chooseRole();
+	} else {
+		pcb->role = sharedMutex->pcb1->role;
+	}
   
-	//time_t t;
-	//srand((unsigned) time(&t));
-	populateIOTraps (pcb, 0); // populates io_1_traps
-	populateIOTraps (pcb, 1); // populates io_2_traps
+	switch(pcb->role) {
+		case COMP:
+			break;
+		case IO:
+			populateIOTraps (pcb, 0); // populates io_1_traps
+			populateIOTraps (pcb, 1); // populates io_2_traps
+			break;
+		case PAIR:
+			if (isFirst) {
+				mutex->pcb1 = pcb;
+			} else {
+				mutex->pcb2 = pcb;
+			}
+			break;
+		case SHARED:
+			if (isFirst) {
+				mutex->pcb1 = pcb;
+			} else {
+				mutex->pcb2 = pcb;
+			}
+			break;
+	}
 }
 
 
@@ -213,17 +263,35 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 			break;
 	}
 	
+	switch(thisPCB->role) {
+		case COMP:
+			printf("role: comp, ");
+			break;
+		case IO:
+			printf("role: io, ");
+			break;
+		case PAIR:
+			printf("role: pair, "); //producer/consumer
+			break;
+		case SHARED:
+			printf("role: shared, ");
+			break;
+	}
+	
 	printf("priority: %d, ", thisPCB->priority);
 	printf("PC: %d, ", thisPCB->context->pc);
 	
 	printf("\r\nMAX PC: %d\r\n", thisPCB->max_pc);
-	printf("io_1_traps\n");
-	for (int i = 0; i < TRAP_COUNT; i++) {
-		printf("%d ", thisPCB->io_1_traps[i]);
-	}
-	printf("\r\nio_2_traps\r\n");
-	for (int i = 0; i < TRAP_COUNT; i++) {
-		printf("%d ", thisPCB->io_2_traps[i]);
+	
+	if (thisPCB->role == IO) {
+		printf("io_1_traps\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			printf("%d ", thisPCB->io_1_traps[i]);
+		}
+		printf("\r\nio_2_traps\r\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			printf("%d ", thisPCB->io_2_traps[i]);
+		}
 	}
 	printf("\r\nterminate: %d\r\n", thisPCB->terminate);
 	printf("term_count: %d\r\n", thisPCB->term_count);

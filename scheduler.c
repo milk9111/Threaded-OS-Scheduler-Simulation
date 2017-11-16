@@ -191,14 +191,27 @@ int ioInterrupt(ReadyQueue the_blocked)
 	list of created PCBs, and moving each of those PCBs into the ready queue.
 */
 int makePCBList (Scheduler theScheduler) {
+	// change this to make 2 at a time.
 	int newPCBCount = rand() % MAX_PCB_IN_ROUND;
 	//int newPCBCount = 3;
 	
 	int lottery = rand();
 	for (int i = 0; i < newPCBCount; i++) {
-		PCB newPCB = PCB_create();
-		newPCB->state = STATE_NEW;
-		q_enqueue(theScheduler->created, newPCB);
+		Mutex sharedMutex;
+		
+		mutex_init(sharedMutex);
+		
+		PCB newPCB1 = PCB_create();
+		PCB newPCB2 = PCB_create();
+		
+		initialize_pcb_type (newPCB1, 1, sharedMutex); 
+		initialize_pcb_type (newPCB2, 0, sharedMutex); 
+		toStringMutex(sharedMutex);
+		exit(0);
+		newPCB1->state = STATE_NEW;
+		newPCB2->state = STATE_NEW;
+		q_enqueue(theScheduler->created, newPCB1);
+		q_enqueue(theScheduler->created, newPCB2);
 	}
 	printf("Making New PCBs: \r\n");
 	if (newPCBCount) {
@@ -282,6 +295,7 @@ void pseudoISR (Scheduler theScheduler, int interruptType) {
 	the current list of "privileged PCBs" that will not be terminated.
 */
 void printSchedulerState (Scheduler theScheduler) {
+	
 	printf("MLFQ State\r\n");
 	toStringPriorityQueue(theScheduler->ready);
 	printf("\r\n");

@@ -3,9 +3,6 @@
 	Authors: Connor Lundberg, Jacob Ackerman
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 #include "priority_queue.h"
 
