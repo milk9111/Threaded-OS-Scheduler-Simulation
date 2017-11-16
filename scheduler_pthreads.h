@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <pthread.h>
 #include <time.h>
 
 
@@ -86,11 +87,13 @@ void resetReadyQueue (ReadyQueue queue);
 
 void osLoop ();
 
-int timerInterrupt (int);
+void * timerInterrupt (void *);
 
-int ioTrap (PCB);
+void * ioTrap (void *);
 
-int ioInterrupt (ReadyQueue);
+void * ioInterrupt (void *);
+
+int trapFound (PCB);
 
 
 #endif
