@@ -16,7 +16,6 @@
 
 //includes
 #include "priority_queue.h"
-#include "threads.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -42,6 +41,7 @@
 #define RANDOM_VALUE 101
 #define TOTAL_TERMINATED 10
 #define MAX_PRIVILEGE 4
+
 
 
 //structs

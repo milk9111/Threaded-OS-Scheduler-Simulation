@@ -1,11 +1,14 @@
 
-#include "threads.h"
+#include "pcb.h"
 
 
-void mutex_init (Mutex mutex) {
-	mutex = (Mutex) malloc (sizeof (Mutex));
+Mutex mutex_init () {
+	printf("here\n");
+	Mutex mutex = (Mutex) malloc (sizeof (Mutex));
 	mutex->isLocked = 0;
-	mutex->blocked = q_create();
+	printf("isLocked value: %d\n", mutex->isLocked);
+	
+	return mutex;
 }
 
 
@@ -14,14 +17,17 @@ void toStringMutex (Mutex mutex) {
 	printf("isLocked: %d\r\n", mutex->isLocked);
 	
 	printf("pcb1: ");
-	toStringPCB(mutex->pcb1);
+	toStringPCB(mutex->pcb1, 0);
 	printf("pcb2: ");
-	toStringPCB(mutex->pcb2);
+	toStringPCB(mutex->pcb2, 0);
 	
 	printf("blocked: ");
-	toStringReadyQueue(mutex->blocked);
+	toStringPCB(mutex->blocked, 0);
 }
 
+void mutex_destroy(Mutex mutex) {
+	free (mutex);
+}
 
 
 

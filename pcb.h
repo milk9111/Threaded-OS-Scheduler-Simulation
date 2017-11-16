@@ -6,7 +6,6 @@
 #ifndef PCB_H  /* Include guard */
 #define PCB_H
 
-#include "threads.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -77,15 +76,31 @@ typedef struct pcb {
 	unsigned int io_1_traps[TRAP_COUNT];
 	unsigned int io_2_traps[TRAP_COUNT];
 	unsigned int blocked_timer;
-	
-	Mutex sharedMutex;
-	
+
     // if process is blocked, which queue it is in
     CPU_context_p context; // set of cpu registers
     // other items to be added as needed.
 } PCB_s;
 
 typedef PCB_s * PCB;
+
+
+typedef struct MUTEX {
+	int isLocked;
+	PCB pcb1;
+	PCB pcb2;
+	PCB hasLock;
+	PCB blocked;
+} mutex_s;
+
+typedef mutex_s * Mutex;
+
+
+Mutex mutex_init ();
+
+void toStringMutex (Mutex mutex);
+
+void mutex_destroy (Mutex mutex);
 
 
 /*
@@ -144,6 +159,7 @@ int ioTrapContains(unsigned int, unsigned int[]);
 unsigned int makeMaxPC();
 
 void populateIOTraps (PCB, int);
+
 
 /*
  * Create and return a string representation of the provided PCB.

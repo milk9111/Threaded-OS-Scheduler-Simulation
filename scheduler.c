@@ -192,20 +192,22 @@ int ioInterrupt(ReadyQueue the_blocked)
 */
 int makePCBList (Scheduler theScheduler) {
 	// change this to make 2 at a time.
-	int newPCBCount = rand() % MAX_PCB_IN_ROUND;
-	//int newPCBCount = 3;
+	//int newPCBCount = rand() % MAX_PCB_IN_ROUND;
+	int newPCBCount = 2;
 	
 	int lottery = rand();
 	for (int i = 0; i < newPCBCount; i++) {
 		Mutex sharedMutex;
 		
-		mutex_init(sharedMutex);
+		sharedMutex = mutex_init();
+		printf("isLocked value outside: %d\n", sharedMutex->isLocked);
 		
 		PCB newPCB1 = PCB_create();
 		PCB newPCB2 = PCB_create();
 		
 		initialize_pcb_type (newPCB1, 1, sharedMutex); 
 		initialize_pcb_type (newPCB2, 0, sharedMutex); 
+		printf("here2\n");
 		toStringMutex(sharedMutex);
 		exit(0);
 		newPCB1->state = STATE_NEW;

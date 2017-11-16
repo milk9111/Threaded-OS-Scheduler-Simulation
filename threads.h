@@ -1,8 +1,8 @@
 
-#ifndef PRIORITY_QUEUE_H
-#define PRIORITY_QUEUE_H
+#ifndef THREADS_H
+#define THREADS_H
 
-#include "fifo_queue.h"
+#include "scheduler.h"
 #include <stdio.h>
 #include <stdlib.h>
 
