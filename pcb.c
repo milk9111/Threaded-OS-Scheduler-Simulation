@@ -42,21 +42,28 @@ void initialize_data(/* in-out */ PCB pcb) {
 }
 
 
+/*
+	Chooses a role type for a PCB to be assigned to. The percentages work as such:
+		- 50% will be Computationally Intensive
+		- 25% will be I/O Trap
+		- 12.5% will be Producer/Consumer
+		- 12.5% will be Shared Resource
+*/
 enum pcb_type chooseRole () {
-	int num = rand() % 200;
+	int num = rand() % ROLE_PERCENTAGE_MAX_RANGE;
 	enum pcb_type newRole;
 	
-	if (num <= 100) {
+	if (num <= COMP_ROLE_MAX_RANGE) {
 		newRole = COMP;
-	} else if (num > 100 && num <= 150) {
+	} else if (num >= IO_ROLE_MIN_RANGE && num <= IO_ROLE_MAX_RANGE) {
 		newRole = IO;
-	} else if (num > 150 && num <= 175) {
+	} else if (num >= PAIR_ROLE_MIN_RANGE && num <= PAIR_ROLE_MAX_RANGE) {
 		newRole = PAIR;
 	} else {
 		newRole = SHARED;
 	}
 	
-	return SHARED;
+	return newRole;
 }
 
 

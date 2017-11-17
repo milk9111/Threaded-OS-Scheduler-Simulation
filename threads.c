@@ -2,6 +2,8 @@
 #include "pcb.h"
 
 
+unsigned int global_largest_MID;
+
 /*
 	Creates and initializes the value of the mutex.
 */
@@ -10,7 +12,8 @@ Mutex mutex_init () {
 	mutex->isLocked = 0;
 	mutex->hasLock = NULL;
 	mutex->blocked = NULL;
-	
+	mutex->mid = global_largest_MID;
+	global_largest_MID++;
 	return mutex;
 }
 
@@ -21,12 +24,16 @@ Mutex mutex_init () {
 	a big printf is displayed to alert the user.
 */
 void mutex_lock (Mutex mutex, PCB pcb) {
-	if (mutex->isLocked && mutex->hasLock == pcb) { 
-		printf("\r\n\r\n\t\tMUTEX IS ALREADY LOCKED!!!!!!!!!!\r\n\r\n");
-		//exit(0);
+	if (mutex) {
+		if (mutex->isLocked && mutex->hasLock == pcb) { 
+			printf("\r\n\r\n\t\tMUTEX IS ALREADY LOCKED!!!!!!!!!!\r\n\r\n");
+			//exit(0);
+		}
+		mutex->isLocked = 1;
+		mutex->hasLock = pcb;
+	}  else {
+		printf("\r\n\r\n\t\tMUTEX IS NULL. LOCK FAILED\r\n\r\n");
 	}
-	mutex->isLocked = 1;
-	mutex->hasLock = pcb;
 }
 
 
@@ -38,9 +45,13 @@ void mutex_lock (Mutex mutex, PCB pcb) {
 int mutex_trylock (Mutex mutex, PCB pcb) {
 	int wasLocked = 0;
 	
-	if (!mutex->isLocked) {
-		mutex->isLocked = 1;
-		mutex->hasLock = pcb;
+	if (mutex) {
+		if (!mutex->isLocked) {
+			mutex->isLocked = 1;
+			mutex->hasLock = pcb;
+		}
+	} else {
+		printf("\r\n\r\n\t\tMUTEX IS NULL. TRYLOCK FAILED\r\n\r\n");
 	}
 	
 	return wasLocked;
@@ -52,12 +63,16 @@ int mutex_trylock (Mutex mutex, PCB pcb) {
 	If the mutex is already unlocked a big printf is displayed to alert the user.
 */
 void mutex_unlock (Mutex mutex, PCB pcb) {
-	if (!mutex->isLocked) { 
-		printf("\r\n\r\n\t\tMUTEX IS ALREADY UNLOCKED!!!!!!!!!!\r\n\r\n");
-		//exit(0);
+	if (mutex) {
+		if (!mutex->isLocked) { 
+			printf("\r\n\r\n\t\tMUTEX IS ALREADY UNLOCKED\r\n\r\n");
+			//exit(0);
+		}
+		mutex->isLocked = 0;
+		mutex->hasLock = NULL;
+	} else {
+		printf("\r\n\r\n\t\tMUTEX IS NULL. UNLOCK FAILED\r\n\r\n");
 	}
-	mutex->isLocked = 0;
-	mutex->hasLock = NULL;
 }
 
 
@@ -66,7 +81,7 @@ void mutex_unlock (Mutex mutex, PCB pcb) {
 */
 void toStringMutex (Mutex mutex) {
 	printf ("Mutex:\r\n");
-	printf("isLocked: %d\r\n", mutex->isLocked);
+	printf("mid: %d, isLocked: %d\r\n", mutex->mid, mutex->isLocked);
 	
 	printf("pcb1: ");
 	toStringPCB(mutex->pcb1, 0);

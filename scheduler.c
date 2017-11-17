@@ -28,6 +28,13 @@ int quantum_tick = 0; // Use for quantum length tracking
 int io_timer = 0;
 time_t t;
 
+// The global counts of each PCB type, the final count at end of program run 
+// should be roughly 50%, 25%, 12.5%, 12.5% respectively.
+int compCount;
+int ioCount;
+int pairCount;
+int sharedCount;
+
 
 
 /*
@@ -52,11 +59,9 @@ void osLoop () {
 				if (thisScheduler->running->context->pc == thisScheduler->running->lock_pc) {
 					currMutex = q_find_mutex(thisScheduler->mutexes, thisScheduler->running);
 					mutex_lock (currMutex, thisScheduler->running);
-					printf("Found the mutex, locking.\r\n");
 				} else if (thisScheduler->running->context->pc == thisScheduler->running->unlock_pc) {
 					currMutex = q_find_mutex(thisScheduler->mutexes, thisScheduler->running);
 					mutex_unlock (currMutex, thisScheduler->running);
-					printf("Found the mutex, unlocking.\r\n");
 				}
 			}
 			
@@ -82,7 +87,6 @@ void osLoop () {
 			if (thisScheduler->running != NULL)
 			{
 				if (thisScheduler->running->context->pc >= thisScheduler->running->max_pc) {
-					printf("made it here\n");
 					//exit(0);
 					thisScheduler->running->context->pc = 0;
 					thisScheduler->running->term_count++;	//if terminate value is > 0
@@ -122,6 +126,8 @@ void osLoop () {
 			break;
 		}
 	}
+	
+	schedulerDeconstructor(thisScheduler);
 }
 
 
@@ -221,6 +227,9 @@ int makePCBList (Scheduler theScheduler) {
 		
 		initialize_pcb_type (newPCB1, 1, sharedMutex); 
 		initialize_pcb_type (newPCB2, 0, sharedMutex); 
+		
+		incrementRoleCount(newPCB1->role);
+		
 		toStringMutex(sharedMutex);
 		q_enqueue_m(theScheduler->mutexes, sharedMutex);
 		//exit(0);
@@ -252,6 +261,30 @@ int makePCBList (Scheduler theScheduler) {
 	}
 	
 	return newPCBCount;
+}
+
+
+/*
+	Given the roleType of the newly created PCBs, the corresponding global role 
+	type count variable will be incremented. Results will be printed at the end of 
+	program execution. See documentation in pcb.c chooseRole() function for 
+	more details on percentage for each role type count.
+*/
+void incrementRoleCount (enum pcb_type roleType) {
+	switch (roleType) {
+		case COMP:
+			compCount++;
+			break;
+		case IO:
+			ioCount++;
+			break;
+		case PAIR:
+			pairCount++;
+			break;
+		case SHARED:
+			sharedCount++;
+			break;
+	}
 }
 
 
@@ -565,6 +598,18 @@ void schedulerDeconstructor (Scheduler theScheduler) {
 		PCB_destroy(theScheduler->interrupted);
 	}
 	free (theScheduler);
+	
+	displayRoleCountResults();
+}
+
+
+void displayRoleCountResults() {
+	printf("TOTAL ROLE TYPES: \r\n\r\n");
+	
+	printf("COMP: \t%d\r\n", compCount);
+	printf("IO: \t%d\r\n", ioCount);
+	printf("PAIR: \t%d\r\n", pairCount);
+	printf("SHARED: \t%d\r\n", sharedCount);
 }
 
 int isPrivileged(PCB pcb) {
@@ -586,5 +631,12 @@ void main () {
 	sysstack = 0;
 	switchCalls = 0;
 	currQuantumSize = 0;
+	
+	//initialize pcb type counts
+	compCount = 0;
+	ioCount = 0;
+	pairCount = 0;
+	sharedCount = 0;
+	
 	osLoop();
 }

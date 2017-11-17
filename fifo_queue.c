@@ -227,13 +227,13 @@ Mutex q_find_mutex (ReadyQueue queue, PCB pcb) {
 		if (curr->mutex->pcb1->pid == pcb->pid || curr->mutex->pcb2->pid == pcb->pid) { //if either of the PCB ids match
 			ret_mutex = curr->mutex;
 			
-			if (curr == queue->first_node) { //if the mutex is the first node in the list
+			/*if (curr == queue->first_node) { //if the mutex is the first node in the list
 				queue->first_node = curr->next;
 			} else { //otherwise
 				last->next = curr->next;
 			}
 			
-			free(curr);
+			free(curr);*/
 			break;
 		}
 		

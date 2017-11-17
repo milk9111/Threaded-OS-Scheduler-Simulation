@@ -94,5 +94,9 @@ int ioTrap (PCB);
 
 int ioInterrupt (ReadyQueue);
 
+void incrementRoleCount (enum pcb_type);
+
+void displayRoleCountResults();
+
 
 #endif

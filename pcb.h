@@ -17,6 +17,15 @@
 #define SMALLEST_PC_POSSIBLE 30
 #define MAX_TERM_COUNT 8
 
+#define ROLE_PERCENTAGE_MAX_RANGE 200
+#define COMP_ROLE_MAX_RANGE 100
+#define IO_ROLE_MIN_RANGE 101
+#define IO_ROLE_MAX_RANGE 150
+#define PAIR_ROLE_MIN_RANGE 151
+#define PAIR_ROLE_MAX_RANGE 175
+
+
+
 /* The CPU state, values named as in the LC-3 processor. */
 typedef struct cpu_context {
     unsigned int pc;
@@ -93,6 +102,7 @@ typedef PCB_s * PCB;
 
 typedef struct MUTEX {
 	int isLocked;
+	unsigned int mid; //mutex id
 	PCB pcb1;
 	PCB pcb2;
 	PCB hasLock;
