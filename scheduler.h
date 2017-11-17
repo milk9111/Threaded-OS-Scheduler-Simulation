@@ -49,6 +49,7 @@ typedef struct scheduler {
 	ReadyQueue created;
 	ReadyQueue killed;
 	ReadyQueue blocked;
+	ReadyQueue mutexes;
 	PriorityQueue ready;
 	PCB running;
 	PCB interrupted;

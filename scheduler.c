@@ -46,6 +46,11 @@ void osLoop () {
 		if (thisScheduler->running != NULL) { // In case the first makePCBList makes 0 PCBs
 			thisScheduler->running->context->pc++;
 			
+			if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
+				q_dequeue_m
+			}
+			
+			
 			if (timerInterrupt(iterationCount) == 1) {
 				pseudoISR(thisScheduler, IS_TIMER);
 				printf("Completed Timer Interrupt\n");
@@ -203,12 +208,12 @@ int makePCBList (Scheduler theScheduler) {
 		
 		PCB newPCB1 = PCB_create();
 		PCB newPCB2 = PCB_create();
-	
 		
 		initialize_pcb_type (newPCB1, 1, sharedMutex); 
 		initialize_pcb_type (newPCB2, 0, sharedMutex); 
 		toStringMutex(sharedMutex);
-		exit(0);
+		q_enqueue_m(theScheduler->mutexes, sharedMutex);
+		//exit(0);
 		newPCB1->state = STATE_NEW;
 		newPCB2->state = STATE_NEW;
 		q_enqueue(theScheduler->created, newPCB1);
@@ -311,6 +316,7 @@ void printSchedulerState (Scheduler theScheduler) {
 	}
 	printf("blocked size: %d\r\n", theScheduler->blocked->size);
 	printf("killed size: %d\r\n", theScheduler->killed->size);
+	printf("mutexes size: %d\r\n", theScheduler->mutexes->size);
 	printf("\r\n");
 	
 	if (pq_peek(theScheduler->ready) != NULL) {
@@ -522,6 +528,7 @@ Scheduler schedulerConstructor () {
 	newScheduler->created = q_create();
 	newScheduler->killed = q_create();
 	newScheduler->blocked = q_create();
+	newScheduler->mutexes = q_create();
 	newScheduler->ready = pq_create();
 	newScheduler->running = NULL;
 	newScheduler->interrupted = NULL;
@@ -541,6 +548,7 @@ void schedulerDeconstructor (Scheduler theScheduler) {
 	q_destroy(theScheduler->created);
 	q_destroy(theScheduler->killed);
 	q_destroy(theScheduler->blocked);
+	q_destroy_m(theScheduler->mutexes);
 	pq_destroy(theScheduler->ready);
 	PCB_destroy(theScheduler->running);
 	if (theScheduler->interrupted == theScheduler->running) {

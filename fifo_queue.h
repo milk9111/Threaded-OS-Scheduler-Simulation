@@ -15,7 +15,8 @@
 /* A node used in a fifo queue to store data, and the next node. */
 typedef struct node {
     struct node * next;
-    PCB         pcb;
+    PCB pcb;
+	Mutex mutex;
 } Node_s;
 
 typedef Node_s * ReadyQueueNode;
@@ -45,6 +46,9 @@ ReadyQueue q_create();
  */
 void q_destroy(/* in-out */ ReadyQueue FIFOq);
 
+
+void q_destroy_m(/* in-out */ ReadyQueue FIFOq);
+
 /*
  * Checks if a queue is empty.
  *
@@ -73,6 +77,23 @@ int q_enqueue(/* in */ ReadyQueue FIFOq, /* in */ PCB pcb);
 PCB q_dequeue(/* in-out */ ReadyQueue FIFOq);
 
 /*
+ * Attempts to enqueue the provided Mutex.
+ *
+ * Arguments: FIFOq: the queue to enqueue to.
+ *            pcb: the PCB to enqueue.
+ * Return: 1 if successful, 0 if unsuccessful.
+ */
+int q_enqueue_m(/* in */ ReadyQueue FIFOq, /* in */ Mutex mutex);
+
+/*
+ * Dequeues and returns a Mutex from the queue, unless the queue is empty in which case null is returned.
+ *
+ * Arguments: FIFOq: the queue to dequeue from.
+ * Return: NULL if empty, the PCB at the front of the queue otherwise.
+ */
+PCB q_dequeue_m(/* in-out */ ReadyQueue FIFOq);
+
+/*
  * Peeks and returns a PCB from the queue, unless the queue is empty in which case null is returned.
  *
  * Arguments: FIFOq: the queue to peek from.
@@ -92,19 +113,6 @@ void toStringReadyQueue(/* in */ ReadyQueue FIFOq);
 
 void toStringReadyQueueNode(ReadyQueueNode theNode);
 
-/*
- * Helper function that resizes a malloced block of memory if the requested
- *   ending position would exceed the block's capacity.
- * I want to pull this into another header/source file, as it can be very useful elsewhere,
- *   but only supposed to submit the 6.
- * Very useful for a variety of things, primarily used in string methods at the moment.
- *
- * Arguments: in_ptr: the pointer to resize.
- *            end_pos: the final desired available position in the resized pointer.
- *            capacity: a pointer to the current capacity, will be changed if resized.
- * Return: NULL if failure, the new (possibly same) pointer otherwise.
- */
-void * resize_block_if_needed(/* in */ void * in_ptr, /* in */ unsigned int end_pos, /* in-out */ unsigned int * capacity);
 
 
 #endif
