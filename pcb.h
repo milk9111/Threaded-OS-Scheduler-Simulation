@@ -76,6 +76,12 @@ typedef struct pcb {
 	unsigned int io_1_traps[TRAP_COUNT];
 	unsigned int io_2_traps[TRAP_COUNT];
 	unsigned int blocked_timer;
+	
+	unsigned int lock_pc; //for mutex
+	unsigned int unlock_pc;
+	
+	unsigned int signal_pc; //for condition variable
+	unsigned int wait_pc;
 
     // if process is blocked, which queue it is in
     CPU_context_p context; // set of cpu registers

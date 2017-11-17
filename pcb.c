@@ -55,7 +55,7 @@ enum pcb_type chooseRole () {
 		newRole = SHARED;
 	}
 	
-	return newRole;
+	return SHARED;
 }
 
 
@@ -67,6 +67,8 @@ enum pcb_type chooseRole () {
 	within the given shared mutex will be set.
 */
 void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutex) {
+	int lock = 0, unlock = 0, signal = 0, wait = 0;
+	
 	if (isFirst) {
 		pcb->role = chooseRole();
 	} else {
@@ -101,8 +103,29 @@ void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutex) {
 		case SHARED:
 			if (isFirst) {
 				sharedMutex->pcb1 = pcb;
+				lock = rand() % pcb->max_pc;
+				
+				if (lock == pcb->max_pc - 1) { //if the lock value is too close to the max_pc
+					lock--;
+				}
+				//unlock > lock + 1 & unlock < max_pc
+				unlock = lock + 2; //we can change this to be more random later on
+				
+				pcb->lock_pc = lock;
+				pcb->unlock_pc = unlock; 
 			} else {
 				sharedMutex->pcb2 = pcb;
+				
+				lock = rand() % pcb->max_pc;
+				
+				if (lock == pcb->max_pc - 1) { //if the lock value is too close to the max_pc
+					lock--;
+				}
+				//unlock > lock + 1 & unlock < max_pc
+				unlock = lock + 2; //we can change this to be more random later on
+				
+				pcb->lock_pc = lock;
+				pcb->unlock_pc = unlock;
 			}
 			break;
 	}

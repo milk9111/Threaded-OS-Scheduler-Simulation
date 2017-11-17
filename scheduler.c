@@ -203,11 +203,12 @@ int makePCBList (Scheduler theScheduler) {
 		
 		PCB newPCB1 = PCB_create();
 		PCB newPCB2 = PCB_create();
+	
 		
 		initialize_pcb_type (newPCB1, 1, sharedMutex); 
 		initialize_pcb_type (newPCB2, 0, sharedMutex); 
 		toStringMutex(sharedMutex);
-
+		exit(0);
 		newPCB1->state = STATE_NEW;
 		newPCB2->state = STATE_NEW;
 		q_enqueue(theScheduler->created, newPCB1);
