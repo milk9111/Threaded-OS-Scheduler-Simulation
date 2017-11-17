@@ -200,16 +200,14 @@ int makePCBList (Scheduler theScheduler) {
 		Mutex sharedMutex;
 		
 		sharedMutex = mutex_init();
-		printf("isLocked value outside: %d\n", sharedMutex->isLocked);
 		
 		PCB newPCB1 = PCB_create();
 		PCB newPCB2 = PCB_create();
 		
 		initialize_pcb_type (newPCB1, 1, sharedMutex); 
 		initialize_pcb_type (newPCB2, 0, sharedMutex); 
-		printf("here2\n");
 		toStringMutex(sharedMutex);
-		exit(0);
+
 		newPCB1->state = STATE_NEW;
 		newPCB2->state = STATE_NEW;
 		q_enqueue(theScheduler->created, newPCB1);

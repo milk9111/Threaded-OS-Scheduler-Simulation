@@ -69,19 +69,27 @@ enum pcb_type chooseRole () {
 void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutex) {
 	if (isFirst) {
 		pcb->role = chooseRole();
-		printf("isFirst!\n");
 	} else {
 		pcb->role = sharedMutex->pcb1->role;
-		printf("isSecond!\n");
 	}
   
 	
 	switch(pcb->role) {
 		case COMP:
+			if (isFirst) {
+				sharedMutex->pcb1 = pcb;
+			} else {
+				sharedMutex->pcb2 = pcb;
+			}
 			break;
 		case IO:
 			populateIOTraps (pcb, 0); // populates io_1_traps
 			populateIOTraps (pcb, 1); // populates io_2_traps
+			if (isFirst) {
+				sharedMutex->pcb1 = pcb;
+			} else {
+				sharedMutex->pcb2 = pcb;
+			}
 			break;
 		case PAIR:
 			if (isFirst) {

@@ -3,10 +3,8 @@
 
 
 Mutex mutex_init () {
-	printf("here\n");
 	Mutex mutex = (Mutex) malloc (sizeof (Mutex));
 	mutex->isLocked = 0;
-	printf("isLocked value: %d\n", mutex->isLocked);
 	
 	return mutex;
 }
@@ -21,8 +19,8 @@ void toStringMutex (Mutex mutex) {
 	printf("pcb2: ");
 	toStringPCB(mutex->pcb2, 0);
 	
-	printf("blocked: ");
-	toStringPCB(mutex->blocked, 0);
+	/*printf("blocked: ");
+	toStringPCB(mutex->blocked, 0);*/
 }
 
 void mutex_destroy(Mutex mutex) {
