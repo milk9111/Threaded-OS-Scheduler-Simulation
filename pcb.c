@@ -12,6 +12,7 @@ int global_largest_PID = 0;
  */
 void initialize_data(/* in-out */ PCB pcb) {
 	pcb->pid = 0;
+	pcb->parent = -1;
 	PCB_assign_priority(pcb, 0);
 	pcb->size = 0;
 	pcb->channel_no = 0;
