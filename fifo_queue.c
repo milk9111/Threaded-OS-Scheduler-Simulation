@@ -62,7 +62,7 @@ void q_destroy_m(/* in-out */ ReadyQueue FIFOq) {
     while (iter != NULL) {
         curr = iter;
         iter = iter->next;
-        mutex_destroy(curr->pcb);
+        mutex_destroy(curr->mutex);
         free(curr);
     }
     free(FIFOq);
@@ -192,7 +192,7 @@ PCB q_dequeue(/* in-out */ ReadyQueue FIFOq) {
  * Arguments: FIFOq: the queue to dequeue from.
  * Return: NULL if empty, the PCB at the front of the queue otherwise.
  */
-PCB q_dequeue_m(/* in-out */ ReadyQueue FIFOq) {
+Mutex q_dequeue_m(/* in-out */ ReadyQueue FIFOq) {
     Mutex ret_mutex = NULL;
     ReadyQueueNode ret_node = FIFOq->first_node;
 
@@ -215,16 +215,29 @@ PCB q_dequeue_m(/* in-out */ ReadyQueue FIFOq) {
 }
 
 
+/*
+	This will find the Mutex that holds the given PCB, NULL otherwise.
+*/
 Mutex q_find_mutex (ReadyQueue queue, PCB pcb) {
 	Mutex ret_mutex = NULL;
 	
 	ReadyQueueNode curr = queue->first_node;
+	ReadyQueueNode last = NULL;
 	while (curr) {
-		if (curr->mutex->pcb1->pid == pcb->pid || curr->mutex->pcb2->pid == pcb->pid) {
+		if (curr->mutex->pcb1->pid == pcb->pid || curr->mutex->pcb2->pid == pcb->pid) { //if either of the PCB ids match
 			ret_mutex = curr->mutex;
-			//STOPPED HERE
+			
+			if (curr == queue->first_node) { //if the mutex is the first node in the list
+				queue->first_node = curr->next;
+			} else { //otherwise
+				last->next = curr->next;
+			}
+			
+			free(curr);
+			break;
 		}
 		
+		last = curr;
 		curr = curr->next;
 	}
 	

@@ -108,6 +108,12 @@ void toStringMutex (Mutex mutex);
 
 void mutex_destroy (Mutex mutex);
 
+void mutex_lock (Mutex mutex, PCB pcb);
+
+void mutex_unlock (Mutex mutex, PCB pcb);
+
+int mutex_trylock (Mutex mutex, PCB pcb);
+
 
 /*
  * Allocate a PCB and a context for that PCB.

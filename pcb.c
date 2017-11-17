@@ -314,6 +314,10 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 	
 	printf("priority: %d, ", thisPCB->priority);
 	printf("PC: %d, ", thisPCB->context->pc);
+	if (thisPCB->role == PAIR || thisPCB->role ==  SHARED) {
+		printf("lock: %d, ", thisPCB->lock_pc);
+		printf("unlock: %d, ", thisPCB->unlock_pc);
+	}
 	
 	printf("\r\nMAX PC: %d\r\n", thisPCB->max_pc);
 	

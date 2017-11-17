@@ -39,6 +39,8 @@ time_t t;
 */
 void osLoop () {
 	int totalProcesses = 0, iterationCount = 1;
+	Mutex currMutex;
+	
 	thisScheduler = schedulerConstructor();
 	totalProcesses += makePCBList(thisScheduler);
 	printSchedulerState(thisScheduler);
@@ -47,7 +49,15 @@ void osLoop () {
 			thisScheduler->running->context->pc++;
 			
 			if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
-				q_dequeue_m
+				if (thisScheduler->running->context->pc == thisScheduler->running->lock_pc) {
+					currMutex = q_find_mutex(thisScheduler->mutexes, thisScheduler->running);
+					mutex_lock (currMutex, thisScheduler->running);
+					printf("Found the mutex, locking.\r\n");
+				} else if (thisScheduler->running->context->pc == thisScheduler->running->unlock_pc) {
+					currMutex = q_find_mutex(thisScheduler->mutexes, thisScheduler->running);
+					mutex_unlock (currMutex, thisScheduler->running);
+					printf("Found the mutex, unlocking.\r\n");
+				}
 			}
 			
 			
@@ -198,7 +208,7 @@ int ioInterrupt(ReadyQueue the_blocked)
 int makePCBList (Scheduler theScheduler) {
 	// change this to make 2 at a time.
 	//int newPCBCount = rand() % MAX_PCB_IN_ROUND;
-	int newPCBCount = 2;
+	int newPCBCount = 1;
 	
 	int lottery = rand();
 	for (int i = 0; i < newPCBCount; i++) {

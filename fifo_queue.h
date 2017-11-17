@@ -91,7 +91,10 @@ int q_enqueue_m(/* in */ ReadyQueue FIFOq, /* in */ Mutex mutex);
  * Arguments: FIFOq: the queue to dequeue from.
  * Return: NULL if empty, the PCB at the front of the queue otherwise.
  */
-PCB q_dequeue_m(/* in-out */ ReadyQueue FIFOq);
+Mutex q_dequeue_m(/* in-out */ ReadyQueue FIFOq);
+
+
+Mutex q_find_mutex (ReadyQueue queue, PCB pcb);
 
 /*
  * Peeks and returns a PCB from the queue, unless the queue is empty in which case null is returned.
