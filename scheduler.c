@@ -588,28 +588,58 @@ Scheduler schedulerConstructor () {
 	doesn't crash).
 */
 void schedulerDeconstructor (Scheduler theScheduler) {
-	q_destroy(theScheduler->created);
-	q_destroy(theScheduler->killed);
-	q_destroy(theScheduler->blocked);
-	q_destroy_m(theScheduler->mutexes);
-	pq_destroy(theScheduler->ready);
-	PCB_destroy(theScheduler->running);
-	if (theScheduler->interrupted == theScheduler->running) {
-		PCB_destroy(theScheduler->interrupted);
+	if (theScheduler) {
+		if (theScheduler->created) {
+			printf("destroying created\n");
+			q_destroy(theScheduler->created);
+		}		
+		
+		if (theScheduler->killed) {
+			printf("destroying killed\n");
+			q_destroy(theScheduler->killed);
+		}
+		
+		if (theScheduler->blocked) {
+			printf("destroying blocked\n");
+			q_destroy(theScheduler->blocked);
+		}
+		
+		if (theScheduler->mutexes) {
+			printf("destroying mutexes\n");
+			q_destroy_m(theScheduler->mutexes);
+			printf("destroyed mutexes\n");
+		}
+		
+		if (theScheduler->ready) {
+			printf("destroying ready\n");
+			pq_destroy(theScheduler->ready);
+		}
+		
+		if (theScheduler->running) {
+			printf("destroying running\n");
+			PCB_destroy(theScheduler->running);
+		}
+		
+		if (theScheduler->interrupted && theScheduler->running && theScheduler->interrupted == theScheduler->running) {
+			printf("destroying interrupted\n");
+			PCB_destroy(theScheduler->interrupted);
+		}
+		
+		printf("destroying scheduler\n");
+		free (theScheduler);
 	}
-	free (theScheduler);
 	
 	displayRoleCountResults();
 }
 
 
 void displayRoleCountResults() {
-	printf("TOTAL ROLE TYPES: \r\n\r\n");
+	printf("\r\nTOTAL ROLE TYPES: %d\r\n\r\n", (compCount + ioCount + pairCount + sharedCount));
 	
 	printf("COMP: \t%d\r\n", compCount);
 	printf("IO: \t%d\r\n", ioCount);
 	printf("PAIR: \t%d\r\n", pairCount);
-	printf("SHARED: \t%d\r\n", sharedCount);
+	printf("SHARED: %d\r\n", sharedCount);
 }
 
 int isPrivileged(PCB pcb) {
