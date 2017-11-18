@@ -102,7 +102,35 @@ void toStringMutex (Mutex mutex) {
 	Destroys the given mutex.
 */
 void mutex_destroy(Mutex mutex) {
-	free (mutex);
+	if (mutex != NULL) {
+		printf("mutex is locked: %d\n", mutex->isLocked);
+		printf("trying to free mutex\n");
+		if (mutex->pcb1) {
+			printf("freeing pcb1\n");
+			free(mutex->pcb1);
+		}
+		
+		if (mutex->pcb2) {
+			printf("freeing pcb2\n");
+			free(mutex->pcb2);
+		}
+		
+		/*if (mutex->hasLock) {
+			printf("freeing hasLock\n");
+			free(mutex->hasLock);
+			printf("freed hasLock\n");
+		}*/
+		
+		if (mutex->blocked) {
+			printf("freeing blocked\n");
+			free(mutex->blocked);
+		}
+		free (mutex);
+		mutex = NULL;
+		printf("freed mutex\n");
+	} else {
+		printf("mutex was null\n");
+	}
 }
 
 

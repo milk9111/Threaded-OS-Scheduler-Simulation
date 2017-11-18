@@ -44,8 +44,10 @@ void q_destroy(/* in-out */ ReadyQueue FIFOq) {
         iter = iter->next;
         PCB_destroy(curr->pcb);
         free(curr);
+		curr = NULL;
     }
     free(FIFOq);
+	FIFOq = NULL;
 }
 
 
@@ -64,8 +66,10 @@ void q_destroy_m(/* in-out */ ReadyQueue FIFOq) {
         iter = iter->next;
         mutex_destroy(curr->mutex);
         free(curr);
+		curr = NULL;
     }
     free(FIFOq);
+	FIFOq = NULL;
 }
 
 

@@ -222,11 +222,17 @@ PCB PCB_create() {
  * Arguments: pcb: the pcb to free.
  */
 void PCB_destroy(/* in-out */ PCB pcb) {
-	if (pcb->context) {
-	  free(pcb->context);
-	  printf("breaks\n");
+	if (pcb) {
+		if (pcb->context) {
+			printf("freeing context\n");
+			free(pcb->context); 
+			printf("freed context\n");
+		}	
+		printf("freeing pcb\n");
+		free(pcb);// that thing
+		pcb = NULL;
+		printf("freed pcb\n");
 	}
-	  free(pcb);// that thing
 }
 
 /*

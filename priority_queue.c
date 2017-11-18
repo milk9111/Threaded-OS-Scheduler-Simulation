@@ -70,9 +70,11 @@ void pq_destroy(PriorityQueue PQ) {
     /* Free all our inner FIFO queues. */
     for (i = 0; i < NUM_PRIORITIES; i++) {
         q_destroy(PQ->queues[i]);
+		PQ->queues[i] = NULL;
     }
 
     free(PQ);
+	PQ = NULL;
 }
 
 /*
