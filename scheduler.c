@@ -514,18 +514,7 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 	}
 	
 	if (theScheduler->running != NULL && theScheduler->running->state == STATE_HALT) {
-		printf("\r\nEnqueueing into Killed queue\r\n");
-		q_enqueue(theScheduler->killed, theScheduler->running);
-		if (theScheduler->running->role == PAIR || theScheduler->running->role == SHARED) {
-			currMutex = q_find_mutex(theScheduler->mutexes, theScheduler->running);
-			q_enqueue(theScheduler->killed, pq_remove_matching_pcb(theScheduler->ready, currMutex->pcb1));
-			q_enqueue(theScheduler->killed, pq_remove_matching_pcb(theScheduler->ready, currMutex->pcb2));
-			
-			toStringReadyQueue(theScheduler->killed);
-			toStringReadyQueueMutexes(theScheduler->mutexes);
-			printf("END\r\n");
-		}
-		theScheduler->running = NULL;
+		handleKilling(theScheduler);
 	}
 	
 	// I/O interrupt does not require putting a new process
@@ -536,6 +525,7 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 	}
 	
 	if (theScheduler->killed->size >= TOTAL_TERMINATED) {
+		printf("Emptying killed list\n");
 		PCB toKill;
 		if (!q_is_empty(theScheduler->killed)) {
 			toKill = q_dequeue(theScheduler->killed);
@@ -543,13 +533,19 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		if (!q_is_empty(theScheduler->killed)) {
 			while(!q_is_empty(theScheduler->killed)) {
 				if (theScheduler->killed->size > 1) {
+					//printf("pid to kill: P%d\n", toKill->pid);
 					PCB_destroy(toKill);
+					//printf("toKill == null: %d\n", (toKill == NULL));
+					//printf("pid after kill: P%d\n\n", toKill->pid);
 				}
 				toKill = q_dequeue(theScheduler->killed);
 			} 
 		} else {
 			PCB_destroy(toKill);
 		}
+		printf("After emptying\n");
+		printf("Killed List: ");
+		toStringReadyQueue(theScheduler->killed);
 	}
 
 	// I/O interrupt does not require putting a new process
@@ -760,8 +756,52 @@ void main () {
 		
 	}
 	
+	scheduler->running = pq_dequeue(scheduler->ready);
+	while (!pq_is_empty(scheduler->ready)) {
+		printf("TOP\n");
+		toStringPriorityQueue(scheduler->ready);
+		printf("Dequeued P%d\n", scheduler->running->pid);
+		if (scheduler->running->terminate > 0) {
+			scheduler->running->term_count = scheduler->running->terminate;
+		}
+		
+		scheduler->running->state = STATE_HALT;
+		printf("scheduling for P%d\n", scheduler->running->pid);
+		scheduling(IS_TERMINATING, scheduler);
+	}
+	
 	printSchedulerState(scheduler);
 	printf("\r\nMutex List: ");
 	toStringReadyQueueMutexes(scheduler->mutexes);
 	schedulerDeconstructor(scheduler);
 }*/
+
+
+void handleKilling (Scheduler theScheduler) {
+	Mutex currMutex;
+	PCB found;
+	
+	printf("\r\nEnqueueing into Killed queue\r\n");
+	if (theScheduler->running->role == PAIR || theScheduler->running->role == SHARED) {
+		currMutex = q_find_mutex(theScheduler->mutexes, theScheduler->running);
+		if (currMutex->pcb2 == theScheduler->running) {
+			found = pq_remove_matching_pcb(theScheduler->ready, currMutex->pcb1);
+		} else {
+			found = pq_remove_matching_pcb(theScheduler->ready, currMutex->pcb2);
+		}
+		
+		printf("found: P%d\n", found->pid);
+		
+		q_enqueue(theScheduler->killed, theScheduler->running);
+		q_enqueue(theScheduler->killed, found);
+		
+		printf("Mutex List: ");
+		toStringReadyQueueMutexes(theScheduler->mutexes);
+		//printf("END\r\n");
+	} else {
+		q_enqueue(theScheduler->killed, theScheduler->running);
+	}
+	printf("Killed List: ");
+	toStringReadyQueue(theScheduler->killed);
+	theScheduler->running = NULL;
+}

@@ -102,6 +102,7 @@ PCB pq_dequeue(PriorityQueue PQ) {
     for (i = 0; i < NUM_PRIORITIES; i++) {
         if (!q_is_empty(PQ->queues[i])) {
             ret_pcb = q_dequeue(PQ->queues[i]);
+			printf("ret_pcb pid: %d\n", ret_pcb->pid);
             break;
         }
     }

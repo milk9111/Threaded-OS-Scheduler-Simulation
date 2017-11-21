@@ -98,5 +98,7 @@ void incrementRoleCount (enum pcb_type);
 
 void displayRoleCountResults();
 
+void handleKilling (Scheduler theScheduler);
+
 
 #endif
