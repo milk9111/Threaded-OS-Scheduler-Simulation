@@ -202,9 +202,9 @@ unsigned int makeMaxPC () {
  * Return: NULL if context or PCB allocation failed, the new pointer otherwise.
  */
 PCB PCB_create() {
-    PCB new_pcb = malloc(sizeof(PCB_s));
+    PCB new_pcb = (PCB) malloc(sizeof(struct pcb));
     if (new_pcb != NULL) {
-        new_pcb->context = malloc(sizeof(CPU_context_s));
+        new_pcb->context = (CPU_context_p) malloc(sizeof(struct cpu_context));
         if (new_pcb->context != NULL) {
             initialize_data(new_pcb);
 			PCB_assign_PID(new_pcb);
@@ -212,6 +212,7 @@ PCB PCB_create() {
             free(new_pcb);
             new_pcb = NULL;
         }
+		
     }
     return new_pcb;
 }
@@ -224,14 +225,10 @@ PCB PCB_create() {
 void PCB_destroy(/* in-out */ PCB pcb) {
 	if (pcb) {
 		if (pcb->context) {
-			printf("freeing context\n");
 			free(pcb->context); 
-			printf("freed context\n");
 		}	
-		printf("freeing pcb\n");
 		free(pcb);// that thing
 		pcb = NULL;
-		printf("freed pcb\n");
 	}
 }
 

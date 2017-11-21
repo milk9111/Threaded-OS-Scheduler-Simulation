@@ -611,8 +611,15 @@ Scheduler schedulerConstructor () {
 	doesn't crash).
 */
 void schedulerDeconstructor (Scheduler theScheduler) {
-	printf("\r\n");
+	//printf("\r\n");
 	if (theScheduler) {
+		
+		if (theScheduler->ready) {
+			//printf("destroying ready\n");
+			toStringPriorityQueue(theScheduler->ready);
+			pq_destroy(theScheduler->ready);
+		}
+		
 		if (theScheduler->created) {
 			//printf("destroying created\n");
 			q_destroy(theScheduler->created);
@@ -629,27 +636,22 @@ void schedulerDeconstructor (Scheduler theScheduler) {
 		}
 		
 		if (theScheduler->mutexes) {
-			printf("destroying mutexes\n");
+			//printf("destroying mutexes\n");
 			q_destroy_m(theScheduler->mutexes);
-			printf("destroyed mutexes\n");
-		}
-		
-		if (theScheduler->ready) {
-			printf("destroying ready\n");
-			pq_destroy(theScheduler->ready);
+			//printf("destroyed mutexes\n");
 		}
 		
 		if (theScheduler->running) {
-			printf("destroying running\n");
+			//printf("destroying running\n");
 			PCB_destroy(theScheduler->running);
 		}
 		
 		if (theScheduler->interrupted && theScheduler->running && theScheduler->interrupted == theScheduler->running) {
-			printf("destroying interrupted\n");
+			//printf("destroying interrupted\n");
 			PCB_destroy(theScheduler->interrupted);
 		}
 		
-		printf("destroying scheduler\n");
+		//printf("destroying scheduler\n");
 		free (theScheduler);
 	}
 	
@@ -720,10 +722,10 @@ void main () {
 		printf("blocked values\n");
 		toStringPCB(mutex->blocked, 0);
 	}
-}
+}*/
 
 
-void main () {
+/*void main () {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
 	
@@ -731,14 +733,34 @@ void main () {
 	
 	for (int i = 0; i < 10; i++) {
 		Mutex newMutex = mutex_init();
-		if (!q_contains_mutex(scheduler->mutexes, newMutex)) {
-			printNull(newMutex);
+		
+		PCB pcb1 = PCB_create();
+		PCB pcb2 = PCB_create();
+		
+		initialize_pcb_type(pcb1, 1, newMutex);
+		initialize_pcb_type(pcb2, 0, newMutex);
+		
+		incrementRoleCount(pcb1->role);
+		incrementRoleCount(pcb2->role);
+		
+		pq_enqueue(scheduler->ready, pcb1);
+		pq_enqueue(scheduler->ready, pcb2);
+		
+		if ((pcb1->role == PAIR || pcb1->role == SHARED) && !q_contains_mutex(scheduler->mutexes, newMutex)) {
+			//printNull(newMutex);
 			q_enqueue_m (scheduler->mutexes, newMutex);
 		} else {
-			printf("Mutex M%d already in the Mutex List!\r\n", newMutex->mid);
+			if (q_contains_mutex(scheduler->mutexes, newMutex)) {
+				printf("Mutex M%d already in the Mutex List!\r\n", newMutex->mid);
+			} else {
+				printf("Mutex M%d not added, PCBs weren't type PAIR or SHARED\n", newMutex->mid);
+			}
 		}
+		
+		
 	}
 	
+	printSchedulerState(scheduler);
 	printf("\r\nMutex List: ");
 	toStringReadyQueueMutexes(scheduler->mutexes);
 	schedulerDeconstructor(scheduler);

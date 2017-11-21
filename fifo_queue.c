@@ -36,15 +36,19 @@ ReadyQueue q_create() {
  * This will also free all PCBs, to prevent any leaks. Do not use on a non empty queue if processing is still going to occur on a pcb.
  */
 void q_destroy(/* in-out */ ReadyQueue FIFOq) {
-    ReadyQueueNode iter = FIFOq->first_node;
-    ReadyQueueNode curr = NULL;
+    ReadyQueueNode curr = FIFOq->first_node;
+    ReadyQueueNode last = NULL;
 
-    while (iter != NULL) {
-        curr = iter;
-        iter = iter->next;
-        PCB_destroy(curr->pcb);
-        free(curr);
-		curr = NULL;
+    while (curr != NULL) {
+        last = curr;
+        curr = curr->next;
+		if (last->pcb) {
+			PCB_destroy(last->pcb);
+		} else {
+			printf("pcb was null\n");
+		}
+        free(last);
+		last = NULL;
     }
     free(FIFOq);
 	FIFOq = NULL;
@@ -68,9 +72,9 @@ void q_destroy_m(/* in-out */ ReadyQueue FIFOq) {
         curr = curr->next;
 		//printf("here\n");
         mutex_destroy(last->mutex);
-		printf("freeing last\n");
+		//printf("freeing last\n");
         free(last);
-		printf("freed last\n");
+		//printf("freed last\n");
 		last = NULL;
     }
     free(FIFOq);
@@ -298,9 +302,9 @@ int q_contains_mutex (ReadyQueue queue, Mutex toFind) {
 		printf("M%d",theNode->mutex->mid);
 	}
     if(theNode->next != 0) {
-        printf("->");
+        printf(" -> ");
     } else {
-        printf("->*");
+        printf(" -> *");
     }
 }
 
@@ -327,6 +331,42 @@ void toStringReadyQueueMutexes(ReadyQueue theQueue) {
             toStringReadyQueueNode(temp, 1);
             temp = temp->next;
         }
+		printf("\r\n            ");
+		
+		temp = theQueue->first_node;
+		while (temp != 0) {
+			printf("____  ");
+			temp = temp->next;
+		}
+		printf("\r\n            ");
+		
+		temp = theQueue->first_node;
+		while (temp != 0) {
+			if (temp->mutex->pcb1) {
+				printf("p%2d   ", temp->mutex->pcb1->pid);
+			} else {
+				printf("p*    ");
+			}
+			temp = temp->next;
+		}
+		printf("\r\n            ");
+		
+		temp = theQueue->first_node;
+		while (temp != 0) {
+			if (temp->mutex->pcb2) {
+				printf("p%2d   ", temp->mutex->pcb2->pid);
+			} else {
+				printf("p*    ");
+			}
+			temp = temp->next;
+		}
+		printf("\r\n            ");
+		
+		temp = theQueue->first_node;
+		while (temp != 0) {
+			printf("----  ");
+			temp = temp->next;
+		}
 		printf("\r\n");
     }
 }

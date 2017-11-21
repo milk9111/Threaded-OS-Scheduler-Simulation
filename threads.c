@@ -36,21 +36,10 @@ void printNull2 (Mutex mutex) {
 Mutex mutex_init () {
 	Mutex mutex = (Mutex) malloc (sizeof (struct MUTEX));
 	mutex->isLocked = 0;
-	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
-	printf("hasLock == NULL: %d\n", (mutex->hasLock));
 	mutex->hasLock = NULL;
-	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
-	printf("hasLock == NULL: %d\n", (mutex->hasLock));
 	mutex->blocked = NULL;
-	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
-	printf("hasLock == NULL: %d\n", (mutex->hasLock));
 	mutex->pcb1 = NULL;
-	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
-	printf("hasLock == NULL: %d\n", (mutex->hasLock));
 	mutex->pcb2 = NULL;
-	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
-	printf("hasLock == NULL: %d\n", (mutex->hasLock));
-	printNull2(mutex);
 	mutex->mid = global_largest_MID;
 	global_largest_MID++;
 	return mutex;
@@ -143,32 +132,9 @@ void toStringMutex (Mutex mutex) {
 void mutex_destroy(Mutex mutex) {
 	
 	if (mutex != NULL) {
-		
-		//printf("mutex is locked: %d\n", mutex->isLocked);
-		//printf("trying to free mutex\n");
-		if (mutex->pcb1) {
-			printf("freeing pcb1\n");
-			free(mutex->pcb1);
-		}
-		printf("here\n");
-		if (mutex->pcb2) {
-			printf("freeing pcb2\n");
-			free(mutex->pcb2);
-		}
-		
-		/*if (mutex->hasLock) {
-			printf("freeing hasLock\n");
-			free(mutex->hasLock);
-			printf("freed hasLock\n");
-		}*/
-		
-		if (mutex->blocked) {
-			printf("freeing blocked\n");
-			free(mutex->blocked);
-		}
 		free (mutex);
 		mutex = NULL;
-		printf("freed mutex\n");
+		//printf("freed mutex\n");
 	} else {
 		printf("mutex was null\n");
 	}
