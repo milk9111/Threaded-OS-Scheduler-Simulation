@@ -161,6 +161,18 @@ int q_enqueue_m(/* in */ ReadyQueue FIFOq, /* in */ Mutex mutex) {
     return new_node != NULL;
 }
 
+
+void printMutexList (ReadyQueue mutexes) {
+	ReadyQueueNode curr = mutexes->first_node;
+	while (curr) {
+		printf("m%d->", curr->mutex->mid);
+		curr = curr->next;
+		if (!curr) {
+			printf("*\n");
+		}
+	}
+}
+
 /*
  * Dequeues and returns a PCB from the queue, unless the queue is empty in which case null is returned.
  *
@@ -248,14 +260,38 @@ Mutex q_find_mutex (ReadyQueue queue, PCB pcb) {
 	return ret_mutex;
 }
 
+
+int q_contains_mutex (ReadyQueue queue, Mutex toFind) {
+	int mutexFound = 0;
+	printf("in here\n");
+	ReadyQueueNode curr = queue->first_node;
+	while (curr) {
+		printf("curr->mutex->mid = %d\n", curr->mutex->mid);
+		printf("toFind->mid = %d\n", toFind->mid);
+		if (curr->mutex == toFind) { //if the mutex is the same
+			mutexFound = 1;
+			break;
+		}
+		
+		curr = curr->next;
+	}
+	
+	return mutexFound;
+}
+
+
 /*
  * Creates and returns an output string representation of the FIFO queue.
  *
  * Arguments: FIFOq: The queue to perform this operation on
  *            display_back: 1 to display the final PCB, 0 otherwise.
  */
- void toStringReadyQueueNode(ReadyQueueNode theNode) {
-	printf("P%d",theNode->pcb->pid);
+ void toStringReadyQueueNode(ReadyQueueNode theNode, int isMutex) {
+	 if (!isMutex) {
+		printf("P%d",theNode->pcb->pid);
+	 } else {
+		printf("M%d",theNode->mutex->mid);
+	}
     if(theNode->next != 0) {
         printf("->");
     } else {
@@ -269,7 +305,21 @@ void toStringReadyQueue(ReadyQueue theQueue) {
     } else {
         ReadyQueueNode temp = theQueue->first_node;
         while(temp != 0) {
-            toStringReadyQueueNode(temp);
+            toStringReadyQueueNode(temp, 0);
+            temp = temp->next;
+        }
+		printf("\r\n");
+    }
+}
+
+
+void toStringReadyQueueMutexes(ReadyQueue theQueue) {
+    if(theQueue->first_node == 0) {
+        printf("\r\n");
+    } else {
+        ReadyQueueNode temp = theQueue->first_node;
+        while(temp != 0) {
+            toStringReadyQueueNode(temp, 1);
             temp = temp->next;
         }
 		printf("\r\n");

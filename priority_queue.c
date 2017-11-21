@@ -106,6 +106,71 @@ PCB pq_dequeue(PriorityQueue PQ) {
     return ret_pcb;
 }
 
+
+/*
+	Finds the matching PCB in the PriorityQueue and removes it. This is used when
+	trying to kill PAIR or SHARED processes and their shared Mutex.
+*/
+PCB pq_remove_matching_pcb(PriorityQueue PQ, PCB toFind) {
+	ReadyQueueNode curr;
+	ReadyQueueNode last;
+	PCB found;
+	
+	for (int i = 0; i < NUM_PRIORITIES; i++) {
+		curr = PQ->queues[i]->first_node;
+		last = NULL;
+		while (curr) { //searches through the linked list
+			if (curr->pcb == toFind) {
+				if (curr == PQ->queues[i]->first_node) { //if the mutex is the first node in the list
+					printf("found at start of queue\n");
+					toStringPriorityQueue(PQ);
+					PQ->queues[i]->first_node = curr->next;
+				} else { //otherwise
+					printf("not found at start of queue\n");
+					toStringPriorityQueue(PQ);
+					last->next = curr->next;
+				}
+				toStringPriorityQueue(PQ);
+			
+				found = curr->pcb;
+				free(curr);
+				break;
+			}
+			
+			last = curr;
+			curr = curr->next;
+		}
+	}
+	
+	return found;
+}
+
+
+// a test for pq_remove_matching_pcb.
+/*void main() {
+	PriorityQueue pq = pq_create();
+	PCB catch = NULL;
+	PCB justMade = NULL;
+	PCB received = NULL;
+	
+	for (int i = 0; i < 10; i++) {
+		justMade = PCB_create();
+		if (i == 5) {
+			catch = justMade;
+		}
+		pq_enqueue(pq, justMade);
+	}
+	
+	printf("Before removing matching PCB p%d\n", catch->pid);
+	toStringPriorityQueue(pq);
+	received = pq_remove_matching_pcb(pq, catch);
+	printf("After removing matching PCB p%d\n", catch->pid); 
+	toStringPriorityQueue(pq);
+	printf("received PCB from remove: p%d\n", received->pid);
+}*/
+
+
+
 /*
  * Checks if the provided priority queue is empty.
  *
@@ -160,36 +225,12 @@ char pq_is_empty(PriorityQueue PQ) {
  void toStringPriorityQueue(PriorityQueue PQ) {
 	printf("\r\n");
 	for (int i = 0; i < NUM_PRIORITIES; i++) {
-		printf("Q%2d: Count=%d, QuantumSize=%d\r\n", i, PQ->queues[i]->size, PQ->queues[i]->quantum_size);
-		//toStringReadyQueue(PQ->queues[i]);
+		//printf("Q%2d: Count=%d, QuantumSize=%d\r\n", i, PQ->queues[i]->size, PQ->queues[i]->quantum_size);
+		
+		printf("Q%2d: ", i);
+		toStringReadyQueue(PQ->queues[i]);
 	}
 	printf("\r\n");
  }
  
-/*char * toStringPriorityQueue(PriorityQueue PQ, int display_back) {
-    unsigned int buff_len = 1000;
-    unsigned int cpos = 0;
-    unsigned int q_str_len = 0;
-    char * ret_str = malloc(sizeof(char) * buff_len);
-    char * str_resize = NULL;
-    char * q_str = NULL;
-    int i;
 
-    if (ret_str != NULL) {
-        for (i = 0; i < NUM_PRIORITIES; i++) {
-            q_str = toStringReadyQueue(PQ->queues[i], display_back);
-            if (q_str != NULL) {
-                q_str_len = strlen(q_str);
-                str_resize = resize_block_if_needed(ret_str, cpos + q_str_len
-                                        + ADDITIONAL_ROOM_FOR_TOSTR, &buff_len);
-                if (str_resize != NULL) {
-                    ret_str = str_resize;
-                    cpos += sprintf(ret_str + cpos, "Q%d:%s\n", i, q_str);
-                }
-                free(q_str);
-            }
-        }
-    }
-
-    return ret_str;
-}*/

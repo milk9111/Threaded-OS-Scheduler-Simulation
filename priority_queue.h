@@ -49,6 +49,8 @@ void pq_enqueue(PriorityQueue PQ, PCB pcb);
  */
 PCB pq_dequeue(PriorityQueue PQ);
 
+PCB pq_remove_matching_pcb(PriorityQueue PQ, PCB toFind);
+
 int getNextQuantumSize (PriorityQueue PQ);
 
 /*

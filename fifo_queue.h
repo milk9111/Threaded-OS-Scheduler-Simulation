@@ -38,6 +38,8 @@ typedef FIFOq_s * ReadyQueue;
  */
 ReadyQueue q_create();
 
+void printMutexList (ReadyQueue mutexes);
+
 /*
  * Destroy a FIFO queue and all of its internal nodes.
  *
@@ -104,6 +106,9 @@ Mutex q_find_mutex (ReadyQueue queue, PCB pcb);
  */
 PCB q_peek(ReadyQueue FIFOq);
 
+
+int q_contains_mutex (ReadyQueue queue, Mutex toFind);
+
 /*
  * Creates and returns an output string representation of the FIFO queue.
  *
@@ -114,8 +119,9 @@ PCB q_peek(ReadyQueue FIFOq);
  */
 void toStringReadyQueue(/* in */ ReadyQueue FIFOq);
 
-void toStringReadyQueueNode(ReadyQueueNode theNode);
+void toStringReadyQueueNode(ReadyQueueNode theNode, int);
 
+void toStringReadyQueueMutexes(ReadyQueue theQueue);
 
 
 #endif

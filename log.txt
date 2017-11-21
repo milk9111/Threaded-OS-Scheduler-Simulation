@@ -1,0 +1,11229 @@
+
+M: 
+Role wasn't PAIR or SHARED, freeing sharedMutex M0
+freed
+Making New PCBs: 
+q_is_empty: 0
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+contents: PID: 1, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+
+
+Dequeueing PCB 
+NEW!!
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+MLFQ State
+
+Q 0: P1->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+
+
+
+Iteration: 1
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 2
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: interrupted, role: io, priority: 0, PC: 2, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 2, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 3
+Initiating I/O Trap
+PC when I/O Trap is Reached: 11
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 2, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 4
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P1->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 5, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: waiting, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P1->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 5, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: waiting, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 5
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 5, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 6
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: interrupted, role: io, priority: 0, PC: 8, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 8, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 7
+Initiating I/O Trap
+PC when I/O Trap is Reached: 11
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 8, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 8
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P1->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 11, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: waiting, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P1->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 11, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: waiting, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 9
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 11, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 10
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: interrupted, role: io, priority: 0, PC: 13, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 13, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 11
+Initiating I/O Trap
+PC when I/O Trap is Reached: 14
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 14, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 13, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 12
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 14, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P1->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 14, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: waiting, role: io, priority: 0, PC: 14, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P1->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 14, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: waiting, role: io, priority: 0, PC: 14, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 13
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 14, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 14
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: interrupted, role: io, priority: 0, PC: 16, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 16, 
+MAX PC: 65
+io_1_traps
+63 34 24 17 
+io_2_traps
+14 0 11 44 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+
+RESETTING MLFQ
+iterationCount: 15
+
+M: 
+Role wasn't PAIR or SHARED, freeing sharedMutex M1
+freed
+Making New PCBs: 
+q_is_empty: 0
+contents: PID: 2, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 144
+
+terminate: 5
+term_count: 0
+
+
+contents: PID: 3, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 611
+
+terminate: 2
+term_count: 0
+
+
+
+Dequeueing PCB 
+NEW!!
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+here
+MLFQ State
+
+Q 0: P2->P3->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 2, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 144
+
+terminate: 5
+term_count: 0
+
+
+
+
+Iteration: 1
+Initiating I/O Trap
+PC when I/O Trap is Reached: 94
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P3->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 2, state: running, role: comp, priority: 0, PC: 16, 
+MAX PC: 144
+
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 3, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 611
+
+terminate: 2
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 2
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P3->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 2, state: interrupted, role: comp, priority: 0, PC: 19, 
+MAX PC: 144
+
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 3, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 611
+
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P3->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 2, state: running, role: comp, priority: 0, PC: 19, 
+MAX PC: 144
+
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 3, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 611
+
+terminate: 2
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 3
+Initiating Timer Interrupt
+Current quantum tick: 500
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 2, state: ready, role: comp, priority: 1, PC: 7, 
+MAX PC: 144
+
+terminate: 5
+term_count: 1
+
+
+Q 0: P3->P0->*
+Q 1: P2->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: P0->*
+Q 1: P2->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 3, state: running, role: comp, priority: 0, PC: 19, 
+MAX PC: 611
+
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Iteration: 4
+Initiating Timer Interrupt
+Current quantum tick: 500
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 3, state: ready, role: comp, priority: 1, PC: 520, 
+MAX PC: 611
+
+terminate: 2
+term_count: 0
+
+
+Q 0: P0->*
+Q 1: P2->P3->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: 
+Q 1: P2->P3->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 19, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 2, state: ready, role: comp, priority: 1, PC: 7, 
+MAX PC: 144
+
+terminate: 5
+term_count: 1
+
+
+
+
+Iteration: 5
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P3->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 2, state: running, role: comp, priority: 1, PC: 19, 
+MAX PC: 144
+
+terminate: 5
+term_count: 1
+
+Next highest priority PCB contents: PID: 3, state: ready, role: comp, priority: 1, PC: 520, 
+MAX PC: 611
+
+terminate: 2
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 6
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P3->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 2, state: interrupted, role: comp, priority: 1, PC: 20, 
+MAX PC: 144
+
+terminate: 5
+term_count: 1
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P3->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+mutexes size: 0
+
+Going to be running contents: PID: 2, state: running, role: comp, priority: 1, PC: 20, 
+MAX PC: 144
+
+terminate: 5
+term_count: 1
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Marking for termination...
+...
+
+Enqueueing into Killed queue
+Iteration: 7
+Initiating Timer Interrupt
+Current quantum tick: 629
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 0, state: ready, role: io, priority: 1, PC: 92, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+Q 0: 
+Q 1: P3->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 1
+mutexes size: 0
+
+Going to be running contents: PID: 3, state: running, role: comp, priority: 1, PC: 20, 
+MAX PC: 611
+
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 1, PC: 92, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Iteration: 8
+Initiating Timer Interrupt
+Current quantum tick: 1000
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 3, state: ready, role: comp, priority: 2, PC: 410, 
+MAX PC: 611
+
+terminate: 2
+term_count: 1
+
+
+Q 0: 
+Q 1: P0->*
+Q 2: P3->*
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: P3->*
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 1
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 20, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 3, state: ready, role: comp, priority: 2, PC: 410, 
+MAX PC: 611
+
+terminate: 2
+term_count: 1
+
+
+
+
+Iteration: 9
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 1
+mutexes size: 0
+
+Going to be running contents: PID: 3, state: running, role: comp, priority: 2, PC: 20, 
+MAX PC: 611
+
+terminate: 2
+term_count: 1
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 10
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 1
+mutexes size: 0
+
+Going to be running contents: PID: 3, state: interrupted, role: comp, priority: 2, PC: 21, 
+MAX PC: 611
+
+terminate: 2
+term_count: 1
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 1
+mutexes size: 0
+
+Going to be running contents: PID: 3, state: running, role: comp, priority: 2, PC: 21, 
+MAX PC: 611
+
+terminate: 2
+term_count: 1
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Marking for termination...
+...
+
+Enqueueing into Killed queue
+Iteration: 11
+Initiating I/O Trap
+PC when I/O Trap is Reached: 94
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+Idle
+
+RESETTING MLFQ
+iterationCount: 15
+
+M: 
+Role wasn't PAIR or SHARED, freeing sharedMutex M2
+freed
+Making New PCBs: 
+q_is_empty: 0
+contents: PID: 4, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+contents: PID: 5, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+Dequeueing PCB 
+NEW!!
+contents: PID: 4, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+here
+MLFQ State
+
+Q 0: P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Iteration: 1
+Initiating Timer Interrupt
+Current quantum tick: 665
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 4, state: ready, role: io, priority: 1, PC: 1, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 21, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 1, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Iteration: 2
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P4->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 21, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 1, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 21, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 1, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 3
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 1, PC: 21, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 4
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 1, PC: 22, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 1, PC: 22, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 5
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 22, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 6
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P0->P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 25, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 25, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 7
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 25, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 8
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 1, PC: 26, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 26, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 9
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 26, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 10
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P4->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 28, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 28, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 11
+Initiating Timer Interrupt
+Current quantum tick: 500
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 5, state: ready, role: io, priority: 1, PC: 106, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+Q 0: 
+Q 1: P4->P0->P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: 
+Q 1: P0->P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 1, PC: 28, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Iteration: 12
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 28, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 1, PC: 106, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 13
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P5->P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 1, PC: 29, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 1, PC: 106, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 29, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 1, PC: 106, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 14
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 1, PC: 29, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 1, PC: 29, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Iteration: 1
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P4->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 1, PC: 30, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P4->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 1, PC: 30, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 2
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 30, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 3
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P0->P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 0, PC: 32, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 32, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 4
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 32, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 5
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P4->*
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 1, PC: 35, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P4->*
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 35, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 6
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 35, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 7
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P5->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 0, PC: 37, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 37, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 8
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 1, PC: 37, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 9
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P4->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 1, PC: 39, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P4->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 1, PC: 39, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 10
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 39, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 11
+Initiating Timer Interrupt
+Current quantum tick: 552
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 4, state: ready, role: io, priority: 1, PC: 40, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+Q 0: 
+Q 1: P0->P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 39, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 40, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Iteration: 12
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P4->P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 1, PC: 41, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 40, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 1, PC: 41, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 40, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 13
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 1, PC: 41, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 14
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 1, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: 
+Q 1: P5->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 1, PC: 43, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 1, PC: 43, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 1, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: P5->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 1, PC: 43, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Iteration: 1
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 43, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 2
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 45, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 45, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 3
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 45, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 4
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 46, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 46, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 5
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 46, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 6
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 49, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 49, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 7
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 49, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 8
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 51, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 51, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 9
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 51, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 10
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 54, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 54, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 11
+Initiating Timer Interrupt
+Current quantum tick: 500
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 5, state: ready, role: io, priority: 1, PC: 123, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+Q 0: P0->*
+Q 1: P4->P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: 
+Q 1: P4->P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 54, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Iteration: 12
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 1, PC: 54, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 1, PC: 123, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 13
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 1, PC: 56, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 1, PC: 56, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 14
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P5->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 56, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 1, PC: 123, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 56, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 0, PC: 123, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Iteration: 1
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 58, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 0, PC: 123, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 58, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: ready, role: io, priority: 0, PC: 123, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 2
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 58, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 3
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 59, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 59, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 4
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 59, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 5
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 62, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 62, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 6
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 62, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 7
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 63, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 63, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 8
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 63, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 9
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 65, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 65, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 10
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 65, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 11
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 68, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 68, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 12
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 68, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 13
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 69, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 69, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 14
+Initiating Timer Interrupt
+Current quantum tick: 500
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 0, state: ready, role: io, priority: 1, PC: 90, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+Q 0: P5->*
+Q 1: P4->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: 
+Q 1: P4->P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 69, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 1, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+
+RESETTING MLFQ
+iterationCount: 15
+here
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 69, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Iteration: 1
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 69, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 90, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 2
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 0, PC: 70, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 90, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 70, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 90, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 3
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 70, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 4
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 73, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 73, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 5
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 73, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 6
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 76, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 76, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 7
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 76, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 8
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 0, PC: 78, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 78, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 9
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 78, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 10
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 81, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 81, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 11
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 81, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 12
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 83, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 83, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 13
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 83, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 14
+Initiating I/O Trap
+PC when I/O Trap is Reached: 85
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 2
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 83, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Completed I/O Trap
+Iteration: 15
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 83, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 83, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 16
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 85, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 85, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 17
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 85, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 18
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 86, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 86, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 85, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 19
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 86, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 20
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 0, PC: 87, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 87, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 21
+Initiating Timer Interrupt
+Current quantum tick: 500
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 4, state: ready, role: io, priority: 1, PC: 158, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+Q 0: P0->P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 87, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Iteration: 22
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 87, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 158, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 23
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 89, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 89, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 24
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 89, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 158, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 25
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 90, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 90, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 26
+Initiating I/O Trap
+PC when I/O Trap is Reached: 91
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 90, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 158, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 27
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 91, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 91, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 28
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 91, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 1, PC: 158, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 29
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 92, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P4->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 92, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+
+RESETTING MLFQ
+iterationCount: 30
+here
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 92, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Iteration: 1
+Initiating I/O Trap
+PC when I/O Trap is Reached: 94
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 92, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 0, PC: 158, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 2
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 94, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 0, PC: 158, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P4->P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 94, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: ready, role: io, priority: 0, PC: 158, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 3
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P0->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 94, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 4
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P0->P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 0, PC: 96, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P0->P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 96, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: waiting, role: io, priority: 0, PC: 94, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 5
+Initiating I/O Trap
+PC when I/O Trap is Reached: 236
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 236, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 96, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 6
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 236, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: interrupted, role: io, priority: 0, PC: 99, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->P4->*
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 99, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 7
+Initiating Timer Interrupt
+Current quantum tick: 500
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+contents: PID: 0, state: ready, role: io, priority: 1, PC: 214, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+Q 0: P5->P4->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+ENQ!
+Exiting Timer Interrupt
+Exiting ISR
+Completed Timer Interrupt
+MLFQ State
+
+Q 0: P4->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 99, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 236, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Iteration: 8
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 99, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 1, PC: 214, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 9
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 0, PC: 100, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 100, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 10
+Initiating I/O Trap
+PC when I/O Trap is Reached: 236
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 236, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 100, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 1, PC: 214, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 11
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 236, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+MLFQ State
+
+Q 0: P4->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: interrupted, role: io, priority: 0, PC: 103, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 236, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P4->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 103, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 4, state: waiting, role: io, priority: 0, PC: 236, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 12
+Initiating I/O Trap
+PC when I/O Trap is Reached: 167
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 103, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 1, PC: 214, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+Iteration: 13
+Initiating I/O Interrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+MLFQ State
+
+Q 0: P5->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: interrupted, role: io, priority: 0, PC: 105, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+MLFQ State
+
+Q 0: P5->*
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 4, state: running, role: io, priority: 0, PC: 105, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 5, state: waiting, role: io, priority: 0, PC: 167, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+
+
+
+Completed I/O Interrupt
+Iteration: 14
+Initiating I/O Trap
+PC when I/O Trap is Reached: 236
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 4, state: waiting, role: io, priority: 0, PC: 236, 
+MAX PC: 985
+io_1_traps
+424 503 569 911 
+io_2_traps
+236 85 920 8 
+terminate: 6
+term_count: 0
+
+Exiting IO Trap
+Exiting ISR
+MLFQ State
+
+Q 0: 
+Q 1: P0->*
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 1
+killed size: 2
+mutexes size: 0
+
+Going to be running contents: PID: 5, state: running, role: io, priority: 0, PC: 105, 
+MAX PC: 463
+io_1_traps
+369 167 179 349 
+io_2_traps
+192 283 314 359 
+terminate: 5
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 1, PC: 214, 
+MAX PC: 724
+io_1_traps
+393 94 590 660 
+io_2_traps
+642 390 91 271 
+terminate: 4
+term_count: 0
+
+
+
+
+Completed I/O Trap
+
+RESETTING MLFQ
+iterationCount: 15
+
+M: 
+Role wasn't PAIR or SHARED, freeing sharedMutex M3
