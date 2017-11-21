@@ -611,20 +611,20 @@ Scheduler schedulerConstructor () {
 	doesn't crash).
 */
 void schedulerDeconstructor (Scheduler theScheduler) {
-	printMutexList(theScheduler->mutexes);
+	printf("\r\n");
 	if (theScheduler) {
 		if (theScheduler->created) {
-			printf("destroying created\n");
+			//printf("destroying created\n");
 			q_destroy(theScheduler->created);
 		}		
 		
 		if (theScheduler->killed) {
-			printf("destroying killed\n");
+			//printf("destroying killed\n");
 			q_destroy(theScheduler->killed);
 		}
 		
 		if (theScheduler->blocked) {
-			printf("destroying blocked\n");
+			//printf("destroying blocked\n");
 			q_destroy(theScheduler->blocked);
 		}
 		
@@ -694,3 +694,52 @@ void main () {
 	
 	osLoop();
 }
+
+
+/*void printNull (Mutex mutex) {
+	printf("pcb1 is null: %d\n", (mutex->pcb1 == NULL));
+	if (mutex->pcb1 != NULL) {
+		printf("pcb1 values\n");
+		toStringPCB(mutex->pcb1, 0);
+	}
+	
+	printf("pcb2 is null: %d\n", (mutex->pcb2 == NULL));
+	if (mutex->pcb2 != NULL) {
+		printf("pcb2 values\n");
+		toStringPCB(mutex->pcb2, 0);
+	}
+	
+	printf("hasLock is null: %d\n", (mutex->hasLock == NULL));
+	if (mutex->hasLock != NULL) {
+		printf("hasLock values\n");
+		toStringPCB(mutex->hasLock, 0);
+	}
+	
+	printf("blocked is null: %d\n", (mutex->blocked == NULL));
+	if (mutex->blocked != NULL) {
+		printf("blocked values\n");
+		toStringPCB(mutex->blocked, 0);
+	}
+}
+
+
+void main () {
+	setvbuf(stdout, NULL, _IONBF, 0);
+	srand((unsigned) time(&t));
+	
+	Scheduler scheduler = schedulerConstructor();
+	
+	for (int i = 0; i < 10; i++) {
+		Mutex newMutex = mutex_init();
+		if (!q_contains_mutex(scheduler->mutexes, newMutex)) {
+			printNull(newMutex);
+			q_enqueue_m (scheduler->mutexes, newMutex);
+		} else {
+			printf("Mutex M%d already in the Mutex List!\r\n", newMutex->mid);
+		}
+	}
+	
+	printf("\r\nMutex List: ");
+	toStringReadyQueueMutexes(scheduler->mutexes);
+	schedulerDeconstructor(scheduler);
+}*/

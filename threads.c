@@ -4,14 +4,53 @@
 
 unsigned int global_largest_MID;
 
+void printNull2 (Mutex mutex) {
+	printf("pcb1 is null: %d\n", (mutex->pcb1 == NULL));
+	if (mutex->pcb1 != NULL) {
+		printf("pcb1 values\n");
+		toStringPCB(mutex->pcb1, 0);
+	}
+	
+	printf("pcb2 is null: %d\n", (mutex->pcb2 == NULL));
+	if (mutex->pcb2 != NULL) {
+		printf("pcb2 values\n");
+		toStringPCB(mutex->pcb2, 0);
+	}
+	
+	printf("hasLock is null: %d\n", (mutex->hasLock == NULL));
+	if (mutex->hasLock != NULL) {
+		printf("hasLock values\n");
+		toStringPCB(mutex->hasLock, 0);
+	}
+	
+	printf("blocked is null: %d\n", (mutex->blocked == NULL));
+	if (mutex->blocked != NULL) {
+		printf("blocked values\n");
+		toStringPCB(mutex->blocked, 0);
+	}
+}
+
 /*
 	Creates and initializes the value of the mutex.
 */
 Mutex mutex_init () {
-	Mutex mutex = (Mutex) malloc (sizeof (Mutex));
+	Mutex mutex = (Mutex) malloc (sizeof (struct MUTEX));
 	mutex->isLocked = 0;
+	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
+	printf("hasLock == NULL: %d\n", (mutex->hasLock));
 	mutex->hasLock = NULL;
+	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
+	printf("hasLock == NULL: %d\n", (mutex->hasLock));
 	mutex->blocked = NULL;
+	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
+	printf("hasLock == NULL: %d\n", (mutex->hasLock));
+	mutex->pcb1 = NULL;
+	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
+	printf("hasLock == NULL: %d\n", (mutex->hasLock));
+	mutex->pcb2 = NULL;
+	printf("hasLock == NULL: %d\n", (mutex->hasLock == NULL));
+	printf("hasLock == NULL: %d\n", (mutex->hasLock));
+	printNull2(mutex);
 	mutex->mid = global_largest_MID;
 	global_largest_MID++;
 	return mutex;
@@ -102,14 +141,16 @@ void toStringMutex (Mutex mutex) {
 	Destroys the given mutex.
 */
 void mutex_destroy(Mutex mutex) {
+	
 	if (mutex != NULL) {
-		printf("mutex is locked: %d\n", mutex->isLocked);
-		printf("trying to free mutex\n");
+		
+		//printf("mutex is locked: %d\n", mutex->isLocked);
+		//printf("trying to free mutex\n");
 		if (mutex->pcb1) {
 			printf("freeing pcb1\n");
 			free(mutex->pcb1);
 		}
-		
+		printf("here\n");
 		if (mutex->pcb2) {
 			printf("freeing pcb2\n");
 			free(mutex->pcb2);

@@ -58,15 +58,20 @@ void q_destroy(/* in-out */ ReadyQueue FIFOq) {
  * This will also free all PCBs, to prevent any leaks. Do not use on a non empty queue if processing is still going to occur on a pcb.
  */
 void q_destroy_m(/* in-out */ ReadyQueue FIFOq) {
-    ReadyQueueNode iter = FIFOq->first_node;
-    ReadyQueueNode curr = NULL;
+    ReadyQueueNode curr = FIFOq->first_node;
+    ReadyQueueNode last = NULL;
 
-    while (iter != NULL) {
-        curr = iter;
-        iter = iter->next;
-        mutex_destroy(curr->mutex);
-        free(curr);
-		curr = NULL;
+    while (curr != NULL) {
+		
+        last = curr;
+		
+        curr = curr->next;
+		//printf("here\n");
+        mutex_destroy(last->mutex);
+		printf("freeing last\n");
+        free(last);
+		printf("freed last\n");
+		last = NULL;
     }
     free(FIFOq);
 	FIFOq = NULL;
@@ -234,7 +239,7 @@ Mutex q_dequeue_m(/* in-out */ ReadyQueue FIFOq) {
 /*
 	This will find the Mutex that holds the given PCB, NULL otherwise.
 */
-Mutex q_find_mutex (ReadyQueue queue, PCB pcb) {
+Mutex q_find_mutex (ReadyQueue queue, PCB pcb) { //CHANGE NAME TO q_find_mutex_from_pcb
 	Mutex ret_mutex = NULL;
 	
 	ReadyQueueNode curr = queue->first_node;
@@ -263,11 +268,11 @@ Mutex q_find_mutex (ReadyQueue queue, PCB pcb) {
 
 int q_contains_mutex (ReadyQueue queue, Mutex toFind) {
 	int mutexFound = 0;
-	printf("in here\n");
+	//printf("in here\n");
 	ReadyQueueNode curr = queue->first_node;
 	while (curr) {
-		printf("curr->mutex->mid = %d\n", curr->mutex->mid);
-		printf("toFind->mid = %d\n", toFind->mid);
+		//printf("curr->mutex->mid = %d\n", curr->mutex->mid);
+		//printf("toFind->mid = %d\n", toFind->mid);
 		if (curr->mutex == toFind) { //if the mutex is the same
 			mutexFound = 1;
 			break;
