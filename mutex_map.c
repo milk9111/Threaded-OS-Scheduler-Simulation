@@ -1,11 +1,18 @@
 #include "mutex_map.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 
 int findKey(PCB theKey, int mapSize);
 
 MutexMap create_mutx_map()
 {
-MutexMap newMap = calloc(sizeOf(MutexMap));
+MutexMap newMap = (MutexMap) malloc(sizeof(mutex_map_s));
+int i;
+for (i = 0; i < MAX_INIT_BUCKETS; i++)
+{
+	newMap->map[i] = NULL;
+}
 newMap->curr_map_size = MAX_INIT_BUCKETS;
 
 return newMap;
@@ -13,48 +20,154 @@ return newMap;
 
 int add_to_mutx_map(MutexMap theMap, Mutex theMutex, PCB theKey)
 {
-if ((theMap || theMuxtex || theKey) == NULL)
+if (theMap == NULL || theMutex == NULL || theKey == NULL)
 	{
 	return 1;
 	}
 int key = findKey(theKey, theMap->curr_map_size);
+printf("Attempting to insert in location %d.\n", key);
 if(theMap->map[key] != NULL)
 	{
 	int tmp = key; // If we hit here, we need to resolve a hash collision
+	printf("--Insertion collision!--\n");
 	tmp++;
-	while(theMap->map[key] != NULL)
+	while(theMap->map[tmp] != NULL)
 		{
 		if(tmp == key)
 			{
 			return 2; // Map is full. Will implement resizing if this becomes a problem.
 			}
 		tmp++;
+		if (tmp > theMap->curr_map_size)
+		{
+			tmp = 0;
+		}
 		}
 	key = tmp;
 	}
 theMap->map[key] = theMutex;
-
+printf("Inserting at location %d.\n", key);
 return 0;
 }
 
 int remove_from_mutx_map(MutexMap theMap, PCB theKey)
 {
-if ((theMap || theKey) == NULL)
+if (theMap == NULL || theKey == NULL)
 	{
-	return 1;
+	return 1; // Missing value
 	}
 int key = findKey(theKey, theMap->curr_map_size);
-if((theMap->map[key]->  != 
+printf("Attempting to remove from location %d.\n", key);
+if (theMap->map[key] == NULL)
+{
+	if((theMap->map[key]->pcb1->pid != key) || (theMap->map[key]->pcb2->parent != key))
+	{
+		int tmp = key; // If we hit here, we had a hash collision in the past 
+					   // and need to find where our mutex got placed
+		printf("--Delete collision!--\n");
+		tmp++;
+		while((theMap->map[tmp] != NULL) && (theMap->map[tmp]->pcb1->pid != key) || (theMap->map[tmp]->pcb2->parent != key))
+			{
+			if(theMap->map[tmp] == NULL && tmp == key)
+				{
+				return 2; // Object does not exist
+				}
+			tmp++;
+			if (tmp > theMap->curr_map_size)
+			{
+				tmp = 0;
+			}
+			}
+		key = tmp;
+	}
+	Mutex toFree = theMap->map[key];
+	printf("Removing from location %d.\nObtained pid: %d, looking for: %d\n", key, toFree->pcb1->pid, theKey->pid);
+	mutex_destroy(toFree);
+	theMap->map[key] = NULL;
+	
+	return 0;
+}
+else
+{
+	return 2;
+}
 }
 
 Mutex take_n_remove_from_mutx_map(MutexMap theMap, PCB theKey)
 {
-
+if (theMap == NULL || theKey == NULL)
+{
+	return NULL;
+}
+int key = findKey(theKey, theMap->curr_map_size);
+if (theMap->map[key] == NULL)
+{
+	return NULL;
+}
+printf("Attempting to remove from location %d.\n", key);
+if((theMap->map[key]->pcb1->pid != key) || (theMap->map[key]->pcb2->parent != key))
+	{
+		int tmp = key; // If we hit here, we had a hash collision in the past 
+					   // and need to find where our mutex got placed
+		tmp++;
+		printf("Delete and Remove collision!\n");
+		while((theMap->map[tmp] != NULL) && (theMap->map[tmp]->pcb1->pid != key) || (theMap->map[tmp]->pcb2->parent != key))
+			{
+			if(theMap->map[tmp] == NULL && tmp == key)
+				{
+				return NULL; // Object does not exist
+				}
+			tmp++;
+			if (tmp > theMap->curr_map_size)
+		{
+			tmp = 0;
+		}
+			}
+		key = tmp;
+	}
+	Mutex toFree = theMap->map[key];
+	//mutex_destroy(toFree);
+	theMap->map[key] = NULL;
+	
+	return toFree;
 }
 
 Mutex get_mutx(MutexMap theMap, PCB theKey)
 {
-
+if (theMap == NULL || theKey == NULL)
+{
+	return NULL;
+}
+int key = findKey(theKey, theMap->curr_map_size);
+if (theMap->map[key] == NULL)
+{
+	return NULL;
+}
+if((theMap->map[key]->pcb1->pid != key) || (theMap->map[key]->pcb2->parent != key))
+	{
+		int tmp = key; // If we hit here, we had a hash collision in the past 
+					   // and need to find where our mutex got placed
+		tmp++;
+		printf("Search collision!\n");
+		while((theMap->map[tmp] != NULL) && (theMap->map[tmp]->pcb1->pid != key) || (theMap->map[tmp]->pcb2->parent != key))
+			{
+			if(theMap->map[tmp] == NULL && tmp == key)
+				{
+				return NULL; // Object does not exist
+				}
+			tmp++;
+			if (tmp > theMap->curr_map_size)
+		{
+			tmp = 0;
+		}
+			}
+		key = tmp;
+	}
+	Mutex toFree = theMap->map[key];
+	//mutex_destroy(toFree);
+	//theMap->map[key] = NULL;
+	
+	return toFree;
 }
 
 int findKey(PCB theKey, int mapSize)
@@ -67,7 +180,10 @@ if(theKey->parent == -1) // Process is non-companion
 else			// Process IS comanion
 	{
 	key = theKey->parent;
-	} 
-key = key % mapSize;
+	}
+if (key > 0)
+{	
+	key = key % mapSize;
+}
 return key;
 }
