@@ -1,0 +1,2226 @@
+Beging testing...
+Insertion test - insert new Mutex's until map is full
+Attempting to insert in location 0.
+Inserting at location 0.
+Insertion result = 0
+Attempting to insert in location 1.
+Inserting at location 1.
+Insertion result = 0
+Attempting to insert in location 2.
+Inserting at location 2.
+Insertion result = 0
+Attempting to insert in location 3.
+Inserting at location 3.
+Insertion result = 0
+Attempting to insert in location 4.
+Inserting at location 4.
+Insertion result = 0
+Attempting to insert in location 5.
+Inserting at location 5.
+Insertion result = 0
+Attempting to insert in location 6.
+Inserting at location 6.
+Insertion result = 0
+Attempting to insert in location 7.
+Inserting at location 7.
+Insertion result = 0
+Attempting to insert in location 8.
+Inserting at location 8.
+Insertion result = 0
+Attempting to insert in location 9.
+Inserting at location 9.
+Insertion result = 0
+Attempting to insert in location 10.
+Inserting at location 10.
+Insertion result = 0
+Attempting to insert in location 11.
+Inserting at location 11.
+Insertion result = 0
+Attempting to insert in location 12.
+Inserting at location 12.
+Insertion result = 0
+Attempting to insert in location 13.
+Inserting at location 13.
+Insertion result = 0
+Attempting to insert in location 14.
+Inserting at location 14.
+Insertion result = 0
+Attempting to insert in location 15.
+Inserting at location 15.
+Insertion result = 0
+Attempting to insert in location 16.
+Inserting at location 16.
+Insertion result = 0
+Attempting to insert in location 17.
+Inserting at location 17.
+Insertion result = 0
+Attempting to insert in location 18.
+Inserting at location 18.
+Insertion result = 0
+Attempting to insert in location 19.
+Inserting at location 19.
+Insertion result = 0
+Attempting to insert in location 20.
+Inserting at location 20.
+Insertion result = 0
+Attempting to insert in location 21.
+Inserting at location 21.
+Insertion result = 0
+Attempting to insert in location 22.
+Inserting at location 22.
+Insertion result = 0
+Attempting to insert in location 23.
+Inserting at location 23.
+Insertion result = 0
+Attempting to insert in location 24.
+Inserting at location 24.
+Insertion result = 0
+Attempting to insert in location 25.
+Inserting at location 25.
+Insertion result = 0
+Attempting to insert in location 26.
+Inserting at location 26.
+Insertion result = 0
+Attempting to insert in location 27.
+Inserting at location 27.
+Insertion result = 0
+Attempting to insert in location 28.
+Inserting at location 28.
+Insertion result = 0
+Attempting to insert in location 29.
+Inserting at location 29.
+Insertion result = 0
+Attempting to insert in location 30.
+Inserting at location 30.
+Insertion result = 0
+Attempting to insert in location 31.
+Inserting at location 31.
+Insertion result = 0
+Attempting to insert in location 32.
+Inserting at location 32.
+Insertion result = 0
+Attempting to insert in location 33.
+Inserting at location 33.
+Insertion result = 0
+Attempting to insert in location 34.
+Inserting at location 34.
+Insertion result = 0
+Attempting to insert in location 35.
+Inserting at location 35.
+Insertion result = 0
+Attempting to insert in location 36.
+Inserting at location 36.
+Insertion result = 0
+Attempting to insert in location 37.
+Inserting at location 37.
+Insertion result = 0
+Attempting to insert in location 38.
+Inserting at location 38.
+Insertion result = 0
+Attempting to insert in location 39.
+Inserting at location 39.
+Insertion result = 0
+Attempting to insert in location 40.
+Inserting at location 40.
+Insertion result = 0
+Attempting to insert in location 41.
+Inserting at location 41.
+Insertion result = 0
+Attempting to insert in location 42.
+Inserting at location 42.
+Insertion result = 0
+Attempting to insert in location 43.
+Inserting at location 43.
+Insertion result = 0
+Attempting to insert in location 44.
+Inserting at location 44.
+Insertion result = 0
+Attempting to insert in location 45.
+Inserting at location 45.
+Insertion result = 0
+Attempting to insert in location 46.
+Inserting at location 46.
+Insertion result = 0
+Attempting to insert in location 47.
+Inserting at location 47.
+Insertion result = 0
+Attempting to insert in location 48.
+Inserting at location 48.
+Insertion result = 0
+Attempting to insert in location 49.
+Inserting at location 49.
+Insertion result = 0
+Attempting to insert in location 50.
+Inserting at location 50.
+Insertion result = 0
+Attempting to insert in location 51.
+Inserting at location 51.
+Insertion result = 0
+Attempting to insert in location 52.
+Inserting at location 52.
+Insertion result = 0
+Attempting to insert in location 53.
+Inserting at location 53.
+Insertion result = 0
+Attempting to insert in location 54.
+Inserting at location 54.
+Insertion result = 0
+Attempting to insert in location 55.
+Inserting at location 55.
+Insertion result = 0
+Attempting to insert in location 56.
+Inserting at location 56.
+Insertion result = 0
+Attempting to insert in location 57.
+Inserting at location 57.
+Insertion result = 0
+Attempting to insert in location 58.
+Inserting at location 58.
+Insertion result = 0
+Attempting to insert in location 59.
+Inserting at location 59.
+Insertion result = 0
+Attempting to insert in location 60.
+Inserting at location 60.
+Insertion result = 0
+Attempting to insert in location 61.
+Inserting at location 61.
+Insertion result = 0
+Attempting to insert in location 62.
+Inserting at location 62.
+Insertion result = 0
+Attempting to insert in location 63.
+Inserting at location 63.
+Insertion result = 0
+Attempting to insert in location 64.
+Inserting at location 64.
+Insertion result = 0
+Attempting to insert in location 65.
+Inserting at location 65.
+Insertion result = 0
+Attempting to insert in location 66.
+Inserting at location 66.
+Insertion result = 0
+Attempting to insert in location 67.
+Inserting at location 67.
+Insertion result = 0
+Attempting to insert in location 68.
+Inserting at location 68.
+Insertion result = 0
+Attempting to insert in location 69.
+Inserting at location 69.
+Insertion result = 0
+Attempting to insert in location 70.
+Inserting at location 70.
+Insertion result = 0
+Attempting to insert in location 71.
+Inserting at location 71.
+Insertion result = 0
+Attempting to insert in location 72.
+Inserting at location 72.
+Insertion result = 0
+Attempting to insert in location 73.
+Inserting at location 73.
+Insertion result = 0
+Attempting to insert in location 74.
+Inserting at location 74.
+Insertion result = 0
+Attempting to insert in location 75.
+Inserting at location 75.
+Insertion result = 0
+Attempting to insert in location 76.
+Inserting at location 76.
+Insertion result = 0
+Attempting to insert in location 77.
+Inserting at location 77.
+Insertion result = 0
+Attempting to insert in location 78.
+Inserting at location 78.
+Insertion result = 0
+Attempting to insert in location 79.
+Inserting at location 79.
+Insertion result = 0
+Attempting to insert in location 80.
+Inserting at location 80.
+Insertion result = 0
+Attempting to insert in location 81.
+Inserting at location 81.
+Insertion result = 0
+Attempting to insert in location 82.
+Inserting at location 82.
+Insertion result = 0
+Attempting to insert in location 83.
+Inserting at location 83.
+Insertion result = 0
+Attempting to insert in location 84.
+Inserting at location 84.
+Insertion result = 0
+Attempting to insert in location 85.
+Inserting at location 85.
+Insertion result = 0
+Attempting to insert in location 86.
+Inserting at location 86.
+Insertion result = 0
+Attempting to insert in location 87.
+Inserting at location 87.
+Insertion result = 0
+Attempting to insert in location 88.
+Inserting at location 88.
+Insertion result = 0
+Attempting to insert in location 89.
+Inserting at location 89.
+Insertion result = 0
+Attempting to insert in location 90.
+Inserting at location 90.
+Insertion result = 0
+Attempting to insert in location 91.
+Inserting at location 91.
+Insertion result = 0
+Attempting to insert in location 92.
+Inserting at location 92.
+Insertion result = 0
+Attempting to insert in location 93.
+Inserting at location 93.
+Insertion result = 0
+Attempting to insert in location 94.
+Inserting at location 94.
+Insertion result = 0
+Attempting to insert in location 95.
+Inserting at location 95.
+Insertion result = 0
+Attempting to insert in location 96.
+Inserting at location 96.
+Insertion result = 0
+Attempting to insert in location 97.
+Inserting at location 97.
+Insertion result = 0
+Attempting to insert in location 98.
+Inserting at location 98.
+Insertion result = 0
+Attempting to insert in location 99.
+Inserting at location 99.
+Insertion result = 0
+Attempting to insert in location 100.
+Inserting at location 100.
+Insertion result = 0
+Attempting to insert in location 101.
+Inserting at location 101.
+Insertion result = 0
+Attempting to insert in location 102.
+Inserting at location 102.
+Insertion result = 0
+Attempting to insert in location 103.
+Inserting at location 103.
+Insertion result = 0
+Attempting to insert in location 104.
+Inserting at location 104.
+Insertion result = 0
+Attempting to insert in location 105.
+Inserting at location 105.
+Insertion result = 0
+Attempting to insert in location 106.
+Inserting at location 106.
+Insertion result = 0
+Attempting to insert in location 107.
+Inserting at location 107.
+Insertion result = 0
+Attempting to insert in location 108.
+Inserting at location 108.
+Insertion result = 0
+Attempting to insert in location 109.
+Inserting at location 109.
+Insertion result = 0
+Attempting to insert in location 110.
+Inserting at location 110.
+Insertion result = 0
+Attempting to insert in location 111.
+Inserting at location 111.
+Insertion result = 0
+Attempting to insert in location 112.
+Inserting at location 112.
+Insertion result = 0
+Attempting to insert in location 113.
+Inserting at location 113.
+Insertion result = 0
+Attempting to insert in location 114.
+Inserting at location 114.
+Insertion result = 0
+Attempting to insert in location 115.
+Inserting at location 115.
+Insertion result = 0
+Attempting to insert in location 116.
+Inserting at location 116.
+Insertion result = 0
+Attempting to insert in location 117.
+Inserting at location 117.
+Insertion result = 0
+Attempting to insert in location 118.
+Inserting at location 118.
+Insertion result = 0
+Attempting to insert in location 119.
+Inserting at location 119.
+Insertion result = 0
+Attempting to insert in location 120.
+Inserting at location 120.
+Insertion result = 0
+Attempting to insert in location 121.
+Inserting at location 121.
+Insertion result = 0
+Attempting to insert in location 122.
+Inserting at location 122.
+Insertion result = 0
+Attempting to insert in location 123.
+Inserting at location 123.
+Insertion result = 0
+Attempting to insert in location 124.
+Inserting at location 124.
+Insertion result = 0
+Attempting to insert in location 125.
+Inserting at location 125.
+Insertion result = 0
+Attempting to insert in location 126.
+Inserting at location 126.
+Insertion result = 0
+Attempting to insert in location 127.
+Inserting at location 127.
+Insertion result = 0
+Attempting to insert in location 128.
+Inserting at location 128.
+Insertion result = 0
+Attempting to insert in location 129.
+Inserting at location 129.
+Insertion result = 0
+Attempting to insert in location 130.
+Inserting at location 130.
+Insertion result = 0
+Attempting to insert in location 131.
+Inserting at location 131.
+Insertion result = 0
+Attempting to insert in location 132.
+Inserting at location 132.
+Insertion result = 0
+Attempting to insert in location 133.
+Inserting at location 133.
+Insertion result = 0
+Attempting to insert in location 134.
+Inserting at location 134.
+Insertion result = 0
+Attempting to insert in location 135.
+Inserting at location 135.
+Insertion result = 0
+Attempting to insert in location 136.
+Inserting at location 136.
+Insertion result = 0
+Attempting to insert in location 137.
+Inserting at location 137.
+Insertion result = 0
+Attempting to insert in location 138.
+Inserting at location 138.
+Insertion result = 0
+Attempting to insert in location 139.
+Inserting at location 139.
+Insertion result = 0
+Attempting to insert in location 140.
+Inserting at location 140.
+Insertion result = 0
+Attempting to insert in location 141.
+Inserting at location 141.
+Insertion result = 0
+Attempting to insert in location 142.
+Inserting at location 142.
+Insertion result = 0
+Attempting to insert in location 143.
+Inserting at location 143.
+Insertion result = 0
+Attempting to insert in location 144.
+Inserting at location 144.
+Insertion result = 0
+Attempting to insert in location 145.
+Inserting at location 145.
+Insertion result = 0
+Attempting to insert in location 146.
+Inserting at location 146.
+Insertion result = 0
+Attempting to insert in location 147.
+Inserting at location 147.
+Insertion result = 0
+Attempting to insert in location 148.
+Inserting at location 148.
+Insertion result = 0
+Attempting to insert in location 149.
+Inserting at location 149.
+Insertion result = 0
+Attempting to insert in location 150.
+Inserting at location 150.
+Insertion result = 0
+Attempting to insert in location 151.
+Inserting at location 151.
+Insertion result = 0
+Attempting to insert in location 152.
+Inserting at location 152.
+Insertion result = 0
+Attempting to insert in location 153.
+Inserting at location 153.
+Insertion result = 0
+Attempting to insert in location 154.
+Inserting at location 154.
+Insertion result = 0
+Attempting to insert in location 155.
+Inserting at location 155.
+Insertion result = 0
+Attempting to insert in location 156.
+Inserting at location 156.
+Insertion result = 0
+Attempting to insert in location 157.
+Inserting at location 157.
+Insertion result = 0
+Attempting to insert in location 158.
+Inserting at location 158.
+Insertion result = 0
+Attempting to insert in location 159.
+Inserting at location 159.
+Insertion result = 0
+Attempting to insert in location 160.
+Inserting at location 160.
+Insertion result = 0
+Attempting to insert in location 161.
+Inserting at location 161.
+Insertion result = 0
+Attempting to insert in location 162.
+Inserting at location 162.
+Insertion result = 0
+Attempting to insert in location 163.
+Inserting at location 163.
+Insertion result = 0
+Attempting to insert in location 164.
+Inserting at location 164.
+Insertion result = 0
+Attempting to insert in location 165.
+Inserting at location 165.
+Insertion result = 0
+Attempting to insert in location 166.
+Inserting at location 166.
+Insertion result = 0
+Attempting to insert in location 167.
+Inserting at location 167.
+Insertion result = 0
+Attempting to insert in location 168.
+Inserting at location 168.
+Insertion result = 0
+Attempting to insert in location 169.
+Inserting at location 169.
+Insertion result = 0
+Attempting to insert in location 170.
+Inserting at location 170.
+Insertion result = 0
+Attempting to insert in location 171.
+Inserting at location 171.
+Insertion result = 0
+Attempting to insert in location 172.
+Inserting at location 172.
+Insertion result = 0
+Attempting to insert in location 173.
+Inserting at location 173.
+Insertion result = 0
+Attempting to insert in location 174.
+Inserting at location 174.
+Insertion result = 0
+Attempting to insert in location 175.
+Inserting at location 175.
+Insertion result = 0
+Attempting to insert in location 176.
+Inserting at location 176.
+Insertion result = 0
+Attempting to insert in location 177.
+Inserting at location 177.
+Insertion result = 0
+Attempting to insert in location 178.
+Inserting at location 178.
+Insertion result = 0
+Attempting to insert in location 179.
+Inserting at location 179.
+Insertion result = 0
+Attempting to insert in location 180.
+Inserting at location 180.
+Insertion result = 0
+Attempting to insert in location 181.
+Inserting at location 181.
+Insertion result = 0
+Attempting to insert in location 182.
+Inserting at location 182.
+Insertion result = 0
+Attempting to insert in location 183.
+Inserting at location 183.
+Insertion result = 0
+Attempting to insert in location 184.
+Inserting at location 184.
+Insertion result = 0
+Attempting to insert in location 185.
+Inserting at location 185.
+Insertion result = 0
+Attempting to insert in location 186.
+Inserting at location 186.
+Insertion result = 0
+Attempting to insert in location 187.
+Inserting at location 187.
+Insertion result = 0
+Attempting to insert in location 188.
+Inserting at location 188.
+Insertion result = 0
+Attempting to insert in location 189.
+Inserting at location 189.
+Insertion result = 0
+Attempting to insert in location 190.
+Inserting at location 190.
+Insertion result = 0
+Attempting to insert in location 191.
+Inserting at location 191.
+Insertion result = 0
+Attempting to insert in location 192.
+Inserting at location 192.
+Insertion result = 0
+Attempting to insert in location 193.
+Inserting at location 193.
+Insertion result = 0
+Attempting to insert in location 194.
+Inserting at location 194.
+Insertion result = 0
+Attempting to insert in location 195.
+Inserting at location 195.
+Insertion result = 0
+Attempting to insert in location 196.
+Inserting at location 196.
+Insertion result = 0
+Attempting to insert in location 197.
+Inserting at location 197.
+Insertion result = 0
+Attempting to insert in location 198.
+Inserting at location 198.
+Insertion result = 0
+Attempting to insert in location 199.
+Inserting at location 199.
+Insertion result = 0
+Attempting to insert in location 0.
+--Insertion collision!--
+Insertion result = 2
+
+-------------------------
+Deletion test - remove half the mutexes from the map, semi-randomly
+Attempting to remove from location 0.
+Starting point pid: 0, looking for: 0
+Removing from location 0.
+Obtained pid: 0, looking for: 0
+Deletion result = 0
+Attempting to remove from location 3.
+Starting point pid: 3, looking for: 3
+Removing from location 3.
+Obtained pid: 3, looking for: 3
+Deletion result = 0
+Attempting to remove from location 6.
+Starting point pid: 6, looking for: 6
+Removing from location 6.
+Obtained pid: 6, looking for: 6
+Deletion result = 0
+Attempting to remove from location 9.
+Starting point pid: 9, looking for: 9
+Removing from location 9.
+Obtained pid: 9, looking for: 9
+Deletion result = 0
+Attempting to remove from location 12.
+Starting point pid: 12, looking for: 12
+Removing from location 12.
+Obtained pid: 12, looking for: 12
+Deletion result = 0
+Attempting to remove from location 15.
+Starting point pid: 15, looking for: 15
+Removing from location 15.
+Obtained pid: 15, looking for: 15
+Deletion result = 0
+Attempting to remove from location 18.
+Starting point pid: 18, looking for: 18
+Removing from location 18.
+Obtained pid: 18, looking for: 18
+Deletion result = 0
+Attempting to remove from location 21.
+Starting point pid: 21, looking for: 21
+Removing from location 21.
+Obtained pid: 21, looking for: 21
+Deletion result = 0
+Attempting to remove from location 24.
+Starting point pid: 24, looking for: 24
+Removing from location 24.
+Obtained pid: 24, looking for: 24
+Deletion result = 0
+Attempting to remove from location 27.
+Starting point pid: 27, looking for: 27
+Removing from location 27.
+Obtained pid: 27, looking for: 27
+Deletion result = 0
+Attempting to remove from location 30.
+Starting point pid: 30, looking for: 30
+Removing from location 30.
+Obtained pid: 30, looking for: 30
+Deletion result = 0
+Attempting to remove from location 33.
+Starting point pid: 33, looking for: 33
+Removing from location 33.
+Obtained pid: 33, looking for: 33
+Deletion result = 0
+Attempting to remove from location 36.
+Starting point pid: 36, looking for: 36
+Removing from location 36.
+Obtained pid: 36, looking for: 36
+Deletion result = 0
+Attempting to remove from location 39.
+Starting point pid: 39, looking for: 39
+Removing from location 39.
+Obtained pid: 39, looking for: 39
+Deletion result = 0
+Attempting to remove from location 42.
+Starting point pid: 42, looking for: 42
+Removing from location 42.
+Obtained pid: 42, looking for: 42
+Deletion result = 0
+Attempting to remove from location 45.
+Starting point pid: 45, looking for: 45
+Removing from location 45.
+Obtained pid: 45, looking for: 45
+Deletion result = 0
+Attempting to remove from location 48.
+Starting point pid: 48, looking for: 48
+Removing from location 48.
+Obtained pid: 48, looking for: 48
+Deletion result = 0
+Attempting to remove from location 51.
+Starting point pid: 51, looking for: 51
+Removing from location 51.
+Obtained pid: 51, looking for: 51
+Deletion result = 0
+Attempting to remove from location 54.
+Starting point pid: 54, looking for: 54
+Removing from location 54.
+Obtained pid: 54, looking for: 54
+Deletion result = 0
+Attempting to remove from location 57.
+Starting point pid: 57, looking for: 57
+Removing from location 57.
+Obtained pid: 57, looking for: 57
+Deletion result = 0
+Attempting to remove from location 60.
+Starting point pid: 60, looking for: 60
+Removing from location 60.
+Obtained pid: 60, looking for: 60
+Deletion result = 0
+Attempting to remove from location 63.
+Starting point pid: 63, looking for: 63
+Removing from location 63.
+Obtained pid: 63, looking for: 63
+Deletion result = 0
+Attempting to remove from location 66.
+Starting point pid: 66, looking for: 66
+Removing from location 66.
+Obtained pid: 66, looking for: 66
+Deletion result = 0
+Attempting to remove from location 69.
+Starting point pid: 69, looking for: 69
+Removing from location 69.
+Obtained pid: 69, looking for: 69
+Deletion result = 0
+Attempting to remove from location 72.
+Starting point pid: 72, looking for: 72
+Removing from location 72.
+Obtained pid: 72, looking for: 72
+Deletion result = 0
+Attempting to remove from location 75.
+Starting point pid: 75, looking for: 75
+Removing from location 75.
+Obtained pid: 75, looking for: 75
+Deletion result = 0
+Attempting to remove from location 78.
+Starting point pid: 78, looking for: 78
+Removing from location 78.
+Obtained pid: 78, looking for: 78
+Deletion result = 0
+Attempting to remove from location 81.
+Starting point pid: 81, looking for: 81
+Removing from location 81.
+Obtained pid: 81, looking for: 81
+Deletion result = 0
+Attempting to remove from location 84.
+Starting point pid: 84, looking for: 84
+Removing from location 84.
+Obtained pid: 84, looking for: 84
+Deletion result = 0
+Attempting to remove from location 87.
+Starting point pid: 87, looking for: 87
+Removing from location 87.
+Obtained pid: 87, looking for: 87
+Deletion result = 0
+Attempting to remove from location 90.
+Starting point pid: 90, looking for: 90
+Removing from location 90.
+Obtained pid: 90, looking for: 90
+Deletion result = 0
+Attempting to remove from location 93.
+Starting point pid: 93, looking for: 93
+Removing from location 93.
+Obtained pid: 93, looking for: 93
+Deletion result = 0
+Attempting to remove from location 96.
+Starting point pid: 96, looking for: 96
+Removing from location 96.
+Obtained pid: 96, looking for: 96
+Deletion result = 0
+Attempting to remove from location 99.
+Starting point pid: 99, looking for: 99
+Removing from location 99.
+Obtained pid: 99, looking for: 99
+Deletion result = 0
+Attempting to remove from location 102.
+Starting point pid: 102, looking for: 102
+Removing from location 102.
+Obtained pid: 102, looking for: 102
+Deletion result = 0
+Attempting to remove from location 105.
+Starting point pid: 105, looking for: 105
+Removing from location 105.
+Obtained pid: 105, looking for: 105
+Deletion result = 0
+Attempting to remove from location 108.
+Starting point pid: 108, looking for: 108
+Removing from location 108.
+Obtained pid: 108, looking for: 108
+Deletion result = 0
+Attempting to remove from location 111.
+Starting point pid: 111, looking for: 111
+Removing from location 111.
+Obtained pid: 111, looking for: 111
+Deletion result = 0
+Attempting to remove from location 114.
+Starting point pid: 114, looking for: 114
+Removing from location 114.
+Obtained pid: 114, looking for: 114
+Deletion result = 0
+Attempting to remove from location 117.
+Starting point pid: 117, looking for: 117
+Removing from location 117.
+Obtained pid: 117, looking for: 117
+Deletion result = 0
+Attempting to remove from location 120.
+Starting point pid: 120, looking for: 120
+Removing from location 120.
+Obtained pid: 120, looking for: 120
+Deletion result = 0
+Attempting to remove from location 123.
+Starting point pid: 123, looking for: 123
+Removing from location 123.
+Obtained pid: 123, looking for: 123
+Deletion result = 0
+Attempting to remove from location 126.
+Starting point pid: 126, looking for: 126
+Removing from location 126.
+Obtained pid: 126, looking for: 126
+Deletion result = 0
+Attempting to remove from location 129.
+Starting point pid: 129, looking for: 129
+Removing from location 129.
+Obtained pid: 129, looking for: 129
+Deletion result = 0
+Attempting to remove from location 132.
+Starting point pid: 132, looking for: 132
+Removing from location 132.
+Obtained pid: 132, looking for: 132
+Deletion result = 0
+Attempting to remove from location 135.
+Starting point pid: 135, looking for: 135
+Removing from location 135.
+Obtained pid: 135, looking for: 135
+Deletion result = 0
+Attempting to remove from location 138.
+Starting point pid: 138, looking for: 138
+Removing from location 138.
+Obtained pid: 138, looking for: 138
+Deletion result = 0
+Attempting to remove from location 141.
+Starting point pid: 141, looking for: 141
+Removing from location 141.
+Obtained pid: 141, looking for: 141
+Deletion result = 0
+Attempting to remove from location 144.
+Starting point pid: 144, looking for: 144
+Removing from location 144.
+Obtained pid: 144, looking for: 144
+Deletion result = 0
+Attempting to remove from location 147.
+Starting point pid: 147, looking for: 147
+Removing from location 147.
+Obtained pid: 147, looking for: 147
+Deletion result = 0
+Attempting to remove from location 150.
+Starting point pid: 150, looking for: 150
+Removing from location 150.
+Obtained pid: 150, looking for: 150
+Deletion result = 0
+Attempting to remove from location 153.
+Starting point pid: 153, looking for: 153
+Removing from location 153.
+Obtained pid: 153, looking for: 153
+Deletion result = 0
+Attempting to remove from location 156.
+Starting point pid: 156, looking for: 156
+Removing from location 156.
+Obtained pid: 156, looking for: 156
+Deletion result = 0
+Attempting to remove from location 159.
+Starting point pid: 159, looking for: 159
+Removing from location 159.
+Obtained pid: 159, looking for: 159
+Deletion result = 0
+Attempting to remove from location 162.
+Starting point pid: 162, looking for: 162
+Removing from location 162.
+Obtained pid: 162, looking for: 162
+Deletion result = 0
+Attempting to remove from location 165.
+Starting point pid: 165, looking for: 165
+Removing from location 165.
+Obtained pid: 165, looking for: 165
+Deletion result = 0
+Attempting to remove from location 168.
+Starting point pid: 168, looking for: 168
+Removing from location 168.
+Obtained pid: 168, looking for: 168
+Deletion result = 0
+Attempting to remove from location 171.
+Starting point pid: 171, looking for: 171
+Removing from location 171.
+Obtained pid: 171, looking for: 171
+Deletion result = 0
+Attempting to remove from location 174.
+Starting point pid: 174, looking for: 174
+Removing from location 174.
+Obtained pid: 174, looking for: 174
+Deletion result = 0
+Attempting to remove from location 177.
+Starting point pid: 177, looking for: 177
+Removing from location 177.
+Obtained pid: 177, looking for: 177
+Deletion result = 0
+Attempting to remove from location 180.
+Starting point pid: 180, looking for: 180
+Removing from location 180.
+Obtained pid: 180, looking for: 180
+Deletion result = 0
+Attempting to remove from location 183.
+Starting point pid: 183, looking for: 183
+Removing from location 183.
+Obtained pid: 183, looking for: 183
+Deletion result = 0
+Attempting to remove from location 186.
+Starting point pid: 186, looking for: 186
+Removing from location 186.
+Obtained pid: 186, looking for: 186
+Deletion result = 0
+Attempting to remove from location 189.
+Starting point pid: 189, looking for: 189
+Removing from location 189.
+Obtained pid: 189, looking for: 189
+Deletion result = 0
+Attempting to remove from location 192.
+Starting point pid: 192, looking for: 192
+Removing from location 192.
+Obtained pid: 192, looking for: 192
+Deletion result = 0
+Attempting to remove from location 195.
+Starting point pid: 195, looking for: 195
+Removing from location 195.
+Obtained pid: 195, looking for: 195
+Deletion result = 0
+Attempting to remove from location 198.
+Starting point pid: 198, looking for: 198
+Removing from location 198.
+Obtained pid: 198, looking for: 198
+Deletion result = 0
+Attempting to remove from location 1.
+Starting point pid: 1, looking for: 201
+--Delete collision!--
+Obtained pid: 1, looking for: 201
+before tmp = 1
+before tmp + 1 = 2
+after tmp = 2
+Moving in...
+map[tmp]->pcb1->pid: 2
+Checking at location 2.
+Obtained pid: 2, looking for: 201
+passed
+passed
+tmp: 3
+tmp: 3
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 201
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 4.
+Starting point pid: 4, looking for: 204
+--Delete collision!--
+Obtained pid: 4, looking for: 204
+before tmp = 4
+before tmp + 1 = 5
+after tmp = 5
+Moving in...
+map[tmp]->pcb1->pid: 5
+Checking at location 5.
+Obtained pid: 5, looking for: 204
+passed
+passed
+tmp: 6
+tmp: 6
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 204
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 7.
+Starting point pid: 7, looking for: 207
+--Delete collision!--
+Obtained pid: 7, looking for: 207
+before tmp = 7
+before tmp + 1 = 8
+after tmp = 8
+Moving in...
+map[tmp]->pcb1->pid: 8
+Checking at location 8.
+Obtained pid: 8, looking for: 207
+passed
+passed
+tmp: 9
+tmp: 9
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 207
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 10.
+Starting point pid: 10, looking for: 210
+--Delete collision!--
+Obtained pid: 10, looking for: 210
+before tmp = 10
+before tmp + 1 = 11
+after tmp = 11
+Moving in...
+map[tmp]->pcb1->pid: 11
+Checking at location 11.
+Obtained pid: 11, looking for: 210
+passed
+passed
+tmp: 12
+tmp: 12
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 210
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 13.
+Starting point pid: 13, looking for: 213
+--Delete collision!--
+Obtained pid: 13, looking for: 213
+before tmp = 13
+before tmp + 1 = 14
+after tmp = 14
+Moving in...
+map[tmp]->pcb1->pid: 14
+Checking at location 14.
+Obtained pid: 14, looking for: 213
+passed
+passed
+tmp: 15
+tmp: 15
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 213
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 16.
+Starting point pid: 16, looking for: 216
+--Delete collision!--
+Obtained pid: 16, looking for: 216
+before tmp = 16
+before tmp + 1 = 17
+after tmp = 17
+Moving in...
+map[tmp]->pcb1->pid: 17
+Checking at location 17.
+Obtained pid: 17, looking for: 216
+passed
+passed
+tmp: 18
+tmp: 18
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 216
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 19.
+Starting point pid: 19, looking for: 219
+--Delete collision!--
+Obtained pid: 19, looking for: 219
+before tmp = 19
+before tmp + 1 = 20
+after tmp = 20
+Moving in...
+map[tmp]->pcb1->pid: 20
+Checking at location 20.
+Obtained pid: 20, looking for: 219
+passed
+passed
+tmp: 21
+tmp: 21
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 219
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 22.
+Starting point pid: 22, looking for: 222
+--Delete collision!--
+Obtained pid: 22, looking for: 222
+before tmp = 22
+before tmp + 1 = 23
+after tmp = 23
+Moving in...
+map[tmp]->pcb1->pid: 23
+Checking at location 23.
+Obtained pid: 23, looking for: 222
+passed
+passed
+tmp: 24
+tmp: 24
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 222
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 25.
+Starting point pid: 25, looking for: 225
+--Delete collision!--
+Obtained pid: 25, looking for: 225
+before tmp = 25
+before tmp + 1 = 26
+after tmp = 26
+Moving in...
+map[tmp]->pcb1->pid: 26
+Checking at location 26.
+Obtained pid: 26, looking for: 225
+passed
+passed
+tmp: 27
+tmp: 27
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 225
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 28.
+Starting point pid: 28, looking for: 228
+--Delete collision!--
+Obtained pid: 28, looking for: 228
+before tmp = 28
+before tmp + 1 = 29
+after tmp = 29
+Moving in...
+map[tmp]->pcb1->pid: 29
+Checking at location 29.
+Obtained pid: 29, looking for: 228
+passed
+passed
+tmp: 30
+tmp: 30
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 228
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 31.
+Starting point pid: 31, looking for: 231
+--Delete collision!--
+Obtained pid: 31, looking for: 231
+before tmp = 31
+before tmp + 1 = 32
+after tmp = 32
+Moving in...
+map[tmp]->pcb1->pid: 32
+Checking at location 32.
+Obtained pid: 32, looking for: 231
+passed
+passed
+tmp: 33
+tmp: 33
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 231
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 34.
+Starting point pid: 34, looking for: 234
+--Delete collision!--
+Obtained pid: 34, looking for: 234
+before tmp = 34
+before tmp + 1 = 35
+after tmp = 35
+Moving in...
+map[tmp]->pcb1->pid: 35
+Checking at location 35.
+Obtained pid: 35, looking for: 234
+passed
+passed
+tmp: 36
+tmp: 36
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 234
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 37.
+Starting point pid: 37, looking for: 237
+--Delete collision!--
+Obtained pid: 37, looking for: 237
+before tmp = 37
+before tmp + 1 = 38
+after tmp = 38
+Moving in...
+map[tmp]->pcb1->pid: 38
+Checking at location 38.
+Obtained pid: 38, looking for: 237
+passed
+passed
+tmp: 39
+tmp: 39
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 237
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 40.
+Starting point pid: 40, looking for: 240
+--Delete collision!--
+Obtained pid: 40, looking for: 240
+before tmp = 40
+before tmp + 1 = 41
+after tmp = 41
+Moving in...
+map[tmp]->pcb1->pid: 41
+Checking at location 41.
+Obtained pid: 41, looking for: 240
+passed
+passed
+tmp: 42
+tmp: 42
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 240
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 43.
+Starting point pid: 43, looking for: 243
+--Delete collision!--
+Obtained pid: 43, looking for: 243
+before tmp = 43
+before tmp + 1 = 44
+after tmp = 44
+Moving in...
+map[tmp]->pcb1->pid: 44
+Checking at location 44.
+Obtained pid: 44, looking for: 243
+passed
+passed
+tmp: 45
+tmp: 45
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 243
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 46.
+Starting point pid: 46, looking for: 246
+--Delete collision!--
+Obtained pid: 46, looking for: 246
+before tmp = 46
+before tmp + 1 = 47
+after tmp = 47
+Moving in...
+map[tmp]->pcb1->pid: 47
+Checking at location 47.
+Obtained pid: 47, looking for: 246
+passed
+passed
+tmp: 48
+tmp: 48
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 246
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 49.
+Starting point pid: 49, looking for: 249
+--Delete collision!--
+Obtained pid: 49, looking for: 249
+before tmp = 49
+before tmp + 1 = 50
+after tmp = 50
+Moving in...
+map[tmp]->pcb1->pid: 50
+Checking at location 50.
+Obtained pid: 50, looking for: 249
+passed
+passed
+tmp: 51
+tmp: 51
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 249
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 52.
+Starting point pid: 52, looking for: 252
+--Delete collision!--
+Obtained pid: 52, looking for: 252
+before tmp = 52
+before tmp + 1 = 53
+after tmp = 53
+Moving in...
+map[tmp]->pcb1->pid: 53
+Checking at location 53.
+Obtained pid: 53, looking for: 252
+passed
+passed
+tmp: 54
+tmp: 54
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 252
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 55.
+Starting point pid: 55, looking for: 255
+--Delete collision!--
+Obtained pid: 55, looking for: 255
+before tmp = 55
+before tmp + 1 = 56
+after tmp = 56
+Moving in...
+map[tmp]->pcb1->pid: 56
+Checking at location 56.
+Obtained pid: 56, looking for: 255
+passed
+passed
+tmp: 57
+tmp: 57
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 255
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 58.
+Starting point pid: 58, looking for: 258
+--Delete collision!--
+Obtained pid: 58, looking for: 258
+before tmp = 58
+before tmp + 1 = 59
+after tmp = 59
+Moving in...
+map[tmp]->pcb1->pid: 59
+Checking at location 59.
+Obtained pid: 59, looking for: 258
+passed
+passed
+tmp: 60
+tmp: 60
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 258
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 61.
+Starting point pid: 61, looking for: 261
+--Delete collision!--
+Obtained pid: 61, looking for: 261
+before tmp = 61
+before tmp + 1 = 62
+after tmp = 62
+Moving in...
+map[tmp]->pcb1->pid: 62
+Checking at location 62.
+Obtained pid: 62, looking for: 261
+passed
+passed
+tmp: 63
+tmp: 63
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 261
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 64.
+Starting point pid: 64, looking for: 264
+--Delete collision!--
+Obtained pid: 64, looking for: 264
+before tmp = 64
+before tmp + 1 = 65
+after tmp = 65
+Moving in...
+map[tmp]->pcb1->pid: 65
+Checking at location 65.
+Obtained pid: 65, looking for: 264
+passed
+passed
+tmp: 66
+tmp: 66
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 264
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 67.
+Starting point pid: 67, looking for: 267
+--Delete collision!--
+Obtained pid: 67, looking for: 267
+before tmp = 67
+before tmp + 1 = 68
+after tmp = 68
+Moving in...
+map[tmp]->pcb1->pid: 68
+Checking at location 68.
+Obtained pid: 68, looking for: 267
+passed
+passed
+tmp: 69
+tmp: 69
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 267
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 70.
+Starting point pid: 70, looking for: 270
+--Delete collision!--
+Obtained pid: 70, looking for: 270
+before tmp = 70
+before tmp + 1 = 71
+after tmp = 71
+Moving in...
+map[tmp]->pcb1->pid: 71
+Checking at location 71.
+Obtained pid: 71, looking for: 270
+passed
+passed
+tmp: 72
+tmp: 72
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 270
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 73.
+Starting point pid: 73, looking for: 273
+--Delete collision!--
+Obtained pid: 73, looking for: 273
+before tmp = 73
+before tmp + 1 = 74
+after tmp = 74
+Moving in...
+map[tmp]->pcb1->pid: 74
+Checking at location 74.
+Obtained pid: 74, looking for: 273
+passed
+passed
+tmp: 75
+tmp: 75
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 273
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 76.
+Starting point pid: 76, looking for: 276
+--Delete collision!--
+Obtained pid: 76, looking for: 276
+before tmp = 76
+before tmp + 1 = 77
+after tmp = 77
+Moving in...
+map[tmp]->pcb1->pid: 77
+Checking at location 77.
+Obtained pid: 77, looking for: 276
+passed
+passed
+tmp: 78
+tmp: 78
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 276
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 79.
+Starting point pid: 79, looking for: 279
+--Delete collision!--
+Obtained pid: 79, looking for: 279
+before tmp = 79
+before tmp + 1 = 80
+after tmp = 80
+Moving in...
+map[tmp]->pcb1->pid: 80
+Checking at location 80.
+Obtained pid: 80, looking for: 279
+passed
+passed
+tmp: 81
+tmp: 81
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 279
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 82.
+Starting point pid: 82, looking for: 282
+--Delete collision!--
+Obtained pid: 82, looking for: 282
+before tmp = 82
+before tmp + 1 = 83
+after tmp = 83
+Moving in...
+map[tmp]->pcb1->pid: 83
+Checking at location 83.
+Obtained pid: 83, looking for: 282
+passed
+passed
+tmp: 84
+tmp: 84
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 282
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 85.
+Starting point pid: 85, looking for: 285
+--Delete collision!--
+Obtained pid: 85, looking for: 285
+before tmp = 85
+before tmp + 1 = 86
+after tmp = 86
+Moving in...
+map[tmp]->pcb1->pid: 86
+Checking at location 86.
+Obtained pid: 86, looking for: 285
+passed
+passed
+tmp: 87
+tmp: 87
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 285
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 88.
+Starting point pid: 88, looking for: 288
+--Delete collision!--
+Obtained pid: 88, looking for: 288
+before tmp = 88
+before tmp + 1 = 89
+after tmp = 89
+Moving in...
+map[tmp]->pcb1->pid: 89
+Checking at location 89.
+Obtained pid: 89, looking for: 288
+passed
+passed
+tmp: 90
+tmp: 90
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 288
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 91.
+Starting point pid: 91, looking for: 291
+--Delete collision!--
+Obtained pid: 91, looking for: 291
+before tmp = 91
+before tmp + 1 = 92
+after tmp = 92
+Moving in...
+map[tmp]->pcb1->pid: 92
+Checking at location 92.
+Obtained pid: 92, looking for: 291
+passed
+passed
+tmp: 93
+tmp: 93
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 291
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 94.
+Starting point pid: 94, looking for: 294
+--Delete collision!--
+Obtained pid: 94, looking for: 294
+before tmp = 94
+before tmp + 1 = 95
+after tmp = 95
+Moving in...
+map[tmp]->pcb1->pid: 95
+Checking at location 95.
+Obtained pid: 95, looking for: 294
+passed
+passed
+tmp: 96
+tmp: 96
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 294
+theKey->parent: -1
+Not found
+Deletion result = 2
+Attempting to remove from location 97.
+Starting point pid: 97, looking for: 297
+--Delete collision!--
+Obtained pid: 97, looking for: 297
+before tmp = 97
+before tmp + 1 = 98
+after tmp = 98
+Moving in...
+map[tmp]->pcb1->pid: 98
+Checking at location 98.
+Obtained pid: 98, looking for: 297
+passed
+passed
+tmp: 99
+tmp: 99
+next loop
+theMap->map[tmp]->pcb1->pid: 1
+theKey->pid: 297
+theKey->parent: -1
+Not found
+Deletion result = 2
+
+-------------------------
+Insertion collision handling test
+Attempting to insert in location 101.
+--Insertion collision!--
+Inserting at location 102.
+Insertion result = 0, Insertion pid = 301
+Attempting to insert in location 102.
+--Insertion collision!--
+Inserting at location 105.
+Insertion result = 0, Insertion pid = 302
+Attempting to insert in location 103.
+--Insertion collision!--
+Inserting at location 108.
+Insertion result = 0, Insertion pid = 303
+Attempting to insert in location 104.
+--Insertion collision!--
+Inserting at location 111.
+Insertion result = 0, Insertion pid = 304
+Attempting to insert in location 105.
+--Insertion collision!--
+Inserting at location 114.
+Insertion result = 0, Insertion pid = 305
+Attempting to insert in location 106.
+--Insertion collision!--
+Inserting at location 117.
+Insertion result = 0, Insertion pid = 306
+Attempting to insert in location 107.
+--Insertion collision!--
+Inserting at location 120.
+Insertion result = 0, Insertion pid = 307
+Attempting to insert in location 108.
+--Insertion collision!--
+Inserting at location 123.
+Insertion result = 0, Insertion pid = 308
+Attempting to insert in location 109.
+--Insertion collision!--
+Inserting at location 126.
+Insertion result = 0, Insertion pid = 309
+Attempting to insert in location 110.
+--Insertion collision!--
+Inserting at location 129.
+Insertion result = 0, Insertion pid = 310
+Attempting to insert in location 111.
+--Insertion collision!--
+Inserting at location 132.
+Insertion result = 0, Insertion pid = 311
+Attempting to insert in location 112.
+--Insertion collision!--
+Inserting at location 135.
+Insertion result = 0, Insertion pid = 312
+Attempting to insert in location 113.
+--Insertion collision!--
+Inserting at location 138.
+Insertion result = 0, Insertion pid = 313
+Attempting to insert in location 114.
+--Insertion collision!--
+Inserting at location 141.
+Insertion result = 0, Insertion pid = 314
+Attempting to insert in location 115.
+--Insertion collision!--
+Inserting at location 144.
+Insertion result = 0, Insertion pid = 315
+Attempting to insert in location 116.
+--Insertion collision!--
+Inserting at location 147.
+Insertion result = 0, Insertion pid = 316
+Attempting to insert in location 117.
+--Insertion collision!--
+Inserting at location 150.
+Insertion result = 0, Insertion pid = 317
+Attempting to insert in location 118.
+--Insertion collision!--
+Inserting at location 153.
+Insertion result = 0, Insertion pid = 318
+Attempting to insert in location 119.
+--Insertion collision!--
+Inserting at location 156.
+Insertion result = 0, Insertion pid = 319
+Attempting to insert in location 120.
+--Insertion collision!--
+Inserting at location 159.
+Insertion result = 0, Insertion pid = 320
+Attempting to insert in location 121.
+--Insertion collision!--
+Inserting at location 162.
+Insertion result = 0, Insertion pid = 321
+Attempting to insert in location 122.
+--Insertion collision!--
+Inserting at location 165.
+Insertion result = 0, Insertion pid = 322
+Attempting to insert in location 123.
+--Insertion collision!--
+Inserting at location 168.
+Insertion result = 0, Insertion pid = 323
+Attempting to insert in location 124.
+--Insertion collision!--
+Inserting at location 171.
+Insertion result = 0, Insertion pid = 324
+Attempting to insert in location 125.
+--Insertion collision!--
+Inserting at location 174.
+Insertion result = 0, Insertion pid = 325
+Attempting to insert in location 126.
+--Insertion collision!--
+Inserting at location 177.
+Insertion result = 0, Insertion pid = 326
+Attempting to insert in location 127.
+--Insertion collision!--
+Inserting at location 180.
+Insertion result = 0, Insertion pid = 327
+Attempting to insert in location 128.
+--Insertion collision!--
+Inserting at location 183.
+Insertion result = 0, Insertion pid = 328
+Attempting to insert in location 129.
+--Insertion collision!--
+Inserting at location 186.
+Insertion result = 0, Insertion pid = 329
+Attempting to insert in location 130.
+--Insertion collision!--
+Inserting at location 189.
+Insertion result = 0, Insertion pid = 330
+Attempting to insert in location 131.
+--Insertion collision!--
+Inserting at location 192.
+Insertion result = 0, Insertion pid = 331
+Attempting to insert in location 132.
+--Insertion collision!--
+Inserting at location 195.
+Insertion result = 0, Insertion pid = 332
+Attempting to insert in location 133.
+--Insertion collision!--
+Inserting at location 198.
+Insertion result = 0, Insertion pid = 333
+Attempting to insert in location 134.
+--Insertion collision!--
+Inserting at location 0.
+Insertion result = 0, Insertion pid = 334
+Attempting to insert in location 135.
+--Insertion collision!--
+Inserting at location 3.
+Insertion result = 0, Insertion pid = 335
+Attempting to insert in location 136.
+--Insertion collision!--
+Inserting at location 6.
+Insertion result = 0, Insertion pid = 336
+Attempting to insert in location 137.
+--Insertion collision!--
+Inserting at location 9.
+Insertion result = 0, Insertion pid = 337
+Attempting to insert in location 138.
+--Insertion collision!--
+Inserting at location 12.
+Insertion result = 0, Insertion pid = 338
+Attempting to insert in location 139.
+--Insertion collision!--
+Inserting at location 15.
+Insertion result = 0, Insertion pid = 339
+Attempting to insert in location 140.
+--Insertion collision!--
+Inserting at location 18.
+Insertion result = 0, Insertion pid = 340
+Attempting to insert in location 141.
+--Insertion collision!--
+Inserting at location 21.
+Insertion result = 0, Insertion pid = 341
+Attempting to insert in location 142.
+--Insertion collision!--
+Inserting at location 24.
+Insertion result = 0, Insertion pid = 342
+Attempting to insert in location 143.
+--Insertion collision!--
+Inserting at location 27.
+Insertion result = 0, Insertion pid = 343
+Attempting to insert in location 144.
+--Insertion collision!--
+Inserting at location 30.
+Insertion result = 0, Insertion pid = 344
+Attempting to insert in location 145.
+--Insertion collision!--
+Inserting at location 33.
+Insertion result = 0, Insertion pid = 345
+Attempting to insert in location 146.
+--Insertion collision!--
+Inserting at location 36.
+Insertion result = 0, Insertion pid = 346
+Attempting to insert in location 147.
+--Insertion collision!--
+Inserting at location 39.
+Insertion result = 0, Insertion pid = 347
+Attempting to insert in location 148.
+--Insertion collision!--
+Inserting at location 42.
+Insertion result = 0, Insertion pid = 348
+Attempting to insert in location 149.
+--Insertion collision!--
+Inserting at location 45.
+Insertion result = 0, Insertion pid = 349
+Attempting to insert in location 150.
+--Insertion collision!--
+Inserting at location 48.
+Insertion result = 0, Insertion pid = 350
+Attempting to insert in location 151.
+--Insertion collision!--
+Inserting at location 51.
+Insertion result = 0, Insertion pid = 351
+Attempting to insert in location 152.
+--Insertion collision!--
+Inserting at location 54.
+Insertion result = 0, Insertion pid = 352
+Attempting to insert in location 153.
+--Insertion collision!--
+Inserting at location 57.
+Insertion result = 0, Insertion pid = 353
+Attempting to insert in location 154.
+--Insertion collision!--
+Inserting at location 60.
+Insertion result = 0, Insertion pid = 354
+Attempting to insert in location 155.
+--Insertion collision!--
+Inserting at location 63.
+Insertion result = 0, Insertion pid = 355
+Attempting to insert in location 156.
+--Insertion collision!--
+Inserting at location 66.
+Insertion result = 0, Insertion pid = 356
+Attempting to insert in location 157.
+--Insertion collision!--
+Inserting at location 69.
+Insertion result = 0, Insertion pid = 357
+Attempting to insert in location 158.
+--Insertion collision!--
+Inserting at location 72.
+Insertion result = 0, Insertion pid = 358
+Attempting to insert in location 159.
+--Insertion collision!--
+Inserting at location 75.
+Insertion result = 0, Insertion pid = 359
+Attempting to insert in location 160.
+--Insertion collision!--
+Inserting at location 78.
+Insertion result = 0, Insertion pid = 360
+Attempting to insert in location 161.
+--Insertion collision!--
+Inserting at location 81.
+Insertion result = 0, Insertion pid = 361
+Attempting to insert in location 162.
+--Insertion collision!--
+Inserting at location 84.
+Insertion result = 0, Insertion pid = 362
+Attempting to insert in location 163.
+--Insertion collision!--
+Inserting at location 87.
+Insertion result = 0, Insertion pid = 363
+Attempting to insert in location 164.
+--Insertion collision!--
+Inserting at location 90.
+Insertion result = 0, Insertion pid = 364
+Attempting to insert in location 165.
+--Insertion collision!--
+Inserting at location 93.
+Insertion result = 0, Insertion pid = 365
+Attempting to insert in location 166.
+--Insertion collision!--
+Inserting at location 96.
+Insertion result = 0, Insertion pid = 366
+Attempting to insert in location 167.
+--Insertion collision!--
+Inserting at location 99.
+Insertion result = 0, Insertion pid = 367
+Attempting to insert in location 168.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 368
+Attempting to insert in location 169.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 369
+Attempting to insert in location 170.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 370
+Attempting to insert in location 171.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 371
+Attempting to insert in location 172.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 372
+Attempting to insert in location 173.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 373
+Attempting to insert in location 174.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 374
+Attempting to insert in location 175.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 375
+Attempting to insert in location 176.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 376
+Attempting to insert in location 177.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 377
+Attempting to insert in location 178.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 378
+Attempting to insert in location 179.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 379
+Attempting to insert in location 180.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 380
+Attempting to insert in location 181.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 381
+Attempting to insert in location 182.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 382
+Attempting to insert in location 183.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 383
+Attempting to insert in location 184.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 384
+Attempting to insert in location 185.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 385
+Attempting to insert in location 186.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 386
+Attempting to insert in location 187.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 387
+Attempting to insert in location 188.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 388
+Attempting to insert in location 189.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 389
+Attempting to insert in location 190.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 390
+Attempting to insert in location 191.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 391
+Attempting to insert in location 192.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 392
+Attempting to insert in location 193.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 393
+Attempting to insert in location 194.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 394
+Attempting to insert in location 195.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 395
+Attempting to insert in location 196.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 396
+Attempting to insert in location 197.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 397
+Attempting to insert in location 198.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 398
+Attempting to insert in location 199.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 399
+Attempting to insert in location 0.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 400
+Attempting to insert in location 1.
+--Insertion collision!--
+Insertion result = 2, Insertion pid = 401
+
+-------------------------
+get_mutx() test, no collision.
+Searching for mutex with key: 2.
+Grabbing from location 2.
+Obtained pid: 2, looking for: 2
+Mutex pcb1 pid: 2 vs. pcb pid actual: 2.
+
+-------------------------
+get_mutx() test, with collision.
+MutexMap
+map[0]->pcb: P334
+map[1]->pcb: P1
+map[2]->pcb: P2
+map[3]->pcb: P335
+map[4]->pcb: P4
+map[5]->pcb: P5
+map[6]->pcb: P336
+map[7]->pcb: P7
+map[8]->pcb: P8
+map[9]->pcb: P337
+map[10]->pcb: P10
+map[11]->pcb: P11
+map[12]->pcb: P338
+map[13]->pcb: P13
+map[14]->pcb: P14
+map[15]->pcb: P339
+map[16]->pcb: P16
+map[17]->pcb: P17
+map[18]->pcb: P340
+map[19]->pcb: P19
+map[20]->pcb: P20
+map[21]->pcb: P341
+map[22]->pcb: P22
+map[23]->pcb: P23
+map[24]->pcb: P342
+map[25]->pcb: P25
+map[26]->pcb: P26
+map[27]->pcb: P343
+map[28]->pcb: P28
+map[29]->pcb: P29
+map[30]->pcb: P344
+map[31]->pcb: P31
+map[32]->pcb: P32
+map[33]->pcb: P345
+map[34]->pcb: P34
+map[35]->pcb: P35
+map[36]->pcb: P346
+map[37]->pcb: P37
+map[38]->pcb: P38
+map[39]->pcb: P347
+map[40]->pcb: P40
+map[41]->pcb: P41
+map[42]->pcb: P348
+map[43]->pcb: P43
+map[44]->pcb: P44
+map[45]->pcb: P349
+map[46]->pcb: P46
+map[47]->pcb: P47
+map[48]->pcb: P350
+map[49]->pcb: P49
+map[50]->pcb: P50
+map[51]->pcb: P351
+map[52]->pcb: P52
+map[53]->pcb: P53
+map[54]->pcb: P352
+map[55]->pcb: P55
+map[56]->pcb: P56
+map[57]->pcb: P353
+map[58]->pcb: P58
+map[59]->pcb: P59
+map[60]->pcb: P354
+map[61]->pcb: P61
+map[62]->pcb: P62
+map[63]->pcb: P355
+map[64]->pcb: P64
+map[65]->pcb: P65
+map[66]->pcb: P356
+map[67]->pcb: P67
+map[68]->pcb: P68
+map[69]->pcb: P357
+map[70]->pcb: P70
+map[71]->pcb: P71
+map[72]->pcb: P358
+map[73]->pcb: P73
+map[74]->pcb: P74
+map[75]->pcb: P359
+map[76]->pcb: P76
+map[77]->pcb: P77
+map[78]->pcb: P360
+map[79]->pcb: P79
+map[80]->pcb: P80
+map[81]->pcb: P361
+map[82]->pcb: P82
+map[83]->pcb: P83
+map[84]->pcb: P362
+map[85]->pcb: P85
+map[86]->pcb: P86
+map[87]->pcb: P363
+map[88]->pcb: P88
+map[89]->pcb: P89
+map[90]->pcb: P364
+map[91]->pcb: P91
+map[92]->pcb: P92
+map[93]->pcb: P365
+map[94]->pcb: P94
+map[95]->pcb: P95
+map[96]->pcb: P366
+map[97]->pcb: P97
+map[98]->pcb: P98
+map[99]->pcb: P367
+map[100]->pcb: P100
+map[101]->pcb: P101
+map[102]->pcb: P301
+map[103]->pcb: P103
+map[104]->pcb: P104
+map[105]->pcb: P302
+map[106]->pcb: P106
+map[107]->pcb: P107
+map[108]->pcb: P303
+map[109]->pcb: P109
+map[110]->pcb: P110
+map[111]->pcb: P304
+map[112]->pcb: P112
+map[113]->pcb: P113
+map[114]->pcb: P305
+map[115]->pcb: P115
+map[116]->pcb: P116
+map[117]->pcb: P306
+map[118]->pcb: P118
+map[119]->pcb: P119
+map[120]->pcb: P307
+map[121]->pcb: P121
+map[122]->pcb: P122
+map[123]->pcb: P308
+map[124]->pcb: P124
+map[125]->pcb: P125
+map[126]->pcb: P309
+map[127]->pcb: P127
+map[128]->pcb: P128
+map[129]->pcb: P310
+map[130]->pcb: P130
+map[131]->pcb: P131
+map[132]->pcb: P311
+map[133]->pcb: P133
+map[134]->pcb: P134
+map[135]->pcb: P312
+map[136]->pcb: P136
+map[137]->pcb: P137
+map[138]->pcb: P313
+map[139]->pcb: P139
+map[140]->pcb: P140
+map[141]->pcb: P314
+map[142]->pcb: P142
+map[143]->pcb: P143
+map[144]->pcb: P315
+map[145]->pcb: P145
+map[146]->pcb: P146
+map[147]->pcb: P316
+map[148]->pcb: P148
+map[149]->pcb: P149
+map[150]->pcb: P317
+map[151]->pcb: P151
+map[152]->pcb: P152
+map[153]->pcb: P318
+map[154]->pcb: P154
+map[155]->pcb: P155
+map[156]->pcb: P319
+map[157]->pcb: P157
+map[158]->pcb: P158
+map[159]->pcb: P320
+map[160]->pcb: P160
+map[161]->pcb: P161
+map[162]->pcb: P321
+map[163]->pcb: P163
+map[164]->pcb: P164
+map[165]->pcb: P322
+map[166]->pcb: P166
+map[167]->pcb: P167
+map[168]->pcb: P323
+map[169]->pcb: P169
+map[170]->pcb: P170
+map[171]->pcb: P324
+map[172]->pcb: P172
+map[173]->pcb: P173
+map[174]->pcb: P325
+map[175]->pcb: P175
+map[176]->pcb: P176
+map[177]->pcb: P326
+map[178]->pcb: P178
+map[179]->pcb: P179
+map[180]->pcb: P327
+map[181]->pcb: P181
+map[182]->pcb: P182
+map[183]->pcb: P328
+map[184]->pcb: P184
+map[185]->pcb: P185
+map[186]->pcb: P329
+map[187]->pcb: P187
+map[188]->pcb: P188
+map[189]->pcb: P330
+map[190]->pcb: P190
+map[191]->pcb: P191
+map[192]->pcb: P331
+map[193]->pcb: P193
+map[194]->pcb: P194
+map[195]->pcb: P332
+map[196]->pcb: P196
+map[197]->pcb: P197
+map[198]->pcb: P333
+map[199]->pcb: P199
+Total MutexMap size: 200
+Searching for mutex with key: 197.
+--Search collision!--
+Want: 397, have: 333, also have: -1 vs -1
+Not found
+Mutex was null

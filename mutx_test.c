@@ -8,6 +8,8 @@
 
 int main()
 {
+	setvbuf(stdout, NULL, _IONBF, 0);
+	
 	printf("Beging testing...\n");
 	MutexMap myMap = create_mutx_map();
 	
@@ -50,9 +52,14 @@ int main()
 	printf("Mutex pcb1 pid: %d vs. pcb pid actual: %d.\n", testMutex->pcb1->pid, tmp1->pid);
 	
 	printf("\n-------------------------\nget_mutx() test, with collision.\n");
+	toStringMutexMap(myMap);
 	PCB tmp2 = PCB_create();
-	tmp2->pid = 397;
+	tmp2->pid = 339;
 	testMutex = get_mutx(myMap, tmp2);
-	printf("Mutex pcb1 pid: %d vs. pcb pid actual: %d.\n", testMutex->pcb1->pid, tmp2->pid);
+	if (testMutex) {
+		printf("Mutex pcb1 pid: %d vs. pcb pid actual: %d.\n", testMutex->pcb1->pid, tmp2->pid);
+	} else {
+		printf("Mutex was null\n");
+	}
 	
 }

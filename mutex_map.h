@@ -34,6 +34,7 @@ MutexMap create_mutx_map();
 int add_to_mutx_map(MutexMap theMap, Mutex theMutex, PCB theKey);
 
 
+void toStringMutexMap (MutexMap theMap);
 
 
 /*
