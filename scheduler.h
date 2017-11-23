@@ -24,8 +24,8 @@
 
 
 //defines
-#define MAX_PCB_TOTAL 30
-#define RESET_COUNT 15
+#define MAX_PCB_TOTAL 300
+#define RESET_COUNT 5
 #define MAX_PCB_IN_ROUND 5
 #define MAX_PC_JUMP 4000
 #define MIN_PC_JUMP 3000
@@ -40,7 +40,7 @@
 #define SWITCH_CALLS 4
 #define MAX_VALUE_PRIVILEGED 15
 #define RANDOM_VALUE 101
-#define TOTAL_TERMINATED 10
+#define TOTAL_TERMINATED 5
 #define MAX_PRIVILEGE 4
 
 

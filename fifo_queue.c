@@ -119,12 +119,13 @@ char q_is_empty(/* in */ ReadyQueue FIFOq) {
  * Return: 1 if successful, 0 if unsuccessful.
  */
 int q_enqueue(/* in */ ReadyQueue FIFOq, /* in */ PCB pcb) {
-    ReadyQueueNode new_node = malloc(sizeof(Node_s));
-
+    ReadyQueueNode new_node = (ReadyQueueNode) malloc(sizeof(struct node));
+	//printf("in here\n");
     if (new_node != NULL && pcb != NULL) {
+		//printf("in here2\n");
         new_node->pcb = pcb;
         new_node->next = NULL;
-
+		//printf("in here3\n");
         if (FIFOq->last_node != NULL) {
 			FIFOq->last_node->next = new_node;
 			FIFOq->last_node = FIFOq->last_node->next;
@@ -133,7 +134,7 @@ int q_enqueue(/* in */ ReadyQueue FIFOq, /* in */ PCB pcb) {
             FIFOq->first_node = new_node;
             FIFOq->last_node = new_node;
         }
-
+		//printf("in here4\n");
         FIFOq->size++;
     }
 
@@ -297,9 +298,15 @@ int q_contains_mutex (ReadyQueue queue, Mutex toFind) {
  */
  void toStringReadyQueueNode(ReadyQueueNode theNode, int isMutex) {
 	 if (!isMutex) {
-		printf("P%d",theNode->pcb->pid);
+		if (theNode->pcb) {
+			printf("P%d",theNode->pcb->pid);
+		} else {
+			printf("toStringReadyQueueNode PCB was NULL!!!\n");
+		}
 	 } else {
-		printf("M%d",theNode->mutex->mid);
+		if (theNode->mutex) {
+			printf("M%d",theNode->mutex->mid);
+		}
 	}
     if(theNode->next != 0) {
         printf(" -> ");

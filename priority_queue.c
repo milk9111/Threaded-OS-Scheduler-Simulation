@@ -117,7 +117,7 @@ PCB pq_dequeue(PriorityQueue PQ) {
 PCB pq_remove_matching_pcb(PriorityQueue PQ, PCB toFind) {
 	ReadyQueueNode curr;
 	ReadyQueueNode last;
-	PCB found;
+	PCB found = NULL;
 	
 	for (int i = 0; i < NUM_PRIORITIES; i++) {
 		curr = PQ->queues[i]->first_node;

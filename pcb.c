@@ -228,11 +228,11 @@ void PCB_destroy(/* in-out */ PCB pcb) {
 		if (pcb->context) {
 			free(pcb->context); 
 		}	
-		printf("pid before free: P%d\n", pcb->pid);
+		//printf("pid before free: P%d\n", pcb->pid);
 		free(pcb);// that thing
 		
 		pcb = NULL;
-		printf("pcb == null: %d\n", (pcb == NULL));
+		//printf("pcb == null: %d\n", (pcb == NULL));
 		//printf("pid after free: P%d\n\n", pcb->pid);
 	}
 }
@@ -288,75 +288,79 @@ void PCB_assign_priority(/* in */ PCB the_pcb, /* in */ unsigned int the_priorit
  * Return: a string representation of the provided PCB on success, NULL otherwise.
  */
 void toStringPCB(PCB thisPCB, int showCpu) {
-	printf("contents: ");
-	
-	printf("PID: %d, ", thisPCB->pid);
+	if (thisPCB) {
+		printf("contents: ");
+		
+		printf("PID: %d, ", thisPCB->pid);
 
-	switch(thisPCB->state) {
-		case STATE_NEW:
-			printf("state: new, ");
-			break;
-		case STATE_READY:
-			printf("state: ready, ");
-			break;
-		case STATE_RUNNING:
-			printf("state: running, ");
-			break;
-		case STATE_INT:
-			printf("state: interrupted, ");
-			break;
-		case STATE_WAIT:
-			printf("state: waiting, ");
-			break;
-		case STATE_HALT:
-			printf("state: halted, ");
-			break;
-	}
-	
-	switch(thisPCB->role) {
-		case COMP:
-			printf("role: comp, ");
-			break;
-		case IO:
-			printf("role: io, ");
-			break;
-		case PAIR:
-			printf("role: pair, "); //producer/consumer
-			break;
-		case SHARED:
-			printf("role: shared, ");
-			break;
-	}
-	
-	printf("priority: %d, ", thisPCB->priority);
-	printf("PC: %d, ", thisPCB->context->pc);
-	if (thisPCB->role == PAIR || thisPCB->role ==  SHARED) {
-		printf("lock: %d, ", thisPCB->lock_pc);
-		printf("unlock: %d, ", thisPCB->unlock_pc);
-		printf("partner: %d, ", thisPCB->parent);
-	}
-	
-	printf("\r\nMAX PC: %d\r\n", thisPCB->max_pc);
-	
-	if (thisPCB->role == IO) {
-		printf("io_1_traps\n");
-		for (int i = 0; i < TRAP_COUNT; i++) {
-			printf("%d ", thisPCB->io_1_traps[i]);
+		switch(thisPCB->state) {
+			case STATE_NEW:
+				printf("state: new, ");
+				break;
+			case STATE_READY:
+				printf("state: ready, ");
+				break;
+			case STATE_RUNNING:
+				printf("state: running, ");
+				break;
+			case STATE_INT:
+				printf("state: interrupted, ");
+				break;
+			case STATE_WAIT:
+				printf("state: waiting, ");
+				break;
+			case STATE_HALT:
+				printf("state: halted, ");
+				break;
 		}
-		printf("\r\nio_2_traps\r\n");
-		for (int i = 0; i < TRAP_COUNT; i++) {
-			printf("%d ", thisPCB->io_2_traps[i]);
+		
+		switch(thisPCB->role) {
+			case COMP:
+				printf("role: comp, ");
+				break;
+			case IO:
+				printf("role: io, ");
+				break;
+			case PAIR:
+				printf("role: pair, "); //producer/consumer
+				break;
+			case SHARED:
+				printf("role: shared, ");
+				break;
 		}
-	}
-	printf("\r\nterminate: %d\r\n", thisPCB->terminate);
-	printf("term_count: %d\r\n", thisPCB->term_count);
-	printf("\r\n");
-	
-	if (showCpu) {
-		printf("mem: 0x%04X, ", thisPCB->mem);
-		printf("size: %d, ", thisPCB->size);
-		printf("channel_no: %d ", thisPCB->channel_no);
-		toStringCPUContext(thisPCB->context);
+		
+		printf("priority: %d, ", thisPCB->priority);
+		printf("PC: %d, ", thisPCB->context->pc);
+		if (thisPCB->role == PAIR || thisPCB->role ==  SHARED) {
+			printf("lock: %d, ", thisPCB->lock_pc);
+			printf("unlock: %d, ", thisPCB->unlock_pc);
+			printf("partner: %d, ", thisPCB->parent);
+		}
+		
+		printf("\r\nMAX PC: %d\r\n", thisPCB->max_pc);
+		
+		if (thisPCB->role == IO) {
+			printf("io_1_traps\n");
+			for (int i = 0; i < TRAP_COUNT; i++) {
+				printf("%d ", thisPCB->io_1_traps[i]);
+			}
+			printf("\r\nio_2_traps\r\n");
+			for (int i = 0; i < TRAP_COUNT; i++) {
+				printf("%d ", thisPCB->io_2_traps[i]);
+			}
+		}
+		printf("\r\nterminate: %d\r\n", thisPCB->terminate);
+		printf("term_count: %d\r\n", thisPCB->term_count);
+		printf("\r\n");
+		
+		if (showCpu) {
+			printf("mem: 0x%04X, ", thisPCB->mem);
+			printf("size: %d, ", thisPCB->size);
+			printf("channel_no: %d ", thisPCB->channel_no);
+			toStringCPUContext(thisPCB->context);
+		}
+	} else {
+		printf("PCB is null\r\n");
 	}
 }
 
