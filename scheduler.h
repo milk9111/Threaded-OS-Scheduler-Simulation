@@ -16,6 +16,7 @@
 
 //includes
 #include "priority_queue.h"
+#include "mutex_map.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,7 +32,7 @@
 #define PC_JUMP_LIMIT 999
 #define MAKE_PCB_CHANCE_DOMAIN 100
 #define TIMER_RANGE 3
-#define MAKE_PCB_CHANCE_PERCENTAGE 10
+#define MAKE_PCB_CHANCE_PERCENTAGE 40
 #define IS_TIMER 1
 #define IS_IO_TRAP 2
 #define IS_IO_INTERRUPT 3
@@ -49,7 +50,8 @@ typedef struct scheduler {
 	ReadyQueue created;
 	ReadyQueue killed;
 	ReadyQueue blocked;
-	ReadyQueue mutexes;
+	ReadyQueue killedMutexes;
+	MutexMap mutexes;
 	PriorityQueue ready;
 	PCB running;
 	PCB interrupted;

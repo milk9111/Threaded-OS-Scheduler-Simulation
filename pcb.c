@@ -224,15 +224,16 @@ PCB PCB_create() {
  */
 void PCB_destroy(/* in-out */ PCB pcb) {
 	if (pcb) {
-		printf("pcb not null\n");
+		//printf("pcb not null\n");
 		if (pcb->context) {
 			free(pcb->context); 
 		}	
 		printf("pid before free: P%d\n", pcb->pid);
 		free(pcb);// that thing
-		printf("pid after free: P%d\n", pcb->pid);
+		
 		pcb = NULL;
 		printf("pcb == null: %d\n", (pcb == NULL));
+		//printf("pid after free: P%d\n\n", pcb->pid);
 	}
 }
 
@@ -332,6 +333,7 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 	if (thisPCB->role == PAIR || thisPCB->role ==  SHARED) {
 		printf("lock: %d, ", thisPCB->lock_pc);
 		printf("unlock: %d, ", thisPCB->unlock_pc);
+		printf("partner: %d, ", thisPCB->parent);
 	}
 	
 	printf("\r\nMAX PC: %d\r\n", thisPCB->max_pc);
@@ -352,7 +354,6 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 	
 	if (showCpu) {
 		printf("mem: 0x%04X, ", thisPCB->mem);
-		printf("parent: %d, ", thisPCB->parent);
 		printf("size: %d, ", thisPCB->size);
 		printf("channel_no: %d ", thisPCB->channel_no);
 		toStringCPUContext(thisPCB->context);
