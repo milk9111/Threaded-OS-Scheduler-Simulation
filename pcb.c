@@ -74,66 +74,72 @@ enum pcb_type chooseRole () {
 	will be initialized. If the role is PAIR or SHARED, then the 1st and 2nd PCBs contained 
 	within the given shared mutex will be set.
 */
-void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutex) {
+void initialize_pcb_type (PCB pcb1, PCB pcb2, int isFirst, Mutex mutex) {
 	int lock = 0, unlock = 0, signal = 0, wait = 0;
 	
 	if (isFirst) {
-		pcb->role = chooseRole();
+		pcb1->role = chooseRole();
 	} else {
-		pcb->role = sharedMutex->pcb1->role;
+		pcb2->role = pcb1->role;
 	}
   
 	
-	switch(pcb->role) {
+	switch(pcb1->role) {
 		case COMP:
 			if (isFirst) {
-				sharedMutex->pcb1 = pcb;
+				mutex->pcb1 = pcb1;
 			} else {
-				sharedMutex->pcb2 = pcb;
+				mutex->pcb2 = pcb2;
 			}
 			break;
 		case IO:
-			populateIOTraps (pcb, 0); // populates io_1_traps
-			populateIOTraps (pcb, 1); // populates io_2_traps
 			if (isFirst) {
-				sharedMutex->pcb1 = pcb;
+				populateIOTraps (pcb1, 0); // populates io_1_traps of PCB1
+				populateIOTraps (pcb1, 1); // populates io_2_traps of PCB1
 			} else {
-				sharedMutex->pcb2 = pcb;
+				populateIOTraps (pcb2, 0); // populates io_1_traps of PCB2
+				populateIOTraps (pcb2, 1); // populates io_2_traps of PCB2		
+			}
+
+			if (isFirst) {
+				mutex->pcb1 = pcb1;
+			} else {
+				mutex->pcb2 = pcb2;
 			}
 			break;
 		case PAIR:
 			if (isFirst) {
-				sharedMutex->pcb1 = pcb;
+				mutex->pcb1 = pcb1;
 			} else {
-				sharedMutex->pcb2 = pcb;
+				mutex->pcb2 = pcb2;
 			}
 			break;
 		case SHARED:
 			if (isFirst) {
-				sharedMutex->pcb1 = pcb;
-				lock = rand() % pcb->max_pc;
+				mutex->pcb1 = pcb1;
+				lock = rand() % pcb1->max_pc;
 				
-				if (lock == pcb->max_pc - 1) { //if the lock value is too close to the max_pc
+				if (lock == pcb1->max_pc - 1) { //if the lock value is too close to the max_pc
 					lock--;
 				}
 				//unlock > lock + 1 & unlock < max_pc
 				unlock = lock + 2; //we can change this to be more random later on
 				
-				pcb->lock_pc = lock;
-				pcb->unlock_pc = unlock; 
+				pcb1->lock_pc = lock;
+				pcb1->unlock_pc = unlock; 
 			} else {
-				sharedMutex->pcb2 = pcb;
+				mutex->pcb2 = pcb2;
 				
-				lock = rand() % pcb->max_pc;
+				lock = rand() % pcb2->max_pc;
 				
-				if (lock == pcb->max_pc - 1) { //if the lock value is too close to the max_pc
+				if (lock == pcb2->max_pc - 1) { //if the lock value is too close to the max_pc
 					lock--;
 				}
 				//unlock > lock + 1 & unlock < max_pc
 				unlock = lock + 2; //we can change this to be more random later on
 				
-				pcb->lock_pc = lock;
-				pcb->unlock_pc = unlock;
+				pcb2->lock_pc = lock;
+				pcb2->unlock_pc = unlock;
 			}
 			break;
 	}

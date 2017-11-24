@@ -136,7 +136,7 @@ PCB PCB_create();
 enum pcb_type chooseRole();
 
 
-void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutex);
+void initialize_pcb_type (PCB pcb1, PCB pcb2, int isFirst, Mutex mutex);
 
 /*
  * Frees a PCB and its context.

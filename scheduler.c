@@ -222,34 +222,33 @@ int makePCBList (Scheduler theScheduler) {
 	
 	int lottery = rand();
 	for (int i = 0; i < newPCBCount; i++) {
-		Mutex sharedMutex;
-		
-		sharedMutex = mutex_init();
 		
 		PCB newPCB1 = PCB_create();
 		PCB newPCB2 = PCB_create();
 		
-		printf("newPCB1 == null? %d\n", (newPCB1 == NULL));
-		printf("newPCB2 == null? %d\n", (newPCB2 == NULL));
-		printf("sharedMutex == null? %d\n", (sharedMutex == NULL));
+		Mutex mutex1 = mutex_init();
+		Mutex mutex2 = mutex_init();
 		
-		newPCB2->parent = newPCB1->pid;
+		initialize_pcb_type (newPCB1, newPCB2, 1, mutex1); 
+		initialize_pcb_type (newPCB1, newPCB2, 0, mutex2); 
 		
-		initialize_pcb_type (newPCB1, 1, sharedMutex); 
-		initialize_pcb_type (newPCB2, 0, sharedMutex); 
 		
+		if (newPCB1->role == SHARED) {
+			add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
+			add_to_mutx_map(theScheduler->mutexes, mutex2, newPCB2);
+		} else if (newPCB1->role == PAIR) {
+			add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
+			free(mutex2);
+		} else {		// freeing mutexes if type COMP or PAIR
+			free(mutex1);
+			free(mutex2);
+		}
+			
+
 		incrementRoleCount(newPCB1->role);
 		incrementRoleCount(newPCB2->role);
 		
-		//printf("\r\nM: ");	//STOPPED HERE!!!!
-		//toStringReadyQueueMutexes(theScheduler->killedMutexes);
-		if (newPCB1->role == COMP || newPCB1->role == IO) { //if the role isn't one that uses a mutex, then destroy it.
-			printf("Role wasn't PAIR or SHARED, freeing sharedMutex M%d\r\n", sharedMutex->mid);
-			free(sharedMutex);
-		} else {
-			printf("Role was PAIR or SHARED, enqueuing sharedMutex M%d\r\n", sharedMutex->mid);
-			add_to_mutx_map(theScheduler->mutexes, sharedMutex, newPCB1);
-		}
+
 		
 		newPCB1->state = STATE_NEW;
 		newPCB2->state = STATE_NEW;
@@ -378,12 +377,12 @@ void printSchedulerState (Scheduler theScheduler) {
 	
 	int index = 0;
 	// PRIVILIGED PID
-	while(privileged[index] != NULL && index < MAX_PRIVILEGE) {
-		printf("PCB PID %d, PRIORITY %d, PC %d\n", 
-		privileged[index]->pid, privileged[index]->priority, 
-		privileged[index]->context->pc);
-		index++;
-	}
+	// while(privileged[index] != NULL && index < MAX_PRIVILEGE) {
+		// printf("PCB PID %d, PRIORITY %d, PC %d\n", 
+		// privileged[index]->pid, privileged[index]->priority, 
+		// privileged[index]->context->pc);
+		// index++;
+	// }
 	printf("blocked size: %d\r\n", theScheduler->blocked->size);
 	printf("killed size: %d\r\n", theScheduler->killed->size);
 	printf("killedMutexes size: %d\r\n", theScheduler->killedMutexes->size);
