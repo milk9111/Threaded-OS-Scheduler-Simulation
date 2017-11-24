@@ -31,7 +31,7 @@ int main()
 		PCB tmp = PCB_create();
 		tmp->pid = i * 3;
 		int result = remove_from_mutx_map(myMap, tmp);
-		printf("Deletion result = %d\n", result);
+		printf("Deletion result = %d\n=====\n", result);
 	}
 	
 	printf("\n-------------------------\nInsertion collision handling test\n");
@@ -52,7 +52,7 @@ int main()
 	printf("Mutex pcb1 pid: %d vs. pcb pid actual: %d.\n", testMutex->pcb1->pid, tmp1->pid);
 	
 	printf("\n-------------------------\nget_mutx() test, with collision.\n");
-	toStringMutexMap(myMap);
+	
 	PCB tmp2 = PCB_create();
 	tmp2->pid = 339;
 	testMutex = get_mutx(myMap, tmp2);
@@ -62,4 +62,41 @@ int main()
 		printf("Mutex was null\n");
 	}
 	
+	printf("\n-------------------------\nTake and Remove function test. No collision.\n");
+	tmp1->pid = 160;
+	testMutex = take_n_remove_from_mutx_map(myMap, tmp1);
+	
+	if (testMutex != NULL) {
+		printf("Found pid: %d vs. expected pid: %d.\n", testMutex->pcb1->pid, tmp1->pid);
+	} else {
+		printf("Mutex was null\n");
+	}
+	printf("Checking that Mutex has been removed properly.\n");
+	testMutex = take_n_remove_from_mutx_map(myMap, tmp1);
+	
+	if (testMutex != NULL) {
+		printf("Found pid: %d vs. expected: NULL.\n", testMutex->pcb1->pid);
+	} else {
+		printf("Mutex was null\n");
+	}
+	
+	printf("\n-------------------------\nTake and Remove function test. Collision handling.\n");
+	tmp1->pid = 329;
+	testMutex = take_n_remove_from_mutx_map(myMap, tmp1);
+	
+	if (testMutex != NULL) {
+		printf("Found pid: %d vs. expected pid: %d.\n", testMutex->pcb1->pid, tmp1->pid);
+	} else {
+		printf("Mutex was null\n");
+	}
+	printf("Checking that Mutex has been removed properly.\n");
+	testMutex = take_n_remove_from_mutx_map(myMap, tmp1);
+	
+	if (testMutex != NULL) {
+		printf("Found pid: %d vs. expected: NULL.\n", testMutex->pcb1->pid);
+	} else {
+		printf("Mutex was null\n");
+	}
+	
+	toStringMutexMap(myMap);
 }

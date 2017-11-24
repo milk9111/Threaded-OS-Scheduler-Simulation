@@ -71,46 +71,51 @@ int remove_from_mutx_map(MutexMap theMap, PCB theKey)
 			printf("--Delete collision!--\n");
 			
 			
-			printf("Obtained pid: %d, looking for: %d\n", theMap->map[tmp]->pcb1->pid, theKey->pid);
-			printf("before tmp = %d\n", tmp);
-			printf("before tmp + 1 = %d\n", tmp + 1);
+			//printf("Obtained pid: %d, looking for: %d\n", theMap->map[tmp]->pcb1->pid, theKey->pid);
+			//printf("before tmp = %d\n", tmp);
+			//printf("before tmp + 1 = %d\n", tmp + 1);
 			tmp++;
-			printf("after tmp = %d\n", tmp);
-			printf("Moving in...\n");
+			//printf("after tmp = %d\n", tmp);
+			//printf("Moving in...\n");
 			//printf("pointer in location of tmp: %d", theMap->map[tmp]);
 			
 			while((theMap != NULL) && (theMap->map[tmp] != NULL) && (theMap->map[tmp]->pcb1->pid != theKey->pid) && (theMap->map[tmp]->pcb1->pid != theKey->parent))
 			{	
 				//printf("theMap == null: %d\n", (theMap == NULL));
-				printf("map[tmp]->pcb1->pid: %d\n", theMap->map[tmp]->pcb1->pid);
+				//printf("map[tmp]->pcb1->pid: %d\n", theMap->map[tmp]->pcb1->pid);
 				//printf("pcb1 == null: %d\n", (theMap->map[tmp]->pcb1 == NULL));
 				//printf("theKey->pid: %d\n", theKey->pid);
-				printf("Checking at location %d.\nObtained pid: %d, looking for: %d\n", tmp, theMap->map[tmp]->pcb1->pid, theKey->pid);
-				printf("passed\n");
+				//printf("Checking at location %d.\nObtained pid: %d, looking for: %d\n", tmp, theMap->map[tmp]->pcb1->pid, theKey->pid);
+				//printf("passed\n");
 				/*if(theMap->map[tmp] == NULL || tmp == key)
 				{
 					printf("Not found\n");
 					return 2; // Object does not exist
 				}*/
-				printf("passed\n");
+				//printf("passed\n");
+				do
+				{
 				tmp++;
-				printf("tmp: %d\n", tmp);
-				if (tmp >= theMap->curr_map_size)
-				{
-					tmp = 0;
-					printf("in here\n");
-				}
-				printf("tmp: %d\n", tmp);
-				printf("next loop\n");
+				//printf("tmp: %d\n", tmp);
 				
-				printf("theMap->map[tmp]->pcb1->pid: %d\n", (theMap->map[tmp] == NULL));
-				printf("theKey->pid: %d\n", theKey->pid);
-				printf("theKey->parent: %d\n", theKey->parent);
-				if(theMap->map[tmp] == NULL || tmp == key)
-				{
-					printf("Not found\n");
-					return 2; // Object does not exist
+					if (tmp >= theMap->curr_map_size)
+					{
+						tmp = 0;
+						printf("in here\n");
+					}
+					//printf("tmp: %d\n", tmp);
+					//printf("next loop\n");
+				
+					//printf("theMap->map[tmp]->pcb1->pid: %d\n", (theMap->map[tmp] == NULL));
+					//printf("theKey->pid: %d\n", theKey->pid);
+					//printf("theKey->parent: %d\n", theKey->parent);
+					if(tmp == key)
+					{
+						printf("Not found\n");
+						return 2; // Object does not exist
+					}
 				}
+				while(theMap->map[tmp] == NULL);
 			}
 			key = tmp;
 			printf("here\n");
@@ -151,15 +156,20 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, PCB theKey)
 			&& (theMap->map[tmp]->pcb1->pid != theKey->pid) 
 			&& (theMap->map[tmp]->pcb1->pid != theKey->parent))
 		{
-			if(theMap->map[tmp] == NULL || tmp == key)
+			do
 			{
-				return NULL; // Object does not exist
+				if(tmp == key)
+				{
+					return NULL; // Object does not exist
+				}
+			
+				tmp++;
+				if (tmp >= theMap->curr_map_size)
+				{
+					tmp = 0;
+				}
 			}
-			tmp++;
-			if (tmp >= theMap->curr_map_size)
-			{
-				tmp = 0;
-			}
+			while(theMap->map[tmp] == NULL);
 		}
 		key = tmp;
 	}
@@ -194,16 +204,20 @@ Mutex get_mutx(MutexMap theMap, PCB theKey)
 		while((theMap->map[tmp] != NULL) && (theMap->map[tmp]->pcb1->pid != theKey->pid) && (theMap->map[tmp]->pcb1->pid != theKey->parent))
 		{
 			//printf("Not found yet, moving on from %d...\n", tmp);
-			if(theMap->map[tmp] == NULL || tmp == key)
+			do
 			{
-				printf("Not found\n");
-				return NULL; // Object does not exist
+				if(tmp == key)
+				{
+					return NULL; // Object does not exist
+				}
+			
+				tmp++;
+				if (tmp >= theMap->curr_map_size)
+				{
+					tmp = 0;
+				}
 			}
-			tmp++;
-			if (tmp >= theMap->curr_map_size)
-			{
-				tmp = 0;
-			}
+			while(theMap->map[tmp] == NULL);
 		}
 		key = tmp;
 	}
