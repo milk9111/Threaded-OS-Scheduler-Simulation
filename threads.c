@@ -51,16 +51,21 @@ Mutex mutex_init () {
 	If the mutex is already locked and the calling pcb was the one that locks it, 
 	a big printf is displayed to alert the user.
 */
-void mutex_lock (Mutex mutex, PCB pcb) {
+int mutex_lock (Mutex mutex, PCB pcb) {
 	if (mutex) {
 		if (mutex->isLocked && mutex->hasLock == pcb) { 
 			printf("\r\n\r\n\t\tMUTEX IS ALREADY LOCKED!!!!!!!!!!\r\n\r\n");
 			//exit(0);
+			return 0;
+		} else {
+			mutex->isLocked = 1;
+			mutex->hasLock = pcb;
+			return 1;
 		}
-		mutex->isLocked = 1;
-		mutex->hasLock = pcb;
+
 	}  else {
 		printf("\r\n\r\n\t\tMUTEX IS NULL. LOCK FAILED\r\n\r\n");
+		return 0;
 	}
 }
 
@@ -90,16 +95,21 @@ int mutex_trylock (Mutex mutex, PCB pcb) {
 	Unlocks the given mutex. Sets the hasLocked PCB value back to NULL.
 	If the mutex is already unlocked a big printf is displayed to alert the user.
 */
-void mutex_unlock (Mutex mutex, PCB pcb) {
+int mutex_unlock (Mutex mutex, PCB pcb) {
 	if (mutex) {
 		if (!mutex->isLocked) { 
 			printf("\r\n\r\n\t\tMUTEX IS ALREADY UNLOCKED\r\n\r\n");
 			//exit(0);
+			return 0;
+		} else {
+			mutex->isLocked = 0;
+			mutex->hasLock = NULL;
+			return 1;
 		}
-		mutex->isLocked = 0;
-		mutex->hasLock = NULL;
+
 	} else {
 		printf("\r\n\r\n\t\tMUTEX IS NULL. UNLOCK FAILED\r\n\r\n");
+		return 0;
 	}
 }
 
