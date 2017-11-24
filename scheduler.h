@@ -102,5 +102,9 @@ void displayRoleCountResults();
 
 void handleKilling (Scheduler theScheduler);
 
+void lockAttempt(Scheduler theScheduler, int trapVal);
+
+void unlockAttempt(Scheduler theScheduler, int trapVal);
+
 
 #endif

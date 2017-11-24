@@ -65,6 +65,22 @@ void osLoop () {
 				}
 			}
 			
+			// Part of deadlock
+			// if (thisScheduler->running->role == SHARED) {
+				
+				// for (int i = 0; i < TRAP_COUNT; i++) {
+					// if (thisScheduler->running->pc == thisScheduler->running->lockR1[i]) {
+						// lockAttempt(thisScheduler, 1);				
+					// } else if (thisScheduler->running->pc == thisScheduler->running->unlockR1[i]) {
+						// unlockAttempt(thisScheduler, 1);		
+					// } else if(thisScheduler->running->pc == thisScheduler->running->lockR2[i]) {
+						// lockAttempt(thisScheduler, 2);
+					// } else if (thisScheduler->running->pc == thisScheduler->running->unlockR1[i]) {
+						// unlockAttempt(thisScheduler, 2);
+					// }
+				// }
+			// }
+			
 			
 			if (timerInterrupt(iterationCount) == 1) {
 				pseudoISR(thisScheduler, IS_TIMER);
@@ -131,6 +147,54 @@ void osLoop () {
 	}
 	
 	schedulerDeconstructor(thisScheduler);
+}
+
+void lockAttempt(Scheduler theScheduler, int trapVal) {
+	
+	Mutex currMutex;
+	int lockResult;
+	
+	currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
+	
+	printf("Attempting to lock R%d of process %d ================================\r\n", 
+	trapVal, thisScheduler->running->pid);
+						
+	lockResult = mutex_lock (currMutex, thisScheduler->running);
+		
+	if (lockResult) {
+		printf("Successfully locked R%d============\r\n", trapVal);
+		
+		
+	} else {
+		printf("Failed to lock R1\r\n");
+		// deadlock monitor
+		// TODO: move all to a function
+		
+	}
+}
+
+void unlockAttempt(Scheduler theScheduler, int trapVal) {
+	
+	Mutex currMutex;
+	int lockResult;
+	
+	currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
+	
+	printf("Attempting to unlock R%d of process %d ================================\r\n", 
+	trapVal, thisScheduler->running->pid);
+						
+	lockResult = mutex_unlock (currMutex, thisScheduler->running);
+		
+	if (lockResult) {
+		printf("Successfully unlocked R%d============\r\n", trapVal);
+		
+		
+	} else {
+		printf("Failed to unlock R%d\r\n", trapVal);
+		// deadlock monitor
+		// TODO: move all to a function
+		
+	}
 }
 
 

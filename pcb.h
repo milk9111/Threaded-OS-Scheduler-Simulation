@@ -91,6 +91,11 @@ typedef struct pcb {
 	
 	unsigned int signal_pc; //for condition variable
 	unsigned int wait_pc;
+	
+	unsigned int lockR1[TRAP_COUNT];
+	unsigned int lockR2[TRAP_COUNT];
+	unsigned int unlockR1[TRAP_COUNT];
+	unsigned int unlockR2[TRAP_COUNT];
 
     // if process is blocked, which queue it is in
     CPU_context_p context; // set of cpu registers
@@ -118,9 +123,9 @@ void toStringMutex (Mutex mutex);
 
 void mutex_destroy (Mutex mutex);
 
-void mutex_lock (Mutex mutex, PCB pcb);
+int mutex_lock (Mutex mutex, PCB pcb);
 
-void mutex_unlock (Mutex mutex, PCB pcb);
+int mutex_unlock (Mutex mutex, PCB pcb);
 
 int mutex_trylock (Mutex mutex, PCB pcb);
 
