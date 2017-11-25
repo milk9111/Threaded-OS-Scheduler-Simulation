@@ -283,7 +283,7 @@ int makePCBList (Scheduler theScheduler) {
 	printf("making new PCBs\n");
 	// change this to make 2 at a time.
 	//int newPCBCount = rand() % MAX_PCB_IN_ROUND;
-	int newPCBCount = 1;
+	int newPCBCount = 2;
 	
 	int lottery = rand();
 	//for (int i = 0; i < newPCBCount; i++) {
@@ -302,14 +302,16 @@ int makePCBList (Scheduler theScheduler) {
 	
 	newPCB2->parent = newPCB1->pid;
 	
+	newPCB1->role = COMP;
+	newPCB2->role = COMP;
 	initialize_pcb_type (newPCB1, 1, sharedMutex); 
 	initialize_pcb_type (newPCB2, 0, sharedMutex); 
 	
 	incrementRoleCount(newPCB1->role);
 	incrementRoleCount(newPCB2->role);
 	
-	//printf("\r\nM: ");	//STOPPED HERE!!!!
-	//toStringReadyQueueMutexes(theScheduler->killedMutexes);
+	printf("\r\nM: ");	//STOPPED HERE!!!!
+	toStringReadyQueueMutexes(theScheduler->killedMutexes);
 	if (newPCB1->role == COMP || newPCB1->role == IO) { //if the role isn't one that uses a mutex, then destroy it.
 		printf("Role wasn't PAIR or SHARED, freeing sharedMutex M%d\r\n", sharedMutex->mid);
 		free(sharedMutex);
@@ -354,7 +356,7 @@ int makePCBList (Scheduler theScheduler) {
 		}
 	}
 	
-	return newPCBCount + 1;
+	return newPCBCount;
 }
 
 
@@ -542,7 +544,7 @@ void resetReadyQueue (ReadyQueue queue) {
 	next PCB in the queue.
 */
 void scheduling (int interrupt_code, Scheduler theScheduler) {
-	Mutex currMutex;
+	//Mutex currMutex;
 	
 	if (interrupt_code == IS_TIMER) {
 		printf("Entering Timer Interrupt\r\n");
@@ -605,16 +607,19 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		printf("Exiting IO Interrupt\r\n");
 	}
 	
-	if (theScheduler->running != NULL && theScheduler->running->state == STATE_HALT) {
-		//printf("entering handleKilling\n");
+	printf("Above handleKilling\n");
+	if (theScheduler->interrupted != NULL && theScheduler->interrupted->state == STATE_HALT) {
+		printf("entering handleKilling\n");
 		handleKilling(theScheduler);
+		printf("finished handleKilling\n");
 	}
 	
 	// I/O interrupt does not require putting a new process
 	// into the running state, so we ignore this.
 	if(interrupt_code != IS_IO_INTERRUPT)
 	{
-		theScheduler->running = pq_peek(theScheduler->ready);
+		//this was calling pq_peek, why?
+		theScheduler->running = pq_dequeue(theScheduler->ready);
 	}
 	
 	if (theScheduler->killed->size >= TOTAL_TERMINATED) {
@@ -793,7 +798,7 @@ int isPrivileged(PCB pcb) {
 }
 
 
-void main () {
+/*void main () {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
 	sysstack = 0;
@@ -807,7 +812,7 @@ void main () {
 	sharedCount = 0;
 	
 	int totalProcesses = 0, iterationCount = 1;
-	Mutex currMutex;
+	Mutex currMutex = NULL;
 	
 	thisScheduler = schedulerConstructor();
 	totalProcesses += makePCBList(thisScheduler);
@@ -816,7 +821,7 @@ void main () {
 		if (thisScheduler->running != NULL) { // In case the first makePCBList makes 0 PCBs
 			thisScheduler->running->context->pc++;
 			
-			/*if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
+			if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
 				if (thisScheduler->running->context->pc == thisScheduler->running->lock_pc) {
 					currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
 					mutex_lock (currMutex, thisScheduler->running);
@@ -824,7 +829,7 @@ void main () {
 					currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
 					mutex_unlock (currMutex, thisScheduler->running);
 				}
-			}*/
+			}
 			
 			
 			if (timerInterrupt(iterationCount) == 1) {
@@ -834,7 +839,7 @@ void main () {
 				iterationCount++;
 			}
 			
-			/*if (ioTrap(thisScheduler->running) == 1) {
+			if (ioTrap(thisScheduler->running) == 1) {
 				printf("Iteration: %d\r\n", iterationCount);
 				printf("Initiating I/O Trap\r\n");
 				printf("PC when I/O Trap is Reached: %d\r\n", thisScheduler->running->context->pc);
@@ -843,7 +848,7 @@ void main () {
 				printSchedulerState(thisScheduler);
 				iterationCount++;
 				printf("Completed I/O Trap\n");
-			}*/
+			}
 			
 			if (thisScheduler->running != NULL)
 			{
@@ -853,7 +858,7 @@ void main () {
 				}
 			}
 			
-			/*if (ioInterrupt(thisScheduler->blocked) == 1) {
+			if (ioInterrupt(thisScheduler->blocked) == 1) {
 				printf("Iteration: %d\r\n", iterationCount);
 				printf("Initiating I/O Interrupt\n");
 				pseudoISR(thisScheduler, IS_IO_INTERRUPT);
@@ -861,7 +866,7 @@ void main () {
 				printSchedulerState(thisScheduler);
 				iterationCount++;
 				printf("Completed I/O Interrupt\n");
-			}*/
+			}
 			
 			// if running PCB's terminate == running PCB's term_count, then terminate (for real).
 			terminate(thisScheduler);
@@ -892,10 +897,10 @@ void main () {
 	}
 	
 	schedulerDeconstructor(thisScheduler);
-}
+}*/
 
 
-/*void main () {
+void main () {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
 	sysstack = 0;
@@ -909,7 +914,7 @@ void main () {
 	sharedCount = 0;
 	
 	osLoop();
-}*/
+}
 
 
 /*void printNull (Mutex mutex) {
@@ -1068,8 +1073,8 @@ void main () {
 
 
 void handleKilling (Scheduler theScheduler) {
-	Mutex currMutex;
-	PCB found;
+	Mutex currMutex = NULL;
+	PCB found = NULL;
 	
 	printf("\r\nEnqueueing into Killed queue\r\n");
 	if (theScheduler->running->role == PAIR || theScheduler->running->role == SHARED) {
@@ -1111,6 +1116,7 @@ void handleKilling (Scheduler theScheduler) {
 		printf("enqueuing into killed queue\n");
 		q_enqueue(theScheduler->killed, theScheduler->running);
 	}
+	//q_enqueue(theScheduler->killed, theScheduler->interrupted);
 	printf("Killed List: ");
 	toStringReadyQueue(theScheduler->killed);
 	theScheduler->running = NULL;
