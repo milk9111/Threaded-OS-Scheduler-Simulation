@@ -287,6 +287,11 @@ int makePCBList (Scheduler theScheduler) {
 	
 	int lottery = rand();
 	//for (int i = 0; i < newPCBCount; i++) {
+	
+	//Make a random size array of Mutexes and create the mutexes. Then pass the head pointer
+	//to each PCB so they can hold the Mutexes. Each Mutex will also hold the PCBs, they just
+	//won't know about the other Mutexes the PCBs have. Will need to change PCBs to hold a Mutex
+	//head pointer to the array (this way we can have a dynamic size array).
 	Mutex sharedMutex;
 	
 	printf("making Mutex\n");
