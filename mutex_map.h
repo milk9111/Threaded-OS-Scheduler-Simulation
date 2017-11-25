@@ -22,16 +22,14 @@ MutexMap create_mutx_map();
 
 /*
  * Add a Mutex to the specified MutexMap. The key for the map is determined by the 
- * Process ID of the PCB attached to the Mutex, OR the Parent Process ID for
- * companion processes (i.e. consumer in a producer/consumer relationship, or
- * second process made in a shared resource relationship.)
+ * Mutex ID (i.e. Mutex->mid), to be passed in as an int.
  *
- * Return: 0 if Mutex was added successfully, 1 on failure.
+ * Return: 0 if Mutex was added successfully, 1 on failure, 2 on full map
  *
  * Implementation note: relies on the current fact that pcb->parent is unused by the program
  * Implementation note2: The actual key value will be a modulus of the current max size of the map
  */
-int add_to_mutx_map(MutexMap theMap, Mutex theMutex, PCB theKey);
+int add_to_mutx_map(MutexMap theMap, Mutex theMutex, int theKey);
 
 
 void toStringMutexMap (MutexMap theMap);
@@ -42,7 +40,7 @@ void toStringMutexMap (MutexMap theMap);
  *
  * Return: 0 if Mutex was removed successfully, 1 on failure 
  */
-int remove_from_mutx_map(MutexMap theMap, PCB theKey);
+int remove_from_mutx_map(MutexMap theMap, int theKey);
 
 
 
@@ -52,7 +50,7 @@ int remove_from_mutx_map(MutexMap theMap, PCB theKey);
  *
  * Return: a Mutex found based on the passed in key. NULL otherwise.
  */
-Mutex take_n_remove_from_mutx_map(MutexMap theMap, PCB theKey);
+Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey);
 
 
 
@@ -62,7 +60,7 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, PCB theKey);
  *
  * Return: a Mutex found based on the passed in key. NULL otherwise.
  */
-Mutex get_mutx(MutexMap theMap, PCB thekey);
+Mutex get_mutx(MutexMap theMap, int thekey);
 
 
 
