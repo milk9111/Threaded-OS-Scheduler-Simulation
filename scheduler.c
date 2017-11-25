@@ -320,6 +320,48 @@ int makePCBList (Scheduler theScheduler) {
 		add_to_mutx_map(theScheduler->mutexes, sharedMutex, newPCB1);
 	}
 	
+	
+	/* Reformatted code of what is above. Contains methods
+	   to cause deadlocks or none at all in mutual resource
+	   pair types. */
+	/***************************************/
+	
+	// PCB newPCB1 = PCB_create();
+	// PCB newPCB2 = PCB_create();
+	
+	// Mutex mutex1 = mutex_init();
+	// Mutex mutex2 = mutex_init();
+	
+	// initialize_pcb_type (newPCB1, newPCB2, 1, mutex1); 
+	// initialize_pcb_type (newPCB1, newPCB2, 0, mutex2); 
+	
+	
+	// if (newPCB1->role == SHARED) {
+		// add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
+		// add_to_mutx_map(theScheduler->mutexes, mutex2, newPCB2);
+		
+		// if (DEADLOCK) {
+			// populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+			// populateMutexTraps1221(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
+			
+		// } else {
+			// populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+			// populateMutexTraps2112(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+		// }
+		
+	// } else if (newPCB1->role == PAIR) {
+		// add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
+		// free(mutex2);
+	// } else {		// freeing mutexes if type COMP or PAIR
+		// free(mutex1);
+		// free(mutex2);
+	// }
+		
+	// incrementRoleCount(newPCB1->role);
+	// incrementRoleCount(newPCB2->role);
+		
+	/***************************************/
+	
 	newPCB1->state = STATE_NEW;
 	newPCB2->state = STATE_NEW;
 	printf("theScheduler->created == NULL: %d\n", (theScheduler->created == NULL));

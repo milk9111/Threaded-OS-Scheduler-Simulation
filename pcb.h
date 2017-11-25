@@ -187,6 +187,9 @@ unsigned int makeMaxPC();
 
 void populateIOTraps (PCB, int);
 
+void populateMutexTraps1221(PCB pcb, int step);
+
+void populateMutexTraps2112(PCB pcb, int step);
 
 /*
  * Create and return a string representation of the provided PCB.

@@ -163,6 +163,22 @@ void populateIOTraps (PCB pcb, int ioTrapType) {
 }
 
 
+void populateMutexTraps1221(PCB pcb, int step) {
+	memcpy(pcb->lockR1, (1 * step, 5 * step, 9 * step, 13 * step), sizeof(unsigned int));
+	memcpy(pcb->lockR2, (2 * step, 6 * step, 10 * step, 14 * step), sizeof(unsigned int));
+	memcpy(pcb->unlockR2, (3 * step, 7 * step, 11 * step, 15 * step), sizeof(unsigned int));
+	memcpy(pcb->unlockR1, (4 * step, 8 * step, 12 * step, 16 * step), sizeof(unsigned int));
+}
+
+void populateMutexTraps2112(PCB pcb, int step) {
+	memcpy(pcb->lockR2, (1 * step, 5 * step, 9 * step, 13 * step), sizeof(unsigned int));
+	memcpy(pcb->lockR1, (2 * step, 6 * step, 10 * step, 14 * step), sizeof(unsigned int));
+	memcpy(pcb->unlockR1, (3 * step, 7 * step, 11 * step, 15 * step), sizeof(unsigned int));
+	memcpy(pcb->unlockR2, (4 * step, 8 * step, 12 * step, 16 * step), sizeof(unsigned int));
+}
+
+
+
 /*
 	Checks if the given random number is already within the given ioTraps array. If so,
 	return 1, otherwise 0.

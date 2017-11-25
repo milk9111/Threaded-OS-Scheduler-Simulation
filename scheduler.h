@@ -42,6 +42,8 @@
 #define RANDOM_VALUE 101
 #define TOTAL_TERMINATED 5
 #define MAX_PRIVILEGE 4
+#define MAX_DIVIDER 16
+#define DEADLOCK 0
 
 
 
