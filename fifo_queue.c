@@ -17,7 +17,7 @@
  * Return: a pointer to a new FIFO queue, NULL if unsuccessful.
  */
 ReadyQueue q_create() {
-    ReadyQueue new_queue = malloc(sizeof(FIFOq_s));
+    ReadyQueue new_queue = (ReadyQueue) malloc(sizeof(struct fifo_queue));
 
     if (new_queue != NULL) {
         new_queue->first_node = NULL;
