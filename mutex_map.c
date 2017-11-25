@@ -183,13 +183,16 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, PCB theKey)
 
 Mutex get_mutx(MutexMap theMap, PCB theKey)
 {
+	
 	if (theMap == NULL || theKey == NULL)
 	{
+		printf("in here\n");
 		return NULL;
 	}
 	int key = findKey(theKey, theMap->curr_map_size);
 	if (theMap->map[key] == NULL)
 	{
+		printf("in here2\n");
 		return NULL;
 	}
 	printf("Searching for mutex with key: %d.\n", key);
@@ -200,7 +203,10 @@ Mutex get_mutx(MutexMap theMap, PCB theKey)
 					   // and need to find where our mutex got placed
 		tmp++;
 		printf("--Search collision!--\n");
-		printf("Want: %d, have: %d, also have: %d vs %d\n", theKey->pid, theMap->map[tmp]->pcb1->pid, theMap->map[tmp]->pcb2->parent, theKey->parent);
+		/*toStringMutexMap(theMap);
+		printf("Trying to find P%d\n", theKey->pid);
+		printf("tmp: %d\n", tmp);*/
+		//printf("Want: %d, have: %d, also have: %d vs %d\n", theKey->pid, theMap->map[tmp]->pcb1->pid, theMap->map[tmp]->pcb2->parent, theKey->parent);
 		while((theMap->map[tmp] != NULL) && (theMap->map[tmp]->pcb1->pid != theKey->pid) && (theMap->map[tmp]->pcb1->pid != theKey->parent))
 		{
 			//printf("Not found yet, moving on from %d...\n", tmp);
@@ -224,7 +230,7 @@ Mutex get_mutx(MutexMap theMap, PCB theKey)
 	Mutex toFree = theMap->map[key];
 	//mutex_destroy(toFree);
 	//theMap->map[key] = NULL;
-	printf("Grabbing from location %d.\nObtained pid: %d, looking for: %d\n", key, toFree->pcb1->pid, theKey->pid);
+	//printf("Grabbing from location %d.\nObtained pid: %d, looking for: %d\n", key, toFree->pcb1->pid, theKey->pid);
 	
 	return toFree;
 }

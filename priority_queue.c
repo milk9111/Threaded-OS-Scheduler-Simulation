@@ -17,7 +17,7 @@
  */
 PriorityQueue pq_create() {
     int i, failed = -1;
-    PriorityQueue new_pq = malloc(sizeof(PQ_s));
+    PriorityQueue new_pq = (PriorityQueue) malloc(sizeof(struct priority_queue));
 
     if (new_pq != NULL) {
         for (i = 0; i < NUM_PRIORITIES; i++) {
@@ -86,7 +86,15 @@ void pq_destroy(PriorityQueue PQ) {
  *            pcb: the PCB to enqueue.
  */
 void pq_enqueue(PriorityQueue PQ, PCB pcb) {
-    q_enqueue(PQ->queues[pcb->priority], pcb);
+	if(PQ && pcb) { 
+		q_enqueue(PQ->queues[pcb->priority], pcb);
+	} else {
+		if (!PQ) {
+			printf("\t\t\tPRIORITY QUEUE IS NULL\t\t\t\r\n");
+		} else {
+			printf("\t\t\tPCB IS NULL\t\t\t\r\n");
+		}
+	}
 }
 
 /*
@@ -102,7 +110,7 @@ PCB pq_dequeue(PriorityQueue PQ) {
     for (i = 0; i < NUM_PRIORITIES; i++) {
         if (!q_is_empty(PQ->queues[i])) {
             ret_pcb = q_dequeue(PQ->queues[i]);
-			printf("ret_pcb pid: %d\n", ret_pcb->pid);
+			//printf("ret_pcb pid: %d\n", ret_pcb->pid);
             break;
         }
     }
