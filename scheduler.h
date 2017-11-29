@@ -26,7 +26,7 @@
 //defines
 #define MAX_PCB_TOTAL 300
 #define RESET_COUNT 5
-#define MAX_PCB_IN_ROUND 5
+#define MAX_MUTEX_IN_ROUND 3
 #define MAX_PC_JUMP 4000
 #define MIN_PC_JUMP 3000
 #define PC_JUMP_LIMIT 999

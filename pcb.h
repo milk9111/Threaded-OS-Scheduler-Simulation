@@ -96,9 +96,13 @@ typedef struct pcb {
 	unsigned int lockR2[TRAP_COUNT];
 	unsigned int unlockR1[TRAP_COUNT];
 	unsigned int unlockR2[TRAP_COUNT];
-	
+
 	unsigned int wait_cond[TRAP_COUNT];
 	unsigned int signal_cond[TRAP_COUNT];
+	
+	unsigned int mutex_R1_id;
+	unsigned int mutex_R2_id;
+
 
     // if process is blocked, which queue it is in
     CPU_context_p context; // set of cpu registers
@@ -120,7 +124,9 @@ typedef struct MUTEX {
 typedef mutex_s * Mutex;
 
 
-Mutex mutex_init ();
+Mutex mutex_create ();
+
+void mutex_init (Mutex);
 
 void toStringMutex (Mutex mutex);
 
@@ -144,7 +150,7 @@ PCB PCB_create();
 enum pcb_type chooseRole();
 
 
-void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutex);
+void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutexR1, Mutex sharedMutexR2);
 
 /*
  * Frees a PCB and its context.

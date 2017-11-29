@@ -284,6 +284,7 @@ int makePCBList (Scheduler theScheduler) {
 	// change this to make 2 at a time.
 	//int newPCBCount = rand() % MAX_PCB_IN_ROUND;
 	int newPCBCount = 2;
+	//int mutexCount = rand() & MAX_MUTEX_IN_ROUND;
 	
 	int lottery = rand();
 	//for (int i = 0; i < newPCBCount; i++) {
@@ -291,38 +292,40 @@ int makePCBList (Scheduler theScheduler) {
 	//Make a random size array of Mutexes and create the mutexes. Then pass the head pointer
 	//to each PCB so they can hold the Mutexes. Each Mutex will also hold the PCBs, they just
 	//won't know about the other Mutexes the PCBs have. Will need to change PCBs to hold a Mutex
-	//head pointer to the array (this way we can have a dynamic size array).
-	Mutex sharedMutex;
-	
-	printf("making Mutex\n");
-	sharedMutex = mutex_init();
-	printf("made Mutex\n");
+	//head pointer to the array (this way we can have a dynamic size array).	
+	Mutex sharedMutexR1 = mutex_create();
+	Mutex sharedMutexR2 = mutex_create();
 	
 	PCB newPCB1 = PCB_create();
 	PCB newPCB2 = PCB_create();
 	
 	printf("newPCB1 == null? %d\n", (newPCB1 == NULL));
 	printf("newPCB2 == null? %d\n", (newPCB2 == NULL));
-	printf("sharedMutex == null? %d\n", (sharedMutex == NULL));
 	
 	newPCB2->parent = newPCB1->pid;
 	
 	newPCB1->role = COMP;
 	newPCB2->role = COMP;
-	initialize_pcb_type (newPCB1, 1, sharedMutex); 
-	initialize_pcb_type (newPCB2, 0, sharedMutex); 
+	initialize_pcb_type (newPCB1, 1, sharedMutexR1, sharedMutexR2); 
+	initialize_pcb_type (newPCB2, 0, sharedMutexR1, sharedMutexR2); 
 	
 	incrementRoleCount(newPCB1->role);
 	incrementRoleCount(newPCB2->role);
 	
-	printf("\r\nM: ");	//STOPPED HERE!!!!
+	printf("\r\nM: ");
 	toStringReadyQueueMutexes(theScheduler->killedMutexes);
 	if (newPCB1->role == COMP || newPCB1->role == IO) { //if the role isn't one that uses a mutex, then destroy it.
-		printf("Role wasn't PAIR or SHARED, freeing sharedMutex M%d\r\n", sharedMutex->mid);
-		free(sharedMutex);
+		printf("Role wasn't PAIR or SHARED, freeing sharedMutexR1 M%d\r\n", sharedMutexR1->mid);
+		printf("Role wasn't PAIR or SHARED, freeing sharedMutexR2 M%d\r\n", sharedMutexR2->mid);
+
+		free(sharedMutexR1);
+		free(sharedMutexR2);
 	} else {
-		printf("Role was PAIR or SHARED, enqueuing sharedMutex M%d\r\n", sharedMutex->mid);
-		add_to_mutx_map(theScheduler->mutexes, sharedMutex, newPCB1);
+		printf("Role was PAIR or SHARED, adding sharedMutexR1 M%d\r\n", sharedMutexR1->mid);
+		printf("Role was PAIR or SHARED, adding sharedMutexR2 M%d\r\n", sharedMutexR2->mid);
+
+		add_to_mutx_map(theScheduler->mutexes, sharedMutexR1, sharedMutexR1->mid);
+		add_to_mutx_map(theScheduler->mutexes, sharedMutexR2, sharedMutexR2->mid);
 	}
 	
 	
@@ -331,20 +334,21 @@ int makePCBList (Scheduler theScheduler) {
 	   pair types. */
 	/***************************************/
 	
-	// PCB newPCB1 = PCB_create();
-	// PCB newPCB2 = PCB_create();
+	/*PCB newPCB1 = PCB_create();
+	PCB newPCB2 = PCB_create();
 	
-	// Mutex mutex1 = mutex_init();
-	// Mutex mutex2 = mutex_init();
+	Mutex mutex1 = mutex_create();
+	Mutex mutex2 = mutex_create();
 	
-	// initialize_pcb_type (newPCB1, newPCB2, 1, mutex1); 
-	// initialize_pcb_type (newPCB1, newPCB2, 0, mutex2); 
+	initialize_pcb_type (newPCB1, newPCB2, 1, mutex1); 
+	initialize_pcb_type (newPCB1, newPCB2, 0, mutex2); 
 	
 	
-	// if (newPCB1->role == SHARED) {
-		// add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
-		// add_to_mutx_map(theScheduler->mutexes, mutex2, newPCB2);
+	if (newPCB1->role == SHARED) {
+		add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
+		add_to_mutx_map(theScheduler->mutexes, mutex2, newPCB2);
 		
+<<<<<<< Updated upstream
 		// if (DEADLOCK) {
 			// populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
 			// populateMutexTraps2112(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
@@ -355,17 +359,27 @@ int makePCBList (Scheduler theScheduler) {
 			// populateMutexTraps1221(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
 		
 		// }
+=======
+		if (DEADLOCK) {
+			populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+			populateMutexTraps1221(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
+			
+		} else {
+			populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+			populateMutexTraps2112(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+		}
+>>>>>>> Stashed changes
 		
-	// } else if (newPCB1->role == PAIR) {
-		// add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
-		// free(mutex2);
-	// } else {		// freeing mutexes if type COMP or PAIR
-		// free(mutex1);
-		// free(mutex2);
-	// }
+	} else if (newPCB1->role == PAIR) {
+		add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
+		free(mutex2);
+	} else {		// freeing mutexes if type COMP or PAIR
+		free(mutex1);
+		free(mutex2);
+	}
 		
-	// incrementRoleCount(newPCB1->role);
-	// incrementRoleCount(newPCB2->role);
+	incrementRoleCount(newPCB1->role);
+	incrementRoleCount(newPCB2->role);*/
 		
 	/***************************************/
 	
@@ -860,312 +874,94 @@ int isPrivileged(PCB pcb) {
 	pairCount = 0;
 	sharedCount = 0;
 	
-	int totalProcesses = 0, iterationCount = 1;
-	Mutex currMutex = NULL;
-	
-	thisScheduler = schedulerConstructor();
-	totalProcesses += makePCBList(thisScheduler);
-	printSchedulerState(thisScheduler);
-	for(;;) {
-		if (thisScheduler->running != NULL) { // In case the first makePCBList makes 0 PCBs
-			thisScheduler->running->context->pc++;
-			
-			if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
-				if (thisScheduler->running->context->pc == thisScheduler->running->lock_pc) {
-					currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
-					mutex_lock (currMutex, thisScheduler->running);
-				} else if (thisScheduler->running->context->pc == thisScheduler->running->unlock_pc) {
-					currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
-					mutex_unlock (currMutex, thisScheduler->running);
-				}
-			}
-			
-			
-			if (timerInterrupt(iterationCount) == 1) {
-				pseudoISR(thisScheduler, IS_TIMER);
-				printf("Completed Timer Interrupt\n");
-				printSchedulerState(thisScheduler);
-				iterationCount++;
-			}
-			
-			if (ioTrap(thisScheduler->running) == 1) {
-				printf("Iteration: %d\r\n", iterationCount);
-				printf("Initiating I/O Trap\r\n");
-				printf("PC when I/O Trap is Reached: %d\r\n", thisScheduler->running->context->pc);
-				pseudoISR(thisScheduler, IS_IO_TRAP);
-				
-				printSchedulerState(thisScheduler);
-				iterationCount++;
-				printf("Completed I/O Trap\n");
-			}
-			
-			if (thisScheduler->running != NULL)
-			{
-				if (thisScheduler->running->context->pc >= thisScheduler->running->max_pc) {
-					thisScheduler->running->context->pc = 0;
-					thisScheduler->running->term_count++;	//if terminate value is > 0
-				}
-			}
-			
-			if (ioInterrupt(thisScheduler->blocked) == 1) {
-				printf("Iteration: %d\r\n", iterationCount);
-				printf("Initiating I/O Interrupt\n");
-				pseudoISR(thisScheduler, IS_IO_INTERRUPT);
-				
-				printSchedulerState(thisScheduler);
-				iterationCount++;
-				printf("Completed I/O Interrupt\n");
-			}
-			
-			// if running PCB's terminate == running PCB's term_count, then terminate (for real).
-			terminate(thisScheduler);
-		} else {
-			iterationCount++;
-			printf("Idle\n");
-		}
-	
-		
-		if (!(iterationCount % RESET_COUNT)) {
-			printf("\r\nRESETTING MLFQ\r\n");
-			printf("iterationCount: %d\n", iterationCount);
-			resetMLFQ(thisScheduler);
-			//printf("here5.9\n");
-			if (rand() % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
-				//printf("here6\n");
-				totalProcesses += makePCBList (thisScheduler);
-			}
-			//printf("here6.5\n");
-			printSchedulerState(thisScheduler);
-			//printf("here6.6\n");
-			iterationCount = 1;
-		}
-		if (totalProcesses >= MAX_PCB_TOTAL) {
-			printf("Reached max PCBs, ending Scheduler.\r\n");
-			break;
-		}
-	}
-	
-	schedulerDeconstructor(thisScheduler);
+	osLoop();
 }*/
 
 
 void main () {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
-	sysstack = 0;
-	switchCalls = 0;
-	currQuantumSize = 0;
-	
-	//initialize pcb type counts
-	compCount = 0;
-	ioCount = 0;
-	pairCount = 0;
-	sharedCount = 0;
-	
-	osLoop();
-}
-
-
-/*void printNull (Mutex mutex) {
-	printf("pcb1 is null: %d\n", (mutex->pcb1 == NULL));
-	if (mutex->pcb1 != NULL) {
-		printf("pcb1 values\n");
-		toStringPCB(mutex->pcb1, 0);
-	}
-	
-	printf("pcb2 is null: %d\n", (mutex->pcb2 == NULL));
-	if (mutex->pcb2 != NULL) {
-		printf("pcb2 values\n");
-		toStringPCB(mutex->pcb2, 0);
-	}
-	
-	printf("hasLock is null: %d\n", (mutex->hasLock == NULL));
-	if (mutex->hasLock != NULL) {
-		printf("hasLock values\n");
-		toStringPCB(mutex->hasLock, 0);
-	}
-	
-	printf("blocked is null: %d\n", (mutex->blocked == NULL));
-	if (mutex->blocked != NULL) {
-		printf("blocked values\n");
-		toStringPCB(mutex->blocked, 0);
-	}
-}*/
-
-
-/*void main () {
-	setvbuf(stdout, NULL, _IONBF, 0);
-	srand((unsigned) time(&t));
 	
 	int outerLoop = 100;
 	int innerLoop = 300;
+	int mutexCount = rand() % MAX_MUTEX_IN_ROUND;
+	if (!mutexCount) {
+		mutexCount++;
+	}
 	Scheduler scheduler = schedulerConstructor();
 	
 	for (int i = 0; i < outerLoop; i++) {
-		for (int j = 0; j < innerLoop; j++) {		
-
-			makePCBList(scheduler);
 		
-			/*Mutex newMutex = mutex_init();
-			
-			PCB pcb1 = PCB_create();
-			PCB pcb2 = PCB_create();
-			
-			pcb2->parent = pcb1->pid;
-			
-			initialize_pcb_type(pcb1, 1, newMutex);
-			initialize_pcb_type(pcb2, 0, newMutex);
-			
-			incrementRoleCount(pcb1->role);
-			incrementRoleCount(pcb2->role);
-			
-			pq_enqueue(scheduler->ready, pcb1);
-			pq_enqueue(scheduler->ready, pcb2);
-			
-			if ((pcb1->role == PAIR || pcb1->role == SHARED) && !get_mutx(scheduler->mutexes, pcb1)) {
-				add_to_mutx_map (scheduler->mutexes, newMutex, pcb1);
-			} else {
-				if (get_mutx(scheduler->mutexes, pcb1)) {
-					printf("Mutex M%d already in the Mutex List!\r\n", newMutex->mid);
-				} else {
-					printf("Mutex M%d not added, PCBs weren't type PAIR or SHARED\n", newMutex->mid);
-				}
-			}
-		}
+		makePCBList(scheduler);
+		
 	}
 	
 	printSchedulerState(scheduler);
+	toStringMutexMap(scheduler->mutexes);
+	
+	Mutex mutex1 = NULL;
+	Mutex mutex2 = NULL;
+	PCB other = NULL;
 	
 	while(!pq_is_empty(scheduler->ready)) {
+		toStringPriorityQueue(scheduler->ready);
 		PCB pcb = pq_dequeue(scheduler->ready);
+		
+		if (pcb->role == PAIR || pcb->role == SHARED) {
+			mutex1 = take_n_remove_from_mutx_map(scheduler->mutexes, pcb->mutex_R1_id);
+			mutex2 = take_n_remove_from_mutx_map(scheduler->mutexes, pcb->mutex_R2_id);
+			other = pq_dequeue(scheduler->ready);
+		}
+		toStringPriorityQueue(scheduler->ready);
 		printf("destroying P%d\n", pcb->pid);
 		PCB_destroy(pcb);
-		//toStringPriorityQueue(scheduler->ready);
+		if (other) {
+			printf("before, other pid: P%d\n", other->pid);
+			PCB_destroy(other);
+			printf("after\n");
+		}
+		printf("here\n");
+		if (mutex1) {
+			mutex_destroy(mutex1);
+		}
+		printf("here2\n");
+		if (mutex2) {
+			mutex_destroy(mutex2);
+		}
+		printf("here3\n");
+		toStringPriorityQueue(scheduler->ready);
+		other = NULL;
+		mutex1 = NULL;
+		mutex2 = NULL;
 		//exit(0);
 	}
 	
 	printSchedulerState(scheduler);
 	printf("PriorityQueue Empty\n");
 	schedulerDeconstructor(scheduler);
-}*/
-
-
-/*void main () {
-	setvbuf(stdout, NULL, _IONBF, 0);
-	srand((unsigned) time(&t));
-	
-	Scheduler scheduler = schedulerConstructor();
-	for (int i = 0; i < 5; i++) {
-		Mutex newMutex = mutex_init();
-		
-		PCB pcb1 = PCB_create();
-		PCB pcb2 = PCB_create();
-		
-		pcb2->parent = pcb1->pid;
-		
-		initialize_pcb_type(pcb1, 1, newMutex);
-		initialize_pcb_type(pcb2, 0, newMutex);
-		
-		incrementRoleCount(pcb1->role);
-		incrementRoleCount(pcb2->role);
-		
-		pq_enqueue(scheduler->ready, pcb1);
-		pq_enqueue(scheduler->ready, pcb2);
-		
-		if ((pcb1->role == PAIR || pcb1->role == SHARED) && !q_contains_mutex(scheduler->killedMutexes, newMutex)) {
-			//printNull(newMutex);
-			add_to_mutx_map (scheduler->mutexes, newMutex, pcb1);
-		} else {
-			if (get_mutx(scheduler->mutexes, pcb1)) {
-				printf("Mutex M%d already in the Mutex List!\r\n", newMutex->mid);
-			} else {
-				printf("Mutex M%d not added, PCBs weren't type PAIR or SHARED\n", newMutex->mid);
-			}
-		}
-	}
-	
-	PCB toFind = scheduler->ready->queues[0]->first_node->next->pcb;
-	toStringPriorityQueue(scheduler->ready);
-	printf("Trying to remove P%d\n", toFind->pid);
-	PCB match1 = pq_remove_matching_pcb (scheduler->ready, toFind);
-	
-	printf("After removing P%d\n", match1->pid);
-	toStringPriorityQueue(scheduler->ready);
-	
-	PCB level12 = PCB_create();
-	level12->role = PAIR;
-	
-	PCB level13 = PCB_create();
-	level13->role = PAIR;
-	level13->parent = level12->pid;
-	
-	Mutex sharedMutex = mutex_init();
-	sharedMutex->pcb1 = level12;
-	sharedMutex->pcb2 = level13;
-	
-	add_to_mutx_map(scheduler->mutexes, sharedMutex, level12);
-	
-	q_enqueue(scheduler->ready->queues[12], level12);
-	q_enqueue(scheduler->ready->queues[13], level13);
-	
-	
-	PCB toFind2 = scheduler->ready->queues[12]->first_node->pcb;
-	toStringPriorityQueue(scheduler->ready);
-	printf("Trying to remove P%d\n", toFind2->pid);
-	PCB match2 = pq_remove_matching_pcb (scheduler->ready, toFind2);
-	
-	printf("After removing P%d\n", match2->pid);
-	toStringPriorityQueue(scheduler->ready);
-	
-	schedulerDeconstructor(scheduler);
-}*/
+}
 
 
 void handleKilling (Scheduler theScheduler) {
 	Mutex currMutex = NULL;
 	PCB found = NULL;
 	
-	printf("\r\nEnqueueing into Killed queue\r\n");
 	if (theScheduler->running->role == PAIR || theScheduler->running->role == SHARED) {
-		printf("going to get a mutex\n");
-		currMutex = get_mutx(theScheduler->mutexes, theScheduler->running);
-		printf("finished getting mutex\n");
-		printf("currMutex == null? %d\n", (currMutex == NULL));
+		currMutex = take_n_remove_from_mutx_map(theScheduler->mutexes, theScheduler->running);
 		if (currMutex->pcb2 == theScheduler->running) { //if running is the pcb2 in the mutex, find the matching pcb1
-			printf("going to find matching pcb1\n");
-			printf("currMutex->pcb2 == null? %d, pid: P%d\n", (currMutex->pcb2 == NULL), currMutex->pcb2->pid);
-			printf("currMutex->pcb1 == null? %d, pid: P%d\n", (currMutex->pcb1 == NULL), currMutex->pcb1->pid);
-			toStringPriorityQueue(theScheduler->ready);
 			found = pq_remove_matching_pcb(theScheduler->ready, currMutex->pcb1);
-			printf("found matching pcb1\n");
 		} else { //otherwise the running is pcb1, so find pcb2
-			printf("going to find matching pcb2\n");
-			printf("currMutex->pcb1 == null? %d, pid: P%d\n", (currMutex->pcb1 == NULL), currMutex->pcb1->pid);
-			printf("currMutex->pcb2 == null? %d, pid: P%d\n", (currMutex->pcb2 == NULL), currMutex->pcb2->pid);
-			toStringPriorityQueue(theScheduler->ready);
 			found = pq_remove_matching_pcb(theScheduler->ready, currMutex->pcb2);
-			printf("found matching pcb2\n");
 		}
-		
-		printf("running: P%d\n", theScheduler->running->pid);
-		printf("killed list: ");
-		toStringReadyQueue (theScheduler->killed);
-		printf("found == null? %d\n", (found == NULL));
 		
 		q_enqueue(theScheduler->killed, theScheduler->running);
 		if (found) { //if found is null then the partnering pcb is already in the killed queue
-			printf("found: P%d\n", found->pid);
 			q_enqueue(theScheduler->killed, found);
 		}
-		
-		printf("Mutex List: ");
-		toStringMutexMap(theScheduler->mutexes);
-		//printf("END\r\n");
 	} else {
-		printf("enqueuing into killed queue\n");
 		q_enqueue(theScheduler->killed, theScheduler->running);
 	}
-	//q_enqueue(theScheduler->killed, theScheduler->interrupted);
+	
 	printf("Killed List: ");
 	toStringReadyQueue(theScheduler->killed);
 	theScheduler->running = NULL;

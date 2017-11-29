@@ -33,7 +33,7 @@ void printNull2 (Mutex mutex) {
 /*
 	Creates and initializes the value of the mutex.
 */
-Mutex mutex_init () {
+Mutex mutex_create () {
 	Mutex mutex = (Mutex) malloc (sizeof (struct MUTEX));
 	mutex->isLocked = 0;
 	mutex->hasLock = NULL;
@@ -43,6 +43,17 @@ Mutex mutex_init () {
 	mutex->mid = global_largest_MID;
 	global_largest_MID++;
 	return mutex;
+}
+
+
+void mutex_init (Mutex mutex) {
+	mutex->isLocked = 0;
+	mutex->hasLock = NULL;
+	mutex->blocked = NULL;
+	mutex->pcb1 = NULL;
+	mutex->pcb2 = NULL;
+	mutex->mid = global_largest_MID;
+	global_largest_MID++;
 }
 
 

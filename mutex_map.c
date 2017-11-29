@@ -250,7 +250,7 @@ void toStringMutexMap (MutexMap theMap) {
 	printf("MutexMap\r\n");
 	for (int i = 0; i < MAX_INIT_BUCKETS; i++) {
 		if (theMap->map[i]) {
-			printf("map[%d]->pcb: P%d\r\n", i, theMap->map[i]->mid);
+			printf("map[%d]->pcb: M%d\r\n", i, theMap->map[i]->mid);
 		} else {
 			printf("map[%d]->pcb: *\r\n", i);
 		}
