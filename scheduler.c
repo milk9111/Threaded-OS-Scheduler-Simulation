@@ -347,11 +347,13 @@ int makePCBList (Scheduler theScheduler) {
 		
 		// if (DEADLOCK) {
 			// populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
-			// populateMutexTraps1221(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
+			// populateMutexTraps2112(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
+		
 			
 		// } else {
 			// populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
-			// populateMutexTraps2112(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+			// populateMutexTraps1221(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
+		
 		// }
 		
 	// } else if (newPCB1->role == PAIR) {

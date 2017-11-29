@@ -166,18 +166,28 @@ void populateIOTraps (PCB pcb, int ioTrapType) {
 
 
 void populateMutexTraps1221(PCB pcb, int step) {
-	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step, 9 * step, 13 * step}), sizeof(unsigned int));
-	memcpy(pcb->lockR2, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), sizeof(unsigned int));
-	memcpy(pcb->unlockR2, ((unsigned int[TRAP_COUNT]) {3 * step, 7 * step, 11 * step, 15 * step}), sizeof(unsigned int));
-	memcpy(pcb->unlockR1, ((unsigned int[TRAP_COUNT]) {4 * step, 8 * step, 12 * step, 16 * step}), sizeof(unsigned int));
+	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step, 9 * step, 13 * step}), 4 * sizeof(unsigned int));
+	memcpy(pcb->lockR2, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), 4 * sizeof(unsigned int));
+	memcpy(pcb->unlockR2, ((unsigned int[TRAP_COUNT]) {3 * step, 7 * step, 11 * step, 15 * step}), 4 * sizeof(unsigned int));
+	memcpy(pcb->unlockR1, ((unsigned int[TRAP_COUNT]) {4 * step, 8 * step, 12 * step, 16 * step}), 4 * sizeof(unsigned int));
 }
 
 void populateMutexTraps2112(PCB pcb, int step) {
-	memcpy(pcb->lockR2, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step, 9 * step, 13 * step}), sizeof(unsigned int));
-	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), sizeof(unsigned int));
-	memcpy(pcb->unlockR1, ((unsigned int[TRAP_COUNT]) {3 * step, 7 * step, 11 * step, 15 * step}), sizeof(unsigned int));
-	memcpy(pcb->unlockR2, ((unsigned int[TRAP_COUNT]) {4 * step, 8 * step, 12 * step, 16 * step}), sizeof(unsigned int));
+	memcpy(pcb->lockR2, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step, 9 * step, 13 * step}), 4 * sizeof(unsigned int));
+	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), 4 * sizeof(unsigned int));
+	memcpy(pcb->unlockR1, ((unsigned int[TRAP_COUNT]) {3 * step, 7 * step, 11 * step, 15 * step}), 4 * sizeof(unsigned int));
+	memcpy(pcb->unlockR2, ((unsigned int[TRAP_COUNT]) {4 * step, 8 * step, 12 * step, 16 * step}), 4 * sizeof(unsigned int));
 }
+
+
+void populateProducerConsumerTraps(PCB pcb, int step) {
+	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step,  9 * step, 13 * step}), 4 * sizeof(unsigned int)); 
+	memcpy(pcb->wait_cond, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), 4 * sizeof(unsigned int)); 
+    memcpy(pcb->signal_cond,((unsigned int[TRAP_COUNT]) {3 * step, 7 * step, 11 * step, 15 * step}), 4 * sizeof(unsigned int));
+	memcpy(pcb->unlockR1, ((unsigned int[TRAP_COUNT]) {4 * step, 8 * step, 12 * step, 16 * step}), 4 * sizeof(unsigned int)); 
+}
+
+
 
 
 

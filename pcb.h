@@ -96,6 +96,9 @@ typedef struct pcb {
 	unsigned int lockR2[TRAP_COUNT];
 	unsigned int unlockR1[TRAP_COUNT];
 	unsigned int unlockR2[TRAP_COUNT];
+	
+	unsigned int wait_cond[TRAP_COUNT];
+	unsigned int signal_cond[TRAP_COUNT];
 
     // if process is blocked, which queue it is in
     CPU_context_p context; // set of cpu registers
@@ -190,6 +193,8 @@ void populateIOTraps (PCB, int);
 void populateMutexTraps1221(PCB pcb, int step);
 
 void populateMutexTraps2112(PCB pcb, int step);
+
+void populateProducerConsumerTraps(PCB pcb, int step);
 
 /*
  * Create and return a string representation of the provided PCB.
