@@ -18,7 +18,7 @@ int main()
 	for(i = 0; i < 201; i++)
 	{
 		//PCB tmp = PCB_create();
-		Mutex temp = mutex_init();
+		Mutex temp = mutex_create();
 		//temp->mid = tmp;
 		//temp->pcb2 = tmp;
 		int result = add_to_mutx_map(myMap, temp, temp->mid);
@@ -38,7 +38,7 @@ int main()
 	for(i = 0; i < 101; i++)
 	{
 		//PCB tmp = PCB_create();
-		Mutex temp = mutex_init();
+		Mutex temp = mutex_create();
 		//temp->pcb1 = tmp;
 		//temp->pcb2 = tmp;
 		int result = add_to_mutx_map(myMap, temp, temp->mid);

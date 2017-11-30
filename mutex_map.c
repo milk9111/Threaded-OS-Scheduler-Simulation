@@ -79,7 +79,7 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 			//printf("Moving in...\n");
 			//printf("pointer in location of tmp: %d", theMap->map[tmp]);
 			
-			while((theMap != NULL) && (theMap->map[tmp] != NULL) && (theMap->map[tmp]->mid != theKey))
+			while((theMap != NULL) && (theMap->map[tmp]->mid != theKey))
 			{	
 				//printf("theMap == null: %d\n", (theMap == NULL));
 				//printf("map[tmp]->pcb1->pid: %d\n", theMap->map[tmp]->pcb1->pid);
@@ -136,7 +136,7 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 
 Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 {
-	toStringMutexMap(theMap);
+	//toStringMutexMap(theMap);
 	if (theMap == NULL)
 	{
 		return NULL;
@@ -153,8 +153,7 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 					   // and need to find where our mutex got placed
 		tmp++;
 		printf("Delete and Remove collision!\n");
-		while((theMap->map[tmp] != NULL) 
-			&& (theMap->map[tmp]->mid != theKey))
+		while(theMap->map[tmp]->mid != theKey)
 		{
 			do
 			{
@@ -176,7 +175,7 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 	Mutex toFree = theMap->map[key];
 	//mutex_destroy(toFree);
 	theMap->map[key] = NULL;
-	toStringMutexMap(theMap);
+	//toStringMutexMap(theMap);
 	return toFree;
 }
 
@@ -192,12 +191,12 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 	int key = findKey(theKey, theMap->curr_map_size);
 	if (theMap->map[key] == NULL)
 	{
-		toStringMutexMap(theMap);
+		//toStringMutexMap(theMap);
 		printf("Trying to get key %d from theKey %d, but found NULL in map\n", key, theKey);
 		printf("in here2\n");
 		return NULL;
 	}
-	toStringMutexMap(theMap);
+	//toStringMutexMap(theMap);
 	printf("Searching for mutex with key: %d.\n", key);
 	if((theMap->map[key]->mid != theKey))
 	{
@@ -209,7 +208,7 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 		printf("Trying to find P%d\n", theKey->pid);
 		printf("tmp: %d\n", tmp);*/
 		//printf("Want: %d, have: %d, also have: %d vs %d\n", theKey->pid, theMap->map[tmp]->pcb1->pid, theMap->map[tmp]->pcb2->parent, theKey->parent);
-		while((theMap->map[tmp] != NULL) && (theMap->map[tmp]->mid != theKey))
+		while(theMap->map[tmp]->mid != theKey)
 		{
 			//printf("Not found yet, moving on from %d...\n", tmp);
 			do
