@@ -106,6 +106,7 @@ void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutexR1, Mutex share
 			}
 			break;
 		case PAIR:
+			populateMutexTraps1221(pcb, pcb->max_pc / MAX_DIVIDER);
 			if (isFirst) {
 				sharedMutexR1->pcb1 = pcb;
 				sharedMutexR2->pcb1 = pcb;
@@ -117,6 +118,7 @@ void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutexR1, Mutex share
 			pcb->mutex_R2_id = sharedMutexR2->mid;
 			break;
 		case SHARED:
+			populateMutexTraps1221(pcb, pcb->max_pc / MAX_DIVIDER);
 			if (isFirst) {
 				sharedMutexR1->pcb1 = pcb;
 				sharedMutexR2->pcb1 = pcb;
@@ -151,6 +153,64 @@ void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutexR1, Mutex share
 }
 
 
+/*void populateMutexLocations (PCB pcb) {
+	printf("Going to populate Mutex locations\n");
+	printf("max_pc: %d\n", pcb->max_pc);
+	unsigned int newLock = 0, newUnlock = 0, lastLock = 0, lastUnlock = 0, top = 0;
+	int max_pc_range = pcb->max_pc / 4;
+	for (int i = 0; i < TRAP_COUNT; i++) {
+		newLock = lastLock + (rand() % max_pc_range);
+		while (newLock >= pcb->max_pc) {
+			newLock = lastLock + (rand() % max_pc_range);		
+		}
+		
+		if (newLock == 0) {
+			newLock++;
+		}
+		
+		if (lastUnlock >= 0) {
+			while (newLock <= lastUnlock) {
+				newLock++;
+			}
+		}
+		pcb->lockR1[top] = newLock;
+		lastLock = newLock;
+		
+		newUnlock = newLock + (rand() % max_pc_range);
+		while (newUnlock >= pcb->max_pc) {
+			newUnlock = newLock + (rand() % max_pc_range);
+		}
+		
+		if (lastLock >= 0) {
+			while (newUnlock <= newLock) {
+				newUnlock++;
+			}
+		}
+		pcb->unlockR1[top] = newUnlock;
+		lastUnlock = newUnlock;
+		top++;
+	}
+	
+	top = 0;
+	lastLock = 0, lastUnlock = 0;;
+	printPCLocations(pcb->lockR1);
+	printPCLocations(pcb->unlockR1);
+	for (int i = 0; i < TRAP_COUNT; i++) {
+		
+	}
+	
+	
+}*/
+
+
+void printPCLocations (unsigned int pcLocs[]) {
+	for (int i = 0; i < TRAP_COUNT; i++) {
+		printf("%d ", pcLocs[i]);
+	}
+	printf("\r\n");
+}
+
+
 /*
 	A helper function to populate the IO Trap PC values for the pcb. Creates a random number 
 	that is less than the pcb's max PC value. While the random number is contained within either
@@ -162,9 +222,7 @@ void populateIOTraps (PCB pcb, int ioTrapType) {
 	unsigned int newRand = 0;
 	for (int i = 0; i < TRAP_COUNT; i++) {
 		newRand = rand() % pcb->max_pc;
-		while (ioTrapContains(newRand, pcb->io_1_traps) || ioTrapContains(newRand, pcb->io_2_traps) 
-			|| ioTrapContains(newRand, pcb->lockR1) || ioTrapContains(newRand, pcb->lockR2) 
-			|| ioTrapContains(newRand, pcb->unlockR1) || ioTrapContains(newRand, pcb->unlockR2)) {
+		while (ioTrapContains(newRand, pcb->io_1_traps) || ioTrapContains(newRand, pcb->io_2_traps)) {
 			newRand++;
 		}
 		if (!ioTrapType) {

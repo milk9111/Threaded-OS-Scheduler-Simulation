@@ -136,6 +136,7 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 
 Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 {
+	toStringMutexMap(theMap);
 	if (theMap == NULL)
 	{
 		return NULL;
@@ -145,7 +146,7 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 	{
 		return NULL;
 	}
-	printf("Attempting to remove from location %d.\n", key);
+	printf("Attempting to remove M%d from location %d.\n", theKey, key);
 	if((theMap->map[key]->mid != theKey))
 	{
 		int tmp = key; // If we hit here, we had a hash collision in the past 
@@ -175,7 +176,7 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 	Mutex toFree = theMap->map[key];
 	//mutex_destroy(toFree);
 	theMap->map[key] = NULL;
-	
+	toStringMutexMap(theMap);
 	return toFree;
 }
 

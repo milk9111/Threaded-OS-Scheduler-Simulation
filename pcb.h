@@ -16,6 +16,7 @@
 #define LARGEST_PC_POSSIBLE 1000
 #define SMALLEST_PC_POSSIBLE 30
 #define MAX_TERM_COUNT 8
+#define MAX_DIVIDER 16
 
 #define ROLE_PERCENTAGE_MAX_RANGE 200
 #define COMP_ROLE_MAX_RANGE 100
@@ -23,6 +24,8 @@
 #define IO_ROLE_MAX_RANGE 150
 #define PAIR_ROLE_MIN_RANGE 151
 #define PAIR_ROLE_MAX_RANGE 175
+
+#define MAX_PC_RANGE 50
 
 
 
@@ -138,6 +141,8 @@ int mutex_unlock (Mutex mutex, PCB pcb);
 
 int mutex_trylock (Mutex mutex, PCB pcb);
 
+void printPCLocations (unsigned int pcLocs[]);
+
 
 /*
  * Allocate a PCB and a context for that PCB.
@@ -193,6 +198,8 @@ void PCB_assign_priority(/* in */ PCB pcb, /* in */ unsigned int priority);
 int ioTrapContains(unsigned int, unsigned int[]);
 
 unsigned int makeMaxPC();
+
+void populateMutexLocations (PCB pcb);
 
 void populateIOTraps (PCB, int);
 

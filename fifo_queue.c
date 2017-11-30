@@ -338,42 +338,6 @@ void toStringReadyQueueMutexes(ReadyQueue theQueue) {
             toStringReadyQueueNode(temp, 1);
             temp = temp->next;
         }
-		printf("\r\n            ");
-		
-		temp = theQueue->first_node;
-		while (temp != 0) {
-			printf("____  ");
-			temp = temp->next;
-		}
-		printf("\r\n            ");
-		
-		temp = theQueue->first_node;
-		while (temp != 0) {
-			if (temp->mutex->pcb1) {
-				printf("p%2d   ", temp->mutex->pcb1->pid);
-			} else {
-				printf("p*    ");
-			}
-			temp = temp->next;
-		}
-		printf("\r\n            ");
-		
-		temp = theQueue->first_node;
-		while (temp != 0) {
-			if (temp->mutex->pcb2) {
-				printf("p%2d   ", temp->mutex->pcb2->pid);
-			} else {
-				printf("p*    ");
-			}
-			temp = temp->next;
-		}
-		printf("\r\n            ");
-		
-		temp = theQueue->first_node;
-		while (temp != 0) {
-			printf("----  ");
-			temp = temp->next;
-		}
 		printf("\r\n");
     }
 }

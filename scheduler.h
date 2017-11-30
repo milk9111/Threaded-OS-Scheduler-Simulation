@@ -42,8 +42,7 @@
 #define RANDOM_VALUE 101
 #define TOTAL_TERMINATED 5
 #define MAX_PRIVILEGE 4
-#define MAX_DIVIDER 16
-#define DEADLOCK 0
+#define DEADLOCK 1
 
 
 
@@ -102,11 +101,19 @@ void incrementRoleCount (enum pcb_type);
 
 void displayRoleCountResults();
 
-void handleKilling (Scheduler theScheduler);
+void handleKilledQueueInsertion (Scheduler theScheduler);
+
+void handleKilledQueueEmptying (Scheduler theScheduler);
 
 void lockAttempt(Scheduler theScheduler, int trapVal);
 
 void unlockAttempt(Scheduler theScheduler, int trapVal);
+
+void useMutex (Scheduler thisScheduler);
+
+int isLockPC (unsigned int pc, PCB pcb);
+
+int isUnlockPC (unsigned int pc, PCB pcb);
 
 
 #endif
