@@ -106,13 +106,22 @@ typedef struct pcb {
 	unsigned int mutex_R1_id;
 	unsigned int mutex_R2_id;
 
-
+	int isProducer;
+	int isConsumer;
+	
     // if process is blocked, which queue it is in
     CPU_context_p context; // set of cpu registers
     // other items to be added as needed.
 } PCB_s;
 
 typedef PCB_s * PCB;
+
+
+typedef struct COND_VAR {
+	int signal;
+} cond_var_s;
+
+typedef cond_var_s * ConditionVariable;
 
 
 typedef struct MUTEX {
@@ -122,9 +131,11 @@ typedef struct MUTEX {
 	PCB pcb2;
 	PCB hasLock;
 	PCB blocked;
+	ConditionVariable condVar;
 } mutex_s;
 
 typedef mutex_s * Mutex;
+
 
 
 Mutex mutex_create ();
@@ -142,6 +153,19 @@ int mutex_unlock (Mutex mutex, PCB pcb);
 int mutex_trylock (Mutex mutex, PCB pcb);
 
 void printPCLocations (unsigned int pcLocs[]);
+
+
+ConditionVariable cond_var_create ();
+
+void cond_var_init (ConditionVariable);
+
+void toStringConditionVariable (ConditionVariable);
+
+void cond_var_destroy (ConditionVariable);
+
+void cond_var_signal (ConditionVariable);
+
+int cond_var_wait (ConditionVariable);
 
 
 /*
@@ -207,7 +231,7 @@ void populateMutexTraps1221(PCB pcb, int step);
 
 void populateMutexTraps2112(PCB pcb, int step);
 
-void populateProducerConsumerTraps(PCB pcb, int step);
+void populateProducerConsumerTraps(PCB pcb, int step, int type);
 
 /*
  * Create and return a string representation of the provided PCB.

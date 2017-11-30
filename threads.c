@@ -163,6 +163,36 @@ void mutex_destroy(Mutex mutex) {
 }
 
 
+ConditionVariable cond_var_create () {
+	ConditionVariable condVar = (ConditionVariable) malloc (sizeof(struct COND_VAR));
+	return condVar;
+}
+
+
+void cond_var_init (ConditionVariable condVar) {
+	condVar->signal = 0;
+}
+
+
+void toStringConditionVariable (ConditionVariable condVar) {
+	printf("signal: %d\r\n", condVar->signal);
+}
+
+
+void cond_var_destroy (ConditionVariable condVar) {
+	free(condVar);
+}
+
+
+void cond_var_signal (ConditionVariable condVar) {
+	condVar->signal = 1;
+}
+
+
+int cond_var_wait (ConditionVariable condVar) {
+	return condVar->signal;
+}
+
 
 
 

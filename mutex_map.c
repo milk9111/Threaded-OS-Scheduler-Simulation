@@ -192,9 +192,12 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 	int key = findKey(theKey, theMap->curr_map_size);
 	if (theMap->map[key] == NULL)
 	{
+		toStringMutexMap(theMap);
+		printf("Trying to get key %d from theKey %d, but found NULL in map\n", key, theKey);
 		printf("in here2\n");
 		return NULL;
 	}
+	toStringMutexMap(theMap);
 	printf("Searching for mutex with key: %d.\n", key);
 	if((theMap->map[key]->mid != theKey))
 	{
@@ -227,6 +230,11 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 		key = tmp;
 	}
 	Mutex toFree = theMap->map[key];
+	if (toFree) {
+		printf("returning M%d\n", toFree->mid);
+	} else {
+		printf("return NULL\n");
+	}
 	//mutex_destroy(toFree);
 	//theMap->map[key] = NULL;
 	//printf("Grabbing from location %d.\nObtained pid: %d, looking for: %d\n", key, toFree->pcb1->pid, theKey->pid);

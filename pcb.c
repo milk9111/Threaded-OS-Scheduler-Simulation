@@ -38,7 +38,8 @@ void initialize_data(/* in-out */ PCB pcb) {
 	pcb->terminate = rand() % MAX_TERM_COUNT;
 	pcb->term_count = 0;
 	
-	
+	pcb->isProducer = 0;
+	pcb->isConsumer = 0;
 }
 
 
@@ -106,11 +107,20 @@ void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutexR1, Mutex share
 			}
 			break;
 		case PAIR:
-			populateMutexTraps1221(pcb, pcb->max_pc / MAX_DIVIDER);
 			if (isFirst) {
+				if ((rand() % 100) > 49) { //this decides if it's producer or consumer
+					pcb->isProducer = 1;
+				} else {
+					pcb->isConsumer = 1;
+				}
 				sharedMutexR1->pcb1 = pcb;
 				sharedMutexR2->pcb1 = pcb;
 			} else {
+				if (sharedMutexR1->pcb1->isProducer) { //if the first PCB is producer, the second will be 
+					pcb->isConsumer = 1;			   //Consumer, or vice versa
+				} else {
+					pcb->isProducer = 1;
+				}
 				sharedMutexR1->pcb2 = pcb;
 				sharedMutexR2->pcb2 = pcb;
 			}
@@ -118,33 +128,12 @@ void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutexR1, Mutex share
 			pcb->mutex_R2_id = sharedMutexR2->mid;
 			break;
 		case SHARED:
-			populateMutexTraps1221(pcb, pcb->max_pc / MAX_DIVIDER);
 			if (isFirst) {
 				sharedMutexR1->pcb1 = pcb;
 				sharedMutexR2->pcb1 = pcb;
-				/*lock = rand() % pcb->max_pc;
-				
-				if (lock == pcb->max_pc - 1) { //if the lock value is too close to the max_pc
-					lock--;
-				}
-				//unlock > lock + 1 & unlock < max_pc
-				unlock = lock + 2; //we can change this to be more random later on
-				
-				pcb->lock_pc = lock;
-				pcb->unlock_pc = unlock; */
 			} else {
 				sharedMutexR1->pcb2 = pcb;
 				sharedMutexR2->pcb2 = pcb;
-				/*lock = rand() % pcb->max_pc;
-				
-				if (lock == pcb->max_pc - 1) { //if the lock value is too close to the max_pc
-					lock--;
-				}
-				//unlock > lock + 1 & unlock < max_pc
-				unlock = lock + 2; //we can change this to be more random later on
-				
-				pcb->lock_pc = lock;
-				pcb->unlock_pc = unlock;*/
 			}
 			pcb->mutex_R1_id = sharedMutexR1->mid;
 			pcb->mutex_R2_id = sharedMutexR2->mid;
@@ -249,10 +238,13 @@ void populateMutexTraps2112(PCB pcb, int step) {
 }
 
 
-void populateProducerConsumerTraps(PCB pcb, int step) {
+void populateProducerConsumerTraps(PCB pcb, int step, int isProducer) {
 	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step,  9 * step, 13 * step}), 4 * sizeof(unsigned int)); 
-	memcpy(pcb->wait_cond, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), 4 * sizeof(unsigned int)); 
-    memcpy(pcb->signal_cond,((unsigned int[TRAP_COUNT]) {3 * step, 7 * step, 11 * step, 15 * step}), 4 * sizeof(unsigned int));
+	if (!isProducer) {
+		memcpy(pcb->wait_cond, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), 4 * sizeof(unsigned int)); 
+    } else {
+		memcpy(pcb->signal_cond,((unsigned int[TRAP_COUNT]) {3 * step, 7 * step, 11 * step, 15 * step}), 4 * sizeof(unsigned int));
+	}
 	memcpy(pcb->unlockR1, ((unsigned int[TRAP_COUNT]) {4 * step, 8 * step, 12 * step, 16 * step}), 4 * sizeof(unsigned int)); 
 }
 

@@ -109,11 +109,15 @@ void lockAttempt(Scheduler theScheduler, int trapVal);
 
 void unlockAttempt(Scheduler theScheduler, int trapVal);
 
-void useMutex (Scheduler thisScheduler);
+int useMutex (Scheduler thisScheduler);
 
 int isLockPC (unsigned int pc, PCB pcb);
 
 int isUnlockPC (unsigned int pc, PCB pcb);
+
+int isSignalPC (unsigned int pc, PCB pcb);
+
+int isWaitPC (unsigned int pc, PCB pcb);
 
 
 #endif
