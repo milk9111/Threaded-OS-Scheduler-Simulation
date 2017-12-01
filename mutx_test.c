@@ -103,4 +103,35 @@ int main()
 	}
 	
 	toStringMutexMap(myMap);
+
+	printf("\n-------------------------\nNULL chaining avoidance test.\n");
+	myMap = create_mutx_map(); //Reset the map for this test.
+	Mutex testMutx1 = mutex_create();
+	Mutex testMutx2 = mutex_create();
+	testMutx1->mid = 10;
+	testMutx2->mid = 210;
+	myMap->map[10] = testMutx1;
+	myMap->map[13] = testMutx2;
+	testMutex = NULL;
+	testMutex = get_mutx(myMap, 10);
+	printf("Control test - simple get, no collision.\n");
+	if(testMutex == NULL)
+	{
+		printf("Test failed completely, found Mutex was NULL!\n");
+	}
+	else
+	{
+		printf("Wanted MID: 10, found: %d\n", testMutex->mid);
+	} 
+	printf("NULL chain test.\n");
+	testMutex = NULL;
+	testMutex = get_mutx(myMap, 210);
+	if(testMutex == NULL)
+	{
+		printf("Test failed, found mutex was NULL!\n");
+	}
+	else
+	{
+		printf("Wanted MID: 210, found %d\n", testMutex->mid);
+	} 
 }

@@ -78,7 +78,18 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 			//printf("after tmp = %d\n", tmp);
 			//printf("Moving in...\n");
 			//printf("pointer in location of tmp: %d", theMap->map[tmp]);
-			
+			while(theMap->map[tmp] == NULL)
+			{
+				if(tmp == key)
+				{
+					return NULL;
+				}
+				tmp++;
+				if(tmp >= theMap->curr_map_size)
+				{
+					tmp = 0;
+				}
+			}
 			while((theMap != NULL) && (theMap->map[tmp]->mid != theKey))
 			{	
 				//printf("theMap == null: %d\n", (theMap == NULL));
@@ -153,6 +164,18 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 					   // and need to find where our mutex got placed
 		tmp++;
 		printf("Delete and Remove collision!\n");
+		while(theMap->map[tmp] == NULL)
+		{
+			if(tmp == key)
+			{
+				return NULL;
+			}
+			tmp++;
+			if(tmp >= theMap->curr_map_size)
+			{
+				tmp = 0;
+			}
+		}
 		while(theMap->map[tmp]->mid != theKey)
 		{
 			do
@@ -198,6 +221,7 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 	}
 	//toStringMutexMap(theMap);
 	printf("Searching for mutex with key: %d.\n", key);
+	
 	if((theMap->map[key]->mid != theKey))
 	{
 		int tmp = key; // If we hit here, we had a hash collision in the past 
@@ -208,6 +232,18 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 		printf("Trying to find P%d\n", theKey->pid);
 		printf("tmp: %d\n", tmp);*/
 		//printf("Want: %d, have: %d, also have: %d vs %d\n", theKey->pid, theMap->map[tmp]->pcb1->pid, theMap->map[tmp]->pcb2->parent, theKey->parent);
+		while(theMap->map[tmp] == NULL)
+		{
+			if(tmp == key)
+			{
+				return NULL;
+			}
+			tmp++;
+			if(tmp >= theMap->curr_map_size)
+			{
+				tmp = 0;
+			}
+		}
 		while(theMap->map[tmp]->mid != theKey)
 		{
 			//printf("Not found yet, moving on from %d...\n", tmp);
