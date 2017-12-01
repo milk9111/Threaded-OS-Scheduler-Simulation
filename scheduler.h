@@ -42,7 +42,7 @@
 #define RANDOM_VALUE 101
 #define TOTAL_TERMINATED 5
 #define MAX_PRIVILEGE 4
-#define DEADLOCK 1
+#define DEADLOCK 0
 
 
 
@@ -105,9 +105,9 @@ void handleKilledQueueInsertion (Scheduler theScheduler);
 
 void handleKilledQueueEmptying (Scheduler theScheduler);
 
-void lockAttempt(Scheduler theScheduler, int trapVal);
+void lockAttempt(Scheduler theScheduler, int mutexVal);
 
-void unlockAttempt(Scheduler theScheduler, int trapVal);
+void unlockAttempt(Scheduler theScheduler, int mutexVal);
 
 int useMutex (Scheduler thisScheduler);
 
@@ -118,6 +118,8 @@ int isUnlockPC (unsigned int pc, PCB pcb);
 int isSignalPC (unsigned int pc, PCB pcb);
 
 int isWaitPC (unsigned int pc, PCB pcb);
+
+void toStringMutexTraps(PCB newPCB1, PCB newPCB2);
 
 
 #endif
