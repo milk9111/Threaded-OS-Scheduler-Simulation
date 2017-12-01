@@ -16,23 +16,24 @@
 
 //includes
 #include "priority_queue.h"
+#include "mutex_map.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <pthread.h>
 #include <time.h>
+#include <pthread.h>
 
 
 //defines
-#define MAX_PCB_TOTAL 30
-#define RESET_COUNT 15
-#define MAX_PCB_IN_ROUND 5
+#define MAX_PCB_TOTAL 300
+#define RESET_COUNT 5
+#define MAX_MUTEX_IN_ROUND 3
 #define MAX_PC_JUMP 4000
 #define MIN_PC_JUMP 3000
 #define PC_JUMP_LIMIT 999
 #define MAKE_PCB_CHANCE_DOMAIN 100
 #define TIMER_RANGE 3
-#define MAKE_PCB_CHANCE_PERCENTAGE 10
+#define MAKE_PCB_CHANCE_PERCENTAGE 40
 #define IS_TIMER 1
 #define IS_IO_TRAP 2
 #define IS_IO_INTERRUPT 3
@@ -40,8 +41,10 @@
 #define SWITCH_CALLS 4
 #define MAX_VALUE_PRIVILEGED 15
 #define RANDOM_VALUE 101
-#define TOTAL_TERMINATED 10
+#define TOTAL_TERMINATED 5
 #define MAX_PRIVILEGE 4
+#define DEADLOCK 1
+
 
 
 //structs
@@ -49,6 +52,8 @@ typedef struct scheduler {
 	ReadyQueue created;
 	ReadyQueue killed;
 	ReadyQueue blocked;
+	ReadyQueue killedMutexes;
+	MutexMap mutexes;
 	PriorityQueue ready;
 	PCB running;
 	PCB interrupted;
@@ -89,11 +94,31 @@ void osLoop ();
 
 void * timerInterrupt (void *);
 
-void * ioTrap (void *);
+int ioTrap (PCB);
 
-void * ioInterrupt (void *);
+int ioInterrupt (ReadyQueue);
 
-int trapFound (PCB);
+void incrementRoleCount (enum pcb_type);
+
+void displayRoleCountResults();
+
+void handleKilledQueueInsertion (Scheduler theScheduler);
+
+void handleKilledQueueEmptying (Scheduler theScheduler);
+
+void lockAttempt(Scheduler theScheduler, int trapVal);
+
+void unlockAttempt(Scheduler theScheduler, int trapVal);
+
+int useMutex (Scheduler thisScheduler);
+
+int isLockPC (unsigned int pc, PCB pcb);
+
+int isUnlockPC (unsigned int pc, PCB pcb);
+
+int isSignalPC (unsigned int pc, PCB pcb);
+
+int isWaitPC (unsigned int pc, PCB pcb);
 
 
 #endif

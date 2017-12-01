@@ -89,10 +89,11 @@ int mutex_lock (Mutex mutex, PCB pcb) {
 */
 int mutex_trylock (Mutex mutex, PCB pcb) {
 	int wasLocked = 0;
-	
+
 	if (mutex) {
 		if (!mutex->isLocked) {
 			mutex->isLocked = 1;
+			wasLocked = 1;
 			mutex->hasLock = pcb;
 		}
 	} else {
