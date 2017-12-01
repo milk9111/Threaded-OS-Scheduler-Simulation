@@ -55,25 +55,31 @@ void osLoop () {
 		if (thisScheduler->running != NULL) { // In case the first makePCBList makes 0 PCBs
 			if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
 				isSwitched = useMutex(thisScheduler);
+			
 			}
 			
 			if (!isSwitched) { //If the context wasn't switched inside of useMutex
 				thisScheduler->running->context->pc++;
 				// Part of deadlock
-				// if (thisScheduler->running->role == SHARED) {
+				if (thisScheduler->running->role == SHARED) {
+					printf("in shared\n");
 					
-					// for (int i = 0; i < TRAP_COUNT; i++) {
-						// if (thisScheduler->running->pc == thisScheduler->running->lockR1[i]) {
-							// lockAttempt(thisScheduler, 1);				
-						// } else if (thisScheduler->running->pc == thisScheduler->running->unlockR1[i]) {
-							// unlockAttempt(thisScheduler, 1);		
-						// } else if(thisScheduler->running->pc == thisScheduler->running->lockR2[i]) {
-							// lockAttempt(thisScheduler, 2);
-						// } else if (thisScheduler->running->pc == thisScheduler->running->unlockR1[i]) {
-							// unlockAttempt(thisScheduler, 2);
-						// }
-					// }
-				// }
+					for (int i = 0; i < TRAP_COUNT; i++) {
+						if (thisScheduler->running->context->pc == thisScheduler->running->lockR1[i]) {
+							printf("lockr1\n");
+							lockAttempt(thisScheduler, 1);				
+						} else if (thisScheduler->running->context->pc == thisScheduler->running->unlockR1[i]) {
+							printf("unlockr1\n");
+							unlockAttempt(thisScheduler, 1);		
+						} else if(thisScheduler->running->context->pc == thisScheduler->running->lockR2[i]) {
+							printf("lockr2\n");
+							lockAttempt(thisScheduler, 2);
+						} else if (thisScheduler->running->context->pc == thisScheduler->running->unlockR1[i]) {
+							printf("unlockr2\n");
+							unlockAttempt(thisScheduler, 2);
+						}
+					}
+				}
 				
 				
 				if (timerInterrupt(iterationCount) == 1) {
@@ -235,53 +241,65 @@ int isWaitPC (unsigned int pc, PCB pcb) {
 }
 
 
-/*void lockAttempt(Scheduler theScheduler, int trapVal) {
+void lockAttempt(Scheduler theScheduler, int mutexVal) {
 	
 	Mutex currMutex;
 	int lockResult;
+	int lock;
 	
-	currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
+	if (mutexVal == 1) { // is mutex_R1_id
+		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
+	} else { // is mutex_R2_id
+		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
+	}
 	
 	printf("Attempting to lock R%d of process %d ================================\r\n", 
-	trapVal, thisScheduler->running->pid);
-						
-	lockResult = mutex_lock (currMutex, thisScheduler->running);
+	mutexVal, theScheduler->running->pid);
+	
+	lockResult = mutex_lock(currMutex, theScheduler->running);
+	
 		
-	if (lockResult) {
-		printf("Successfully locked R%d============\r\n", trapVal);
-		
-		
+	if (lockResult) { // lockResult = 1
+		printf("Successfully locked R%d============\r\n", mutexVal);
+			
 	} else {
-		printf("Failed to lock R1\r\n");
+		printf("Failed to lock R%d=========\r\n", mutexVal);
 		// deadlock monitor
 		// TODO: move all to a function
 		
 	}
-}*/
+}
 
-/*void unlockAttempt(Scheduler theScheduler, int trapVal) {
+void unlockAttempt(Scheduler theScheduler, int mutexVal) {
 	
 	Mutex currMutex;
 	int lockResult;
+	int lock;
 	
-	currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
+	if (mutexVal == 1) { // is mutex_R1_id
+		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
+	} else { // is mutex_R2_id
+		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
+	}
+	
+	lockResult = mutex_lock(currMutex, theScheduler->running);
 	
 	printf("Attempting to unlock R%d of process %d ================================\r\n", 
-	trapVal, thisScheduler->running->pid);
+	mutexVal, thisScheduler->running->pid);
 						
 	lockResult = mutex_unlock (currMutex, thisScheduler->running);
 		
 	if (lockResult) {
-		printf("Successfully unlocked R%d============\r\n", trapVal);
+		printf("Successfully unlocked R%d============\r\n", mutexVal);
 		
 		
 	} else {
-		printf("Failed to unlock R%d\r\n", trapVal);
+		printf("Failed to unlock R%d==========\r\n", mutexVal);
 		// deadlock monitor
 		// TODO: move all to a function
 		
 	}
-}*/
+}
 
 
 /*
@@ -406,20 +424,39 @@ int makePCBList (Scheduler theScheduler) {
 		//printf("Role was PAIR or SHARED, adding sharedMutexR1 M%d\r\n", sharedMutexR1->mid);
 		//printf("Role was PAIR or SHARED, adding sharedMutexR2 M%d\r\n", sharedMutexR2->mid);
 		if (newPCB1->role == SHARED) {
+			printf("=============================\n");
 			printf("Made Shared Resource pair\n");
-			populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
-			populateMutexTraps1221(newPCB2, newPCB2->max_pc / MAX_DIVIDER);
+			
+			if (DEADLOCK) {
+				populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+				populateMutexTraps2112(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
+				
+			} else {
+				populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+				populateMutexTraps1221(newPCB2, newPCB2->max_pc / MAX_DIVIDER);
+			}
+			
+			// toStringMutexTraps(newPCB1, newPCB2);
+		
+			printf("ADDING IN M%d from Shared Resource\n", sharedMutexR1->mid);
+			printf("ADDING IN M%d from Shared Resource\n", sharedMutexR2->mid);
+			
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR1, sharedMutexR1->mid);
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR2, sharedMutexR2->mid);
+			
+			printf("pcb1->mutex_R1_id: M%d\n", newPCB1->mutex_R1_id);
+			printf("pcb2->mutex_R2_id: M%d\n", newPCB2->mutex_R2_id);
 		} else {
 			/* LOOK AT THIS */
+			printf("=============================\n");
 			printf("Made Producer/Consumer\n");
 			populateProducerConsumerTraps(newPCB1, newPCB1->max_pc / MAX_DIVIDER, newPCB1->isProducer);
 			populateProducerConsumerTraps(newPCB2, newPCB2->max_pc / MAX_DIVIDER, newPCB2->isProducer);
-			printf("ADDING IN M%d\n", sharedMutexR1->mid);
+			printf("ADDING IN M%d from Producer/Consumer\n", sharedMutexR1->mid);
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR1, sharedMutexR1->mid);
 			printf("pcb1->mutex_R1_id: M%d\n", newPCB1->mutex_R1_id);
 			printf("pcb2->mutex_R1_id: M%d\n", newPCB2->mutex_R1_id);
+	
 			free(sharedMutexR2);
 		}
 		
@@ -911,21 +948,21 @@ int isPrivileged(PCB pcb) {
 
 
 //normal main
-/*void main () {
-	setvbuf(stdout, NULL, _IONBF, 0);
-	srand((unsigned) time(&t));
-	sysstack = 0;
-	switchCalls = 0;
-	currQuantumSize = 0;
+// void main () {
+	// setvbuf(stdout, NULL, _IONBF, 0);
+	// srand((unsigned) time(&t));
+	// sysstack = 0;
+	// switchCalls = 0;
+	// currQuantumSize = 0;
 	
-	//initialize pcb type counts
-	compCount = 0;
-	ioCount = 0;
-	pairCount = 0;
-	sharedCount = 0;
+	// initialize pcb type counts
+	// compCount = 0;
+	// ioCount = 0;
+	// pairCount = 0;
+	// sharedCount = 0;
 	
-	osLoop();
-}*/
+	// osLoop();
+// }
 
 
 // lock\unlock tests
@@ -1266,6 +1303,67 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 		printf("false\r\n");
 	}
 		//exit(0);
+}
+
+void toStringMutexTraps(PCB newPCB1, PCB newPCB2) {
+		printf("PCB 1 ==================================\r\n");
+			
+			
+		printf("mutex_1_traps lock\n");
+		printf("lock pcb1\r\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			
+			printf("%d ", newPCB1->lockR1[i]);
+		}
+		printf("unlock pcb1\r\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			
+			printf("%d ", newPCB1->unlockR1[i]);
+		}
+		printf("\r\nmutex_2_traps lock\r\n");
+		printf("lock2 pcb1\r\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+		
+			printf("%d ", newPCB1->lockR2[i]);
+		}
+		
+		printf("lock2 pcb1\r\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			
+			printf("%d ", newPCB1->unlockR2[i]);
+		}
+		printf("\n");
+		
+		
+		printf("PCB 2 ==================================\r\n");
+		
+		
+		printf("mutex_1_traps lock\n");
+		printf("lock pcb2\r\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			
+			printf("%d ", newPCB2->lockR1[i]);
+		}
+		
+			printf("unlock pcb2\r\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+		
+			printf("%d ", newPCB2->unlockR1[i]);
+		}
+		printf("\r\nmutex_2_traps lock\r\n");
+		printf("lock2 pcb2\r\n");
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			
+			printf("%d ", newPCB2->lockR2[i]);
+		}
+		printf("lock2 pcb2\r\n");
+		
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			
+			printf("%d ", newPCB2->unlockR2[i]);
+		}
+	
+	
 }
 
 
