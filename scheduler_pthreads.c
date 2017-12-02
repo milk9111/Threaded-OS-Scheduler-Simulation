@@ -557,6 +557,12 @@ void pseudoISR (Scheduler theScheduler, int interruptType) {
 	if (theScheduler->running && theScheduler->running->state != STATE_HALT) {
 		theScheduler->running->state = STATE_INT;
 		theScheduler->interrupted = theScheduler->running;
+	} else {
+		if (!(theScheduler->running)) {
+			printf("running was NULL in pseudoISR\n");
+		} else {
+			printf("running state was HALT\n");
+		}
 	}
 	scheduling(interruptType, theScheduler);
 	//printf("finished scheduling\n");
@@ -678,20 +684,24 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 	
 	if (interrupt_code == IS_TIMER) {
 		printf("Entering Timer Interrupt\r\n");
+		if (!(theScheduler->interrupted)) {
+			printf("interrupted is NULL\n");
+		} else {
+			printf("interrupted is not NULL\n");
+		}
+		
 		theScheduler->interrupted->state = STATE_READY;
+		printf("here2\n");
 		if (theScheduler->interrupted->priority < (NUM_PRIORITIES - 1)) {
+			printf("here3\n");
 			theScheduler->interrupted->priority++;
 		} else {
 			theScheduler->interrupted->priority = 0;
 		}
 		printf("\r\nEnqueueing into MLFQ\r\n");
 		toStringPCB(theScheduler->running, 0);
-		//printf("after1\n");
 		
 		pq_enqueue(theScheduler->ready, theScheduler->interrupted);
-		//printf("done enqueueing\n");
-		//toStringPriorityQueue(theScheduler->ready);
-		//printf("ENQ!\r\n");
 		int index = isPrivileged(theScheduler->running);
 		
 		if (index != 0) {
@@ -858,8 +868,12 @@ void schedulerDeconstructor (Scheduler theScheduler) {
 		}
 		
 		if (theScheduler->interrupted && theScheduler->running && theScheduler->interrupted == theScheduler->running) {
-			//printf("destroying interrupted\n");
-			PCB_destroy(theScheduler->interrupted);
+			//printf("\ndestroying interrupted\n");	
+			
+			//don't want to free interrupted because it was previously set to running so when that 
+			//PCB is destroyed this one doesn't need to be. 
+			theScheduler->interrupted = NULL;  
+			//printf("destroyed interrupted\n");
 		}
 		
 		//printf("destroying scheduler\n");
@@ -928,8 +942,32 @@ void main () {
 	
 	pthread_t timer;
 	pthread_create(&timer, &attr, timerInterrupt, (void *) scheduler);
+	
+	int isRunning = 0;
+	
 	for (;;) {
-		printf("In main\n");
+		printf("In main, iteration: %d\n", iteration); //may need to lock here
+		
+		printf("locking in main\n");
+		pthread_mutex_lock(&schedulerMutex);
+			printf("checking running\n");
+			if (scheduler->running) {
+				printf("running is not NULL\n");
+				isRunning = scheduler->running->pid;
+			} else {
+				printf("running is NULL\n");
+				isRunning = 0;
+			}
+			printf("finished checking\n");
+		pthread_mutex_unlock(&schedulerMutex);
+		printf("unlocked in main\n");
+		
+		if (isRunning) {
+			printf("Current running process in main: P%d\n", isRunning);
+		} else {
+			printf("Current running process in main: IDLE\n");
+		}
+		
 		
 		pthread_mutex_lock(&iterationMutex);
 			iteration++;
@@ -954,13 +992,21 @@ void main () {
 		
 		printf("\n");
 	}
-	
+	printf("destroying attr\n");
 	pthread_attr_destroy(&attr);
+	printf("destroyed attr\n");
 	
+	printf("destroying mutex\n");
 	pthread_mutex_destroy(&schedulerMutex);
+	printf("destroyed mutex\n");
 	
+	printf("joining timer thread\n");
 	pthread_join(timer, &status);
+	printf("joined timer thread\n");
+	
+	printf("destroying scheduler\n");
 	schedulerDeconstructor(scheduler);
+	printf("destroyed mutex\n");
 	
 	printf("Completed main, exiting\n");
 	pthread_exit(NULL);
@@ -981,13 +1027,21 @@ void * timerInterrupt(void * theScheduler)
 	for(;;)
 	{
 		printf("In Timer Interrupt\n");
-		pthread_mutex_lock(&schedulerMutex);
-			quantum.tv_nsec = currQuantumSize;
-		pthread_mutex_unlock(&schedulerMutex);
+		quantum.tv_nsec = currQuantumSize; //this WAS locked by schedulerMutex
 		
-		printf("sleeping\n");
+		printf("sleeping for %d\n", currQuantumSize);
 		nanosleep(&quantum, NULL);
 		printf("waking up\n");
+		
+		pthread_mutex_lock(&schedulerMutex);
+			if (scheduler->running) {
+				printf("running was not NULL in timer, starting pseudoISR\n");
+				pseudoISR(scheduler, IS_TIMER);
+			} else {
+				printf("running was NULL in timer, not starting pseudoISR\n");
+			}
+			currQuantumSize = getNextQuantumSize(scheduler->ready);
+		pthread_mutex_unlock(&schedulerMutex);
 		
 		pthread_mutex_lock(&iterationMutex);
 			printf("Checking iteration to make new processes\n");
@@ -1000,7 +1054,6 @@ void * timerInterrupt(void * theScheduler)
 			}
 		pthread_mutex_unlock(&iterationMutex);
 		
-		//pseudoISR(thisScheduler, IS_TIMER);
 		
 		pthread_mutex_lock(&schedulerMutex);
 			if (totalProcesses >= MAX_PCB_TOTAL) {
@@ -1024,7 +1077,7 @@ void * timerInterrupt(void * theScheduler)
 		printf("\n");
 	}
 	
-	printf("Finished timer, exitting\n");
+	printf("Finished timer, exiting\n");
 	pthread_exit(NULL);
 }
 
