@@ -27,6 +27,7 @@ int currQuantumSize;
 int quantum_tick = 0; // Use for quantum length tracking
 int io_timer = 0;
 int totalProcesses = 0;
+int iteration = 0;
 time_t t;
 
 // The global counts of each PCB type, the final count at end of program run 
@@ -38,6 +39,7 @@ int sharedCount;
 
 
 pthread_mutex_t schedulerMutex;
+pthread_mutex_t iterationMutex;
 
 
 /*
@@ -912,8 +914,11 @@ void main () {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
 	
+	void *status;
+	
 	totalProcesses = 0;
 	Scheduler scheduler = schedulerConstructor ();
+	currQuantumSize = 100;
 	
 	pthread_attr_t attr;
 	pthread_mutex_init(&schedulerMutex, NULL);
@@ -924,21 +929,41 @@ void main () {
 	pthread_t timer;
 	pthread_create(&timer, &attr, timerInterrupt, (void *) scheduler);
 	for (;;) {
-		PCB pcb = PCB_create ();
-		printf("made a PCB\n");
-		pq_enqueue(scheduler->ready, pcb);
-		pthread_mutex_lock(schedulerMutex);
-		totalProcesses++;
-		if (totalProcesses >= MAX_PCB_TOTAL) {
-			break;
-		}
-		pthread_mutex_unlock(schedulerMutex);
+		printf("In main\n");
+		
+		pthread_mutex_lock(&iterationMutex);
+			iteration++;
+		pthread_mutex_unlock(&iterationMutex);
+		
+		pthread_mutex_lock(&schedulerMutex);
+			printf("totalProcesses: %d\n", totalProcesses);
+		pthread_mutex_unlock(&schedulerMutex);
+		/*if (pthread_mutex_trylock(&schedulerMutex)) {
+			printf("Accessed trylock from main\n");
+			pthread_mutex_unlock(&schedulerMutex);
+		} else {
+			printf("Mutex was already locked, trylock failed in main\n");
+		}*/
+		pthread_mutex_lock(&schedulerMutex);
+			if (totalProcesses >= MAX_PCB_TOTAL) {
+				printf("MAX_PCB_TOTAL reached in main\n");
+				pthread_mutex_unlock(&schedulerMutex);
+				break;
+			}
+		pthread_mutex_unlock(&schedulerMutex);
+		
+		printf("\n");
 	}
 	
 	pthread_attr_destroy(&attr);
 	
-	pthread_join
+	pthread_mutex_destroy(&schedulerMutex);
+	
+	pthread_join(timer, &status);
 	schedulerDeconstructor(scheduler);
+	
+	printf("Completed main, exiting\n");
+	pthread_exit(NULL);
 }
 
 
@@ -950,41 +975,57 @@ void main () {
 */
 void * timerInterrupt(void * theScheduler)
 {	
-	//struct timespec quantum;
-	//quantum.tv_sec = 0;
+	Scheduler scheduler = (Scheduler) theScheduler;
+	struct timespec quantum;
+	quantum.tv_sec = 0;
 	for(;;)
 	{
-		//quantum.tv_nsec = currQuantumSize;
-		//nanosleep(quantum, NULL);
-		//pthread_mutex_lock(schedulerMutex);
-		//pseudoISR(thisScheduler, IS_TIMER);
 		printf("In Timer Interrupt\n");
-		pthread_mutex_lock(schedulerMutex);
-		if (totalProcesses >= MAX_PCB_TOTAL) {
-			break;
-		}
-		pthread_mutex_unlock(schedulerMutex);
-		//printSchedulerState(thisScheduler);
-		//iterationCount++;
-		//pthread_mutex_unlock(schedulerMutex);
+		pthread_mutex_lock(&schedulerMutex);
+			quantum.tv_nsec = currQuantumSize;
+		pthread_mutex_unlock(&schedulerMutex);
+		
+		printf("sleeping\n");
+		nanosleep(&quantum, NULL);
+		printf("waking up\n");
+		
+		pthread_mutex_lock(&iterationMutex);
+			printf("Checking iteration to make new processes\n");
+			if(!(iteration % RESET_COUNT)) {
+				printf("Going to make new processes\n");
+				pthread_mutex_lock(&schedulerMutex);
+					totalProcesses += makePCBList(scheduler);
+				pthread_mutex_unlock(&schedulerMutex);
+				printf("Finished making new processes\n");
+			}
+		pthread_mutex_unlock(&iterationMutex);
+		
+		//pseudoISR(thisScheduler, IS_TIMER);
+		
+		pthread_mutex_lock(&schedulerMutex);
+			if (totalProcesses >= MAX_PCB_TOTAL) {
+				printf("MAX_PCB_TOTAL reached in timer\n");
+				pthread_mutex_unlock(&schedulerMutex);
+				break;
+			}
+		pthread_mutex_unlock(&schedulerMutex);
+		/*if (pthread_mutex_trylock(&schedulerMutex)) {
+			printf("Accessed trylock from timer\n");
+			printf("totalProcesses from timer: %d\n", totalProcesses);
+			if (totalProcesses >= MAX_PCB_TOTAL) {
+				pthread_mutex_unlock(&schedulerMutex);
+				break;
+			}
+			pthread_mutex_unlock(&schedulerMutex);
+		} else {
+			printf("Mutex was already locked, trylock failed in timer\n");
+		}*/
+		
+		printf("\n");
 	}
 	
+	printf("Finished timer, exitting\n");
 	pthread_exit(NULL);
-	/*
-	if (quantum_tick >= currQuantumSize)
-	{
-		printf("Iteration: %d\r\n", iterationCount);
-		printf("Initiating Timer Interrupt\n");
-		printf("Current quantum tick: %d\r\n", quantum_tick);
-		quantum_tick = 0;
-		return 1;
-	}
-	else
-	{
-		quantum_tick++;
-		return 0;
-	}
-	*/
 }
 
 
