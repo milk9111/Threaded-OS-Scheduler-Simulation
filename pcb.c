@@ -314,16 +314,16 @@ PCB PCB_create() {
  */
 void PCB_destroy(/* in-out */ PCB pcb) {
 	if (pcb) {
-		printf("pcb not null\n");
-		printf("pid before context free: P%d\n", pcb->pid);
+		//printf("pcb not null\n");
+		//printf("pid before context free: P%d\n", pcb->pid);
 		if (pcb->context) {
 			free(pcb->context); 
 		}	
-		printf("pid before free: P%d\n", pcb->pid);
+		//printf("pid before free: P%d\n", pcb->pid);
 		free(pcb);// that thing
 		
 		pcb = NULL;
-		printf("pcb == null: %d\n", (pcb == NULL));
+		//printf("pcb == null: %d\n", (pcb == NULL));
 		//printf("pid after free: P%d\n\n", pcb->pid);
 	}
 }
