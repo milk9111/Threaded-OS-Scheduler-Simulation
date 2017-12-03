@@ -544,6 +544,12 @@ void terminate(Scheduler theScheduler) {
 	{
 		printf("Marking for termination...\r\n");
 		theScheduler->running->state = STATE_HALT;
+		theScheduler->interrupted = theScheduler->running;
+		if (theScheduler->running->state == STATE_HALT) {
+			printf("running was correctly marked\n");
+		} else {
+			printf("running was not correctly marked\n");
+		}
 		printf("...\r\n");
 		scheduling(IS_TERMINATING, theScheduler);	
 	}
@@ -1004,6 +1010,8 @@ void main () {
 			if (totalProcesses >= MAX_PCB_TOTAL) {
 				printf("\n");
 				printSchedulerState(scheduler);
+				printf("\n");
+				toStringMutexMap(scheduler->mutexes);
 				printf("MAX_PCB_TOTAL reached in main\n");
 				pthread_mutex_unlock(&schedulerMutex);
 				break;
