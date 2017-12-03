@@ -121,5 +121,7 @@ int isWaitPC (unsigned int pc, PCB pcb);
 
 void toStringMutexTraps(PCB newPCB1, PCB newPCB2);
 
+void deadlockMonitor(Scheduler thisScheduler);
+
 
 #endif

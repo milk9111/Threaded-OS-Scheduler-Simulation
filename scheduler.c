@@ -28,6 +28,8 @@ int quantum_tick = 0; // Use for quantum length tracking
 int io_timer = 0;
 time_t t;
 
+int contextSwitchCount = 0;
+
 // The global counts of each PCB type, the final count at end of program run 
 // should be roughly 50%, 25%, 12.5%, 12.5% respectively.
 int compCount;
@@ -55,31 +57,20 @@ void osLoop () {
 		if (thisScheduler->running != NULL) { // In case the first makePCBList makes 0 PCBs
 			if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
 				isSwitched = useMutex(thisScheduler);
+				
+				if (isSwitched) { // call deadlockMonitor after every 10th context switch
+					contextSwitchCount++;
+					if (contextSwitchCount == 10) {
+						deadlockMonitor(thisScheduler);	
+						contextSwitchCount = 0;
+					}
+								
+				}
 			
 			}
 			
 			if (!isSwitched) { //If the context wasn't switched inside of useMutex
 				thisScheduler->running->context->pc++;
-				// Part of deadlock
-				if (thisScheduler->running->role == SHARED) {
-					printf("in shared\n");
-					
-					for (int i = 0; i < TRAP_COUNT; i++) {
-						if (thisScheduler->running->context->pc == thisScheduler->running->lockR1[i]) {
-							printf("lockr1\n");
-							lockAttempt(thisScheduler, 1);				
-						} else if (thisScheduler->running->context->pc == thisScheduler->running->unlockR1[i]) {
-							printf("unlockr1\n");
-							unlockAttempt(thisScheduler, 1);		
-						} else if(thisScheduler->running->context->pc == thisScheduler->running->lockR2[i]) {
-							printf("lockr2\n");
-							lockAttempt(thisScheduler, 2);
-						} else if (thisScheduler->running->context->pc == thisScheduler->running->unlockR1[i]) {
-							printf("unlockr2\n");
-							unlockAttempt(thisScheduler, 2);
-						}
-					}
-				}
 				
 				
 				if (timerInterrupt(iterationCount) == 1) {
@@ -238,67 +229,6 @@ int isWaitPC (unsigned int pc, PCB pcb) {
 	}
 	
 	return isWait;
-}
-
-
-void lockAttempt(Scheduler theScheduler, int mutexVal) {
-	
-	Mutex currMutex;
-	int lockResult;
-	int lock;
-	
-	if (mutexVal == 1) { // is mutex_R1_id
-		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
-	} else { // is mutex_R2_id
-		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
-	}
-	
-	printf("Attempting to lock R%d of process %d ================================\r\n", 
-	mutexVal, theScheduler->running->pid);
-	
-	lockResult = mutex_lock(currMutex, theScheduler->running);
-	
-		
-	if (lockResult) { // lockResult = 1
-		printf("Successfully locked R%d============\r\n", mutexVal);
-			
-	} else {
-		printf("Failed to lock R%d=========\r\n", mutexVal);
-		// deadlock monitor
-		// TODO: move all to a function
-		
-	}
-}
-
-void unlockAttempt(Scheduler theScheduler, int mutexVal) {
-	
-	Mutex currMutex;
-	int lockResult;
-	int lock;
-	
-	if (mutexVal == 1) { // is mutex_R1_id
-		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
-	} else { // is mutex_R2_id
-		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
-	}
-	
-	lockResult = mutex_lock(currMutex, theScheduler->running);
-	
-	printf("Attempting to unlock R%d of process %d ================================\r\n", 
-	mutexVal, thisScheduler->running->pid);
-						
-	lockResult = mutex_unlock (currMutex, thisScheduler->running);
-		
-	if (lockResult) {
-		printf("Successfully unlocked R%d============\r\n", mutexVal);
-		
-		
-	} else {
-		printf("Failed to unlock R%d==========\r\n", mutexVal);
-		// deadlock monitor
-		// TODO: move all to a function
-		
-	}
 }
 
 
@@ -461,49 +391,6 @@ int makePCBList (Scheduler theScheduler) {
 		}
 		
 	}
-	
-	
-	/* Reformatted code of what is above. Contains methods
-	   to cause deadlocks or none at all in mutual resource
-	   pair types. */
-	/***************************************/
-	
-	/*PCB newPCB1 = PCB_create();
-	PCB newPCB2 = PCB_create();
-	
-	Mutex sharedMutexR1 = mutex_create();
-	Mutex sharedMutexR2 = mutex_create();
-	
-	initialize_pcb_type (newPCB1, 1, sharedMutexR1, sharedMutexR2); 
-	initialize_pcb_type (newPCB2, 0, sharedMutexR1, sharedMutexR2); 
-	
-	
-	if (newPCB1->role == SHARED) {
-		add_to_mutx_map(theScheduler->mutexes, sharedMutexR1, newPCB1);
-		add_to_mutx_map(theScheduler->mutexes, sharedMutexR2, newPCB2);
-		// if (DEADLOCK) {
-			// populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
-			// populateMutexTraps2112(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
-		
-			
-		// } else {
-			// populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
-			// populateMutexTraps1221(newPCB2, newPCB1->max_pc / MAX_DIVIDER);
-		
-		// }
-		
-	} else if (newPCB1->role == PAIR) {
-		add_to_mutx_map(theScheduler->mutexes, mutex1, newPCB1);
-		free(mutex2);
-	} else {		// freeing mutexes if type COMP or PAIR
-		free(mutex1);
-		free(mutex2);
-	}
-		
-	incrementRoleCount(newPCB1->role);
-	incrementRoleCount(newPCB2->role);*/
-		
-	/***************************************/
 	
 	newPCB1->state = STATE_NEW;
 	newPCB2->state = STATE_NEW;
@@ -1364,6 +1251,24 @@ void toStringMutexTraps(PCB newPCB1, PCB newPCB2) {
 		}
 	
 	
+}
+
+void deadlockMonitor(Scheduler thisScheduler) {
+	
+	// PCB1 owns a lock, see if owns the other lock as well
+	// if not, deadlock is detected
+	
+	Mutex mutex1;
+	Mutex mutex2;
+	
+	mutex1 = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
+	mutex2 = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
+	
+	if (mutex1->isLocked && (mutex1->hasLock == thisScheduler->running) && mutex2->isLocked && (mutex2->hasLock == thisScheduler->running)) {
+		printf("NO DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
+	} else {
+		printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
+	}
 }
 
 
