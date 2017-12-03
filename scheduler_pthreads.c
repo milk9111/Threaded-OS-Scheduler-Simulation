@@ -382,7 +382,7 @@ int makePCBList (Scheduler theScheduler) {
 	if (newPCB1->role == COMP || newPCB1->role == IO) { //if the role isn't one that uses a mutex, then destroy it.
 		//printf("Role wasn't PAIR or SHARED, freeing sharedMutexR1 M%d\r\n", sharedMutexR1->mid);
 		//printf("Role wasn't PAIR or SHARED, freeing sharedMutexR2 M%d\r\n", sharedMutexR2->mid);
-
+		printf("Made COMP or IO pair\n");
 		free(sharedMutexR1);
 		free(sharedMutexR2);
 	} else {

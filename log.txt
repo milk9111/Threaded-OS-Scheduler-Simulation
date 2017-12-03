@@ -1,0 +1,8564 @@
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P0 into MLFQ from makePCBList
+enqueuing P1 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: P0 -> P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 0
+killedMutexes size: 0
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 743
+io_1_traps
+10 45 704 437 
+io_2_traps
+227 587 638 678 
+terminate: 6
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 529
+io_1_traps
+309 131 373 364 
+io_2_traps
+491 513 358 30 
+terminate: 4
+term_count: 0
+
+
+
+
+Marking for termination...
+running was correctly marked
+...
+entering handleKilledQueueInsertion
+Killed List: P0 -> *
+finished handleKilledQueueInsertion
+Marking for termination...
+running was correctly marked
+...
+entering handleKilledQueueInsertion
+Killed List: P0 -> P1 -> *
+finished handleKilledQueueInsertion
+Made Shared Resource pair
+Attempting to insert in location 2.
+Inserting at location 2.
+Attempting to insert in location 3.
+Inserting at location 3.
+q_is_empty: 0
+enqueuing P2 into MLFQ from makePCBList
+enqueuing P3 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: P2 -> P3 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: P3 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 2
+killedMutexes size: 0
+
+Going to be running contents: PID: 2, state: running, role: shared, priority: 0, PC: 0, lock: 0, unlock: 0, partner: -1, 
+MAX PC: 868
+
+terminate: 4
+term_count: 0
+
+Next highest priority PCB contents: PID: 3, state: ready, role: shared, priority: 0, PC: 0, lock: 0, unlock: 0, partner: 2, 
+MAX PC: 223
+
+terminate: 5
+term_count: 0
+
+
+
+
+Marking for termination...
+running was correctly marked
+...
+entering handleKilledQueueInsertion
+Attempting to remove M2 from location 2.
+Attempting to remove M3 from location 3.
+Killed List: P0 -> P1 -> P2 -> P3 -> *
+finished handleKilledQueueInsertion
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P4 into MLFQ from makePCBList
+enqueuing P5 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P6 into MLFQ from makePCBList
+enqueuing P7 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P8 into MLFQ from makePCBList
+enqueuing P9 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P10 into MLFQ from makePCBList
+enqueuing P11 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P12 into MLFQ from makePCBList
+enqueuing P13 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M14
+Attempting to insert in location 14.
+Inserting at location 14.
+pcb1->mutex_R1_id: M14
+pcb2->mutex_R1_id: M14
+q_is_empty: 0
+enqueuing P14 into MLFQ from makePCBList
+enqueuing P15 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P16 into MLFQ from makePCBList
+enqueuing P17 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P18 into MLFQ from makePCBList
+enqueuing P19 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P20 into MLFQ from makePCBList
+enqueuing P21 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P22 into MLFQ from makePCBList
+enqueuing P23 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P24 into MLFQ from makePCBList
+enqueuing P25 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 26.
+Inserting at location 26.
+Attempting to insert in location 27.
+Inserting at location 27.
+q_is_empty: 0
+enqueuing P26 into MLFQ from makePCBList
+enqueuing P27 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 28.
+Inserting at location 28.
+Attempting to insert in location 29.
+Inserting at location 29.
+q_is_empty: 0
+enqueuing P28 into MLFQ from makePCBList
+enqueuing P29 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 30.
+Inserting at location 30.
+Attempting to insert in location 31.
+Inserting at location 31.
+q_is_empty: 0
+enqueuing P30 into MLFQ from makePCBList
+enqueuing P31 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P32 into MLFQ from makePCBList
+enqueuing P33 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P34 into MLFQ from makePCBList
+enqueuing P35 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P36 into MLFQ from makePCBList
+enqueuing P37 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P38 into MLFQ from makePCBList
+enqueuing P39 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P40 into MLFQ from makePCBList
+enqueuing P41 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P42 into MLFQ from makePCBList
+enqueuing P43 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P44 into MLFQ from makePCBList
+enqueuing P45 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P46 into MLFQ from makePCBList
+enqueuing P47 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P48 into MLFQ from makePCBList
+enqueuing P49 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P50 into MLFQ from makePCBList
+enqueuing P51 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P52 into MLFQ from makePCBList
+enqueuing P53 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P54 into MLFQ from makePCBList
+enqueuing P55 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 56.
+Inserting at location 56.
+Attempting to insert in location 57.
+Inserting at location 57.
+q_is_empty: 0
+enqueuing P56 into MLFQ from makePCBList
+enqueuing P57 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 58.
+Inserting at location 58.
+Attempting to insert in location 59.
+Inserting at location 59.
+q_is_empty: 0
+enqueuing P58 into MLFQ from makePCBList
+enqueuing P59 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P60 into MLFQ from makePCBList
+enqueuing P61 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P62 into MLFQ from makePCBList
+enqueuing P63 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P64 into MLFQ from makePCBList
+enqueuing P65 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P66 into MLFQ from makePCBList
+enqueuing P67 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P68 into MLFQ from makePCBList
+enqueuing P69 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P70 into MLFQ from makePCBList
+enqueuing P71 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P72 into MLFQ from makePCBList
+enqueuing P73 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M74
+Attempting to insert in location 74.
+Inserting at location 74.
+pcb1->mutex_R1_id: M74
+pcb2->mutex_R1_id: M74
+q_is_empty: 0
+enqueuing P74 into MLFQ from makePCBList
+enqueuing P75 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P76 into MLFQ from makePCBList
+enqueuing P77 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P78 into MLFQ from makePCBList
+enqueuing P79 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P80 into MLFQ from makePCBList
+enqueuing P81 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P82 into MLFQ from makePCBList
+enqueuing P83 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P84 into MLFQ from makePCBList
+enqueuing P85 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P86 into MLFQ from makePCBList
+enqueuing P87 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P88 into MLFQ from makePCBList
+enqueuing P89 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P90 into MLFQ from makePCBList
+enqueuing P91 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P92 into MLFQ from makePCBList
+enqueuing P93 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P94 into MLFQ from makePCBList
+enqueuing P95 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P96 into MLFQ from makePCBList
+enqueuing P97 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 98.
+Inserting at location 98.
+Attempting to insert in location 99.
+Inserting at location 99.
+q_is_empty: 0
+enqueuing P98 into MLFQ from makePCBList
+enqueuing P99 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P100 into MLFQ from makePCBList
+enqueuing P101 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 102.
+Inserting at location 102.
+Attempting to insert in location 103.
+Inserting at location 103.
+q_is_empty: 0
+enqueuing P102 into MLFQ from makePCBList
+enqueuing P103 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 104.
+Inserting at location 104.
+Attempting to insert in location 105.
+Inserting at location 105.
+q_is_empty: 0
+enqueuing P104 into MLFQ from makePCBList
+enqueuing P105 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P106 into MLFQ from makePCBList
+enqueuing P107 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P108 into MLFQ from makePCBList
+enqueuing P109 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P110 into MLFQ from makePCBList
+enqueuing P111 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M112
+Attempting to insert in location 112.
+Inserting at location 112.
+pcb1->mutex_R1_id: M112
+pcb2->mutex_R1_id: M112
+q_is_empty: 0
+enqueuing P112 into MLFQ from makePCBList
+enqueuing P113 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M114
+Attempting to insert in location 114.
+Inserting at location 114.
+pcb1->mutex_R1_id: M114
+pcb2->mutex_R1_id: M114
+q_is_empty: 0
+enqueuing P114 into MLFQ from makePCBList
+enqueuing P115 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P116 into MLFQ from makePCBList
+enqueuing P117 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P118 into MLFQ from makePCBList
+enqueuing P119 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P120 into MLFQ from makePCBList
+enqueuing P121 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P122 into MLFQ from makePCBList
+enqueuing P123 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P124 into MLFQ from makePCBList
+enqueuing P125 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P126 into MLFQ from makePCBList
+enqueuing P127 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P128 into MLFQ from makePCBList
+enqueuing P129 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P130 into MLFQ from makePCBList
+enqueuing P131 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P132 into MLFQ from makePCBList
+enqueuing P133 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M134
+Attempting to insert in location 134.
+Inserting at location 134.
+pcb1->mutex_R1_id: M134
+pcb2->mutex_R1_id: M134
+q_is_empty: 0
+enqueuing P134 into MLFQ from makePCBList
+enqueuing P135 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P136 into MLFQ from makePCBList
+enqueuing P137 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P138 into MLFQ from makePCBList
+enqueuing P139 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M140
+Attempting to insert in location 140.
+Inserting at location 140.
+pcb1->mutex_R1_id: M140
+pcb2->mutex_R1_id: M140
+q_is_empty: 0
+enqueuing P140 into MLFQ from makePCBList
+enqueuing P141 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P142 into MLFQ from makePCBList
+enqueuing P143 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P144 into MLFQ from makePCBList
+enqueuing P145 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P146 into MLFQ from makePCBList
+enqueuing P147 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P148 into MLFQ from makePCBList
+enqueuing P149 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P150 into MLFQ from makePCBList
+enqueuing P151 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P152 into MLFQ from makePCBList
+enqueuing P153 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 154.
+Inserting at location 154.
+Attempting to insert in location 155.
+Inserting at location 155.
+q_is_empty: 0
+enqueuing P154 into MLFQ from makePCBList
+enqueuing P155 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 156.
+Inserting at location 156.
+Attempting to insert in location 157.
+Inserting at location 157.
+q_is_empty: 0
+enqueuing P156 into MLFQ from makePCBList
+enqueuing P157 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P158 into MLFQ from makePCBList
+enqueuing P159 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 160.
+Inserting at location 160.
+Attempting to insert in location 161.
+Inserting at location 161.
+q_is_empty: 0
+enqueuing P160 into MLFQ from makePCBList
+enqueuing P161 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P162 into MLFQ from makePCBList
+enqueuing P163 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P164 into MLFQ from makePCBList
+enqueuing P165 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P166 into MLFQ from makePCBList
+enqueuing P167 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P168 into MLFQ from makePCBList
+enqueuing P169 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P170 into MLFQ from makePCBList
+enqueuing P171 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 172.
+Inserting at location 172.
+Attempting to insert in location 173.
+Inserting at location 173.
+q_is_empty: 0
+enqueuing P172 into MLFQ from makePCBList
+enqueuing P173 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P174 into MLFQ from makePCBList
+enqueuing P175 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M176
+Attempting to insert in location 176.
+Inserting at location 176.
+pcb1->mutex_R1_id: M176
+pcb2->mutex_R1_id: M176
+q_is_empty: 0
+enqueuing P176 into MLFQ from makePCBList
+enqueuing P177 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P178 into MLFQ from makePCBList
+enqueuing P179 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P180 into MLFQ from makePCBList
+enqueuing P181 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P182 into MLFQ from makePCBList
+enqueuing P183 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P184 into MLFQ from makePCBList
+enqueuing P185 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P186 into MLFQ from makePCBList
+enqueuing P187 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P188 into MLFQ from makePCBList
+enqueuing P189 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P190 into MLFQ from makePCBList
+enqueuing P191 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P192 into MLFQ from makePCBList
+enqueuing P193 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P194 into MLFQ from makePCBList
+enqueuing P195 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P196 into MLFQ from makePCBList
+enqueuing P197 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P198 into MLFQ from makePCBList
+enqueuing P199 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M200
+Attempting to insert in location 0.
+Inserting at location 0.
+pcb1->mutex_R1_id: M200
+pcb2->mutex_R1_id: M200
+q_is_empty: 0
+enqueuing P200 into MLFQ from makePCBList
+enqueuing P201 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P202 into MLFQ from makePCBList
+enqueuing P203 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P204 into MLFQ from makePCBList
+enqueuing P205 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P206 into MLFQ from makePCBList
+enqueuing P207 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P208 into MLFQ from makePCBList
+enqueuing P209 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P210 into MLFQ from makePCBList
+enqueuing P211 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P212 into MLFQ from makePCBList
+enqueuing P213 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M214
+Attempting to insert in location 14.
+--Insertion collision!--
+Inserting at location 15.
+pcb1->mutex_R1_id: M214
+pcb2->mutex_R1_id: M214
+q_is_empty: 0
+enqueuing P214 into MLFQ from makePCBList
+enqueuing P215 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 16.
+Inserting at location 16.
+Attempting to insert in location 17.
+Inserting at location 17.
+q_is_empty: 0
+enqueuing P216 into MLFQ from makePCBList
+enqueuing P217 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P218 into MLFQ from makePCBList
+enqueuing P219 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P220 into MLFQ from makePCBList
+enqueuing P221 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P222 into MLFQ from makePCBList
+enqueuing P223 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M224
+Attempting to insert in location 24.
+Inserting at location 24.
+pcb1->mutex_R1_id: M224
+pcb2->mutex_R1_id: M224
+q_is_empty: 0
+enqueuing P224 into MLFQ from makePCBList
+enqueuing P225 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M226
+Attempting to insert in location 26.
+--Insertion collision!--
+Inserting at location 32.
+pcb1->mutex_R1_id: M226
+pcb2->mutex_R1_id: M226
+q_is_empty: 0
+enqueuing P226 into MLFQ from makePCBList
+enqueuing P227 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P228 into MLFQ from makePCBList
+enqueuing P229 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M230
+Attempting to insert in location 30.
+--Insertion collision!--
+Inserting at location 33.
+pcb1->mutex_R1_id: M230
+pcb2->mutex_R1_id: M230
+q_is_empty: 0
+enqueuing P230 into MLFQ from makePCBList
+enqueuing P231 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P232 into MLFQ from makePCBList
+enqueuing P233 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P234 into MLFQ from makePCBList
+enqueuing P235 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P236 into MLFQ from makePCBList
+enqueuing P237 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P238 into MLFQ from makePCBList
+enqueuing P239 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P240 into MLFQ from makePCBList
+enqueuing P241 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P242 into MLFQ from makePCBList
+enqueuing P243 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P244 into MLFQ from makePCBList
+enqueuing P245 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M246
+Attempting to insert in location 46.
+Inserting at location 46.
+pcb1->mutex_R1_id: M246
+pcb2->mutex_R1_id: M246
+q_is_empty: 0
+enqueuing P246 into MLFQ from makePCBList
+enqueuing P247 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P248 into MLFQ from makePCBList
+enqueuing P249 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P250 into MLFQ from makePCBList
+enqueuing P251 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M252
+Attempting to insert in location 52.
+Inserting at location 52.
+pcb1->mutex_R1_id: M252
+pcb2->mutex_R1_id: M252
+q_is_empty: 0
+enqueuing P252 into MLFQ from makePCBList
+enqueuing P253 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 54.
+Inserting at location 54.
+Attempting to insert in location 55.
+Inserting at location 55.
+q_is_empty: 0
+enqueuing P254 into MLFQ from makePCBList
+enqueuing P255 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P256 into MLFQ from makePCBList
+enqueuing P257 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P258 into MLFQ from makePCBList
+enqueuing P259 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 60.
+Inserting at location 60.
+Attempting to insert in location 61.
+Inserting at location 61.
+q_is_empty: 0
+enqueuing P260 into MLFQ from makePCBList
+enqueuing P261 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 62.
+Inserting at location 62.
+Attempting to insert in location 63.
+Inserting at location 63.
+q_is_empty: 0
+enqueuing P262 into MLFQ from makePCBList
+enqueuing P263 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P264 into MLFQ from makePCBList
+enqueuing P265 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P266 into MLFQ from makePCBList
+enqueuing P267 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 68.
+Inserting at location 68.
+Attempting to insert in location 69.
+Inserting at location 69.
+q_is_empty: 0
+enqueuing P268 into MLFQ from makePCBList
+enqueuing P269 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 70.
+Inserting at location 70.
+Attempting to insert in location 71.
+Inserting at location 71.
+q_is_empty: 0
+enqueuing P270 into MLFQ from makePCBList
+enqueuing P271 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P272 into MLFQ from makePCBList
+enqueuing P273 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P274 into MLFQ from makePCBList
+enqueuing P275 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M276
+Attempting to insert in location 76.
+Inserting at location 76.
+pcb1->mutex_R1_id: M276
+pcb2->mutex_R1_id: M276
+q_is_empty: 0
+enqueuing P276 into MLFQ from makePCBList
+enqueuing P277 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P278 into MLFQ from makePCBList
+enqueuing P279 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 80.
+Inserting at location 80.
+Attempting to insert in location 81.
+Inserting at location 81.
+q_is_empty: 0
+enqueuing P280 into MLFQ from makePCBList
+enqueuing P281 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M282
+Attempting to insert in location 82.
+Inserting at location 82.
+pcb1->mutex_R1_id: M282
+pcb2->mutex_R1_id: M282
+q_is_empty: 0
+enqueuing P282 into MLFQ from makePCBList
+enqueuing P283 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P284 into MLFQ from makePCBList
+enqueuing P285 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P286 into MLFQ from makePCBList
+enqueuing P287 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P288 into MLFQ from makePCBList
+enqueuing P289 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P290 into MLFQ from makePCBList
+enqueuing P291 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P292 into MLFQ from makePCBList
+enqueuing P293 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made COMP or IO pair
+q_is_empty: 0
+enqueuing P294 into MLFQ from makePCBList
+enqueuing P295 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Producer/Consumer
+ADDING IN M296
+Attempting to insert in location 96.
+Inserting at location 96.
+pcb1->mutex_R1_id: M296
+pcb2->mutex_R1_id: M296
+q_is_empty: 0
+enqueuing P296 into MLFQ from makePCBList
+enqueuing P297 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Made Shared Resource pair
+Attempting to insert in location 98.
+--Insertion collision!--
+Inserting at location 100.
+Attempting to insert in location 99.
+--Insertion collision!--
+Inserting at location 101.
+q_is_empty: 0
+enqueuing P298 into MLFQ from makePCBList
+enqueuing P299 into MLFQ from makePCBList
+printing scheduler state from makePCBList
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+end printing in makePCBList
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+MAX_PCB_TOTAL reached in timer
+Finished timer, exiting
+
+MLFQ State
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked size: 0
+killed size: 4
+killedMutexes size: 2
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+
+MutexMap
+map[0]->pcb: M200
+map[1]->pcb: *
+map[2]->pcb: *
+map[3]->pcb: *
+map[4]->pcb: *
+map[5]->pcb: *
+map[6]->pcb: *
+map[7]->pcb: *
+map[8]->pcb: *
+map[9]->pcb: *
+map[10]->pcb: *
+map[11]->pcb: *
+map[12]->pcb: *
+map[13]->pcb: *
+map[14]->pcb: M14
+map[15]->pcb: M214
+map[16]->pcb: M216
+map[17]->pcb: M217
+map[18]->pcb: *
+map[19]->pcb: *
+map[20]->pcb: *
+map[21]->pcb: *
+map[22]->pcb: *
+map[23]->pcb: *
+map[24]->pcb: M224
+map[25]->pcb: *
+map[26]->pcb: M26
+map[27]->pcb: M27
+map[28]->pcb: M28
+map[29]->pcb: M29
+map[30]->pcb: M30
+map[31]->pcb: M31
+map[32]->pcb: M226
+map[33]->pcb: M230
+map[34]->pcb: *
+map[35]->pcb: *
+map[36]->pcb: *
+map[37]->pcb: *
+map[38]->pcb: *
+map[39]->pcb: *
+map[40]->pcb: *
+map[41]->pcb: *
+map[42]->pcb: *
+map[43]->pcb: *
+map[44]->pcb: *
+map[45]->pcb: *
+map[46]->pcb: M246
+map[47]->pcb: *
+map[48]->pcb: *
+map[49]->pcb: *
+map[50]->pcb: *
+map[51]->pcb: *
+map[52]->pcb: M252
+map[53]->pcb: *
+map[54]->pcb: M254
+map[55]->pcb: M255
+map[56]->pcb: M56
+map[57]->pcb: M57
+map[58]->pcb: M58
+map[59]->pcb: M59
+map[60]->pcb: M260
+map[61]->pcb: M261
+map[62]->pcb: M262
+map[63]->pcb: M263
+map[64]->pcb: *
+map[65]->pcb: *
+map[66]->pcb: *
+map[67]->pcb: *
+map[68]->pcb: M268
+map[69]->pcb: M269
+map[70]->pcb: M270
+map[71]->pcb: M271
+map[72]->pcb: *
+map[73]->pcb: *
+map[74]->pcb: M74
+map[75]->pcb: *
+map[76]->pcb: M276
+map[77]->pcb: *
+map[78]->pcb: *
+map[79]->pcb: *
+map[80]->pcb: M280
+map[81]->pcb: M281
+map[82]->pcb: M282
+map[83]->pcb: *
+map[84]->pcb: *
+map[85]->pcb: *
+map[86]->pcb: *
+map[87]->pcb: *
+map[88]->pcb: *
+map[89]->pcb: *
+map[90]->pcb: *
+map[91]->pcb: *
+map[92]->pcb: *
+map[93]->pcb: *
+map[94]->pcb: *
+map[95]->pcb: *
+map[96]->pcb: M296
+map[97]->pcb: *
+map[98]->pcb: M98
+map[99]->pcb: M99
+map[100]->pcb: M298
+map[101]->pcb: M299
+map[102]->pcb: M102
+map[103]->pcb: M103
+map[104]->pcb: M104
+map[105]->pcb: M105
+map[106]->pcb: *
+map[107]->pcb: *
+map[108]->pcb: *
+map[109]->pcb: *
+map[110]->pcb: *
+map[111]->pcb: *
+map[112]->pcb: M112
+map[113]->pcb: *
+map[114]->pcb: M114
+map[115]->pcb: *
+map[116]->pcb: *
+map[117]->pcb: *
+map[118]->pcb: *
+map[119]->pcb: *
+map[120]->pcb: *
+map[121]->pcb: *
+map[122]->pcb: *
+map[123]->pcb: *
+map[124]->pcb: *
+map[125]->pcb: *
+map[126]->pcb: *
+map[127]->pcb: *
+map[128]->pcb: *
+map[129]->pcb: *
+map[130]->pcb: *
+map[131]->pcb: *
+map[132]->pcb: *
+map[133]->pcb: *
+map[134]->pcb: M134
+map[135]->pcb: *
+map[136]->pcb: *
+map[137]->pcb: *
+map[138]->pcb: *
+map[139]->pcb: *
+map[140]->pcb: M140
+map[141]->pcb: *
+map[142]->pcb: *
+map[143]->pcb: *
+map[144]->pcb: *
+map[145]->pcb: *
+map[146]->pcb: *
+map[147]->pcb: *
+map[148]->pcb: *
+map[149]->pcb: *
+map[150]->pcb: *
+map[151]->pcb: *
+map[152]->pcb: *
+map[153]->pcb: *
+map[154]->pcb: M154
+map[155]->pcb: M155
+map[156]->pcb: M156
+map[157]->pcb: M157
+map[158]->pcb: *
+map[159]->pcb: *
+map[160]->pcb: M160
+map[161]->pcb: M161
+map[162]->pcb: *
+map[163]->pcb: *
+map[164]->pcb: *
+map[165]->pcb: *
+map[166]->pcb: *
+map[167]->pcb: *
+map[168]->pcb: *
+map[169]->pcb: *
+map[170]->pcb: *
+map[171]->pcb: *
+map[172]->pcb: M172
+map[173]->pcb: M173
+map[174]->pcb: *
+map[175]->pcb: *
+map[176]->pcb: M176
+map[177]->pcb: *
+map[178]->pcb: *
+map[179]->pcb: *
+map[180]->pcb: *
+map[181]->pcb: *
+map[182]->pcb: *
+map[183]->pcb: *
+map[184]->pcb: *
+map[185]->pcb: *
+map[186]->pcb: *
+map[187]->pcb: *
+map[188]->pcb: *
+map[189]->pcb: *
+map[190]->pcb: *
+map[191]->pcb: *
+map[192]->pcb: *
+map[193]->pcb: *
+map[194]->pcb: *
+map[195]->pcb: *
+map[196]->pcb: *
+map[197]->pcb: *
+map[198]->pcb: *
+map[199]->pcb: *
+Total MutexMap size: 200
+MAX_PCB_TOTAL reached in main
+
+TOTAL ROLE TYPES: 300
+
+COMP: 	152
+IO: 	72
+PAIR: 	34
+SHARED: 42
+Completed main, exiting
