@@ -40,6 +40,7 @@ int sharedCount;
 
 pthread_mutex_t schedulerMutex;
 pthread_mutex_t iterationMutex;
+pthread_mutex_t randMutex;
 
 
 /*
@@ -354,7 +355,7 @@ int makePCBList (Scheduler theScheduler) {
 	int newPCBCount = 2;
 	//int mutexCount = rand() & MAX_MUTEX_IN_ROUND;
 	
-	int lottery = rand();
+	//int lottery = rand();
 	//for (int i = 0; i < newPCBCount; i++) {
 		
 	Mutex sharedMutexR1 = mutex_create();
@@ -692,7 +693,7 @@ void resetReadyQueue (ReadyQueue queue) {
 */
 void scheduling (int interrupt_code, Scheduler theScheduler) {
 	//Mutex currMutex;
-	
+	int temp = 0;
 	if (interrupt_code == IS_TIMER) {
 		printf("Entering Timer Interrupt\r\n");
 		if (!(theScheduler->interrupted)) {
@@ -946,6 +947,8 @@ void main () {
 	
 	pthread_attr_t attr;
 	pthread_mutex_init(&schedulerMutex, NULL);
+	pthread_mutex_init(&iterationMutex, NULL);
+	pthread_mutex_init(&randMutex, NULL);
 	
 	pthread_attr_init(&attr);
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
@@ -1028,6 +1031,8 @@ void main () {
 	
 	//printf("destroying mutex\n");
 	pthread_mutex_destroy(&schedulerMutex);
+	pthread_mutex_destroy(&iterationMutex);
+	pthread_mutex_destroy(&randMutex);
 	//printf("destroyed mutex\n");
 	
 	//printf("joining timer thread\n");
@@ -1052,13 +1057,18 @@ void main () {
 void * timerInterrupt(void * theScheduler)
 {	
 	Scheduler scheduler = (Scheduler) theScheduler;
+	unsigned int temp = 0;
+	unsigned int *seed;
+	
 	struct timespec quantum;
 	quantum.tv_sec = 0;
 	for(;;)
 	{
+		
 		//printf("In Timer Interrupt\n");
 		quantum.tv_nsec = currQuantumSize; //this WAS locked by schedulerMutex
 		
+	
 		//printf("sleeping for %d\n", currQuantumSize);
 		nanosleep(&quantum, NULL); //puts the thread to sleep
 		//printf("waking up\n");
@@ -1082,17 +1092,22 @@ void * timerInterrupt(void * theScheduler)
 					resetMLFQ(scheduler);
 				pthread_mutex_unlock(&schedulerMutex);
 				//printf("Going to make new processes\n");
+							
+				pthread_mutex_lock(&randMutex);
+					temp = rand() + time(NULL) + (unsigned int) pthread_self();
+					seed = &temp;
+				pthread_mutex_unlock(&randMutex);
 				
-				//printf("got in here\n");
-				if (rand() % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
-					pthread_mutex_lock(&schedulerMutex);
+				pthread_mutex_lock(&schedulerMutex);
+					if (rand_r(seed) % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
 						//printf("Going to make new processes\n");
 						totalProcesses += makePCBList (scheduler); //makes new processes
 						printf("\n");
 						printSchedulerState(scheduler);
 						//printf("Finished making new processes\n");
-					pthread_mutex_unlock(&schedulerMutex);
-				}
+					}
+				pthread_mutex_unlock(&schedulerMutex);
+				
 				//totalProcesses += makePCBList (scheduler); //makes new processes
 				//printf("got in here2\n");
 				
