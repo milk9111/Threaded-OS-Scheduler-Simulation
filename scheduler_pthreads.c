@@ -394,7 +394,6 @@ int makePCBList (Scheduler theScheduler) {
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR1, sharedMutexR1->mid);
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR2, sharedMutexR2->mid);
 		} else {
-			/* LOOK AT THIS */
 			printf("Made Producer/Consumer\n");
 			populateProducerConsumerTraps(newPCB1, newPCB1->max_pc / MAX_DIVIDER, newPCB1->isProducer);
 			populateProducerConsumerTraps(newPCB2, newPCB2->max_pc / MAX_DIVIDER, newPCB2->isProducer);
@@ -463,16 +462,19 @@ int makePCBList (Scheduler theScheduler) {
 	//}
 	//printf("Making New PCBs: \r\n");
 	if (newPCBCount) {
-		//printf("q_is_empty: %d\r\n", q_is_empty(theScheduler->created));
+		printf("q_is_empty: %d\r\n", q_is_empty(theScheduler->created));
 		while (!q_is_empty(theScheduler->created)) {
 			PCB nextPCB = q_dequeue(theScheduler->created);
 			//toStringPCB(nextPCB, 0);
 			nextPCB->state = STATE_READY;
 			//printf("\r\n");
+			printf("enqueuing P%d into MLFQ from makePCBList\n", nextPCB->pid);
 			pq_enqueue(theScheduler->ready, nextPCB);
 		}
 		//printf("\r\n");
-		
+		printf("printing scheduler state from makePCBList\n");
+		toStringPriorityQueue(theScheduler->ready);
+		printf("end printing in makePCBList\n");
 		//toStringPriorityQueue(theScheduler->ready);
 		if (theScheduler->isNew) {
 			//printf("Dequeueing PCB ");
@@ -754,7 +756,6 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		printf("Exiting IO Interrupt\r\n");
 	}
 	
-	printf("Above condition for handleKilledQueueInsertion\n");
 	if (theScheduler->interrupted != NULL && theScheduler->interrupted->state == STATE_HALT) {
 		printf("entering handleKilledQueueInsertion\n");
 		handleKilledQueueInsertion(theScheduler);
@@ -770,6 +771,7 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 	}
 	
 	if (theScheduler->killed->size >= TOTAL_TERMINATED) {
+		printf("entering handleKilledQueueEmptying\n");
 		handleKilledQueueEmptying(theScheduler);
 	}
 
@@ -1316,13 +1318,17 @@ void handleKilledQueueInsertion (Scheduler theScheduler) {
 	
 	if (theScheduler->running->role == PAIR || theScheduler->running->role == SHARED) {
 		mutex1 = take_n_remove_from_mutx_map(theScheduler->mutexes, theScheduler->running->mutex_R1_id);
-		mutex2 = take_n_remove_from_mutx_map(theScheduler->mutexes, theScheduler->running->mutex_R2_id);
+		if (theScheduler->running->role == SHARED) {
+			mutex2 = take_n_remove_from_mutx_map(theScheduler->mutexes, theScheduler->running->mutex_R2_id);
+		}
 		if (!mutex1) {
+			toStringMutexMap(theScheduler->mutexes);
 			printf("\r\n\t\t\tmutex1 was null! Tried to find M%d but it wasn't in the map!!!\r\n\r\n", theScheduler->running->mutex_R1_id);
 			exit(0);
 		}
 		
-		if (!mutex2) {
+		if (theScheduler->running->role == SHARED && !mutex2) {
+			toStringMutexMap(theScheduler->mutexes);
 			printf("\r\n\t\t\tmutex2 was null! Tried to find M%d but it wasn't in the map!!!\r\n\r\n", theScheduler->running->mutex_R2_id);
 			exit(0);
 		}
@@ -1339,7 +1345,9 @@ void handleKilledQueueInsertion (Scheduler theScheduler) {
 		}
 		
 		q_enqueue_m(theScheduler->killedMutexes, mutex1);
-		q_enqueue_m(theScheduler->killedMutexes, mutex2);
+		if (theScheduler->running->role == SHARED) {
+			q_enqueue_m(theScheduler->killedMutexes, mutex2);
+		}
 	} else {
 		q_enqueue(theScheduler->killed, theScheduler->running);
 	}
