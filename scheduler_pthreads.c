@@ -399,18 +399,9 @@ int makePCBList (Scheduler theScheduler) {
 			populateProducerConsumerTraps(newPCB1, newPCB1->max_pc / MAX_DIVIDER, newPCB1->isProducer);
 			populateProducerConsumerTraps(newPCB2, newPCB2->max_pc / MAX_DIVIDER, newPCB2->isProducer);
 			
-			if (sharedMutexR1) {
-				printf("shareMutexR1 is not NULL\n");
-			} else {
-				printf("shareMutexR1 is NULL\n");
-			}
 			printf("ADDING IN M%d\n", sharedMutexR1->mid);
-			printf("going in\n");
 			int result = add_to_mutx_map(theScheduler->mutexes, sharedMutexR1, sharedMutexR1->mid);
-			if (result == 1) {
-				printf("Adding failed, returned 1\n");
-			}
-			printf("finished adding\N");
+
 			printf("pcb1->mutex_R1_id: M%d\n", newPCB1->mutex_R1_id);
 			printf("pcb2->mutex_R1_id: M%d\n", newPCB2->mutex_R1_id);
 			free(sharedMutexR2);
@@ -548,7 +539,8 @@ unsigned int runProcess (unsigned int pc, int quantumSize) {
 	Killed queue which will empty when it reaches its TOTAL_TERMINATED size.
 */
 void terminate(Scheduler theScheduler) {
-	if(theScheduler->running != NULL && theScheduler->running->terminate > 0 && theScheduler->running->terminate == theScheduler->running->term_count)
+	if(theScheduler->running != NULL && theScheduler->running->terminate > 0 
+		&& theScheduler->running->terminate == theScheduler->running->term_count)
 	{
 		printf("Marking for termination...\r\n");
 		theScheduler->running->state = STATE_HALT;
@@ -702,9 +694,7 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		}
 		
 		theScheduler->interrupted->state = STATE_READY;
-		printf("here2\n");
 		if (theScheduler->interrupted->priority < (NUM_PRIORITIES - 1)) {
-			printf("here3\n");
 			theScheduler->interrupted->priority++;
 		} else {
 			theScheduler->interrupted->priority = 0;
@@ -758,6 +748,7 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		printf("Exiting IO Interrupt\r\n");
 	}
 	
+	printf("Above condition for handleKilledQueueInsertion\n");
 	if (theScheduler->interrupted != NULL && theScheduler->interrupted->state == STATE_HALT) {
 		printf("entering handleKilledQueueInsertion\n");
 		handleKilledQueueInsertion(theScheduler);
@@ -957,77 +948,85 @@ void main () {
 	int isRunning = 0;
 	
 	for (;;) {
-		printf("In main, iteration: %d\n", iteration); //may need to lock here
+		//printf("In main, iteration: %d\n", iteration); //may need to lock here
 		
-		printf("locking in main\n");
+		//printf("locking in main\n");
 		pthread_mutex_lock(&schedulerMutex);
 			if (scheduler->running) {
-				printf("running is not NULL\n");
+				//printf("running is not NULL\n");
 				isRunning = scheduler->running->pid;
 				scheduler->running->context->pc++;
 			} else {
-				printf("running is NULL\n");
+				//printf("running is NULL\n");
 				isRunning = 0;
 			}
-			printf("finished checking\n");
+			//printf("finished checking\n");
 		pthread_mutex_unlock(&schedulerMutex);
-		printf("unlocked in main\n");
+		//printf("unlocked in main\n");
 		
-		if (isRunning) {
+		/*if (isRunning) {
 			printf("Current running process in main: P%d\n", isRunning);
 		} else {
 			printf("Current running process in main: IDLE\n");
-		}
-		printf("stopped here\n");
+		}*/
+		
 		pthread_mutex_lock(&schedulerMutex);
-		printf("stopped here1\n");
-		if (scheduler->running != NULL)
-		{
-			if (scheduler->running->context->pc >= scheduler->running->max_pc) {
-				scheduler->running->context->pc = 0;
-				scheduler->running->term_count++;	//if terminate value is > 0
+			if (scheduler->running != NULL)
+			{
+				//printf("Checking for max_pc %d\n", scheduler->running->max_pc);
+				if (scheduler->running->context->pc >= scheduler->running->max_pc) {
+					scheduler->running->context->pc = 0;
+					scheduler->running->term_count++;	//if terminate value is > 0
+					//printf("incrementing term_count to %d\n", scheduler->running->term_count);
+					if (scheduler->running->term_count == scheduler->running->terminate) {
+						//printf("P%d should terminate. term_count %d == terminate %d\n", scheduler->running->pid,
+						//	scheduler->running->term_count, scheduler->running->terminate);
+						//exit(0);
+					}
+				}
 			}
-		}
 		pthread_mutex_unlock(&schedulerMutex);
 		
 		
-		/*pthread_mutex_lock(&schedulerMutex);
+		pthread_mutex_lock(&schedulerMutex);
 			terminate(scheduler);
-		pthread_mutex_unlock(&schedulerMutex);*/
+		pthread_mutex_unlock(&schedulerMutex);
 		
 		pthread_mutex_lock(&iterationMutex);
 			iteration++;
 		pthread_mutex_unlock(&iterationMutex);
 		
-		pthread_mutex_lock(&schedulerMutex);
+		/*pthread_mutex_lock(&schedulerMutex);
 			printf("totalProcesses: %d\n", totalProcesses);
-		pthread_mutex_unlock(&schedulerMutex);
+		pthread_mutex_unlock(&schedulerMutex);*/
 		
 		pthread_mutex_lock(&schedulerMutex);
 			if (totalProcesses >= MAX_PCB_TOTAL) {
+				printf("\n");
+				printSchedulerState(scheduler);
 				printf("MAX_PCB_TOTAL reached in main\n");
 				pthread_mutex_unlock(&schedulerMutex);
 				break;
 			}
 		pthread_mutex_unlock(&schedulerMutex);
 		
-		printf("\n");
+		//printf("\n");
 	}
-	printf("\ndestroying attr\n");
+	//printf("\ndestroying attr\n");
 	pthread_attr_destroy(&attr);
-	printf("destroyed attr\n");
+	//printf("destroyed attr\n");
 	
-	printf("destroying mutex\n");
+	//printf("destroying mutex\n");
 	pthread_mutex_destroy(&schedulerMutex);
-	printf("destroyed mutex\n");
+	//printf("destroyed mutex\n");
 	
-	printf("joining timer thread\n");
+	//printf("joining timer thread\n");
 	pthread_join(timer, &status);
-	printf("joined timer thread\n");
+	//printf("joined timer thread\n");
 	
-	printf("destroying scheduler\n");
+	//printf("destroying scheduler\n");
 	schedulerDeconstructor(scheduler);
-	printf("destroyed mutex\n");
+	//printf("destroyed mutex\n");
 	
 	printf("Completed main, exiting\n");
 	pthread_exit(NULL);
@@ -1047,37 +1046,47 @@ void * timerInterrupt(void * theScheduler)
 	quantum.tv_sec = 0;
 	for(;;)
 	{
-		printf("In Timer Interrupt\n");
+		//printf("In Timer Interrupt\n");
 		quantum.tv_nsec = currQuantumSize; //this WAS locked by schedulerMutex
 		
-		printf("sleeping for %d\n", currQuantumSize);
+		//printf("sleeping for %d\n", currQuantumSize);
 		nanosleep(&quantum, NULL); //puts the thread to sleep
-		printf("waking up\n");
+		//printf("waking up\n");
 		
 		pthread_mutex_lock(&schedulerMutex); //performs context switching as soon as it wakes
 			if (scheduler->running) { //but only if new PCBs have been made
-				printf("running was not NULL in timer, starting pseudoISR\n");
+				//printf("running was not NULL in timer, starting pseudoISR\n");
 				pseudoISR(scheduler, IS_TIMER);
+				printf("\n");
+				printSchedulerState(scheduler);
 			} else {
-				printf("running was NULL in timer, not starting pseudoISR\n");
+				//printf("running was NULL in timer, not starting pseudoISR\n");
 			}
 			currQuantumSize = getNextQuantumSize(scheduler->ready); //sets the quantum for the sleep amount
 		pthread_mutex_unlock(&schedulerMutex);
 		
 		pthread_mutex_lock(&iterationMutex);
-			printf("Checking iteration to make new processes\n");
+			//printf("Checking iteration to make new processes\n");
 			if(!(iteration % RESET_COUNT)) {
 				pthread_mutex_lock(&schedulerMutex); //resets the MLFQ
 					resetMLFQ(scheduler);
 				pthread_mutex_unlock(&schedulerMutex);
+				//printf("Going to make new processes\n");
 				
-				pthread_mutex_lock(&schedulerMutex);
-					if (rand() % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
-						printf("Going to make new processes\n");
-						totalProcesses += makePCBList (thisScheduler); //makes new processes
-						printf("Finished making new processes\n");
-					}
-				pthread_mutex_unlock(&schedulerMutex);
+				//printf("got in here\n");
+				if (rand() % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
+					pthread_mutex_lock(&schedulerMutex);
+						//printf("Going to make new processes\n");
+						totalProcesses += makePCBList (scheduler); //makes new processes
+						printf("\n");
+						printSchedulerState(scheduler);
+						//printf("Finished making new processes\n");
+					pthread_mutex_unlock(&schedulerMutex);
+				}
+				//totalProcesses += makePCBList (scheduler); //makes new processes
+				//printf("got in here2\n");
+				
+				//printf("Finished making new processes\n");
 			}
 		pthread_mutex_unlock(&iterationMutex);
 		
@@ -1090,7 +1099,7 @@ void * timerInterrupt(void * theScheduler)
 			}
 		pthread_mutex_unlock(&schedulerMutex);
 		
-		printf("\n");
+		//printf("\n");
 	}
 	
 	printf("Finished timer, exiting\n");

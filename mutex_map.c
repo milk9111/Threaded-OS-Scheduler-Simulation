@@ -21,14 +21,11 @@ MutexMap create_mutx_map()
 
 int add_to_mutx_map(MutexMap theMap, Mutex theMutex, int theKey)
 {
-	printf("here\n");
 	if (theMap == NULL || theMutex == NULL)
 	{
 		return 1;
 	}
-	printf("here1\n");
 	int key = findKey(theKey, theMap->curr_map_size);
-	printf("here2\n");
 	printf("Attempting to insert in location %d.\n", key);
 	if(theMap->map[key] != NULL)
 	{
