@@ -425,11 +425,7 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 		
 		printf("priority: %d, ", thisPCB->priority);
 		printf("PC: %d, ", thisPCB->context->pc);
-		if (thisPCB->role == PAIR || thisPCB->role ==  SHARED) {
-			printf("lock: %d, ", thisPCB->lock_pc);
-			printf("unlock: %d, ", thisPCB->unlock_pc);
-			printf("partner: %d, ", thisPCB->parent);
-		}
+		//do it like IO if its PAIR or SHARED to show mutex positions
 		
 		printf("\r\nMAX PC: %d\r\n", thisPCB->max_pc);
 		
