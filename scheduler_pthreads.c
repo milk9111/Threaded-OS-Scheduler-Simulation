@@ -41,6 +41,7 @@ int sharedCount;
 pthread_mutex_t schedulerMutex;
 pthread_mutex_t iterationMutex;
 pthread_mutex_t randMutex;
+pthread_mutex_t printMutex;
 
 
 /*
@@ -471,11 +472,23 @@ int makePCBList (Scheduler theScheduler) {
 			//printf("\r\n");
 			printf("enqueuing P%d into MLFQ from makePCBList\n", nextPCB->pid);
 			pq_enqueue(theScheduler->ready, nextPCB);
+			printf("printing scheduler state from makePCBList\n");
+			for (int i = 0; i < NUM_PRIORITIES; i++) {
+				printf("Q[%d]: ", i);
+				ReadyQueueNode tmp = theScheduler->ready->queues[i]->first_node;
+				while (tmp) {
+					printf("P%d->", tmp->pcb->pid);
+					tmp = tmp->next;
+				}
+				printf("*\n");
+			}
+			/*pthread_mutex_lock(&printMutex);
+			toStringPriorityQueue(theScheduler->ready);
+			pthread_mutex_unlock(&printMutex);*/
+			printf("end printing in makePCBList\n");
 		}
 		//printf("\r\n");
-		printf("printing scheduler state from makePCBList\n");
-		toStringPriorityQueue(theScheduler->ready);
-		printf("end printing in makePCBList\n");
+		
 		//toStringPriorityQueue(theScheduler->ready);
 		if (theScheduler->isNew) {
 			//printf("Dequeueing PCB ");
@@ -949,6 +962,7 @@ void main () {
 	pthread_mutex_init(&schedulerMutex, NULL);
 	pthread_mutex_init(&iterationMutex, NULL);
 	pthread_mutex_init(&randMutex, NULL);
+	pthread_mutex_init(&printMutex, NULL);
 	
 	pthread_attr_init(&attr);
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
@@ -1014,9 +1028,13 @@ void main () {
 		pthread_mutex_lock(&schedulerMutex);
 			if (totalProcesses >= MAX_PCB_TOTAL) {
 				printf("\n");
+				pthread_mutex_lock(&printMutex);
 				printSchedulerState(scheduler);
+				pthread_mutex_unlock(&printMutex);
 				printf("\n");
+				pthread_mutex_lock(&printMutex);
 				toStringMutexMap(scheduler->mutexes);
+				pthread_mutex_unlock(&printMutex);
 				printf("MAX_PCB_TOTAL reached in main\n");
 				pthread_mutex_unlock(&schedulerMutex);
 				break;
@@ -1033,6 +1051,7 @@ void main () {
 	pthread_mutex_destroy(&schedulerMutex);
 	pthread_mutex_destroy(&iterationMutex);
 	pthread_mutex_destroy(&randMutex);
+	pthread_mutex_destroy(&printMutex);
 	//printf("destroyed mutex\n");
 	
 	//printf("joining timer thread\n");
@@ -1078,7 +1097,9 @@ void * timerInterrupt(void * theScheduler)
 				//printf("running was not NULL in timer, starting pseudoISR\n");
 				pseudoISR(scheduler, IS_TIMER);
 				printf("\n");
+				pthread_mutex_lock(&printMutex);
 				printSchedulerState(scheduler);
+				pthread_mutex_unlock(&printMutex);
 			} else {
 				//printf("running was NULL in timer, not starting pseudoISR\n");
 			}
@@ -1103,7 +1124,9 @@ void * timerInterrupt(void * theScheduler)
 						//printf("Going to make new processes\n");
 						totalProcesses += makePCBList (scheduler); //makes new processes
 						printf("\n");
+						pthread_mutex_lock(&printMutex);
 						printSchedulerState(scheduler);
+						pthread_mutex_unlock(&printMutex);
 						//printf("Finished making new processes\n");
 					}
 				pthread_mutex_unlock(&schedulerMutex);
