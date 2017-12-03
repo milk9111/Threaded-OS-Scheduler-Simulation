@@ -36,6 +36,9 @@ void initialize_data(/* in-out */ PCB pcb) {
 	pcb->creation = 0;
 	pcb->termination = 0;
 	pcb->terminate = rand() % MAX_TERM_COUNT;
+	if (pcb->terminate == 0) {
+		pcb->terminate++;
+	}
 	pcb->term_count = 0;
 	
 	pcb->isProducer = 0;

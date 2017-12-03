@@ -120,12 +120,9 @@ char q_is_empty(/* in */ ReadyQueue FIFOq) {
  */
 int q_enqueue(/* in */ ReadyQueue FIFOq, /* in */ PCB pcb) {
     ReadyQueueNode new_node = (ReadyQueueNode) malloc(sizeof(struct node));
-	//printf("in here\n");
     if (new_node != NULL && pcb != NULL) {
-		//printf("in here2\n");
         new_node->pcb = pcb;
         new_node->next = NULL;
-		//printf("in here3\n");
         if (FIFOq->last_node != NULL) {
 			FIFOq->last_node->next = new_node;
 			FIFOq->last_node = FIFOq->last_node->next;
@@ -134,7 +131,6 @@ int q_enqueue(/* in */ ReadyQueue FIFOq, /* in */ PCB pcb) {
             FIFOq->first_node = new_node;
             FIFOq->last_node = new_node;
         }
-		//printf("in here4\n");
         FIFOq->size++;
     }
 
