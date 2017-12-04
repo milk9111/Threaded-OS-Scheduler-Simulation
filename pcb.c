@@ -425,21 +425,42 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 		
 		printf("priority: %d, ", thisPCB->priority);
 		printf("PC: %d, ", thisPCB->context->pc);
+		if (thisPCB->role == PAIR) {
+			printf("isProducer: %d, ", thisPCB->isProducer);
+		}
 		//do it like IO if its PAIR or SHARED to show mutex positions
 		
 		printf("\r\nMAX PC: %d\r\n", thisPCB->max_pc);
 		
 		if (thisPCB->role == IO) {
-			printf("io_1_traps\n");
+			printf("io_1 traps\r\n");
 			for (int i = 0; i < TRAP_COUNT; i++) {
 				printf("%d ", thisPCB->io_1_traps[i]);
 			}
-			printf("\r\nio_2_traps\r\n");
+			printf("\r\nio_2 traps\r\n");
 			for (int i = 0; i < TRAP_COUNT; i++) {
 				printf("%d ", thisPCB->io_2_traps[i]);
 			}
-		}
-		printf("\r\nterminate: %d\r\n", thisPCB->terminate);
+			printf("\r\n");
+		} /*else if (thisPCB->role == SHARED) {
+			printf("mutex_r1 locks\r\n");
+			printPCLocations(thisPCB->lockR1);
+			printf("mutex_r1 unlocks\r\n");
+			printPCLocations(thisPCB->unlockR1);
+			printf("mutex_r2 locks\r\n");
+			printPCLocations(thisPCB->lockR2);
+			printf("mutex_r2 unlocks\r\n");
+			printPCLocations(thisPCB->unlockR2);
+		}  else if (thisPCB->role == PAIR) {
+			if (thisPCB->isProducer)  {
+				printf("cond_var signals\r\n");
+				printPCLocations(thisPCB->signal_cond);
+			} else {
+				printf("cond_var waits\r\n");
+				printPCLocations(thisPCB->wait_cond);
+			}
+		}*/
+		printf("terminate: %d\r\n", thisPCB->terminate);
 		printf("term_count: %d\r\n", thisPCB->term_count);
 		printf("\r\n");
 		

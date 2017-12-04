@@ -469,6 +469,8 @@ int makePCBList (Scheduler theScheduler) {
 		if (theScheduler->isNew) {
 			printf("Scheduler is empty!\n");
 			theScheduler->running = pq_dequeue(theScheduler->ready);
+			printf("Dequeuing to run\n");
+			toStringPCB(theScheduler->running, 0);
 			if (theScheduler->running) {
 				theScheduler->running->state = STATE_RUNNING;
 			}
@@ -910,35 +912,45 @@ void main () {
 	int isRunning = 0;
 	int isSwitched = 0;
 	
-	for (;;) {
+	for (;;) {		
 		pthread_mutex_lock(&schedulerMutex);
-			if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
-				isSwitched = useMutex(thisScheduler);
+			if (scheduler->running) {
+				isRunning = 1;
+			} else {
+				isRunning = 0;
 			}
 		pthread_mutex_unlock(&schedulerMutex);
-
-		if (!isSwitched) {
+		
+		if (isRunning) {
 			pthread_mutex_lock(&schedulerMutex);
-				if (scheduler->running) {
-					scheduler->running->context->pc++;
+				if (scheduler->running->role == PAIR || scheduler->running->role == SHARED) {
+					isSwitched = useMutex(scheduler);
 				}
 			pthread_mutex_unlock(&schedulerMutex);
 			
-			
-			pthread_mutex_lock(&schedulerMutex);
-				if (scheduler->running != NULL)
-				{
-					if (scheduler->running->context->pc >= scheduler->running->max_pc) {
-						scheduler->running->context->pc = 0;
-						scheduler->running->term_count++;
+			if (!isSwitched) { //if a context switch happened inside of useMutex, then we want to start over
+				pthread_mutex_lock(&schedulerMutex);
+					if (scheduler->running) {
+						scheduler->running->context->pc++;
 					}
-				}
-			pthread_mutex_unlock(&schedulerMutex);
-			
-			
-			pthread_mutex_lock(&schedulerMutex);
-				terminate(scheduler);
-			pthread_mutex_unlock(&schedulerMutex);
+				pthread_mutex_unlock(&schedulerMutex);
+				
+				
+				pthread_mutex_lock(&schedulerMutex);
+					if (scheduler->running != NULL)
+					{
+						if (scheduler->running->context->pc >= scheduler->running->max_pc) {
+							scheduler->running->context->pc = 0;
+							scheduler->running->term_count++;
+						}
+					}
+				pthread_mutex_unlock(&schedulerMutex);
+				
+				
+				pthread_mutex_lock(&schedulerMutex);
+					terminate(scheduler);
+				pthread_mutex_unlock(&schedulerMutex);
+			}
 		}
 		
 		pthread_mutex_lock(&iterationMutex);
@@ -1023,6 +1035,7 @@ void * timerInterrupt(void * theScheduler)
 		
 		pthread_mutex_lock(&schedulerMutex);
 			if (rand_r(seed) % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
+				printf("\nMAKING NEW PCBS\n");
 				totalProcesses += makePCBList (scheduler); //makes new processes
 				pthread_mutex_lock(&printMutex);
 					printSchedulerState(scheduler);
@@ -1061,29 +1074,30 @@ void * timerInterrupt(void * theScheduler)
 	Returns 1 if a context switched happen so the osLoop knows to start over, otherwise 0.
 */
 int useMutex (Scheduler thisScheduler) {	
-	printf("the running mutex_R1_id: %d\n", thisScheduler->running->mutex_R1_id);
 	int wait = 0, signal = 0; 
 	int lock = isLockPC(thisScheduler->running->context->pc, thisScheduler->running);
 	int unlock = isUnlockPC(thisScheduler->running->context->pc, thisScheduler->running);
-	printf("the running mutex_R1_id: %d\n", thisScheduler->running->mutex_R1_id);
 	
-	if (thisScheduler->running->role = PAIR) {
+	
+	if (thisScheduler->running->role == PAIR) {
 		if (thisScheduler->running->isProducer) {
 			signal = isSignalPC(thisScheduler->running->context->pc, thisScheduler->running);
 		} else {
 			wait = isWaitPC(thisScheduler->running->context->pc, thisScheduler->running);
 		}
 	}
-	printf("the running mutex_R1_id: %d\n", thisScheduler->running->mutex_R1_id);
 	
 	Mutex currMutex = NULL;
 	
+	//printf("lock = %d\nunlock = %d\nsignal = %d\nwait = %d\n", lock, unlock, signal, wait);
+	
 	if (lock) {
-		printf("lock   the running mutex_R1_id: %d\n", thisScheduler->running->mutex_R1_id);
+		printf("lock values for R1 of P%d:\n", thisScheduler->running->pid);
 		printPCLocations(thisScheduler->running->lockR1);
+		printf("lock values for R2 of P%d:\n", thisScheduler->running->pid);
 		printPCLocations(thisScheduler->running->lockR2);
+		
 		if (lock == 1) { //is mutex_R1_id
-			printf("lock   the running mutex_R1_id: %d\n", thisScheduler->running->mutex_R1_id);
 			currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
 		} else { //is mutex_R2_id
 			currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
@@ -1092,7 +1106,7 @@ int useMutex (Scheduler thisScheduler) {
 		if (currMutex) {
 			mutex_lock (currMutex, thisScheduler->running);
 			if (currMutex->hasLock != thisScheduler->running) {
-				printf("M%d already locked, going to wait for unlock\r\n");
+				printf("M%d already locked, going to wait for unlock\r\n\r\n");
 				pq_enqueue(thisScheduler->ready, thisScheduler->running);
 				thisScheduler->running = pq_dequeue(thisScheduler->ready);
 				return 1;
@@ -1103,8 +1117,13 @@ int useMutex (Scheduler thisScheduler) {
 			printf("\r\n\t\t\tcurrMutex was null!!!\r\n\r\n");
 			exit(0);
 		}
+		printf("\n");
 	} else if (unlock) {
-		printf("unlock   the running mutex_R1_id: %d\n", thisScheduler->running->mutex_R1_id);
+		printf("unlock values for R1 of P%d:\n", thisScheduler->running->pid);
+		printPCLocations(thisScheduler->running->unlockR1);
+		printf("unlock values for R2 of P%d:\n", thisScheduler->running->pid);
+		printPCLocations(thisScheduler->running->unlockR2);	
+		
 		if (unlock == 1) { //is mutex_R1_id
 			currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
 		} else { //is mutex_R2_id
@@ -1118,8 +1137,11 @@ int useMutex (Scheduler thisScheduler) {
 			printf("\r\n\t\t\tcurrMutex was null!!!\r\n\r\n");
 			exit(0);
 		}
+		printf("\n");
 	} else if (signal) {
-		printf("signal   the running mutex_R1_id: %d\n", thisScheduler->running->mutex_R1_id);
+		printf("signal values for R1 of P%d:\n", thisScheduler->running->pid);
+		printPCLocations(thisScheduler->running->signal_cond);
+		
 		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
 		
 		if (currMutex) {
@@ -1129,8 +1151,11 @@ int useMutex (Scheduler thisScheduler) {
 			printf("\r\n\t\t\tcurrMutex was null!!!\r\n\r\n");
 			exit(0);
 		}
+		printf("\n");
 	} else if (wait) {
-		printf("wait   the running mutex_R1_id: %d\n", thisScheduler->running->mutex_R1_id);
+		printf("wait values for R1 of P%d:\n", thisScheduler->running->pid);
+		printPCLocations(thisScheduler->running->wait_cond);
+		
 		currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
 		
 		if (currMutex) {
@@ -1138,7 +1163,7 @@ int useMutex (Scheduler thisScheduler) {
 			if (isWaiting) {
 				pq_enqueue(thisScheduler->ready, thisScheduler->running);
 				thisScheduler->running = pq_dequeue(thisScheduler->ready);
-				printf("M%d condition variable waiting at PC %d\n", currMutex->mid, thisScheduler->running->context->pc);
+				printf("M%d condition variable waiting at PC %d\n\n", currMutex->mid, thisScheduler->running->context->pc);
 				return 1;
 			} else { //this part resets the condition variable so we don't need to keep making a new one
 				cond_var_init(currMutex->condVar);
@@ -1147,9 +1172,7 @@ int useMutex (Scheduler thisScheduler) {
 			printf("\r\n\t\t\tcurrMutex was null!!!\r\n\r\n");
 			exit(0);
 		}
-	} else {
-		printf("\r\n\t\t\tSomething went wrong in useMutex!!!\r\n");
-		exit(0);
+		printf("\n");
 	}
 	
 	return 0;
