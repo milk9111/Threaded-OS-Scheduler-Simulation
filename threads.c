@@ -35,6 +35,9 @@ void printNull2 (Mutex mutex) {
 */
 Mutex mutex_create () {
 	Mutex mutex = (Mutex) malloc (sizeof (struct MUTEX));
+	ConditionVariable cv = (ConditionVariable) malloc (sizeof (struct COND_VAR));
+	cond_var_init(cv);
+	mutex->condVar = cv;
 	mutex->isLocked = 0;
 	mutex->hasLock = NULL;
 	mutex->blocked = NULL;

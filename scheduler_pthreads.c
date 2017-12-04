@@ -892,6 +892,7 @@ void main () {
 	currQuantumSize = 100;
 	
 	totalProcesses += makePCBList(scheduler);
+	
 	scheduler->isNew = 0;
 	
 	pthread_attr_t attr;
@@ -907,29 +908,38 @@ void main () {
 	pthread_create(&timer, &attr, timerInterrupt, (void *) scheduler);
 	
 	int isRunning = 0;
+	int isSwitched = 0;
 	
 	for (;;) {
 		pthread_mutex_lock(&schedulerMutex);
-			if (scheduler->running) {
-				scheduler->running->context->pc++;
+			if (thisScheduler->running->role == PAIR || thisScheduler->running->role == SHARED) {
+				isSwitched = useMutex(thisScheduler);
 			}
 		pthread_mutex_unlock(&schedulerMutex);
-		
-		
-		pthread_mutex_lock(&schedulerMutex);
-			if (scheduler->running != NULL)
-			{
-				if (scheduler->running->context->pc >= scheduler->running->max_pc) {
-					scheduler->running->context->pc = 0;
-					scheduler->running->term_count++;
+
+		if (!isSwitched) {
+			pthread_mutex_lock(&schedulerMutex);
+				if (scheduler->running) {
+					scheduler->running->context->pc++;
 				}
-			}
-		pthread_mutex_unlock(&schedulerMutex);
-		
-		
-		pthread_mutex_lock(&schedulerMutex);
-			terminate(scheduler);
-		pthread_mutex_unlock(&schedulerMutex);
+			pthread_mutex_unlock(&schedulerMutex);
+			
+			
+			pthread_mutex_lock(&schedulerMutex);
+				if (scheduler->running != NULL)
+				{
+					if (scheduler->running->context->pc >= scheduler->running->max_pc) {
+						scheduler->running->context->pc = 0;
+						scheduler->running->term_count++;
+					}
+				}
+			pthread_mutex_unlock(&schedulerMutex);
+			
+			
+			pthread_mutex_lock(&schedulerMutex);
+				terminate(scheduler);
+			pthread_mutex_unlock(&schedulerMutex);
+		}
 		
 		pthread_mutex_lock(&iterationMutex);
 			iteration++;
