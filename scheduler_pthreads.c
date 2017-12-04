@@ -923,7 +923,7 @@ void main () {
 	sharedCount = 0;
 	int i = 0;
 	
-	for (int i = 0; i < 300; i++) {
+	for (int i = 0; i < 1; i++) {
 		osLoop();
 	}
 	printf("finished with osLoop\n");
@@ -933,6 +933,7 @@ void main () {
 
 void osLoop () {
 	void *status;
+	int temp = 0;
 	
 	totalProcesses = 0;
 	Scheduler scheduler = schedulerConstructor ();
@@ -1011,6 +1012,38 @@ void osLoop () {
 			iteration++;
 		pthread_mutex_unlock(&iterationMutex);
 		
+		pthread_mutex_lock(&iterationMutex);
+			if(!(iteration % RESET_COUNT)) {
+				pthread_mutex_lock(&schedulerMutex); //resets the MLFQ
+				printf("At top of reset\n");
+					if (totalProcesses >= 200) {
+						pthread_mutex_lock(&printMutex);
+							printSchedulerState(scheduler);
+						pthread_mutex_unlock(&printMutex);
+					}
+					resetMLFQ(scheduler);
+					if (totalProcesses >= 200) {
+					exit(0);
+					}
+				pthread_mutex_unlock(&schedulerMutex);
+			}
+		pthread_mutex_unlock(&iterationMutex);
+		
+		
+		pthread_mutex_lock(&randMutex);
+			temp = rand();
+		pthread_mutex_unlock(&randMutex);
+		
+		pthread_mutex_lock(&schedulerMutex);
+			if (temp % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
+				printf("\nMAKING NEW PCBS\n");
+				totalProcesses += makePCBList (scheduler); //makes new processes
+				pthread_mutex_lock(&printMutex);
+					printSchedulerState(scheduler);
+				pthread_mutex_unlock(&printMutex);
+			}
+		pthread_mutex_unlock(&schedulerMutex);
+		
 		//printf("above totalProcesses check\n");
 		pthread_mutex_lock(&totalProcessesMutex);
 			//printf("called lock before totalProcesses\n");
@@ -1024,7 +1057,7 @@ void osLoop () {
 					toStringMutexMap(scheduler->mutexes);
 				pthread_mutex_unlock(&printMutex);
 				printf("MAX_PCB_TOTAL reached in main\n");
-				pthread_mutex_unlock(&schedulerMutex);
+				pthread_mutex_unlock(&totalProcessesMutex);
 				break;
 			}
 		pthread_mutex_unlock(&totalProcessesMutex);
@@ -1080,31 +1113,6 @@ void * timerInterrupt(void * theScheduler)
 			pthread_mutex_unlock(&printMutex);
 			currQuantumSize = getNextQuantumSize(scheduler->ready); //sets the quantum for the sleep amount
 		pthread_mutex_unlock(&schedulerMutex);
-		
-		pthread_mutex_lock(&iterationMutex);
-			if(!(iteration % RESET_COUNT)) {
-				pthread_mutex_lock(&schedulerMutex); //resets the MLFQ
-					resetMLFQ(scheduler);
-				pthread_mutex_unlock(&schedulerMutex);
-			}
-		pthread_mutex_unlock(&iterationMutex);
-		
-		
-		pthread_mutex_lock(&randMutex);
-			temp = rand() + time(NULL) + (unsigned int) pthread_self();
-			seed = &temp;
-		pthread_mutex_unlock(&randMutex);
-		
-		pthread_mutex_lock(&schedulerMutex);
-			if (rand_r(seed) % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
-				printf("\nMAKING NEW PCBS\n");
-				totalProcesses += makePCBList (scheduler); //makes new processes
-				pthread_mutex_lock(&printMutex);
-					printSchedulerState(scheduler);
-				pthread_mutex_unlock(&printMutex);
-			}
-		pthread_mutex_unlock(&schedulerMutex);
-
 		
 		pthread_mutex_lock(&schedulerMutex);
 			if (totalProcesses >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
