@@ -985,7 +985,7 @@ void osLoop () {
 	{
 		quantum.tv_nsec = 1; //this WAS locked by schedulerMutex
 		
-		nanosleep(&quantum, NULL); //puts the thread to sleep
+		//nanosleep(&quantum, NULL); //puts the thread to sleep
 		//printf("beginning of main loop\n");
 		//printf("above running null check\n");
 		pthread_mutex_lock(&schedulerMutex);
@@ -1255,6 +1255,7 @@ void * timerInterrupt(void * theScheduler)
 		quantum.tv_nsec = currQuantumSize; //this WAS locked by schedulerMutex
 		
 		nanosleep(&quantum, NULL); //puts the thread to sleep
+		//for (int i = 0; i < 10000; i++){}
 		
 		pthread_mutex_lock(&schedulerMutex); //performs context switching as soon as it wakes
 			printf("\nTimer waking up\n");
