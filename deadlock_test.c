@@ -34,6 +34,14 @@ void main()
 
 	testScheduler->running->context->pc = testScheduler->running->unlockR1[0];
 	useMutex(testScheduler);
+	printf("\n=================\nBasic locking test - can PCB2 unlock the lock when PCB1 owns it?\n");
+	
+	testScheduler->running->context->pc = testScheduler->running->lockR1[0];
+	useMutex(testScheduler);
+	pq_enqueue(testScheduler->ready, testScheduler->running);
+	dispatcher(testScheduler);
+	testScheduler->running->context->pc = testScheduler->running->unlockR1[0];
+	useMutex(testScheduler);
 
 	printf("\n=================\nDeadlock test - PCB1 takes both mutexes\n");
 	testScheduler->running->context->pc = testScheduler->running->lockR1[0];

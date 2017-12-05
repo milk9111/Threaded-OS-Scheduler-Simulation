@@ -120,7 +120,7 @@ int mutex_unlock (Mutex mutex, PCB pcb) {
 			printf("\r\n\r\n\t\tMUTEX IS ALREADY UNLOCKED\r\n\r\n");
 			//exit(0);
 			return 0;
-		} else if (mutex->isLocked && mutex->isLocked == pcb) {
+		} else if (mutex->isLocked && mutex->hasLock == pcb) {
 			mutex->isLocked = 0;
 			mutex->hasLock = NULL;
 			return 1;

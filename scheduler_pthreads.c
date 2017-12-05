@@ -1324,8 +1324,15 @@ int useMutex (Scheduler thisScheduler) {
 		}
 		
 		if (currMutex) {
-			mutex_unlock (currMutex, thisScheduler->running);
-			printf("M%d unlocked at PC %d\n", currMutex->mid, thisScheduler->running->context->pc);
+			int result = mutex_unlock (currMutex, thisScheduler->running);
+			if(result == 1)
+			{
+				printf("M%d unlocked at PC %d\n", currMutex->mid, thisScheduler->running->context->pc);
+			} 
+			else
+			{
+				printf("Unlock failed, M%d is already owned and locked by P%d!\n", currMutex->mid, currMutex->hasLock->pid);
+			}
 		} else {
 			printf("\r\n\t\t\tcurrMutex was null!!!\r\n\r\n");
 			exit(0);
