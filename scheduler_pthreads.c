@@ -389,12 +389,9 @@ int makePCBList (Scheduler theScheduler) {
 		
 	Mutex sharedMutexR1 = mutex_create();
 	Mutex sharedMutexR2 = mutex_create();
-	printf("made both mutexes\n");
 	
 	PCB newPCB1 = PCB_create();
-	printf("made the first pcb P%d\n", newPCB1->pid);
 	PCB newPCB2 = PCB_create();
-	printf("made second pcb P%d\n", newPCB2->pid);
 	newPCB2->parent = newPCB1->pid;
 	
 	newPCB1->role = COMP;
@@ -434,29 +431,13 @@ int makePCBList (Scheduler theScheduler) {
 	q_enqueue(theScheduler->created, newPCB2);
 
 	if (newPCBCount) {
-		printf("q_is_empty: %d\r\n", q_is_empty(theScheduler->created));
 		while (!q_is_empty(theScheduler->created)) {
 			PCB nextPCB = q_dequeue(theScheduler->created);
 			nextPCB->state = STATE_READY;
 			printf("enqueuing P%d into MLFQ from makePCBList\n", nextPCB->pid);
 			pq_enqueue(theScheduler->ready, nextPCB);
-			/*printf("printing scheduler state from makePCBList\n");
-			for (int i = 0; i < NUM_PRIORITIES; i++) {
-				printf("Q[%d]: ", i);
-				ReadyQueueNode tmp = theScheduler->ready->queues[i]->first_node;
-				while (tmp) {
-					printf("P%d->", tmp->pcb->pid);
-					tmp = tmp->next;
-				}
-				printf("*\n");
-			}*/
-			/*pthread_mutex_lock(&printMutex);
-			toStringPriorityQueue(theScheduler->ready);
-			pthread_mutex_unlock(&printMutex);*/
 		}
-		//printf("\r\n");
 		
-		//toStringPriorityQueue(theScheduler->ready);
 		if (theScheduler->isNew) {
 			printf("Scheduler is empty!\n");
 			theScheduler->running = pq_dequeue(theScheduler->ready);
@@ -943,7 +924,7 @@ void osLoop () {
 	
 	pthread_t threads[3];
 	
-	int curr = 2;
+	int curr = 3;
 	
 	//pthread_create(&timer, &attr, timerInterrupt, (void *) scheduler);
 	for (int i = 0; i < curr; i++) {
@@ -952,7 +933,7 @@ void osLoop () {
 		} else if (i == 1) {
 			pthread_create(&threads[i], &attr, ioTrap, (void *) scheduler);
 		} else {
-			//pthread_create(&threads[i], &attr, ioInterrupt, (void *) scheduler);
+			pthread_create(&threads[i], &attr, ioInterrupt, (void *) scheduler);
 		}
 	}
 	
@@ -1082,6 +1063,11 @@ void osLoop () {
 		pthread_cancel(threads[1]);
 	}
 	pthread_mutex_unlock(&trapMutex);
+	pthread_mutex_lock(&interruptMutex);
+	if (!hasBlockedPCB) {
+		pthread_cancel(threads[2]);
+	}
+	pthread_mutex_unlock(&interruptMutex);
 	
 	for (int i = 0; i < curr; i++) {
 		pthread_join(threads[i], &status);
@@ -1110,21 +1096,25 @@ void osLoop () {
 
 void * ioInterrupt (void * theScheduler) {
 	Scheduler scheduler = (Scheduler) theScheduler;
+	
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+	
 	int isRunning = 0, temp = 0;
 	printf("starting ioInterrupt\n");
 	for (;;) {
-		//if (!isRunning) {
-			/*pthread_mutex_lock(&interruptMutex);
+		if (!isRunning) {
+			pthread_mutex_lock(&interruptMutex);
 				while (!hasBlockedPCB) {
+					printf("Waiting on condition variable in ioInterrupt\n");
 					pthread_cond_wait(&interruptCondVar, &interruptMutex);
 					printf("Value in the blocked list, waiting for I/O Interrupt!\n");
 				}
 				hasBlockedPCB = 0;
 				isRunning = 1;
-			pthread_mutex_unlock(&interruptMutex);*/
-		//}
+			pthread_mutex_unlock(&interruptMutex);
+		}
 		
-		/*pthread_mutex_lock(&randMutex);
+		pthread_mutex_lock(&randMutex);
 			temp = rand() % IO_INT_CHANCE_DOMAIN;
 		pthread_mutex_unlock(&randMutex);
 		
@@ -1140,7 +1130,7 @@ void * ioInterrupt (void * theScheduler) {
 					pthread_mutex_unlock(&interruptMutex);
 				}
 			pthread_mutex_unlock(&schedulerMutex);
-		}*/
+		}
 		
 		
 		pthread_mutex_lock(&totalProcessesMutex);
@@ -1166,9 +1156,8 @@ void * ioTrap (void * theScheduler) {
 	for (;;) {
 		
 		pthread_mutex_lock(&trapMutex);
-			printf("Got the trapMutex lock\n");
 			while (!isIOTrapPos) {
-				printf("Waiting on condition variable\n");
+				printf("Waiting on condition variable in ioTrap\n");
 				pthread_cond_wait(&trapCondVar, &trapMutex);
 				printf("Trap position reached, starting I/O Trap!\n");
 			}
