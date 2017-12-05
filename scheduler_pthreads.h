@@ -120,5 +120,6 @@ int isSignalPC (unsigned int pc, PCB pcb);
 
 int isWaitPC (unsigned int pc, PCB pcb);
 
+void deadlockMonitor (Scheduler thisScheduler);
 
 #endif

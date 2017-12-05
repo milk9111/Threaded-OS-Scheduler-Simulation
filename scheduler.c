@@ -1262,6 +1262,8 @@ void deadlockMonitor(Scheduler thisScheduler) {
 	Mutex mutex2;
 	
 	mutex1 = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
+	
+	
 	mutex2 = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
 	
 	if (mutex1->isLocked && (mutex1->hasLock == thisScheduler->running) && mutex2->isLocked && (mutex2->hasLock == thisScheduler->running)) {
