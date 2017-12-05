@@ -7,8 +7,8 @@
 #include "priority_queue.h"
 
 #define ADDITIONAL_ROOM_FOR_TOSTR 4
-#define PRIORITY_JUMP_EXTRA 0.5
-#define MIN_PRIORITY_JUMP 0.2
+#define PRIORITY_JUMP_EXTRA 10
+#define MIN_PRIORITY_JUMP 5
 
 /*
  * Creates a priority queue.

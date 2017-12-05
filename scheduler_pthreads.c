@@ -526,9 +526,6 @@ void pseudoISR (Scheduler theScheduler, int interruptType) {
 void printSchedulerState (Scheduler theScheduler) {
 	
 	printf("\r\nMLFQ State\r\n");
-	pthread_mutex_lock(&iterationMutex);
-	printf("iteration: %d\r\n", iteration);
-	pthread_mutex_unlock(&iterationMutex);
 	toStringPriorityQueue(theScheduler->ready);
 	printf("\r\n");
 	
@@ -979,11 +976,11 @@ void osLoop () {
 	int isSwitched = 0;
 	int itrHolder = 0;
 	
-	struct timespec quantum;
-	quantum.tv_sec = 0;
+	//struct timespec quantum;
+	//quantum.tv_sec = 0;
 	for(;;)
 	{
-		quantum.tv_nsec = 1; //this WAS locked by schedulerMutex
+		//quantum.tv_nsec = 1; //this WAS locked by schedulerMutex
 		
 		//nanosleep(&quantum, NULL); //puts the thread to sleep
 		//printf("beginning of main loop\n");
@@ -1057,6 +1054,7 @@ void osLoop () {
 		//printf("above iteration increment\n");
 		pthread_mutex_lock(&iterationMutex);
 			iteration++;			
+			printf("iteration: %d\n", iteration);
 		pthread_mutex_unlock(&iterationMutex);
 		
 		
@@ -1088,8 +1086,23 @@ void osLoop () {
 			}
 		pthread_mutex_unlock(&schedulerMutex);
 		
+		pthread_mutex_lock(&totalProcessesMutex);
+			if (totalProcesses >= MAX_ITERATION_TOTAL) {
+				printf("\n");
+				pthread_mutex_lock(&printMutex);
+					printSchedulerState(scheduler);
+				pthread_mutex_unlock(&printMutex);
+				printf("\n");
+				pthread_mutex_lock(&printMutex);
+					toStringMutexMap(scheduler->mutexes);
+				pthread_mutex_unlock(&printMutex);
+				printf("MAX_ITERATION_TOTAL reached in main\n");
+				pthread_mutex_unlock(&totalProcessesMutex);
+				break;
+			}
+		pthread_mutex_unlock(&totalProcessesMutex);
 
-		pthread_mutex_lock(&iterationMutex);
+		/*pthread_mutex_lock(&iterationMutex);
 			if (iteration >= MAX_ITERATION_TOTAL) {
 				printf("\n");
 				pthread_mutex_lock(&printMutex);
@@ -1103,9 +1116,9 @@ void osLoop () {
 				pthread_mutex_unlock(&iterationMutex);
 				break;
 			}
-		pthread_mutex_unlock(&iterationMutex);
+		pthread_mutex_unlock(&iterationMutex);*/
 	}
-	pthread_cancel(threads[0]);
+	//pthread_cancel(threads[0]);
 	pthread_mutex_lock(&trapMutex);
 	if (!isIOTrapPos) {
 		pthread_cancel(threads[1]);
@@ -1182,13 +1195,13 @@ void * ioInterrupt (void * theScheduler) {
 		}
 		
 		
-		pthread_mutex_lock(&iterationMutex);
-			if (iteration >= MAX_ITERATION_TOTAL) { 			//this is how we will break out of the loop, same as in main.
+		pthread_mutex_lock(&totalProcessesMutex);
+			if (totalProcesses >= MAX_ITERATION_TOTAL) { 			//this is how we will break out of the loop, same as in main.
 				printf("MAX_ITERATION_TOTAL reached in ioTrap\n"); //may think about a check here instead
-				pthread_mutex_unlock(&iterationMutex);
+				pthread_mutex_unlock(&totalProcessesMutex);
 				break;
 			}
-		pthread_mutex_unlock(&iterationMutex);
+		pthread_mutex_unlock(&totalProcessesMutex);
 	}
 	
 	printf("Finished ioInterrupt, exiting\n");
@@ -1219,13 +1232,13 @@ void * ioTrap (void * theScheduler) {
 			printf("Finished ISR in ioTrap\n");
 		pthread_mutex_unlock(&schedulerMutex);
 		
-		pthread_mutex_lock(&iterationMutex);
-			if (iteration >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
+		pthread_mutex_lock(&totalProcessesMutex);
+			if (totalProcesses >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
 				printf("MAX_ITERATION_TOTAL reached in ioTrap\n"); //may think about a check here instead
-				pthread_mutex_unlock(&iterationMutex);
+				pthread_mutex_unlock(&totalProcessesMutex);
 				break;
 			}
-		pthread_mutex_unlock(&iterationMutex);
+		pthread_mutex_unlock(&totalProcessesMutex);
 	}
 	
 	printf("Finished ioTrap, exiting\n");
