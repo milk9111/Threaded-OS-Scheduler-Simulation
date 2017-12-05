@@ -108,7 +108,7 @@ PCB q_peek(ReadyQueue FIFOq) {
  * Return: 1 if empty, 0 otherwise.
  */
 char q_is_empty(/* in */ ReadyQueue FIFOq) {
-    return (FIFOq->first_node == NULL);
+    return (FIFOq->first_node == NULL) || FIFOq->size <= 0;
 }
 
 /*
