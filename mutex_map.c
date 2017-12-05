@@ -82,7 +82,7 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 			{
 				if(tmp == key)
 				{
-					return NULL;
+					return 2;
 				}
 				tmp++;
 				if(tmp >= theMap->curr_map_size)
