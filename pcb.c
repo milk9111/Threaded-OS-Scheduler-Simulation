@@ -442,7 +442,7 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 				printf("%d ", thisPCB->io_2_traps[i]);
 			}
 			printf("\r\n");
-		} /*else if (thisPCB->role == SHARED) {
+		} else if (thisPCB->role == SHARED) {
 			printf("mutex_r1 locks\r\n");
 			printPCLocations(thisPCB->lockR1);
 			printf("mutex_r1 unlocks\r\n");
@@ -459,7 +459,7 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 				printf("cond_var waits\r\n");
 				printPCLocations(thisPCB->wait_cond);
 			}
-		}*/
+		}
 		printf("terminate: %d\r\n", thisPCB->terminate);
 		printf("term_count: %d\r\n", thisPCB->term_count);
 		printf("\r\n");
