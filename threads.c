@@ -68,8 +68,11 @@ void mutex_init (Mutex mutex) {
 */
 int mutex_lock (Mutex mutex, PCB pcb) {
 	if (mutex) {
-		if (mutex->isLocked && mutex->hasLock == pcb) { 
-			printf("\r\n\r\n\t\tMUTEX IS ALREADY LOCKED!!!!!!!!!!\r\n\r\n");
+		if (mutex->isLocked || mutex->hasLock == pcb) {
+			if(mutex->isLocked && mutex->hasLock == pcb)
+			{
+				printf("\r\n\r\n\t\tMUTEX IS ALREADY LOCKED!!!!!!!!!!\r\n\r\n");
+			}
 			//exit(0);
 			return 0;
 		} else {

@@ -1281,7 +1281,7 @@ int useMutex (Scheduler thisScheduler) {
 		if (currMutex) {
 			mutex_lock (currMutex, thisScheduler->running);
 			if (currMutex->hasLock != thisScheduler->running) {
-				printf("M%d already locked, going to wait for unlock\r\n\r\n");
+				printf("M%d already locked, going to wait for unlock\r\n\r\n", currMutex->mid);
 				pq_enqueue(thisScheduler->ready, thisScheduler->running);
 				thisScheduler->running = pq_dequeue(thisScheduler->ready);
 				return 1;
@@ -1550,17 +1550,22 @@ void deadlockMonitor(Scheduler thisScheduler) {
 			
 			
 			if (mutex1->isLocked && mutex2->isLocked) {
+			//	printf("mutex1 owned by: P%d, pointer: %p\n", mutex1->hasLock->pid, mutex1->hasLock);
+			//	printf("mutex2 owned by: P%d, pointer: %p\n", mutex2->hasLock->pid, mutex2->hasLock);
 				if (thisScheduler->running == mutex1->pcb1) { // check if pcb1 also owns the other lock
-					if (mutex2->hasLock == mutex1->pcb1) {
+					if (mutex2->hasLock == mutex1->hasLock) {
 						printf("pcb1 owns both locks\n");
 						printf("NO DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 					} else if (mutex2->hasLock == mutex1->pcb2) {
 						printf("pcb1 only owns mutex1\n");
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
+					} else if (mutex1->hasLock == mutex1->pcb2) {
+						printf("pcb1 only owns mutex2\n");
+						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 					}
 					
 				} else if (thisScheduler->running == mutex2->pcb2) { // check if pcb2 also owns the other lock
-					if (mutex1->hasLock == mutex2->pcb2) {
+					if (mutex1->hasLock == mutex2->hasLock) {
 						printf("pcb2 owns both locks\n");
 						printf("NO DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 
@@ -1568,6 +1573,9 @@ void deadlockMonitor(Scheduler thisScheduler) {
 						printf("pcb2 only owns mutex2\n");
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 		
+					} else if (mutex2->hasLock == mutex1->pcb1) {
+						printf("pcb2 only has mutex1\n");
+						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 					}		
 				}
 			} else {

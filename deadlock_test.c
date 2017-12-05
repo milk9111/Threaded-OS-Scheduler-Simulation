@@ -3,6 +3,7 @@
 // 		 in scheduler_pthreads.c to compile
 
 #include "scheduler_pthreads.h"
+#include <time.h>
 
 
 void TEST_initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutexR1, Mutex sharedMutexR2);
@@ -20,14 +21,67 @@ void main()
 	testScheduler->running->context->pc = testScheduler->running->lockR1[0];
 	
 	int result = useMutex(testScheduler);
-	printf("Result: %d", result);
+	printf("Result: %d\n", result);
 	
+	pq_enqueue(testScheduler->ready, testScheduler->running);
 	dispatcher(testScheduler);
-	printf("\n=================\nDeadlock test - locking order: 1221, 1221.\n");
+	printf("\n=================\nBasic locking test - can PCB2 acquire the lock when PCB1 has already locked it?\n");
 	
 	testScheduler->running->context->pc = testScheduler->running->lockR1[0];
 	result = useMutex(testScheduler);
-	printf("Result: %d", result);
+	printf("Result: %d\n", result);
+	printSchedulerState(testScheduler);
+
+	testScheduler->running->context->pc = testScheduler->running->unlockR1[0];
+	useMutex(testScheduler);
+
+	printf("\n=================\nDeadlock test - PCB1 takes both mutexes\n");
+	testScheduler->running->context->pc = testScheduler->running->lockR1[0];
+	useMutex(testScheduler);
+	testScheduler->running->context->pc = testScheduler->running->lockR2[0];
+	useMutex(testScheduler);
+	pq_enqueue(testScheduler->ready, testScheduler->running);
+	dispatcher(testScheduler);
+
+	//testScheduler->running->context->pc = testScheduler->running->lockR1[0];
+//	useMutex(testScheduler);
+	deadlockMonitor(testScheduler);
+	printSchedulerState(testScheduler);
+	
+	pq_enqueue(testScheduler->ready, testScheduler->running);
+	dispatcher(testScheduler);
+	testScheduler->running->context->pc = testScheduler->running->unlockR1[0];
+	useMutex(testScheduler);
+	printf("\n=================\nDeadlock test - PBC1 takes Mutex2, PCB2 takes Mutex1\n");
+	pq_enqueue(testScheduler->ready, testScheduler->running);
+	dispatcher(testScheduler);
+	//printSchedulerState(testScheduler);
+	testScheduler->running->context->pc = testScheduler->running->lockR1[0];
+	useMutex(testScheduler);
+	deadlockMonitor(testScheduler);
+
+	testScheduler->running->context->pc = testScheduler->running->unlockR1[0];
+	useMutex(testScheduler);
+	pq_enqueue(testScheduler->ready, testScheduler->running);
+	dispatcher(testScheduler);
+
+	testScheduler->running->context->pc = testScheduler->running->unlockR2[0];
+	useMutex(testScheduler);
+	
+	printf("\n=================\nDeadlock test - PCB1 takes Mutex1, PCB2 takes Mutex2\n");
+	
+	testScheduler->running->context->pc = testScheduler->running->lockR1[0];
+	useMutex(testScheduler);
+
+	pq_enqueue(testScheduler->ready, testScheduler->running);
+	dispatcher(testScheduler);
+	testScheduler->running->context->pc = testScheduler->running->lockR2[0];
+	useMutex(testScheduler);
+
+	pq_enqueue(testScheduler->ready, testScheduler->running);
+	dispatcher(testScheduler);
+	deadlockMonitor(testScheduler);
+	
 	
 }
 
