@@ -409,8 +409,15 @@ int makePCBList (Scheduler theScheduler) {
 	} else {
 		if (newPCB1->role == SHARED) {
 			printf("Made Shared Resource pair\n");
-			populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
-			populateMutexTraps1221(newPCB2, newPCB2->max_pc / MAX_DIVIDER);
+			
+			if (DEADLOCK) {
+				populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+				populateMutexTraps2112(newPCB2, newPCB2->max_pc / MAX_DIVIDER);
+			} else {
+				populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+				populateMutexTraps1221(newPCB2, newPCB2->max_pc / MAX_DIVIDER);
+			}
+	
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR1, sharedMutexR1->mid);
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR2, sharedMutexR2->mid);
 		} else {
