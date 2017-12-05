@@ -39,7 +39,7 @@ int compCount;
 int ioCount;
 int pairCount;
 int sharedCount;
-
+int contextSwitchCount;
 
 pthread_mutex_t schedulerMutex;
 pthread_mutex_t iterationMutex;
@@ -480,14 +480,10 @@ int makePCBList (Scheduler theScheduler) {
 		printf("q_is_empty: %d\r\n", q_is_empty(theScheduler->created));
 		while (!q_is_empty(theScheduler->created)) {
 			PCB nextPCB = q_dequeue(theScheduler->created);
-			printf("created queue:\n");
-			toStringReadyQueue(theScheduler->created);
-			//toStringPCB(nextPCB, 0);
 			nextPCB->state = STATE_READY;
-			//printf("\r\n");
 			printf("enqueuing P%d into MLFQ from makePCBList\n", nextPCB->pid);
 			pq_enqueue(theScheduler->ready, nextPCB);
-			printf("printing scheduler state from makePCBList\n");
+			/*printf("printing scheduler state from makePCBList\n");
 			for (int i = 0; i < NUM_PRIORITIES; i++) {
 				printf("Q[%d]: ", i);
 				ReadyQueueNode tmp = theScheduler->ready->queues[i]->first_node;
@@ -496,11 +492,10 @@ int makePCBList (Scheduler theScheduler) {
 					tmp = tmp->next;
 				}
 				printf("*\n");
-			}
+			}*/
 			/*pthread_mutex_lock(&printMutex);
 			toStringPriorityQueue(theScheduler->ready);
 			pthread_mutex_unlock(&printMutex);*/
-			printf("end printing in makePCBList\n");
 		}
 		//printf("\r\n");
 		
@@ -724,9 +719,6 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 			printf("\r\nEnqueueing into MLFQ\r\n");
 			printf("IDLE\r\n");
 		}
-		pthread_mutex_lock(&totalProcessesMutex);
-			printf("Total processes made so far: %d\n", totalProcesses);
-		pthread_mutex_unlock(&totalProcessesMutex);
 		printf("Exiting Timer Interrupt\r\n");
 	}
 	else if (interrupt_code == IS_IO_TRAP)
@@ -744,6 +736,7 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		theScheduler->interrupted = NULL;
 		pthread_mutex_lock(&interruptMutex);
 			hasBlockedPCB = 1;
+			printf("sending signal to ioTrap\n");
 			pthread_cond_signal(&interruptCondVar);
 		pthread_mutex_unlock(&interruptMutex);
 		printf("Exiting IO Trap\r\n");
@@ -962,6 +955,7 @@ void main () {
 	ioCount = 0;
 	pairCount = 0;
 	sharedCount = 0;
+	contextSwitchCount = 0;
 	int i = 0;
 	
 	for (int i = 0; i < 1; i++) {
@@ -1002,8 +996,24 @@ void osLoop () {
 	pthread_t timer;
 	pthread_t iotrap;
 	pthread_t iointerrupt;
-	pthread_create(&timer, &attr, timerInterrupt, (void *) scheduler);
-	pthread_create(&iotrap, &attr, ioTrap, (void *) scheduler);
+	
+	pthread_t threads[3];
+	
+	int curr = 2;
+	
+	//pthread_create(&timer, &attr, timerInterrupt, (void *) scheduler);
+	for (int i = 0; i < curr; i++) {
+		if (i == 0) {
+			pthread_create(&threads[i], &attr, timerInterrupt, (void *) scheduler);
+		} else if (i == 1) {
+			pthread_create(&threads[i], &attr, ioTrap, (void *) scheduler);
+		} else {
+			//pthread_create(&threads[i], &attr, ioInterrupt, (void *) scheduler);
+		}
+	}
+	
+	pthread_attr_destroy(&attr);
+	//pthread_create(&iotrap, &attr, ioTrap, (void *) scheduler);
 	//pthread_create(&iointerrupt, &attr, ioInterrupt, (void *) scheduler);
 	
 	int isRunning = 0;
@@ -1084,16 +1094,7 @@ void osLoop () {
 		pthread_mutex_lock(&iterationMutex);
 			if(!(iteration % RESET_COUNT)) {
 				pthread_mutex_lock(&schedulerMutex); //resets the MLFQ
-				//printf("At top of reset\n");
-					//if (totalProcesses >= 200) {
-						/*pthread_mutex_lock(&printMutex);
-							printSchedulerState(scheduler);
-						pthread_mutex_unlock(&printMutex);*/
-					//}
 					resetMLFQ(scheduler);
-					//if (totalProcesses >= 200) {
-					//exit(0);
-					//}
 				pthread_mutex_unlock(&schedulerMutex);
 			}
 		pthread_mutex_unlock(&iterationMutex);
@@ -1132,9 +1133,17 @@ void osLoop () {
 		pthread_mutex_unlock(&totalProcessesMutex);
 		//printf("end of main loop, starting over\n");
 	}
-	pthread_attr_destroy(&attr);
-	pthread_join(timer, &status);
-	pthread_join(iotrap, &status2);
+	pthread_mutex_lock(&trapMutex);
+	if (!isIOTrapPos) {
+		pthread_cancel(threads[1]);
+	}
+	pthread_mutex_unlock(&trapMutex);
+	
+	for (int i = 0; i < curr; i++) {
+		pthread_join(threads[i], &status);
+	}
+	//pthread_join(timer, &status);
+	//pthread_join(iotrap, &status2);
 	//pthread_join(iointerrupt, &status3);
 	
 	printf("done joining\n");
@@ -1158,17 +1167,17 @@ void osLoop () {
 void * ioInterrupt (void * theScheduler) {
 	Scheduler scheduler = (Scheduler) theScheduler;
 	int isRunning = 0, temp = 0;
-	
+	printf("starting ioInterrupt\n");
 	for (;;) {
 		//if (!isRunning) {
-			pthread_mutex_lock(&interruptMutex);
+			/*pthread_mutex_lock(&interruptMutex);
 				while (!hasBlockedPCB) {
 					pthread_cond_wait(&interruptCondVar, &interruptMutex);
 					printf("Value in the blocked list, waiting for I/O Interrupt!\n");
 				}
 				hasBlockedPCB = 0;
 				isRunning = 1;
-			pthread_mutex_unlock(&interruptMutex);
+			pthread_mutex_unlock(&interruptMutex);*/
 		//}
 		
 		/*pthread_mutex_lock(&randMutex);
@@ -1199,6 +1208,7 @@ void * ioInterrupt (void * theScheduler) {
 		pthread_mutex_unlock(&totalProcessesMutex);
 	}
 	
+	printf("Finished ioInterrupt, exiting\n");
 	pthread_exit(NULL);
 }
 
@@ -1206,20 +1216,26 @@ void * ioInterrupt (void * theScheduler) {
 void * ioTrap (void * theScheduler) {
 	Scheduler scheduler = (Scheduler) theScheduler;
 	
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+	
+	printf("starting ioTrap\n");
 	for (;;) {
+		
 		pthread_mutex_lock(&trapMutex);
+			printf("Got the trapMutex lock\n");
 			while (!isIOTrapPos) {
+				printf("Waiting on condition variable\n");
 				pthread_cond_wait(&trapCondVar, &trapMutex);
 				printf("Trap position reached, starting I/O Trap!\n");
 			}
 			isIOTrapPos = 0;
 		pthread_mutex_unlock(&trapMutex);
 		
-		pthread_mutex_lock(&schedulerMutex);
+		/*pthread_mutex_lock(&schedulerMutex);
 			printf("Starting ISR in ioTrap\n");
 			pseudoISR(scheduler, IS_IO_TRAP);
 			printf("Finished ISR in ioTrap\n");
-		pthread_mutex_unlock(&schedulerMutex);
+		pthread_mutex_unlock(&schedulerMutex);*/
 		
 		pthread_mutex_lock(&totalProcessesMutex);
 			if (totalProcesses >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
@@ -1230,6 +1246,7 @@ void * ioTrap (void * theScheduler) {
 		pthread_mutex_unlock(&totalProcessesMutex);
 	}
 	
+	printf("Finished ioTrap, exiting\n");
 	pthread_exit(NULL);
 }
 
@@ -1279,7 +1296,7 @@ void * timerInterrupt(void * theScheduler)
 	}
 	
 	printf("Finished timer, exiting\n");
-	pthread_exit(NULL);
+	pthread_exit((void *)1);
 }
 
 
