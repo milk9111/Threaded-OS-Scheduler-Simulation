@@ -26,14 +26,14 @@
 
 //defines
 #define MAX_PCB_TOTAL 300
-#define RESET_COUNT 200
+#define RESET_COUNT 2000
 #define MAX_MUTEX_IN_ROUND 3
 #define MAX_PC_JUMP 4000
 #define MIN_PC_JUMP 3000
 #define PC_JUMP_LIMIT 999
-#define MAKE_PCB_CHANCE_DOMAIN 100
+#define MAKE_PCB_CHANCE_DOMAIN 10000
 #define TIMER_RANGE 3
-#define MAKE_PCB_CHANCE_PERCENTAGE 10
+#define MAKE_PCB_CHANCE_PERCENTAGE 5
 #define IS_TIMER 1
 #define IS_IO_TRAP 2
 #define IS_IO_INTERRUPT 3
@@ -94,7 +94,7 @@ void osLoop ();
 
 void * timerInterrupt (void *);
 
-int ioTrap (PCB);
+void * ioTrap (void *);
 
 int ioInterrupt (ReadyQueue);
 

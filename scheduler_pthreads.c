@@ -28,6 +28,7 @@ int quantum_tick = 0; // Use for quantum length tracking
 int io_timer = 0;
 int totalProcesses = 0;
 int iteration = 0;
+int isIOTrapPos = 0;
 time_t t;
 
 // The global counts of each PCB type, the final count at end of program run 
@@ -43,6 +44,9 @@ pthread_mutex_t iterationMutex;
 pthread_mutex_t randMutex;
 pthread_mutex_t printMutex;
 pthread_mutex_t totalProcessesMutex;
+pthread_mutex_t trapMutex;
+
+pthread_cond_t trapCondVar;
 
 
 /*
@@ -243,6 +247,31 @@ int isWaitPC (unsigned int pc, PCB pcb) {
 }
 
 
+
+int isTrapPC (unsigned int pc, PCB pcb) {
+	int isTrap = 0;
+	if (pcb) {
+		for (int i = 0; i < TRAP_COUNT; i++) {
+			if (pc == pcb->io_1_traps[i]) {
+				isTrap = 1;
+				break;
+			}
+		}
+		
+		if (isTrap) {
+			for (int i = 0; i < TRAP_COUNT; i++) {
+				if (pc == pcb->io_2_traps[i]) {
+					isTrap = 1;
+					break;
+				}
+			}
+		}
+	}
+	
+	return isTrap;
+}
+
+
 /*void lockAttempt(Scheduler theScheduler, int trapVal) {
 	
 	Mutex currMutex;
@@ -297,7 +326,7 @@ int isWaitPC (unsigned int pc, PCB pcb) {
 	Checks if the current PCB's PC is one of the premade io_traps for this
 	PCB. If so, then return 1 so the pseudoISR can occur. If not, return 0.
 */
-int ioTrap(PCB current)
+/*int ioTrap(PCB current)
 {
 	if (current) {
 		unsigned int the_pc = current->context->pc;
@@ -318,7 +347,7 @@ int ioTrap(PCB current)
 		}
 	}
 	return 0;
-}
+}*/
 
 
 /*
@@ -690,15 +719,18 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 			printf("\r\nEnqueueing into MLFQ\r\n");
 			printf("IDLE\r\n");
 		}
-		
+		pthread_mutex_lock(&totalProcessesMutex);
+			printf("Total processes made so far: %d\n", totalProcesses);
+		pthread_mutex_unlock(&totalProcessesMutex);
 		printf("Exiting Timer Interrupt\r\n");
 	}
 	else if (interrupt_code == IS_IO_TRAP)
 	{
 		// Do I/O trap handling
 		printf("Entering IO Trap\r\n");
-		int timer = (rand() % TIMER_RANGE + 1);
-		theScheduler->interrupted->blocked_timer = timer;
+		if (!(theScheduler->interrupted)) {
+			printf("interrupted was NULL in IS_IO_TRAP\n");
+		}
 		theScheduler->interrupted->state = STATE_WAIT;
 		printf("\r\nEnqueueing into Blocked queue\r\n");
 		toStringPCB(theScheduler->interrupted, 0);
@@ -932,7 +964,7 @@ void main () {
 
 
 void osLoop () {
-	void *status;
+	void *status, *status2;
 	int temp = 0;
 	
 	totalProcesses = 0;
@@ -949,12 +981,19 @@ void osLoop () {
 	pthread_mutex_init(&randMutex, NULL);
 	pthread_mutex_init(&printMutex, NULL);
 	pthread_mutex_init(&totalProcessesMutex, NULL);
+	pthread_mutex_init(&trapMutex, NULL);
+	
+	pthread_cond_init(&trapCondVar, NULL);
 	
 	pthread_attr_init(&attr);
 	pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 	
 	pthread_t timer;
+	pthread_t iotrap;
+	//pthread_t iointerrupt;
 	pthread_create(&timer, &attr, timerInterrupt, (void *) scheduler);
+	pthread_create(&iotrap, &attr, ioTrap, (void *) scheduler);
+	//pthread_create(&iointerrupt, &attr, timerInterrupt, (void *) scheduler);
 	
 	int isRunning = 0;
 	int isSwitched = 0;
@@ -985,6 +1024,13 @@ void osLoop () {
 				//printf("called lock before pc\n");
 					if (scheduler && scheduler->running) {
 						scheduler->running->context->pc++;
+						if (scheduler->running->role == IO 
+							&& isTrapPC(scheduler->running->context->pc, scheduler->running)) {
+							pthread_mutex_lock(&trapMutex);
+								isIOTrapPos = 1;
+								pthread_cond_signal(&trapCondVar);
+							pthread_mutex_unlock(&trapMutex);
+						}
 					}
 				pthread_mutex_unlock(&schedulerMutex);
 				
@@ -1015,16 +1061,16 @@ void osLoop () {
 		pthread_mutex_lock(&iterationMutex);
 			if(!(iteration % RESET_COUNT)) {
 				pthread_mutex_lock(&schedulerMutex); //resets the MLFQ
-				printf("At top of reset\n");
-					if (totalProcesses >= 200) {
-						pthread_mutex_lock(&printMutex);
+				//printf("At top of reset\n");
+					//if (totalProcesses >= 200) {
+						/*pthread_mutex_lock(&printMutex);
 							printSchedulerState(scheduler);
-						pthread_mutex_unlock(&printMutex);
-					}
+						pthread_mutex_unlock(&printMutex);*/
+					//}
 					resetMLFQ(scheduler);
-					if (totalProcesses >= 200) {
-					exit(0);
-					}
+					//if (totalProcesses >= 200) {
+					//exit(0);
+					//}
 				pthread_mutex_unlock(&schedulerMutex);
 			}
 		pthread_mutex_unlock(&iterationMutex);
@@ -1063,24 +1109,52 @@ void osLoop () {
 		pthread_mutex_unlock(&totalProcessesMutex);
 		//printf("end of main loop, starting over\n");
 	}
-	printf("here\n");
 	pthread_attr_destroy(&attr);
-	printf("here1\n");
+	pthread_join(iotrap, &status2);
 	pthread_join(timer, &status);
-	printf("here2\n");
+	
 	pthread_mutex_destroy(&schedulerMutex);
-	printf("here3\n");
 	pthread_mutex_destroy(&iterationMutex);
-	printf("here4\n");
 	pthread_mutex_destroy(&randMutex);
-	printf("here5\n");
 	pthread_mutex_destroy(&printMutex);	
 	pthread_mutex_destroy(&totalProcessesMutex);
-	printf("here6\n");
+	pthread_mutex_destroy(&trapMutex);
+	pthread_cond_destroy(&trapCondVar);
+	
 	schedulerDeconstructor(scheduler);
 	
 	printf("Completed main, exiting\n");
+}
+
+
+void * ioTrap (void * theScheduler) {
+	Scheduler scheduler = (Scheduler) theScheduler;
 	
+	for (;;) {
+		pthread_mutex_lock(&trapMutex);
+			while (!isIOTrapPos) {
+				pthread_cond_wait(&trapCondVar, &trapMutex);
+				printf("Trap position reached, starting I/O Trap!\n");
+			}
+			isIOTrapPos = 0;
+		pthread_mutex_unlock(&trapMutex);
+		
+		pthread_mutex_lock(&schedulerMutex);
+			printf("Starting ISR in ioTrap\n");
+			pseudoISR(scheduler, IS_IO_TRAP);
+			printf("Finished ISR in ioTrap\n");
+		pthread_mutex_unlock(&schedulerMutex);
+		
+		pthread_mutex_lock(&schedulerMutex);
+			if (totalProcesses >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
+				printf("MAX_PCB_TOTAL reached in ioTrap\n"); //may think about a check here instead
+				pthread_mutex_unlock(&schedulerMutex);
+				break;
+			}
+		pthread_mutex_unlock(&schedulerMutex);
+	}
+	
+	pthread_exit(NULL);
 }
 
 
@@ -1100,6 +1174,7 @@ void * timerInterrupt(void * theScheduler)
 	quantum.tv_sec = 0;
 	for(;;)
 	{
+		printf("top of timer\n");
 		quantum.tv_nsec = currQuantumSize; //this WAS locked by schedulerMutex
 		
 		nanosleep(&quantum, NULL); //puts the thread to sleep
@@ -1331,7 +1406,7 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 				printf("toKill: P%d\r\n", toKill->pid);
 				PCB_destroy(toKill);
 			} else {
-				printf("\r\n\t\t\ttoKill PCB was NULL!\r\n\r\n");
+				printf("\r\n\t\t\ttoKill PCB was NULL while emptying queue!\r\n\r\n");
 				exit(0);
 			}
 				//printf("toKill == null: %d\n", (toKill == NULL));
@@ -1345,7 +1420,7 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 		if (toKill) {
 			PCB_destroy(toKill);
 		} else {
-			printf("\r\n\t\t\ttoKill PCB was NULL!\r\n\r\n");
+			printf("\r\n\t\t\ttoKill PCB was NULL after trying to kill a single one!\r\n\r\n");
 			exit(0);
 		}
 	}

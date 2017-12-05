@@ -7,8 +7,8 @@
 #include "priority_queue.h"
 
 #define ADDITIONAL_ROOM_FOR_TOSTR 4
-#define PRIORITY_JUMP_EXTRA 100
-#define MIN_PRIORITY_JUMP 50
+#define PRIORITY_JUMP_EXTRA 10
+#define MIN_PRIORITY_JUMP 0
 
 /*
  * Creates a priority queue.
@@ -26,7 +26,7 @@ PriorityQueue pq_create() {
                 failed = i;
                 break;
             }
-			if (!i) {
+			if (!i) { //i = 0
 				setQuantumSize(new_pq->queues[i], MIN_PRIORITY_JUMP);
 			} else {
 				setQuantumSize(new_pq->queues[i], i * PRIORITY_JUMP_EXTRA);
