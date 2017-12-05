@@ -120,10 +120,13 @@ int mutex_unlock (Mutex mutex, PCB pcb) {
 			printf("\r\n\r\n\t\tMUTEX IS ALREADY UNLOCKED\r\n\r\n");
 			//exit(0);
 			return 0;
-		} else {
+		} else if (mutex->isLocked && mutex->isLocked == pcb) {
 			mutex->isLocked = 0;
 			mutex->hasLock = NULL;
 			return 1;
+		} else {
+			printf("\r\n\r\n\t\tMUTEX IS OWNED BY OTHER PROCESS\r\n\r\n");
+			return 0;
 		}
 		
 	} else {
