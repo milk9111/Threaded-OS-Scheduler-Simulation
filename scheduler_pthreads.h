@@ -22,11 +22,14 @@
 #include <string.h>
 #include <time.h>
 #include <pthread.h>
+#include <unistd.h>
 
 
 //defines
-#define MAX_PCB_TOTAL 300
-#define RESET_COUNT 2000
+#define MAX_PCB_TOTAL 1200
+#define MAX_ITERATION_TOTAL 100000
+#define RESET_COUNT 10000
+#define MAKE_PCBS 10
 #define MAX_MUTEX_IN_ROUND 3
 #define MAX_PC_JUMP 4000
 #define MIN_PC_JUMP 3000
@@ -124,5 +127,11 @@ int isSignalPC (unsigned int pc, PCB pcb);
 int isWaitPC (unsigned int pc, PCB pcb);
 
 void deadlockMonitor (Scheduler thisScheduler);
+
+int countRemainingProcesses(PriorityQueue pq);
+
+int countRemainingProcessesInQueue(ReadyQueue queue);
+
+int countRemainingProcessesInMutexQueue(ReadyQueue queue);
 
 #endif

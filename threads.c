@@ -126,7 +126,7 @@ int mutex_unlock (Mutex mutex, PCB pcb) {
 			return 1;
 		} else {
 			printf("\r\n\r\n\t\tMUTEX IS OWNED BY OTHER PROCESS\r\n\r\n");
-			return 0;
+			return 2;
 		}
 		
 	} else {
