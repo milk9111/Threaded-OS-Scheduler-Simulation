@@ -34,6 +34,8 @@
 #define MAKE_PCB_CHANCE_DOMAIN 10000
 #define TIMER_RANGE 3
 #define MAKE_PCB_CHANCE_PERCENTAGE 5
+#define IO_INT_CHANCE_DOMAIN 100
+#define IO_INT_CHANCE_PERCENTAGE 10
 #define IS_TIMER 1
 #define IS_IO_TRAP 2
 #define IS_IO_INTERRUPT 3
@@ -96,7 +98,7 @@ void * timerInterrupt (void *);
 
 void * ioTrap (void *);
 
-int ioInterrupt (ReadyQueue);
+void * ioInterrupt (void *);
 
 void incrementRoleCount (enum pcb_type);
 
