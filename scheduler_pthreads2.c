@@ -797,6 +797,7 @@ void osLoop () {
 		if (isRunning) {
 			pthread_mutex_lock(&schedulerMutex);
 				if (scheduler && scheduler->running && (scheduler->running->role == PAIR || scheduler->running->role == SHARED)) {
+					printf("Going to useMutex\n");
 					isSwitched = useMutex(scheduler);
 					
 					
@@ -1406,7 +1407,6 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 	}
 	
 	if (theScheduler->killedMutexes && !q_is_empty(theScheduler->killedMutexes)) {
-		printf("here\r\n");
 		toKillMutex = q_dequeue_m(theScheduler->killedMutexes);
 	}
 	
@@ -1459,7 +1459,7 @@ int deadlockMonitor(Scheduler thisScheduler) {
 	Mutex mutex2;
 	
 	if (thisScheduler->running->role == SHARED) {
-	
+		printf("got into SHARED for deadlockMonitor\n");
 		mutex1 = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
 		mutex2 = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
 		

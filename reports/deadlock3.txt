@@ -1,0 +1,6605 @@
+Made COMP or IO pair
+Enqueuing newly created P0 into MLFQ
+Enqueuing newly created P1 into MLFQ
+Dequeuing to run
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 0
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Starting timer interrupt
+
+
+Starting ioTrap thread
+
+Waiting on condition variable in ioTrap
+done making threads
+Starting ioInterrupt thread
+
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 29
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Dequeueing to run
+contents: PID: 1, state: ready, role: io, 
+Value found in the blocked queue, waiting for I/O Interrupt!
+priority: 0, PC: 0, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 29
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 6, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 48
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P1 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Dequeueing to run
+contents: PID: 0, state: ready, role: io, 
+Value found in the blocked queue, waiting for I/O Interrupt!
+priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 6, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 48
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 18, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 6, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 65
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 6, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Dequeueing to run
+contents: PID: 1, state: ready, role: io, 
+Value found in the blocked queue, waiting for I/O Interrupt!
+priority: 0, PC: 6, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 66
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 6, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 21, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 91
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P1 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 21, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 91
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 21, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 110
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 21, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 1, state: ready, role: io, priority: 0, PC: 21, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 110
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 21, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 30, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 137
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P1 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 30, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 137
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 24, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 30, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 163
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 30, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 1, state: ready, role: io, priority: 0, PC: 30, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 163
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 0, PC: 30, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 33, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 184
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P1 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Dequeueing to run
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 1, state: waiting, role: io, priority: 0, PC: 33, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 184
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 33, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 214
+
+Q 0: P1 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 0, PC: 33, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 1, state: ready, role: io, priority: 0, PC: 33, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into priority 1 of MLFQ
+contents: PID: 1, state: interrupted, role: io, priority: 0, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 1, state: ready, role: io, priority: 1, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 214
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 1, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 214
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 1, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into priority 2 of MLFQ
+contents: PID: 1, state: interrupted, role: io, priority: 1, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 214
+
+Q 0: 
+Q 1: 
+Q 2: P1 -> *
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 17, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 2, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 232
+
+Q 0: 
+Q 1: 
+Q 2: P1 -> *
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: 
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 1, state: ready, role: io, priority: 2, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 1, state: ready, role: io, priority: 2, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 233
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 1, state: running, role: io, priority: 2, PC: 34, 
+MAX PC: 49
+io_1 traps
+30 33 6 21 
+io_2 traps
+4 8 31 38 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+
+Marking P1 for termination...
+...
+
+Inserting P4800 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 22, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 259
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: P1 -> *
+killedMutexes: 
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 259
+
+Q 0: P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P1 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P2 into MLFQ
+Enqueuing newly created P3 into MLFQ
+
+MAKING NEW PCBS
+Made Shared Resource pair
+Attempting to insert in location 4.
+Inserting at location 4.
+Attempting to insert in location 5.
+Inserting at location 5.
+Enqueuing newly created P4 into MLFQ
+Enqueuing newly created P5 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P6 into MLFQ
+Enqueuing newly created P7 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P8 into MLFQ
+Enqueuing newly created P9 into MLFQ
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+IDLE
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 12037
+
+Q 0: P2 -> P3 -> P4 -> P5 -> P6 -> P7 -> P8 -> P9 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P1 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 23, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+Next highest priority PCB contents: PID: 2, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 146
+terminate: 2
+term_count: 0
+
+
+
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 12058
+
+Q 0: P2 -> P3 -> P4 -> P5 -> P6 -> P7 -> P8 -> P9 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P0 -> *
+killed: P1 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 2, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 146
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Dequeueing to run
+contents: PID: 2, state: ready, 
+Value found in the blocked queue, waiting for I/O Interrupt!
+role: comp, priority: 0, PC: 0, 
+MAX PC: 146
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 0, state: waiting, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 12058
+
+Q 0: P3 -> P4 -> P5 -> P6 -> P7 -> P8 -> P9 -> P0 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P1 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 2, state: running, role: comp, priority: 0, PC: 0, 
+MAX PC: 146
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 3, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 56
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+
+Marking P2 for termination...
+...
+
+Inserting P6960 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 3, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 56
+terminate: 1
+term_count: 0
+
+
+Marking P3 for termination...
+...
+
+Inserting P7264 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 4, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 94
+mutex_r1 locks
+5 25 45 65 
+mutex_r1 unlocks
+20 40 60 80 
+mutex_r2 locks
+10 30 50 70 
+mutex_r2 unlocks
+15 35 55 75 
+terminate: 2
+term_count: 0
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+PID4: requested lock on mutex M4 - succeeded
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+PID4: requested lock on mutex M5 - succeeded
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+Trying to use Mutex
+M5 unlocked at PC 15
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+Trying to use Mutex
+M4 unlocked at PC 20
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+PID4: requested lock on mutex M4 - succeeded
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+PID4: requested lock on mutex M5 - succeeded
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+Trying to use Mutex
+M5 unlocked at PC 35
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+Trying to use Mutex
+M4 unlocked at PC 40
+
+
+MAKING NEW PCBS
+Made Producer/Consumer
+Attempting to insert in location 10.
+Inserting at location 10.
+Enqueuing newly created P10 into MLFQ
+Enqueuing newly created P11 into MLFQ
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+PID4: requested lock on mutex M4 - succeeded
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+PID4: requested lock on mutex M5 - succeeded
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+Trying to use Mutex
+M5 unlocked at PC 55
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+Trying to use Mutex
+M4 unlocked at PC 60
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+PID4: requested lock on mutex M4 - succeeded
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+PID4: requested lock on mutex M5 - succeeded
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+Trying to use Mutex
+M5 unlocked at PC 75
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+Trying to use Mutex
+M4 unlocked at PC 80
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+PID4: requested lock on mutex M4 - succeeded
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+PID4: requested lock on mutex M5 - succeeded
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+Trying to use Mutex
+M5 unlocked at PC 15
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+Trying to use Mutex
+M4 unlocked at PC 20
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+PID4: requested lock on mutex M4 - succeeded
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+PID4: requested lock on mutex M5 - succeeded
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+Trying to use Mutex
+M5 unlocked at PC 35
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+Trying to use Mutex
+M4 unlocked at PC 40
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+PID4: requested lock on mutex M4 - succeeded
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+PID4: requested lock on mutex M5 - succeeded
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+Trying to use Mutex
+M5 unlocked at PC 55
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+Trying to use Mutex
+M4 unlocked at PC 60
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+PID4: requested lock on mutex M4 - succeeded
+
+lock values for R1 of P4:
+5 25 45 65 
+lock values for R2 of P4:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+PID4: requested lock on mutex M5 - succeeded
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 5.
+returning M5
+Trying to use Mutex
+M5 unlocked at PC 75
+
+unlock values for R1 of P4:
+20 40 60 80 
+unlock values for R2 of P4:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 4.
+returning M4
+Trying to use Mutex
+M4 unlocked at PC 80
+
+
+Marking P4 for termination...
+...
+
+Inserting P7696 into the Killed queue
+
+Attempting to remove M4 from location 4.
+Attempting to remove M5 from location 5.
+Emptying killed PCB list
+toKill: P1
+Killed List: P2 -> P3 -> P4 -> P5 -> *
+toKill: P2
+Killed List: P3 -> P4 -> P5 -> *
+toKill: P3
+Killed List: P4 -> P5 -> *
+toKill: P4
+Killed List: P5 -> *
+Emptying killed MUTEX list
+here
+toKillMutex: M4
+destroying M4
+Killed List: M5 -> *
+
+Dequeueing to run
+contents: PID: 6, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 51
+terminate: 1
+term_count: 0
+
+
+Marking P6 for termination...
+...
+
+Inserting P8560 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 7, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 278
+terminate: 1
+term_count: 0
+
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P12 into MLFQ
+Enqueuing newly created P13 into MLFQ
+
+Marking P7 for termination...
+...
+
+Inserting P8864 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 8, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 8, state: waiting, role: io, priority: 0, PC: 6, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 12942
+
+Q 0: P9 -> P0 -> P10 -> P11 -> P12 -> P13 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P8 -> *
+killed: P6 -> P7 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 9, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 8, state: waiting, role: io, priority: 0, PC: 6, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 12942
+
+Q 0: P0 -> P10 -> P11 -> P12 -> P13 -> P8 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P6 -> P7 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 9, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 13052
+
+Q 0: P0 -> P10 -> P11 -> P12 -> P13 -> P8 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P9 -> *
+killed: P6 -> P7 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 0, state: ready, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 0, state: ready, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 13052
+
+Q 0: P10 -> P11 -> P12 -> P13 -> P8 -> P9 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P6 -> P7 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 0, state: running, role: io, priority: 0, PC: 31, 
+MAX PC: 33
+io_1 traps
+17 22 31 23 
+io_2 traps
+1 7 6 25 
+terminate: 2
+term_count: 1
+
+Next highest priority PCB contents: PID: 10, state: ready, role: pair, priority: 0, PC: 0, isProducer: 0, 
+MAX PC: 201
+cond_var waits
+24 72 120 168 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+
+Marking P0 for termination...
+...
+
+Inserting P4496 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 10, state: ready, role: pair, priority: 0, PC: 0, isProducer: 0, 
+MAX PC: 201
+cond_var waits
+24 72 120 168 
+terminate: 1
+term_count: 0
+
+lock values for R1 of P10:
+12 60 108 156 
+Getting the Mutex for R1
+Searching for mutex with key: 10.
+returning M10
+PID10: requested lock on mutex M10 - succeeded
+
+wait values for R1 of P10:
+24 72 120 168 
+Searching for mutex with key: 10.
+returning M10
+
+unlock values for R1 of P10:
+48 96 144 192 
+Getting the Mutex for R1
+Searching for mutex with key: 10.
+returning M10
+Trying to use Mutex
+M10 unlocked at PC 48
+
+lock values for R1 of P10:
+12 60 108 156 
+Getting the Mutex for R1
+Searching for mutex with key: 10.
+returning M10
+PID10: requested lock on mutex M10 - succeeded
+
+wait values for R1 of P10:
+24 72 120 168 
+Searching for mutex with key: 10.
+returning M10
+
+unlock values for R1 of P10:
+48 96 144 192 
+Getting the Mutex for R1
+Searching for mutex with key: 10.
+returning M10
+Trying to use Mutex
+M10 unlocked at PC 96
+
+lock values for R1 of P10:
+12 60 108 156 
+Getting the Mutex for R1
+Searching for mutex with key: 10.
+returning M10
+PID10: requested lock on mutex M10 - succeeded
+
+wait values for R1 of P10:
+24 72 120 168 
+Searching for mutex with key: 10.
+returning M10
+
+unlock values for R1 of P10:
+48 96 144 192 
+Getting the Mutex for R1
+Searching for mutex with key: 10.
+returning M10
+Trying to use Mutex
+M10 unlocked at PC 144
+
+lock values for R1 of P10:
+12 60 108 156 
+Getting the Mutex for R1
+Searching for mutex with key: 10.
+returning M10
+PID10: requested lock on mutex M10 - succeeded
+
+wait values for R1 of P10:
+24 72 120 168 
+Searching for mutex with key: 10.
+returning M10
+
+unlock values for R1 of P10:
+48 96 144 192 
+Getting the Mutex for R1
+Searching for mutex with key: 10.
+returning M10
+Trying to use Mutex
+M10 unlocked at PC 192
+
+
+Marking P10 for termination...
+...
+
+Inserting P10000 into the Killed queue
+
+Attempting to remove M10 from location 10.
+Emptying killed PCB list
+toKill: P6
+Killed List: P7 -> P0 -> P10 -> P11 -> *
+toKill: P7
+Killed List: P0 -> P10 -> P11 -> *
+toKill: P0
+Killed List: P10 -> P11 -> *
+toKill: P10
+Killed List: P11 -> *
+Emptying killed MUTEX list
+here
+destroying M10
+
+Dequeueing to run
+contents: PID: 12, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 193
+terminate: 1
+term_count: 0
+
+
+Marking P12 for termination...
+...
+
+Inserting P4864 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 13, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 158
+terminate: 2
+term_count: 0
+
+
+Marking P13 for termination...
+...
+
+Inserting P7760 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 8, state: ready, role: io, priority: 0, PC: 6, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 8, state: waiting, role: io, priority: 0, PC: 61, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 13829
+
+Q 0: P9 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P8 -> *
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 9, state: ready, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 8, state: waiting, role: io, priority: 0, PC: 61, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 13829
+
+Q 0: P8 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 9, state: running, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 8, state: ready, role: io, priority: 0, PC: 61, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 13851
+
+Q 0: P8 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P9 -> *
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 8, state: ready, role: io, priority: 0, PC: 61, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 8, state: ready, role: io, priority: 0, PC: 61, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 13851
+
+Q 0: P9 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 8, state: running, role: io, priority: 0, PC: 61, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 8, state: waiting, role: io, priority: 0, PC: 68, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 13876
+
+Q 0: P9 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P8 -> *
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 9, state: ready, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 8, state: waiting, role: io, priority: 0, PC: 68, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 13876
+
+Q 0: P8 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 9, state: running, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 8, state: ready, role: io, priority: 0, PC: 68, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into priority 1 of MLFQ
+contents: PID: 9, state: interrupted, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 8, state: ready, role: io, priority: 0, PC: 68, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 13876
+
+Q 0: 
+Q 1: P9 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 8, state: running, role: io, priority: 0, PC: 68, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 1, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 8, state: waiting, role: io, priority: 0, PC: 69, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 13894
+
+Q 0: 
+Q 1: P9 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P8 -> *
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 1, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 9, state: ready, role: io, priority: 1, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 8, state: waiting, role: io, priority: 0, PC: 69, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 13894
+
+Q 0: P8 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 9, state: running, role: io, priority: 1, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 8, state: ready, role: io, priority: 0, PC: 69, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 1, PC: 154, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 13961
+
+Q 0: P8 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P9 -> *
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 8, state: ready, role: io, priority: 0, PC: 69, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 8, state: ready, role: io, priority: 0, PC: 69, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 1, PC: 154, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 13961
+
+Q 0: 
+Q 1: P9 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 8, state: running, role: io, priority: 0, PC: 70, 
+MAX PC: 74
+io_1 traps
+61 68 69 6 
+io_2 traps
+35 62 9 47 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 1, PC: 154, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+
+Marking P8 for termination...
+...
+
+Inserting P9296 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 9, state: ready, role: io, priority: 1, PC: 154, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 1, PC: 270, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 14092
+
+Q 0: 
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P9 -> *
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+
+Next highest priority PCB contents: The MLFQ is empty!
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 1, PC: 270, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 14092
+
+Q 0: 
+Q 1: P9 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 1, PC: 270, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P14 into MLFQ
+Enqueuing newly created P15 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P16 into MLFQ
+Enqueuing newly created P17 into MLFQ
+
+
+RESETTING MLFQ
+
+
+MAKING NEW PCBS
+Made Producer/Consumer
+Attempting to insert in location 18.
+Inserting at location 18.
+Enqueuing newly created P18 into MLFQ
+Enqueuing newly created P19 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P20 into MLFQ
+Enqueuing newly created P21 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P22 into MLFQ
+Enqueuing newly created P23 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P24 into MLFQ
+Enqueuing newly created P25 into MLFQ
+
+MAKING NEW PCBS
+Made Shared Resource pair
+Attempting to insert in location 26.
+Inserting at location 26.
+Attempting to insert in location 27.
+Inserting at location 27.
+Enqueuing newly created P26 into MLFQ
+Enqueuing newly created P27 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P28 into MLFQ
+Enqueuing newly created P29 into MLFQ
+
+MAKING NEW PCBS
+Made Shared Resource pair
+Attempting to insert in location 30.
+Inserting at location 30.
+Attempting to insert in location 31.
+Inserting at location 31.
+Enqueuing newly created P30 into MLFQ
+Enqueuing newly created P31 into MLFQ
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into MLFQ
+IDLE
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 14, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 112
+io_1 traps
+64 22 110 70 
+io_2 traps
+101 0 23 66 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 31687
+
+Q 0: P15 -> P16 -> P17 -> P9 -> P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 14, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 112
+io_1 traps
+64 22 110 70 
+io_2 traps
+101 0 23 66 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 15, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+
+
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 14, state: waiting, role: io, priority: 0, PC: 22, 
+MAX PC: 112
+io_1 traps
+64 22 110 70 
+io_2 traps
+101 0 23 66 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 31719
+
+Q 0: P15 -> P16 -> P17 -> P9 -> P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P14 -> *
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 15, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 15, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 14, state: waiting, role: io, priority: 0, PC: 22, 
+MAX PC: 112
+io_1 traps
+64 22 110 70 
+io_2 traps
+101 0 23 66 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 31719
+
+Q 0: P16 -> P17 -> P9 -> P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 15, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 16, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 15, state: waiting, role: io, priority: 0, PC: 37, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 31774
+
+Q 0: P16 -> P17 -> P9 -> P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P15 -> *
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 16, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 16, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 15, state: waiting, role: io, priority: 0, PC: 37, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 31774
+
+Q 0: P17 -> P9 -> P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> P15 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 16, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 17, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 16, state: waiting, role: io, priority: 0, PC: 24, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 31816
+
+Q 0: P17 -> P9 -> P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> P15 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P16 -> *
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 17, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 17, state: ready, role: io, priority: 0, PC: 0, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 16, state: waiting, role: io, priority: 0, PC: 24, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 31816
+
+Q 0: P9 -> P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> P15 -> P16 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 17, state: running, role: io, priority: 0, PC: 0, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 0, PC: 270, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 17, state: waiting, role: io, priority: 0, PC: 155, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 31981
+
+Q 0: P9 -> P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> P15 -> P16 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P17 -> *
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 0, PC: 270, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 9, state: ready, role: io, priority: 0, PC: 270, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 17, state: waiting, role: io, priority: 0, PC: 155, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 31981
+
+Q 0: P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> P15 -> P16 -> P17 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 9, state: running, role: io, priority: 0, PC: 270, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 18, state: ready, role: pair, priority: 0, PC: 0, isProducer: 0, 
+MAX PC: 67
+cond_var waits
+8 24 40 56 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 32101
+
+Q 0: P18 -> P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> P15 -> P16 -> P17 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P9 -> *
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running 
+Next highest priority PCB contents: PID: 18, state: ready, role: pair, priority: 0, PC: 0, isProducer: 0, 
+MAX PC: 67
+cond_var waits
+8 24 40 56 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 18, state: ready, role: pair, priority: 0, PC: 0, isProducer: 0, 
+MAX PC: 67
+cond_var waits
+8 24 40 56 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 32101
+
+Q 0: P19 -> P20 -> P21 -> P22 -> P23 -> P24 -> P25 -> P26 -> P27 -> P28 -> P29 -> P30 -> P31 -> P14 -> P15 -> P16 -> P17 -> P9 -> *
+Q 1: 
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P12 -> P13 -> P8 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 18, state: running, role: pair, priority: 0, PC: 1, isProducer: 0, 
+MAX PC: 67
+cond_var waits
+8 24 40 56 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 19, state: ready, role: pair, priority: 0, PC: 0, isProducer: 1, 
+MAX PC: 202
+cond_var signals
+36 84 132 180 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+lock values for R1 of P18:
+4 20 36 52 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+PID18: requested lock on mutex M18 - succeeded
+
+wait values for R1 of P18:
+8 24 40 56 
+Searching for mutex with key: 18.
+returning M18
+
+unlock values for R1 of P18:
+16 32 48 64 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+Trying to use Mutex
+M18 unlocked at PC 16
+
+lock values for R1 of P18:
+4 20 36 52 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+PID18: requested lock on mutex M18 - succeeded
+
+wait values for R1 of P18:
+8 24 40 56 
+Searching for mutex with key: 18.
+returning M18
+
+unlock values for R1 of P18:
+16 32 48 64 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+Trying to use Mutex
+M18 unlocked at PC 32
+
+lock values for R1 of P18:
+4 20 36 52 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+PID18: requested lock on mutex M18 - succeeded
+
+wait values for R1 of P18:
+8 24 40 56 
+Searching for mutex with key: 18.
+returning M18
+
+unlock values for R1 of P18:
+16 32 48 64 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+Trying to use Mutex
+M18 unlocked at PC 48
+
+lock values for R1 of P18:
+4 20 36 52 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+PID18: requested lock on mutex M18 - succeeded
+
+wait values for R1 of P18:
+8 24 40 56 
+Searching for mutex with key: 18.
+returning M18
+
+unlock values for R1 of P18:
+16 32 48 64 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+Trying to use Mutex
+M18 unlocked at PC 64
+
+lock values for R1 of P18:
+4 20 36 52 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+PID18: requested lock on mutex M18 - succeeded
+
+wait values for R1 of P18:
+8 24 40 56 
+Searching for mutex with key: 18.
+returning M18
+
+unlock values for R1 of P18:
+16 32 48 64 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+Trying to use Mutex
+M18 unlocked at PC 16
+
+lock values for R1 of P18:
+4 20 36 52 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+PID18: requested lock on mutex M18 - succeeded
+
+wait values for R1 of P18:
+8 24 40 56 
+Searching for mutex with key: 18.
+returning M18
+
+unlock values for R1 of P18:
+16 32 48 64 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+Trying to use Mutex
+M18 unlocked at PC 32
+
+lock values for R1 of P18:
+4 20 36 52 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+PID18: requested lock on mutex M18 - succeeded
+
+wait values for R1 of P18:
+8 24 40 56 
+Searching for mutex with key: 18.
+returning M18
+
+unlock values for R1 of P18:
+16 32 48 64 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+Trying to use Mutex
+M18 unlocked at PC 48
+
+lock values for R1 of P18:
+4 20 36 52 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+PID18: requested lock on mutex M18 - succeeded
+
+wait values for R1 of P18:
+8 24 40 56 
+Searching for mutex with key: 18.
+returning M18
+
+unlock values for R1 of P18:
+16 32 48 64 
+Getting the Mutex for R1
+Searching for mutex with key: 18.
+returning M18
+Trying to use Mutex
+M18 unlocked at PC 64
+
+
+Marking P18 for termination...
+...
+
+Inserting P10608 into the Killed queue
+
+Attempting to remove M18 from location 18.
+Emptying killed PCB list
+toKill: P12
+Killed List: P13 -> P8 -> P18 -> P19 -> *
+toKill: P13
+Killed List: P8 -> P18 -> P19 -> *
+toKill: P8
+Killed List: P18 -> P19 -> *
+toKill: P18
+Killed List: P19 -> *
+Emptying killed MUTEX list
+here
+destroying M18
+
+Dequeueing to run
+contents: PID: 20, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 290
+terminate: 1
+term_count: 0
+
+
+Marking P20 for termination...
+...
+
+Inserting P11088 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 21, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 263
+terminate: 2
+term_count: 0
+
+
+MAKING NEW PCBS
+Made Shared Resource pair
+Attempting to insert in location 32.
+Inserting at location 32.
+Attempting to insert in location 33.
+Inserting at location 33.
+Enqueuing newly created P32 into MLFQ
+Enqueuing newly created P33 into MLFQ
+
+Marking P21 for termination...
+...
+
+Inserting P11328 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 22, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 258
+terminate: 1
+term_count: 0
+
+
+Marking P22 for termination...
+...
+
+Inserting P11664 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 23, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 111
+terminate: 2
+term_count: 0
+
+
+Marking P23 for termination...
+...
+
+Inserting P11968 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 24, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 150
+terminate: 1
+term_count: 0
+
+
+Marking P24 for termination...
+...
+
+Inserting P12400 into the Killed queue
+
+Emptying killed PCB list
+toKill: P20
+Killed List: P21 -> P22 -> P23 -> P24 -> *
+toKill: P21
+Killed List: P22 -> P23 -> P24 -> *
+toKill: P22
+Killed List: P23 -> P24 -> *
+toKill: P23
+Killed List: P24 -> *
+Emptying killed MUTEX list
+
+Dequeueing to run
+contents: PID: 25, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 199
+terminate: 1
+term_count: 0
+
+
+Marking P25 for termination...
+...
+
+Inserting P12704 into the Killed queue
+
+
+Dequeueing to run
+contents: PID: 26, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 129
+mutex_r1 locks
+16 48 80 112 
+mutex_r1 unlocks
+24 56 88 120 
+mutex_r2 locks
+8 40 72 104 
+mutex_r2 unlocks
+32 64 96 128 
+terminate: 2
+term_count: 0
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+PID26: requested lock on mutex M27 - succeeded
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+PID26: requested lock on mutex M26 - succeeded
+
+unlock values for R1 of P26:
+24 56 88 120 
+unlock values for R2 of P26:
+32 64 96 128 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+Trying to use Mutex
+M26 unlocked at PC 24
+
+unlock values for R1 of P26:
+24 56 88 120 
+unlock values for R2 of P26:
+32 64 96 128 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+Trying to use Mutex
+M27 unlocked at PC 32
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+PID26: requested lock on mutex M27 - succeeded
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+PID26: requested lock on mutex M26 - succeeded
+
+unlock values for R1 of P26:
+24 56 88 120 
+unlock values for R2 of P26:
+32 64 96 128 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+Trying to use Mutex
+M26 unlocked at PC 56
+
+unlock values for R1 of P26:
+24 56 88 120 
+unlock values for R2 of P26:
+32 64 96 128 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+Trying to use Mutex
+M27 unlocked at PC 64
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+PID26: requested lock on mutex M27 - succeeded
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+PID26: requested lock on mutex M26 - succeeded
+
+unlock values for R1 of P26:
+24 56 88 120 
+unlock values for R2 of P26:
+32 64 96 128 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+Trying to use Mutex
+M26 unlocked at PC 88
+
+unlock values for R1 of P26:
+24 56 88 120 
+unlock values for R2 of P26:
+32 64 96 128 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+Trying to use Mutex
+M27 unlocked at PC 96
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+PID26: requested lock on mutex M27 - succeeded
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+PID26: requested lock on mutex M26 - succeeded
+
+unlock values for R1 of P26:
+24 56 88 120 
+unlock values for R2 of P26:
+32 64 96 128 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+Trying to use Mutex
+M26 unlocked at PC 120
+
+unlock values for R1 of P26:
+24 56 88 120 
+unlock values for R2 of P26:
+32 64 96 128 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+Trying to use Mutex
+M27 unlocked at PC 128
+
+lock values for R1 of P26:
+16 48 80 112 
+lock values for R2 of P26:
+8 40 72 104 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+PID26: requested lock on mutex M27 - succeeded
+
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into priority 1 of MLFQ
+contents: PID: 26, state: interrupted, role: shared, priority: 0, PC: 8, 
+MAX PC: 129
+mutex_r1 locks
+16 48 80 112 
+mutex_r1 unlocks
+24 56 88 120 
+mutex_r2 locks
+8 40 72 104 
+mutex_r2 unlocks
+32 64 96 128 
+terminate: 2
+term_count: 1
+
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 27, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 186
+mutex_r1 locks
+11 55 99 143 
+mutex_r1 unlocks
+44 88 132 176 
+mutex_r2 locks
+22 66 110 154 
+mutex_r2 unlocks
+33 77 121 165 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 34017
+
+Q 0: P28 -> P29 -> P30 -> P31 -> P14 -> P15 -> P16 -> P17 -> P9 -> P32 -> P33 -> *
+Q 1: P26 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 27, state: running, role: shared, priority: 0, PC: 0, 
+MAX PC: 186
+mutex_r1 locks
+11 55 99 143 
+mutex_r1 unlocks
+44 88 132 176 
+mutex_r2 locks
+22 66 110 154 
+mutex_r2 unlocks
+33 77 121 165 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 28, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 255
+terminate: 2
+term_count: 0
+
+
+
+
+lock values for R1 of P27:
+11 55 99 143 
+lock values for R2 of P27:
+22 66 110 154 
+Getting the Mutex for R1
+Searching for mutex with key: 26.
+returning M26
+PID27: requested lock on mutex M26 - succeeded
+
+lock values for R1 of P27:
+11 55 99 143 
+lock values for R2 of P27:
+22 66 110 154 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+PID27: requested lock on mutex M27 - blocked by PID26
+CONTEXT SWITCH COUNT: 1
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P34 into MLFQ
+Enqueuing newly created P35 into MLFQ
+
+MAKING NEW PCBS
+Made Producer/Consumer
+Attempting to insert in location 36.
+Inserting at location 36.
+Enqueuing newly created P36 into MLFQ
+Enqueuing newly created P37 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P38 into MLFQ
+Enqueuing newly created P39 into MLFQ
+
+
+RESETTING MLFQ
+
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P40 into MLFQ
+Enqueuing newly created P41 into MLFQ
+
+MAKING NEW PCBS
+Made Shared Resource pair
+Attempting to insert in location 42.
+Inserting at location 42.
+Attempting to insert in location 43.
+Inserting at location 43.
+Enqueuing newly created P42 into MLFQ
+Enqueuing newly created P43 into MLFQ
+
+MAKING NEW PCBS
+Made Producer/Consumer
+Attempting to insert in location 44.
+Inserting at location 44.
+Enqueuing newly created P44 into MLFQ
+Enqueuing newly created P45 into MLFQ
+
+MAKING NEW PCBS
+Made Shared Resource pair
+Attempting to insert in location 46.
+Inserting at location 46.
+Attempting to insert in location 47.
+Inserting at location 47.
+Enqueuing newly created P46 into MLFQ
+Enqueuing newly created P47 into MLFQ
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into priority 1 of MLFQ
+contents: PID: 28, state: interrupted, role: comp, priority: 0, PC: 0, 
+MAX PC: 255
+terminate: 2
+term_count: 0
+
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 29, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 46
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 55382
+
+Q 0: P30 -> P31 -> P14 -> P15 -> P16 -> P17 -> P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> *
+Q 1: P28 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 29, state: running, role: comp, priority: 0, PC: 0, 
+MAX PC: 46
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 30, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 252
+mutex_r1 locks
+15 75 135 195 
+mutex_r1 unlocks
+60 120 180 240 
+mutex_r2 locks
+30 90 150 210 
+mutex_r2 unlocks
+45 105 165 225 
+terminate: 1
+term_count: 0
+
+
+
+
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P48 into MLFQ
+Enqueuing newly created P49 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P50 into MLFQ
+Enqueuing newly created P51 into MLFQ
+
+MAKING NEW PCBS
+Made Shared Resource pair
+Attempting to insert in location 52.
+Inserting at location 52.
+Attempting to insert in location 53.
+Inserting at location 53.
+Enqueuing newly created P52 into MLFQ
+Enqueuing newly created P53 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P54 into MLFQ
+Enqueuing newly created P55 into MLFQ
+
+MAKING NEW PCBS
+Made Shared Resource pair
+Attempting to insert in location 56.
+Inserting at location 56.
+Attempting to insert in location 57.
+Inserting at location 57.
+Enqueuing newly created P56 into MLFQ
+Enqueuing newly created P57 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P58 into MLFQ
+Enqueuing newly created P59 into MLFQ
+
+
+RESETTING MLFQ
+
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P60 into MLFQ
+Enqueuing newly created P61 into MLFQ
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into priority 1 of MLFQ
+contents: PID: 29, state: interrupted, role: comp, priority: 0, PC: 0, 
+MAX PC: 46
+terminate: 1
+term_count: 0
+
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 30, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 252
+mutex_r1 locks
+15 75 135 195 
+mutex_r1 unlocks
+60 120 180 240 
+mutex_r2 locks
+30 90 150 210 
+mutex_r2 unlocks
+45 105 165 225 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 75013
+
+Q 0: P31 -> P14 -> P15 -> P16 -> P17 -> P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> *
+killedMutexes: 
+
+Going to be running contents: PID: 30, state: running, role: shared, priority: 0, PC: 0, 
+MAX PC: 252
+mutex_r1 locks
+15 75 135 195 
+mutex_r1 unlocks
+60 120 180 240 
+mutex_r2 locks
+30 90 150 210 
+mutex_r2 unlocks
+45 105 165 225 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 31, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 38
+mutex_r1 locks
+2 10 18 26 
+mutex_r1 unlocks
+8 16 24 32 
+mutex_r2 locks
+4 12 20 28 
+mutex_r2 unlocks
+6 14 22 30 
+terminate: 2
+term_count: 0
+
+
+
+
+lock values for R1 of P30:
+15 75 135 195 
+lock values for R2 of P30:
+30 90 150 210 
+Getting the Mutex for R1
+Searching for mutex with key: 30.
+returning M30
+PID30: requested lock on mutex M30 - succeeded
+
+lock values for R1 of P30:
+15 75 135 195 
+lock values for R2 of P30:
+30 90 150 210 
+Getting the Mutex for R2
+Searching for mutex with key: 31.
+returning M31
+PID30: requested lock on mutex M31 - succeeded
+
+unlock values for R1 of P30:
+60 120 180 240 
+unlock values for R2 of P30:
+45 105 165 225 
+Getting the Mutex for R2
+Searching for mutex with key: 31.
+returning M31
+Trying to use Mutex
+M31 unlocked at PC 45
+
+unlock values for R1 of P30:
+60 120 180 240 
+unlock values for R2 of P30:
+45 105 165 225 
+Getting the Mutex for R1
+Searching for mutex with key: 30.
+returning M30
+Trying to use Mutex
+M30 unlocked at PC 60
+
+lock values for R1 of P30:
+15 75 135 195 
+lock values for R2 of P30:
+30 90 150 210 
+Getting the Mutex for R1
+Searching for mutex with key: 30.
+returning M30
+PID30: requested lock on mutex M30 - succeeded
+
+lock values for R1 of P30:
+15 75 135 195 
+lock values for R2 of P30:
+30 90 150 210 
+Getting the Mutex for R2
+Searching for mutex with key: 31.
+returning M31
+PID30: requested lock on mutex M31 - succeeded
+
+unlock values for R1 of P30:
+60 120 180 240 
+unlock values for R2 of P30:
+45 105 165 225 
+Getting the Mutex for R2
+Searching for mutex with key: 31.
+returning M31
+Trying to use Mutex
+M31 unlocked at PC 105
+
+unlock values for R1 of P30:
+60 120 180 240 
+unlock values for R2 of P30:
+45 105 165 225 
+Getting the Mutex for R1
+Searching for mutex with key: 30.
+returning M30
+Trying to use Mutex
+M30 unlocked at PC 120
+
+lock values for R1 of P30:
+15 75 135 195 
+lock values for R2 of P30:
+30 90 150 210 
+Getting the Mutex for R1
+Searching for mutex with key: 30.
+returning M30
+PID30: requested lock on mutex M30 - succeeded
+
+lock values for R1 of P30:
+15 75 135 195 
+lock values for R2 of P30:
+30 90 150 210 
+Getting the Mutex for R2
+Searching for mutex with key: 31.
+returning M31
+PID30: requested lock on mutex M31 - succeeded
+
+unlock values for R1 of P30:
+60 120 180 240 
+unlock values for R2 of P30:
+45 105 165 225 
+Getting the Mutex for R2
+Searching for mutex with key: 31.
+returning M31
+Trying to use Mutex
+M31 unlocked at PC 165
+
+unlock values for R1 of P30:
+60 120 180 240 
+unlock values for R2 of P30:
+45 105 165 225 
+Getting the Mutex for R1
+Searching for mutex with key: 30.
+returning M30
+Trying to use Mutex
+M30 unlocked at PC 180
+
+lock values for R1 of P30:
+15 75 135 195 
+lock values for R2 of P30:
+30 90 150 210 
+Getting the Mutex for R1
+Searching for mutex with key: 30.
+returning M30
+PID30: requested lock on mutex M30 - succeeded
+
+lock values for R1 of P30:
+15 75 135 195 
+lock values for R2 of P30:
+30 90 150 210 
+Getting the Mutex for R2
+Searching for mutex with key: 31.
+returning M31
+PID30: requested lock on mutex M31 - succeeded
+
+unlock values for R1 of P30:
+60 120 180 240 
+unlock values for R2 of P30:
+45 105 165 225 
+Getting the Mutex for R2
+Searching for mutex with key: 31.
+returning M31
+Trying to use Mutex
+M31 unlocked at PC 225
+
+unlock values for R1 of P30:
+60 120 180 240 
+unlock values for R2 of P30:
+45 105 165 225 
+Getting the Mutex for R1
+Searching for mutex with key: 30.
+returning M30
+Trying to use Mutex
+M30 unlocked at PC 240
+
+
+Marking P30 for termination...
+...
+
+Inserting P14736 into the Killed queue
+
+Attempting to remove M30 from location 30.
+Attempting to remove M31 from location 31.
+
+Dequeueing to run
+contents: PID: 14, state: ready, role: io, priority: 0, PC: 22, 
+MAX PC: 112
+io_1 traps
+64 22 110 70 
+io_2 traps
+101 0 23 66 
+terminate: 2
+term_count: 0
+
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 14, state: waiting, role: io, priority: 0, PC: 64, 
+MAX PC: 112
+io_1 traps
+64 22 110 70 
+io_2 traps
+101 0 23 66 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 75323
+
+Q 0: P15 -> P16 -> P17 -> P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P14 -> *
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running 
+Next highest priority PCB contents: PID: 15, state: ready, role: io, priority: 0, PC: 37, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Dequeueing to run
+contents: PID: 15, state: ready, role: io, 
+Value found in the blocked queue, waiting for I/O Interrupt!
+priority: 0, PC: 37, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 14, state: waiting, role: io, priority: 0, PC: 64, 
+MAX PC: 112
+io_1 traps
+64 22 110 70 
+io_2 traps
+101 0 23 66 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 75323
+
+Q 0: P16 -> P17 -> P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running contents: PID: 15, state: running, role: io, priority: 0, PC: 37, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 16, state: ready, role: io, priority: 0, PC: 24, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 15, state: waiting, role: io, priority: 0, PC: 53, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 75357
+
+Q 0: P16 -> P17 -> P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P15 -> *
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running 
+Next highest priority PCB contents: PID: 16, state: ready, role: io, priority: 0, PC: 24, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 16, state: ready, role: io, priority: 0, PC: 24, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 15, state: waiting, role: io, priority: 0, PC: 53, 
+MAX PC: 124
+io_1 traps
+0 37 53 106 
+io_2 traps
+59 2 118 85 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 75357
+
+Q 0: P17 -> P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running contents: PID: 16, state: running, role: io, priority: 0, PC: 24, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 17, state: ready, role: io, priority: 0, PC: 155, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 16, state: waiting, role: io, priority: 0, PC: 51, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 75404
+
+Q 0: P17 -> P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P16 -> *
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running 
+Next highest priority PCB contents: PID: 17, state: ready, role: io, priority: 0, PC: 155, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Dequeueing to run
+contents: PID: 17, state: ready, role: io, 
+Value found in the blocked queue, waiting for I/O Interrupt!
+priority: 0, PC: 155, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 16, state: waiting, role: io, priority: 0, PC: 51, 
+MAX PC: 58
+io_1 traps
+24 57 51 55 
+io_2 traps
+10 37 22 12 
+terminate: 1
+term_count: 0
+
+
+MLFQ State
+iteration: 75404
+
+Q 0: P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> P16 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running contents: PID: 17, state: running, role: io, priority: 0, PC: 155, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 1
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 17, state: waiting, role: io, priority: 0, PC: 173, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 75436
+
+Q 0: P9 -> P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> P16 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P17 -> *
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running 
+Next highest priority PCB contents: PID: 9, state: ready, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 1
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Dequeueing to run
+contents: PID: 9, state: ready, role: io, 
+Value found in the blocked queue, waiting for I/O Interrupt!
+priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 1
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 17, state: waiting, role: io, priority: 0, PC: 173, 
+MAX PC: 281
+io_1 traps
+173 155 182 243 
+io_2 traps
+51 10 144 68 
+terminate: 2
+term_count: 0
+
+
+MLFQ State
+iteration: 75436
+
+Q 0: P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> P16 -> P17 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running contents: PID: 9, state: running, role: io, priority: 0, PC: 92, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 1
+
+Next highest priority PCB contents: PID: 32, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 80
+mutex_r1 locks
+5 25 45 65 
+mutex_r1 unlocks
+20 40 60 80 
+mutex_r2 locks
+10 30 50 70 
+mutex_r2 unlocks
+15 35 55 75 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+Trap position reached, starting I/O Trap
+Starting ISR in ioTrap
+Entering IO Trap
+
+Enqueueing into Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 75447
+
+Q 0: P32 -> P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> P16 -> P17 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: P9 -> *
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running 
+Next highest priority PCB contents: PID: 32, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 80
+mutex_r1 locks
+5 25 45 65 
+mutex_r1 unlocks
+20 40 60 80 
+mutex_r2 locks
+10 30 50 70 
+mutex_r2 unlocks
+15 35 55 75 
+terminate: 1
+term_count: 0
+
+
+
+
+
+Sending signal to ioInterrupt
+
+Exiting IO Trap
+
+Value found in the blocked queue, waiting for I/O Interrupt!
+
+Dequeueing to run
+contents: PID: 32, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 80
+mutex_r1 locks
+5 25 45 65 
+mutex_r1 unlocks
+20 40 60 80 
+mutex_r2 locks
+10 30 50 70 
+mutex_r2 unlocks
+15 35 55 75 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in ioTrap
+Waiting on condition variable in ioTrap
+Received I/O
+Starting ISR in ioInterrupt
+Entering IO Interrupt
+
+Enqueueing into MLFQ from Blocked queue
+contents: PID: 9, state: waiting, role: io, priority: 0, PC: 96, 
+MAX PC: 280
+io_1 traps
+96 270 154 92 
+io_2 traps
+260 117 88 121 
+terminate: 2
+term_count: 1
+
+
+MLFQ State
+iteration: 75447
+
+Q 0: P33 -> P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> P16 -> P17 -> P9 -> *
+Q 1: P29 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running contents: PID: 32, state: running, role: shared, priority: 0, PC: 0, 
+MAX PC: 80
+mutex_r1 locks
+5 25 45 65 
+mutex_r1 unlocks
+20 40 60 80 
+mutex_r2 locks
+10 30 50 70 
+mutex_r2 unlocks
+15 35 55 75 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 33, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 180
+mutex_r1 locks
+11 55 99 143 
+mutex_r1 unlocks
+44 88 132 176 
+mutex_r2 locks
+22 66 110 154 
+mutex_r2 unlocks
+33 77 121 165 
+terminate: 1
+term_count: 0
+
+
+
+
+Exiting IO Interrupt
+Exiting ISR
+Finished ISR in ioInterrupt
+Waiting on condition variable in ioInterrupt
+lock values for R1 of P32:
+5 25 45 65 
+lock values for R2 of P32:
+10 30 50 70 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+PID32: requested lock on mutex M32 - succeeded
+
+lock values for R1 of P32:
+5 25 45 65 
+lock values for R2 of P32:
+10 30 50 70 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+PID32: requested lock on mutex M33 - succeeded
+
+unlock values for R1 of P32:
+20 40 60 80 
+unlock values for R2 of P32:
+15 35 55 75 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+Trying to use Mutex
+M33 unlocked at PC 15
+
+unlock values for R1 of P32:
+20 40 60 80 
+unlock values for R2 of P32:
+15 35 55 75 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+Trying to use Mutex
+M32 unlocked at PC 20
+
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into priority 1 of MLFQ
+contents: PID: 32, state: interrupted, role: shared, priority: 0, PC: 20, 
+MAX PC: 80
+mutex_r1 locks
+5 25 45 65 
+mutex_r1 unlocks
+20 40 60 80 
+mutex_r2 locks
+10 30 50 70 
+mutex_r2 unlocks
+15 35 55 75 
+terminate: 1
+term_count: 0
+
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 33, state: ready, role: shared, priority: 0, PC: 0, 
+MAX PC: 180
+mutex_r1 locks
+11 55 99 143 
+mutex_r1 unlocks
+44 88 132 176 
+mutex_r2 locks
+22 66 110 154 
+mutex_r2 unlocks
+33 77 121 165 
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 75467
+
+Q 0: P27 -> P34 -> P35 -> P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> P16 -> P17 -> P9 -> *
+Q 1: P29 -> P32 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: P25 -> P30 -> P31 -> *
+killedMutexes: M30 -> M31 -> *
+
+Going to be running contents: PID: 33, state: running, role: shared, priority: 0, PC: 0, 
+MAX PC: 180
+mutex_r1 locks
+11 55 99 143 
+mutex_r1 unlocks
+44 88 132 176 
+mutex_r2 locks
+22 66 110 154 
+mutex_r2 unlocks
+33 77 121 165 
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 27, state: running, role: shared, priority: 0, PC: 22, 
+MAX PC: 186
+mutex_r1 locks
+11 55 99 143 
+mutex_r1 unlocks
+44 88 132 176 
+mutex_r2 locks
+22 66 110 154 
+mutex_r2 unlocks
+33 77 121 165 
+terminate: 1
+term_count: 0
+
+
+
+
+lock values for R1 of P33:
+11 55 99 143 
+lock values for R2 of P33:
+22 66 110 154 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+PID33: requested lock on mutex M32 - succeeded
+
+lock values for R1 of P33:
+11 55 99 143 
+lock values for R2 of P33:
+22 66 110 154 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+PID33: requested lock on mutex M33 - succeeded
+
+unlock values for R1 of P33:
+44 88 132 176 
+unlock values for R2 of P33:
+33 77 121 165 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+Trying to use Mutex
+M33 unlocked at PC 33
+
+unlock values for R1 of P33:
+44 88 132 176 
+unlock values for R2 of P33:
+33 77 121 165 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+Trying to use Mutex
+M32 unlocked at PC 44
+
+lock values for R1 of P33:
+11 55 99 143 
+lock values for R2 of P33:
+22 66 110 154 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+PID33: requested lock on mutex M32 - succeeded
+
+lock values for R1 of P33:
+11 55 99 143 
+lock values for R2 of P33:
+22 66 110 154 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+PID33: requested lock on mutex M33 - succeeded
+
+unlock values for R1 of P33:
+44 88 132 176 
+unlock values for R2 of P33:
+33 77 121 165 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+Trying to use Mutex
+M33 unlocked at PC 77
+
+unlock values for R1 of P33:
+44 88 132 176 
+unlock values for R2 of P33:
+33 77 121 165 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+Trying to use Mutex
+M32 unlocked at PC 88
+
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P62 into MLFQ
+Enqueuing newly created P63 into MLFQ
+lock values for R1 of P33:
+11 55 99 143 
+lock values for R2 of P33:
+22 66 110 154 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+PID33: requested lock on mutex M32 - succeeded
+
+lock values for R1 of P33:
+11 55 99 143 
+lock values for R2 of P33:
+22 66 110 154 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+PID33: requested lock on mutex M33 - succeeded
+
+unlock values for R1 of P33:
+44 88 132 176 
+unlock values for R2 of P33:
+33 77 121 165 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+Trying to use Mutex
+M33 unlocked at PC 121
+
+unlock values for R1 of P33:
+44 88 132 176 
+unlock values for R2 of P33:
+33 77 121 165 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+Trying to use Mutex
+M32 unlocked at PC 132
+
+lock values for R1 of P33:
+11 55 99 143 
+lock values for R2 of P33:
+22 66 110 154 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+PID33: requested lock on mutex M32 - succeeded
+
+lock values for R1 of P33:
+11 55 99 143 
+lock values for R2 of P33:
+22 66 110 154 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+PID33: requested lock on mutex M33 - succeeded
+
+unlock values for R1 of P33:
+44 88 132 176 
+unlock values for R2 of P33:
+33 77 121 165 
+Getting the Mutex for R2
+Searching for mutex with key: 33.
+returning M33
+Trying to use Mutex
+M33 unlocked at PC 165
+
+unlock values for R1 of P33:
+44 88 132 176 
+unlock values for R2 of P33:
+33 77 121 165 
+Getting the Mutex for R1
+Searching for mutex with key: 32.
+returning M32
+Trying to use Mutex
+M32 unlocked at PC 176
+
+
+Marking P33 for termination...
+...
+
+Inserting P4832 into the Killed queue
+
+Attempting to remove M32 from location 32.
+Attempting to remove M33 from location 33.
+Emptying killed PCB list
+toKill: P25
+Killed List: P30 -> P31 -> P33 -> P32 -> *
+toKill: P30
+Killed List: P31 -> P33 -> P32 -> *
+toKill: P31
+Killed List: P33 -> P32 -> *
+toKill: P33
+Killed List: P32 -> *
+Emptying killed MUTEX list
+here
+toKillMutex: M30
+destroying M30
+Killed List: M31 -> M32 -> M33 -> *
+toKillMutex: M31
+destroying M31
+Killed List: M32 -> M33 -> *
+toKillMutex: M32
+destroying M32
+Killed List: M33 -> *
+
+Dequeueing to run
+contents: PID: 27, state: running, role: shared, priority: 0, PC: 22, 
+MAX PC: 186
+mutex_r1 locks
+11 55 99 143 
+mutex_r1 unlocks
+44 88 132 176 
+mutex_r2 locks
+22 66 110 154 
+mutex_r2 unlocks
+33 77 121 165 
+terminate: 1
+term_count: 0
+
+lock values for R1 of P27:
+11 55 99 143 
+lock values for R2 of P27:
+22 66 110 154 
+Getting the Mutex for R2
+Searching for mutex with key: 27.
+returning M27
+PID27: requested lock on mutex M27 - blocked by PID26
+CONTEXT SWITCH COUNT: 2
+
+
+RESETTING MLFQ
+
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P64 into MLFQ
+Enqueuing newly created P65 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P66 into MLFQ
+Enqueuing newly created P67 into MLFQ
+
+MAKING NEW PCBS
+Made COMP or IO pair
+Enqueuing newly created P68 into MLFQ
+Enqueuing newly created P69 into MLFQ
+
+Timer waking up
+Starting ISR in timerInterrupt
+Entering Timer Interrupt
+
+Enqueueing into priority 1 of MLFQ
+contents: PID: 34, state: interrupted, role: comp, priority: 0, PC: 0, 
+MAX PC: 230
+terminate: 2
+term_count: 0
+
+Exiting Timer Interrupt
+
+Dequeueing to run
+contents: PID: 35, state: ready, role: comp, priority: 0, PC: 0, 
+MAX PC: 65
+terminate: 1
+term_count: 0
+
+Exiting ISR
+Finished ISR in timerInterrupt
+
+MLFQ State
+iteration: 93400
+
+Q 0: P36 -> P37 -> P38 -> P39 -> P26 -> P40 -> P41 -> P42 -> P43 -> P44 -> P45 -> P46 -> P47 -> P48 -> P49 -> P50 -> P51 -> P52 -> P53 -> P54 -> P55 -> P56 -> P57 -> P58 -> P59 -> P28 -> P60 -> P61 -> P14 -> P15 -> P16 -> P17 -> P9 -> P62 -> P63 -> P27 -> P29 -> *
+Q 1: P34 -> *
+Q 2: 
+Q 3: 
+Q 4: 
+Q 5: 
+Q 6: 
+Q 7: 
+Q 8: 
+Q 9: 
+Q10: 
+Q11: 
+Q12: 
+Q13: 
+Q14: 
+Q15: 
+
+
+blocked: 
+killed: 
+killedMutexes: 
+
+Going to be running contents: PID: 35, state: running, role: comp, priority: 0, PC: 0, 
+MAX PC: 65
+terminate: 1
+term_count: 0
+
+Next highest priority PCB contents: PID: 36, state: ready, role: pair, priority: 0, PC: 0, isProducer: 0, 
+MAX PC: 66
+cond_var waits
+8 24 40 56 
+terminate: 1
+term_count: 0
+
+
+
+
+
+
+RESETTING MLFQ
+
+
+MAX_ITERATION_TOTAL reached in main
+destroying M26
+destroying M27
+destroying M36
+destroying M42
+destroying M43
+destroying M44
+destroying M46
+destroying M47
+destroying M52
+destroying M53
+destroying M56
+destroying M57
+
+TOTAL ROLE TYPES: 70
+
+COMP: 	34
+IO: 	12
+PAIR: 	8
+SHARED: 16
+Number of total iterations in osLoop: 100000
+Number of remaining PCBs in MLFQ: 37
+Number of remaining PCBS in created: 0
+Number of remaining PCBS in blocked: 0
+Number of remaining PCBS in killed: 0
+Number of remaining Mutexes in killedMutexes: 0
+No deadlock detected in this run!
