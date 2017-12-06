@@ -30,6 +30,7 @@ int totalProcesses = 0;
 int iteration = 0;
 int isIOTrapPos = 0;
 int hasBlockedPCB = 0;
+int incrementPair = 0;
 
 time_t t;
 
@@ -276,53 +277,7 @@ int isTrapPC (unsigned int pc, PCB pcb) {
 }
 
 
-/*void lockAttempt(Scheduler theScheduler, int trapVal) {
-	
-	Mutex currMutex;
-	int lockResult;
-	
-	currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
-	
-	printf("Attempting to lock R%d of process %d ================================\r\n", 
-	trapVal, thisScheduler->running->pid);
-						
-	lockResult = mutex_lock (currMutex, thisScheduler->running);
-		
-	if (lockResult) {
-		printf("Successfully locked R%d============\r\n", trapVal);
-		
-		
-	} else {
-		printf("Failed to lock R1\r\n");
-		// deadlock monitor
-		// TODO: move all to a function
-		
-	}
-}*/
 
-/*void unlockAttempt(Scheduler theScheduler, int trapVal) {
-	
-	Mutex currMutex;
-	int lockResult;
-	
-	currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running);
-	
-	printf("Attempting to unlock R%d of process %d ================================\r\n", 
-	trapVal, thisScheduler->running->pid);
-						
-	lockResult = mutex_unlock (currMutex, thisScheduler->running);
-		
-	if (lockResult) {
-		printf("Successfully unlocked R%d============\r\n", trapVal);
-		
-		
-	} else {
-		printf("Failed to unlock R%d\r\n", trapVal);
-		// deadlock monitor
-		// TODO: move all to a function
-		
-	}
-}*/
 
 
 
@@ -409,8 +364,15 @@ int makePCBList (Scheduler theScheduler) {
 	} else {
 		if (newPCB1->role == SHARED) {
 			printf("Made Shared Resource pair\n");
-			populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
-			populateMutexTraps1221(newPCB2, newPCB2->max_pc / MAX_DIVIDER);
+			
+			if (DEADLOCK) {
+				populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+				populateMutexTraps2112(newPCB2, newPCB2->max_pc / MAX_DIVIDER);
+			} else {
+				populateMutexTraps1221(newPCB1, newPCB1->max_pc / MAX_DIVIDER);
+				populateMutexTraps1221(newPCB2, newPCB2->max_pc / MAX_DIVIDER);
+			}
+		
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR1, sharedMutexR1->mid);
 			add_to_mutx_map(theScheduler->mutexes, sharedMutexR2, sharedMutexR2->mid);
 		} else {
@@ -526,23 +488,14 @@ void pseudoISR (Scheduler theScheduler, int interruptType) {
 void printSchedulerState (Scheduler theScheduler) {
 	
 	printf("\r\nMLFQ State\r\n");
-	pthread_mutex_lock(&iterationMutex);
-	printf("iteration: %d\r\n", iteration);
-	pthread_mutex_unlock(&iterationMutex);
 	toStringPriorityQueue(theScheduler->ready);
 	printf("\r\n");
 	
 	int index = 0;
 
-	/*printf("blocked size: %d\r\n", theScheduler->blocked->size);
+	printf("blocked size: %d\r\n", theScheduler->blocked->size);
 	printf("killed size: %d\r\n", theScheduler->killed->size);
-	printf("killedMutexes size: %d\r\n", theScheduler->killedMutexes->size);*/
-	printf("blocked: ");
-	toStringReadyQueue(theScheduler->blocked);
-	printf("killed: ");
-	toStringReadyQueue(theScheduler->killed);
-	printf("killedMutexes: ");
-	toStringReadyQueueMutexes(theScheduler->killedMutexes);
+	printf("killedMutexes size: %d\r\n", theScheduler->killedMutexes->size);
 	printf("\r\n");
 	
 	if (pq_peek(theScheduler->ready) != NULL) {
@@ -682,12 +635,9 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		
 		q_enqueue(theScheduler->blocked, theScheduler->interrupted);
 		theScheduler->interrupted = NULL;
-		pthread_mutex_lock(&printMutex);
-			printSchedulerState(theScheduler);
-		pthread_mutex_unlock(&printMutex);
 		pthread_mutex_lock(&interruptMutex);
 			hasBlockedPCB = 1;
-			printf("sending signal to ioInterrupt\n");
+			printf("sending signal to ioTrap\n");
 			pthread_cond_signal(&interruptCondVar);
 		pthread_mutex_unlock(&interruptMutex);
 		printf("Exiting IO Trap\r\n");
@@ -698,9 +648,8 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		// Do I/O interrupt handling
 		printf("\r\nEnqueueing into MLFQ from Blocked queue\r\n");
 		toStringPCB(q_peek(theScheduler->blocked), 0);
-		PCB theBlocked = q_dequeue(theScheduler->blocked);
-		theBlocked->state = STATE_READY;
-		pq_enqueue(theScheduler->ready, theBlocked);
+		pq_enqueue(theScheduler->ready, q_dequeue(theScheduler->blocked));
+		
 		if (theScheduler->interrupted != NULL)
 		{
 			theScheduler->running = theScheduler->interrupted;
@@ -709,9 +658,7 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 			sysstack = theScheduler->running->context->pc;
 		}
 		theScheduler->interrupted = NULL;
-		pthread_mutex_lock(&printMutex);
-			printSchedulerState(theScheduler);
-		pthread_mutex_unlock(&printMutex);
+		
 		printf("Exiting IO Interrupt\r\n");
 	}
 	
@@ -721,9 +668,8 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 		printf("finished handleKilledQueueInsertion\n");
 	}
 	
-	printf("size of killed queue before checking to empty %d\n", theScheduler->killed->size); 
 	if (theScheduler->killed->size >= TOTAL_TERMINATED) {
-		printf("entering handleKilledQueueEmptying with killed size of %d\n", theScheduler->killed->size);
+		printf("entering handleKilledQueueEmptying\n");
 		handleKilledQueueEmptying(theScheduler);
 	}
 	// I/O interrupt does not require putting a new process
@@ -751,8 +697,6 @@ void dispatcher (Scheduler theScheduler) {
 		toStringPCB(theScheduler->running, 0);
 		pthread_mutex_unlock(&printMutex);
 		theScheduler->running->state = STATE_RUNNING;
-	} else if (theScheduler->running && theScheduler->running->state == STATE_HALT) { 
-		theScheduler->running = NULL; //do this so it doesn't continue to enqueue into the killed list an already enqueued PCB
 	}
 }
 
@@ -907,6 +851,11 @@ int isPrivileged(PCB pcb) {
 
 
 void main () {
+	
+
+	FILE *f;
+    f = freopen("scheduleTrace.txt", "w", stdout);
+	
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
 	
@@ -915,6 +864,8 @@ void main () {
 	pairCount = 0;
 	sharedCount = 0;
 	contextSwitchCount = 0;
+	
+	incrementPair = 0;
 	int i = 0;
 	
 	for (int i = 0; i < 1; i++) {
@@ -927,7 +878,7 @@ void main () {
 
 void osLoop () {
 	void *status, *status2, *status3;
-	int temp = 0, makeMorePCBs = 0;
+	int temp = 0;
 	
 	totalProcesses = 0;
 	Scheduler scheduler = schedulerConstructor ();
@@ -977,15 +928,8 @@ void osLoop () {
 	
 	int isRunning = 0;
 	int isSwitched = 0;
-	int itrHolder = 0;
 	
-	struct timespec quantum;
-	quantum.tv_sec = 0;
-	for(;;)
-	{
-		quantum.tv_nsec = 1; //this WAS locked by schedulerMutex
-		
-		//nanosleep(&quantum, NULL); //puts the thread to sleep
+	for (;;) {		
 		//printf("beginning of main loop\n");
 		//printf("above running null check\n");
 		pthread_mutex_lock(&schedulerMutex);
@@ -1011,7 +955,6 @@ void osLoop () {
 				
 					
 					if (contextSwitchCount == 2) { // change to 10 later
-						printf("Going into deadlockMonitor\n");
 						deadlockMonitor(scheduler);
 						contextSwitchCount = 0;				
 					}
@@ -1020,7 +963,6 @@ void osLoop () {
 			
 			if (!isSwitched) { //if a context switch happened inside of useMutex, then we want to start over
 				//printf("above pc increment\n");
-				
 				pthread_mutex_lock(&schedulerMutex);
 				//printf("called lock before pc\n");
 					if (scheduler && scheduler->running) {
@@ -1056,9 +998,8 @@ void osLoop () {
 		
 		//printf("above iteration increment\n");
 		pthread_mutex_lock(&iterationMutex);
-			iteration++;			
+			iteration++;
 		pthread_mutex_unlock(&iterationMutex);
-		
 		
 		pthread_mutex_lock(&iterationMutex);
 			if(!(iteration % RESET_COUNT)) {
@@ -1069,28 +1010,12 @@ void osLoop () {
 		pthread_mutex_unlock(&iterationMutex);
 		
 		
-		/*pthread_mutex_lock(&iterationMutex);
-			itrHolder = iteration;
-		pthread_mutex_unlock(&iterationMutex);*/
 		
 		
-		pthread_mutex_lock(&randMutex);
-			temp = rand();
-		pthread_mutex_unlock(&randMutex);
-		
-		pthread_mutex_lock(&schedulerMutex);
-			if (temp % MAKE_PCB_CHANCE_DOMAIN <= MAKE_PCB_CHANCE_PERCENTAGE) {
-				printf("\nMAKING NEW PCBS\n");
-				totalProcesses += makePCBList (scheduler); //makes new processes
-				pthread_mutex_lock(&printMutex);
-					printSchedulerState(scheduler);
-				pthread_mutex_unlock(&printMutex);
-			}
-		pthread_mutex_unlock(&schedulerMutex);
-		
-
-		pthread_mutex_lock(&iterationMutex);
-			if (iteration >= MAX_ITERATION_TOTAL) {
+		//printf("above totalProcesses check\n");
+		pthread_mutex_lock(&totalProcessesMutex);
+			//printf("called lock before totalProcesses\n");
+			if (totalProcesses >= MAX_PCB_TOTAL) {
 				printf("\n");
 				pthread_mutex_lock(&printMutex);
 					printSchedulerState(scheduler);
@@ -1099,13 +1024,13 @@ void osLoop () {
 				pthread_mutex_lock(&printMutex);
 					toStringMutexMap(scheduler->mutexes);
 				pthread_mutex_unlock(&printMutex);
-				printf("MAX_ITERATION_TOTAL reached in main\n");
-				pthread_mutex_unlock(&iterationMutex);
+				printf("MAX_PCB_TOTAL reached in main\n");
+				pthread_mutex_unlock(&totalProcessesMutex);
 				break;
 			}
-		pthread_mutex_unlock(&iterationMutex);
+		pthread_mutex_unlock(&totalProcessesMutex);
+		//printf("end of main loop, starting over\n");
 	}
-	pthread_cancel(threads[0]);
 	pthread_mutex_lock(&trapMutex);
 	if (!isIOTrapPos) {
 		pthread_cancel(threads[1]);
@@ -1148,7 +1073,7 @@ void * ioInterrupt (void * theScheduler) {
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	
 	int isRunning = 0, temp = 0;
-	printf("starting ioInterrupt thread\n");
+	printf("starting ioInterrupt\n");
 	for (;;) {
 		if (!isRunning) {
 			pthread_mutex_lock(&interruptMutex);
@@ -1168,7 +1093,6 @@ void * ioInterrupt (void * theScheduler) {
 		
 		if (temp <= IO_INT_CHANCE_PERCENTAGE) {
 			pthread_mutex_lock(&schedulerMutex);
-				printf("Received I/O\n");
 				printf("Starting ISR in ioInterrupt\n");
 				pseudoISR(scheduler, IS_IO_INTERRUPT);
 				printf("Finished ISR in ioInterrupt\n");
@@ -1182,13 +1106,13 @@ void * ioInterrupt (void * theScheduler) {
 		}
 		
 		
-		pthread_mutex_lock(&iterationMutex);
-			if (iteration >= MAX_ITERATION_TOTAL) { 			//this is how we will break out of the loop, same as in main.
-				printf("MAX_ITERATION_TOTAL reached in ioTrap\n"); //may think about a check here instead
-				pthread_mutex_unlock(&iterationMutex);
+		pthread_mutex_lock(&totalProcessesMutex);
+			if (totalProcesses >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
+				printf("MAX_PCB_TOTAL reached in ioTrap\n"); //may think about a check here instead
+				pthread_mutex_unlock(&totalProcessesMutex);
 				break;
 			}
-		pthread_mutex_unlock(&iterationMutex);
+		pthread_mutex_unlock(&totalProcessesMutex);
 	}
 	
 	printf("Finished ioInterrupt, exiting\n");
@@ -1201,7 +1125,7 @@ void * ioTrap (void * theScheduler) {
 	
 	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	
-	printf("starting ioTrap thread\n");
+	printf("starting ioTrap\n");
 	for (;;) {
 		
 		pthread_mutex_lock(&trapMutex);
@@ -1219,13 +1143,13 @@ void * ioTrap (void * theScheduler) {
 			printf("Finished ISR in ioTrap\n");
 		pthread_mutex_unlock(&schedulerMutex);
 		
-		pthread_mutex_lock(&iterationMutex);
-			if (iteration >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
-				printf("MAX_ITERATION_TOTAL reached in ioTrap\n"); //may think about a check here instead
-				pthread_mutex_unlock(&iterationMutex);
+		pthread_mutex_lock(&totalProcessesMutex);
+			if (totalProcesses >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
+				printf("MAX_PCB_TOTAL reached in ioTrap\n"); //may think about a check here instead
+				pthread_mutex_unlock(&totalProcessesMutex);
 				break;
 			}
-		pthread_mutex_unlock(&iterationMutex);
+		pthread_mutex_unlock(&totalProcessesMutex);
 	}
 	
 	printf("Finished ioTrap, exiting\n");
@@ -1242,8 +1166,6 @@ void * ioTrap (void * theScheduler) {
 void * timerInterrupt(void * theScheduler)
 {	
 	Scheduler scheduler = (Scheduler) theScheduler;
-	
-	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	unsigned int temp = 0;
 	unsigned int *seed;
 	
@@ -1254,8 +1176,8 @@ void * timerInterrupt(void * theScheduler)
 		printf("top of timer\n");
 		quantum.tv_nsec = currQuantumSize; //this WAS locked by schedulerMutex
 		
-		nanosleep(&quantum, NULL); //puts the thread to sleep
-		//for (int i = 0; i < 10000; i++){}
+		//nanosleep(&quantum, NULL); //puts the thread to sleep
+		for (int i = 0; i < 1000; i++) {}
 		
 		pthread_mutex_lock(&schedulerMutex); //performs context switching as soon as it wakes
 			printf("\nTimer waking up\n");
@@ -1269,13 +1191,13 @@ void * timerInterrupt(void * theScheduler)
 			currQuantumSize = getNextQuantumSize(scheduler->ready); //sets the quantum for the sleep amount
 		pthread_mutex_unlock(&schedulerMutex);
 		
-		/*pthread_mutex_lock(&iterationMutex);
-			if (iteration >= MAX_PCB_TOTAL) { 			//this is how we will break out of the loop, same as in main.
+		pthread_mutex_lock(&iterationMutex);
+			if (iteration >= MAX_ITERATION_TOTAL) { 			//this is how we will break out of the loop, same as in main.
 				printf("MAX_ITERATION_TOTAL reached in timer\n"); //may think about a check here instead
 				pthread_mutex_unlock(&iterationMutex);
 				break;
 			}
-		pthread_mutex_unlock(&iterationMutex);*/
+		pthread_mutex_unlock(&iterationMutex);
 		
 		//printf("\n");
 	}
@@ -1333,7 +1255,6 @@ int countRemainingProcessesInMutexQueue(ReadyQueue queue) {
 }
 
 
-
 /*
 	If the Running PCB is of role PAIR or SHARED, then this function is called. What this
 	does is handle the locking, unlocking, signalling, and waiting for the Mutexes and 
@@ -1374,17 +1295,15 @@ int useMutex (Scheduler thisScheduler) {
 		}
 		
 		if (lock == 1) { //is mutex_R1_id
-			printf("Getting the Mutex for R1\n");
 			currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
 		} else { //is mutex_R2_id
-			printf("Getting the Mutex for R2\n");
 			currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
 		}
 		
 		if (currMutex) {
 			mutex_lock (currMutex, thisScheduler->running);
 			if (currMutex->hasLock != thisScheduler->running) {
-				printf("M%d already locked, going to wait for unlock\r\n\r\n", currMutex->mid);
+				printf("M%d already locked, going to wait for unlock\r\n\r\n");
 				pq_enqueue(thisScheduler->ready, thisScheduler->running);
 				thisScheduler->running = pq_dequeue(thisScheduler->ready);
 				return 1;
@@ -1392,7 +1311,6 @@ int useMutex (Scheduler thisScheduler) {
 				printf("M%d locked at PC %d\n", currMutex->mid, thisScheduler->running->context->pc);
 			}
 		} else {
-			toStringMutexMap(thisScheduler->mutexes);
 			printf("\r\n\t\t\tcurrMutex was null!!!\r\n\r\n");
 			exit(0);
 		}
@@ -1406,24 +1324,14 @@ int useMutex (Scheduler thisScheduler) {
 		}
 		
 		if (unlock == 1) { //is mutex_R1_id
-			printf("Getting the Mutex for R1\n");
 			currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
 		} else { //is mutex_R2_id
-			printf("Getting the Mutex for R2\n");
 			currMutex = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
 		}
 		
 		if (currMutex) {
-			printf("Trying to use Mutex\n");
-			int result = mutex_unlock (currMutex, thisScheduler->running);
-			if(result == 1)
-			{
-				printf("M%d unlocked at PC %d\n", currMutex->mid, thisScheduler->running->context->pc);
-			} 
-			else if (result == 2)
-			{
-				printf("Unlock failed, M%d is already owned and locked by P%d!\n", currMutex->mid, currMutex->hasLock->pid);
-			}
+			mutex_unlock (currMutex, thisScheduler->running);
+			printf("M%d unlocked at PC %d\n", currMutex->mid, thisScheduler->running->context->pc);
 		} else {
 			printf("\r\n\t\t\tcurrMutex was null!!!\r\n\r\n");
 			exit(0);
@@ -1438,6 +1346,12 @@ int useMutex (Scheduler thisScheduler) {
 		if (currMutex) {
 			cond_var_signal (currMutex->condVar);
 			printf("M%d condition variable signalled at PC %d\n", currMutex->mid, thisScheduler->running->context->pc);
+			
+			mutex_lock(currMutex, thisScheduler->running);
+			incrementPair++;
+			printf("Producer %d incremented incrementPair: %d\r\n", thisScheduler->running->pid, incrementPair);
+			mutex_unlock(currMutex, thisScheduler->running);
+			
 		} else {
 			printf("\r\n\t\t\tcurrMutex was null!!!\r\n\r\n");
 			exit(0);
@@ -1454,6 +1368,7 @@ int useMutex (Scheduler thisScheduler) {
 			if (isWaiting) {
 				pq_enqueue(thisScheduler->ready, thisScheduler->running);
 				thisScheduler->running = pq_dequeue(thisScheduler->ready);
+				printf("Consumer %d read incrementPair: %d\r\n", thisScheduler->running->pid, incrementPair);
 				printf("M%d condition variable waiting at PC %d\n\n", currMutex->mid, thisScheduler->running->context->pc);
 				return 1;
 			} else { //this part resets the condition variable so we don't need to keep making a new one
@@ -1474,10 +1389,10 @@ void handleKilledQueueInsertion (Scheduler theScheduler) {
 	Mutex mutex1 = NULL, mutex2 = NULL;
 	PCB found = NULL;
 	
-	if (theScheduler->interrupted->role == PAIR || theScheduler->interrupted->role == SHARED) {
-		mutex1 = take_n_remove_from_mutx_map(theScheduler->mutexes, theScheduler->interrupted->mutex_R1_id);
-		if (theScheduler->interrupted->role == SHARED) {
-			mutex2 = take_n_remove_from_mutx_map(theScheduler->mutexes, theScheduler->interrupted->mutex_R2_id);
+	if (theScheduler->running->role == PAIR || theScheduler->running->role == SHARED) {
+		mutex1 = take_n_remove_from_mutx_map(theScheduler->mutexes, theScheduler->running->mutex_R1_id);
+		if (theScheduler->running->role == SHARED) {
+			mutex2 = take_n_remove_from_mutx_map(theScheduler->mutexes, theScheduler->running->mutex_R2_id);
 		}
 		if (!mutex1) {
 			toStringMutexMap(theScheduler->mutexes);
@@ -1485,44 +1400,44 @@ void handleKilledQueueInsertion (Scheduler theScheduler) {
 			exit(0);
 		}
 		
-		if (theScheduler->interrupted->role == SHARED && !mutex2) {
+		if (theScheduler->running->role == SHARED && !mutex2) {
 			toStringMutexMap(theScheduler->mutexes);
 			printf("\r\n\t\t\tmutex2 was null! Tried to find M%d but it wasn't in the map!!!\r\n\r\n", theScheduler->running->mutex_R2_id);
 			exit(0);
 		}
 		
-		if (theScheduler->interrupted->role == SHARED) { //if the role is SHARED then I want to check if mutex2 is NULL
-			if (mutex1 && mutex2 && mutex1->pcb2 == theScheduler->interrupted) { //if interrupted is the pcb2 in the mutex, find the matching pcb1
+		if (theScheduler->running->role == SHARED) { //if the role is SHARED then I want to check if mutex2 is NULL
+			if (mutex1 && mutex2 && mutex1->pcb2 == theScheduler->running) { //if running is the pcb2 in the mutex, find the matching pcb1
 				found = pq_remove_matching_pcb(theScheduler->ready, mutex1->pcb1);
-			} else { //otherwise the interrupted is pcb1, so find pcb2
+			} else { //otherwise the running is pcb1, so find pcb2
 				found = pq_remove_matching_pcb(theScheduler->ready, mutex1->pcb2);
 			}
 		} else { //if the role is PAIR then I don't want to check if mutex2 is NULL because it will always be NULL
-			if (mutex1 && mutex1->pcb2 == theScheduler->interrupted) {
+			if (mutex1 && mutex1->pcb2 == theScheduler->running) {
 				found = pq_remove_matching_pcb(theScheduler->ready, mutex1->pcb1);
 			} else { 
 				found = pq_remove_matching_pcb(theScheduler->ready, mutex1->pcb2);
 			}
 		}
 		
-		q_enqueue(theScheduler->killed, theScheduler->interrupted);
+		q_enqueue(theScheduler->killed, theScheduler->running);
 		if (found) { //if found is null then the partnering pcb is already in the killed queue
 			q_enqueue(theScheduler->killed, found);
 		}
 		
 		q_enqueue_m(theScheduler->killedMutexes, mutex1);
-		if (theScheduler->interrupted->role == SHARED) {
+		if (theScheduler->running->role == SHARED) {
 			q_enqueue_m(theScheduler->killedMutexes, mutex2);
 		}
 	} else {
-		q_enqueue(theScheduler->killed, theScheduler->interrupted);
+		q_enqueue(theScheduler->killed, theScheduler->running);
 	}
 	
 	printf("Killed List: ");
 	toStringReadyQueue(theScheduler->killed);
 	printf("Mutex List: ");
 	toStringReadyQueueMutexes(theScheduler->killedMutexes);
-	theScheduler->interrupted = NULL;
+	theScheduler->running = NULL;
 }
 
 
@@ -1633,62 +1548,51 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 
 
 void deadlockMonitor(Scheduler thisScheduler) {
-	
+	// printf("in deadlock\r\n");
 	
 	Mutex mutex1;
 	Mutex mutex2;
 	
-	
-	printf("in deadlockMonitor\n");
 	if (thisScheduler->running->role == SHARED) {
-		printf("in check\n");
+	
 		mutex1 = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
 		mutex2 = get_mutx(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
-		
-		// if (mutex1 != NULL) {
-			// printf("mutex1 not null\n");
-			// printf("mid: %d\n", mutex1->mid);	
-		// } 
 	
-		// if (mutex2 != NULL) {
-			// printf("mutex2 not null\n");
-			// printf("mid: %d\n", mutex2->mid);	
-		// }
-		
-		
 		
 		if (mutex1->pcb1 != NULL && mutex1->pcb2 != NULL && mutex2->pcb1 != NULL && mutex2->pcb2 != NULL) {
 			
-			printf("mutex1 locked %d\n", mutex1->isLocked);
-			printf("mutex2 locked %d\n", mutex2->isLocked);
-			
-			
 			if (mutex1->isLocked && mutex2->isLocked) {
-			//	printf("mutex1 owned by: P%d, pointer: %p\n", mutex1->hasLock->pid, mutex1->hasLock);
-			//	printf("mutex2 owned by: P%d, pointer: %p\n", mutex2->hasLock->pid, mutex2->hasLock);
+				// printf("mutex1 owned by: P%d, pointer: %p\n", mutex1->hasLock->pid, mutex1->hasLock);
+				// printf("mutex2 owned by: P%d, pointer: %p\n", mutex2->hasLock->pid, mutex2->hasLock);
+				
 				if (thisScheduler->running == mutex1->pcb1) { // check if pcb1 also owns the other lock
 					if (mutex2->hasLock == mutex1->hasLock) {
-						printf("pcb1 owns both locks\n");
+						// printf("PCB A owns both locks\n");
+						printf("PCB%d owns M1 and M2\r\n", thisScheduler->running->pid);
 						printf("NO DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 					} else if (mutex2->hasLock == mutex1->pcb2) {
-						printf("pcb1 only owns mutex1\n");
+						// printf("PCB A only owns mutex1\n");
+						printf("PCB%d owns M1, failed to lock M2\r\n", thisScheduler->running->pid);
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 					} else if (mutex1->hasLock == mutex1->pcb2) {
-						printf("pcb1 only owns mutex2\n");
+						// printf("PCB A only owns mutex2\n");
+						printf("PCB%d owns M2, failed to lock M1\r\n", thisScheduler->running->pid);
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 					}
 					
 				} else if (thisScheduler->running == mutex2->pcb2) { // check if pcb2 also owns the other lock
 					if (mutex1->hasLock == mutex2->hasLock) {
-						printf("pcb2 owns both locks\n");
+						printf("PCB%d owns M1 and M2\r\n", thisScheduler->running->pid);
 						printf("NO DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 
 					} else if (mutex1->hasLock == mutex2->pcb1) {
-						printf("pcb2 only owns mutex2\n");
+						// printf("pcb2 only owns mutex2\n");
+						printf("PCB%d owns M2, failed to lock M1\r\n", thisScheduler->running->pid);
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 		
 					} else if (mutex2->hasLock == mutex1->pcb1) {
-						printf("pcb2 only has mutex1\n");
+						// printf("pcb2 only has mutex1\n");
+						printf("PCB%d owns M1, failed to lock M2\r\n", thisScheduler->running->pid);
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 					}		
 				}
