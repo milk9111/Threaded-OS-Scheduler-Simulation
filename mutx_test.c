@@ -133,5 +133,24 @@ int main()
 	else
 	{
 		printf("Wanted MID: 210, found %d\n", testMutex->mid);
-	} 
+	}
+	printf("\n----------------------------\nErronious NULL return avoidance test.\n");
+	testMutx1 = mutex_create();
+	testMutx1->mid = 12;
+	myMap->map[15] = testMutx1;
+	myMap->hadCol[12] = 1;
+
+	//toStringMutexMap(myMap);
+	testMutex = NULL;
+	
+	//testMutex = take_n_remove_from_mutx_map(myMap, 12);
+	testMutex = get_mutx(myMap, 12);
+	if(testMutex == NULL)
+	{
+		printf("Test failed, returned a null.\n");
+	}
+	else
+	{
+		printf("Wanted MID: 12, found M%d\n", testMutex->mid); 
+	}
 }

@@ -8,10 +8,12 @@ int findKey(int theKey, int mapSize);
 MutexMap create_mutx_map()
 {
 	MutexMap newMap = (MutexMap) malloc(sizeof(mutex_map_s));
+	
 	int i;
 	for (i = 0; i < MAX_INIT_BUCKETS; i++)
 	{
 		newMap->map[i] = NULL;
+		newMap->hadCol[i] = 0;
 	}
 	newMap->curr_map_size = MAX_INIT_BUCKETS;
 
@@ -45,6 +47,7 @@ int add_to_mutx_map(MutexMap theMap, Mutex theMutex, int theKey)
 			}
 		}
 		key = tmp;
+		theMap->hadCol[key] = 1;
 	}
 	theMap->map[key] = theMutex;
 	printf("Inserting at location %d.\n", key);
@@ -61,7 +64,7 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 	int key = findKey(theKey, theMap->curr_map_size);
 	printf("Attempting to remove from location %d.\n", key);
 	printf("Starting point pid: %d, looking for: %d\n", theMap->map[key]->mid, theKey);
-	if (theMap->map[key] != NULL)
+	if (theMap->map[key] != NULL && theMap->hadCol[key] != 0)
 	{
 		if((theMap->map[key]->mid != theKey) 
 			&& (theMap->map[key]->mid != theKey))
@@ -153,9 +156,31 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 		return NULL;
 	}
 	int key = findKey(theKey, theMap->curr_map_size);
-	if (theMap->map[key] == NULL)
+	if (theMap->map[key] == NULL && theMap->hadCol[key] == 0)
 	{
 		return NULL;
+	}
+	else if (theMap->map[key] == NULL && theMap->hadCol[key] == 1)
+	{
+	//	printf("Skipping nulls...\n");
+		int tmp = key;
+		
+		do
+		{
+			tmp++;
+			if(tmp == key)
+			{
+				return NULL;
+			}
+			if(tmp >= theMap->curr_map_size)
+			{
+				tmp = 0;
+			}
+	//	printf("Skipping nulls...\n");
+		}
+		while(theMap->map[tmp] == NULL);
+		key = tmp;
+				
 	}
 	printf("Attempting to remove M%d from location %d.\n", theKey, key);
 	if((theMap->map[key]->mid != theKey))
@@ -168,6 +193,7 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 		{
 			if(tmp == key)
 			{
+	//			printf("Searched entire list...\n");
 				return NULL;
 			}
 			tmp++;
@@ -182,7 +208,10 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 			{
 				if(tmp == key)
 				{
+					
+	//				printf("Searched entire list...\n");
 					return NULL; // Object does not exist
+
 				}
 			
 				tmp++;
@@ -212,12 +241,31 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 		return NULL;
 	}
 	int key = findKey(theKey, theMap->curr_map_size);
-	if (theMap->map[key] == NULL)
+	if (theMap->map[key] == NULL && theMap->hadCol[key] == 0)
 	{
-		//toStringMutexMap(theMap);
-		printf("Trying to get key %d from theKey %d, but found NULL in map\n", key, theKey);
-		printf("in here2\n");
 		return NULL;
+	}
+	else if (theMap->map[key] == NULL && theMap->hadCol[key] == 1)
+	{
+	//	printf("Skipping nulls...\n");
+		int tmp = key;
+		
+		do
+		{
+			tmp++;
+			if(tmp == key)
+			{
+				return NULL;
+			}
+			if(tmp >= theMap->curr_map_size)
+			{
+				tmp = 0;
+			}
+	//	printf("Skipping nulls...\n");
+		}
+		while(theMap->map[tmp] == NULL);
+		key = tmp;
+				
 	}
 	//toStringMutexMap(theMap);
 	printf("Searching for mutex with key: %d.\n", key);

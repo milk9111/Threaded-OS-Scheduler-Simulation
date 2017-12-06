@@ -8,6 +8,7 @@
 typedef struct mutex_map
 {
 Mutex map[MAX_INIT_BUCKETS];
+int hadCol[MAX_INIT_BUCKETS];
 int curr_map_size;
 } mutex_map_s;
 
