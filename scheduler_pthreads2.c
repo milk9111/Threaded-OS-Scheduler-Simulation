@@ -316,6 +316,7 @@ void pseudoISR (Scheduler theScheduler, int interruptType) {
 	if (theScheduler->running && theScheduler->running->state != STATE_HALT) {
 		theScheduler->running->state = STATE_INT;
 		theScheduler->interrupted = theScheduler->running;
+		theScheduler->running = NULL;
 	} else {
 		theScheduler->interrupted = NULL; //explicitly set this to NULL so we can be sure
 										  //we're handling it correctly
@@ -703,8 +704,8 @@ int isPrivileged(PCB pcb) {
 
 void main () {
 	
-	FILE *f;
-    f = freopen("scheduleTrace.txt", "w", stdout);
+	//FILE *f;
+    //f = freopen("scheduleTrace.txt", "w", stdout);
 	
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
@@ -773,7 +774,7 @@ void osLoop () {
 			pthread_create(&threads[i], &attr, ioInterrupt, (void *) scheduler);
 		}
 	}
-	
+	printf("done making threads\n");
 	pthread_attr_destroy(&attr);
 	//pthread_create(&iotrap, &attr, ioTrap, (void *) scheduler);
 	//pthread_create(&iointerrupt, &attr, ioInterrupt, (void *) scheduler);
@@ -781,6 +782,7 @@ void osLoop () {
 	int isRunning = 0;
 	int isSwitched = 0;
 	int tempHolder = 0;
+	int trapPos = 0;
 
 	for(;;)
 	{		
@@ -820,7 +822,10 @@ void osLoop () {
 				
 				pthread_mutex_lock(&schedulerMutex);
 				//printf("called lock before pc\n");
-					if (scheduler && scheduler->running) {
+					/*pthread_mutex_lock(&trapMutex);
+						trapPos = isIOTrapPos;
+					pthread_mutex_unlock(&trapMutex);*/
+					if (scheduler && scheduler->running && !isIOTrapPos) {
 						scheduler->running->context->pc++;
 						if (scheduler->running->role == IO 
 							&& isTrapPC(scheduler->running->context->pc, scheduler->running)) {
@@ -1007,7 +1012,6 @@ void * ioTrap (void * theScheduler) {
 				pthread_cond_wait(&trapCondVar, &trapMutex);
 				printf("Trap position reached, starting I/O Trap\r\n");
 			}
-			isIOTrapPos = 0;
 		pthread_mutex_unlock(&trapMutex);
 		
 		pthread_mutex_lock(&schedulerMutex);
@@ -1015,6 +1019,10 @@ void * ioTrap (void * theScheduler) {
 			pseudoISR(scheduler, IS_IO_TRAP);
 			printf("Finished ISR in ioTrap\r\n");
 		pthread_mutex_unlock(&schedulerMutex);
+		
+		pthread_mutex_lock(&trapMutex);
+			isIOTrapPos = 0;
+		pthread_mutex_unlock(&trapMutex);
 		
 		pthread_mutex_lock(&iterationMutex);
 			if (iteration >= MAX_ITERATION_TOTAL) { 			//this is how we will break out of the loop, same as in main.
