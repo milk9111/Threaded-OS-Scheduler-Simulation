@@ -26,11 +26,11 @@ int add_to_mutx_map(MutexMap theMap, Mutex theMutex, int theKey)
 		return 1;
 	}
 	int key = findKey(theKey, theMap->curr_map_size);
-	printf("Attempting to insert in location %d.\n", key);
+	printf("Attempting to insert in location %d.\r\n", key);
 	if(theMap->map[key] != NULL)
 	{
 		int tmp = key; // If we hit here, we need to resolve a hash collision
-		printf("--Insertion collision!--\n");
+		printf("--Insertion collision!--\r\n");
 		tmp++;
 		while(theMap->map[tmp] != NULL)
 		{
@@ -47,7 +47,7 @@ int add_to_mutx_map(MutexMap theMap, Mutex theMutex, int theKey)
 		key = tmp;
 	}
 	theMap->map[key] = theMutex;
-	printf("Inserting at location %d.\n", key);
+	printf("Inserting at location %d.\r\n", key);
 	return 0;
 }
 
@@ -59,8 +59,8 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 		return 1; // Missing value
 	}
 	int key = findKey(theKey, theMap->curr_map_size);
-	printf("Attempting to remove from location %d.\n", key);
-	printf("Starting point pid: %d, looking for: %d\n", theMap->map[key]->mid, theKey);
+	printf("Attempting to remove from location %d.\r\n", key);
+	printf("Starting point pid: %d, looking for: %d\r\n", theMap->map[key]->mid, theKey);
 	if (theMap->map[key] != NULL)
 	{
 		if((theMap->map[key]->mid != theKey) 
@@ -68,7 +68,7 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 		{
 			int tmp = key; // If we hit here, we had a hash collision in the past 
 						   // and need to find where our mutex got placed
-			printf("--Delete collision!--\n");
+			printf("--Delete collision!--\r\n");
 			
 			
 			//printf("Obtained pid: %d, looking for: %d\n", theMap->map[tmp]->pcb1->pid, theKey->pid);
@@ -122,7 +122,7 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 					//printf("theKey->parent: %d\n", theKey->parent);
 					if(tmp == key)
 					{
-						printf("Not found\n");
+						printf("Not found\r\n");
 						return 2; // Object does not exist
 					}
 				}
@@ -132,7 +132,7 @@ int remove_from_mutx_map(MutexMap theMap, int theKey)
 			printf("here\n");
 		}
 		Mutex toFree = theMap->map[key];
-		printf("Removing from location %d.\nObtained pid: %d, looking for: %d\n", key, toFree->mid, theKey);
+		printf("Removing from location %d.\r\nObtained pid: %d, looking for: %d\r\n", key, toFree->mid, theKey);
 		mutex_destroy(toFree);
 		theMap->map[key] = NULL;
 			
@@ -157,13 +157,13 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 	{
 		return NULL;
 	}
-	printf("Attempting to remove M%d from location %d.\n", theKey, key);
+	printf("Attempting to remove M%d from location %d.\r\n", theKey, key);
 	if((theMap->map[key]->mid != theKey))
 	{
 		int tmp = key; // If we hit here, we had a hash collision in the past 
 					   // and need to find where our mutex got placed
 		tmp++;
-		printf("Delete and Remove collision!\n");
+		printf("Delete and Remove collision!\r\n");
 		while(theMap->map[tmp] == NULL)
 		{
 			if(tmp == key)
@@ -208,26 +208,26 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 	
 	if (theMap == NULL)
 	{
-		printf("in here\n");
+		// printf("in here\n");
 		return NULL;
 	}
 	int key = findKey(theKey, theMap->curr_map_size);
 	if (theMap->map[key] == NULL)
 	{
 		//toStringMutexMap(theMap);
-		printf("Trying to get key %d from theKey %d, but found NULL in map\n", key, theKey);
-		printf("in here2\n");
+		printf("Trying to get key %d from theKey %d, but found NULL in map\r\n", key, theKey);
+		// printf("in here2\n");
 		return NULL;
 	}
 	//toStringMutexMap(theMap);
-	printf("Searching for mutex with key: %d.\n", key);
+	printf("Searching for mutex with key: %d.\r\n", key);
 	
 	if((theMap->map[key]->mid != theKey))
 	{
 		int tmp = key; // If we hit here, we had a hash collision in the past 
 					   // and need to find where our mutex got placed
 		tmp++;
-		printf("--Search collision!--\n");
+		printf("--Search collision!--\r\n");
 		/*toStringMutexMap(theMap);
 		printf("Trying to find P%d\n", theKey->pid);
 		printf("tmp: %d\n", tmp);*/
@@ -266,9 +266,9 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 	}
 	Mutex toFree = theMap->map[key];
 	if (toFree) {
-		printf("returning M%d\n", toFree->mid);
+		printf("returning M%d\r\n", toFree->mid);
 	} else {
-		printf("return NULL\n");
+		printf("return NULL\r\n");
 	}
 	//mutex_destroy(toFree);
 	//theMap->map[key] = NULL;
