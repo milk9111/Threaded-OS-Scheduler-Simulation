@@ -27,16 +27,16 @@
 
 //defines
 #define MAX_PCB_TOTAL 300
-#define MAX_ITERATION_TOTAL 50000
-#define RESET_COUNT 1000
+#define MAX_ITERATION_TOTAL 100000
+#define RESET_COUNT 20000
 #define MAKE_PCBS 10
 #define MAX_MUTEX_IN_ROUND 3
 #define MAX_PC_JUMP 4000
 #define MIN_PC_JUMP 3000
 #define PC_JUMP_LIMIT 999
-#define MAKE_PCB_CHANCE_DOMAIN 100
+#define MAKE_PCB_CHANCE_DOMAIN 5000
 #define TIMER_RANGE 3
-#define MAKE_PCB_CHANCE_PERCENTAGE 5
+#define MAKE_PCB_CHANCE_PERCENTAGE 1
 #define IO_INT_CHANCE_DOMAIN 100
 #define IO_INT_CHANCE_PERCENTAGE 10
 #define LOOPS_UNTIL_MAKE_PCB_CHANCE 5
@@ -49,7 +49,9 @@
 #define RANDOM_VALUE 101
 #define TOTAL_TERMINATED 5
 #define MAX_PRIVILEGE 4
-#define DEADLOCK 1
+#define DEADLOCK 0
+#define DEADLOCK_CHANCE_DOMAIN 100
+#define DEADLOCK_CHANCE_PERCENTAGE 40
 
 
 
@@ -126,7 +128,7 @@ int isSignalPC (unsigned int pc, PCB pcb);
 
 int isWaitPC (unsigned int pc, PCB pcb);
 
-void deadlockMonitor (Scheduler thisScheduler);
+int deadlockMonitor (Scheduler thisScheduler);
 
 int countRemainingProcesses(PriorityQueue pq);
 

@@ -302,3 +302,13 @@ void toStringMutexMap (MutexMap theMap) {
 	printf("Total MutexMap size: %d\r\n", theMap->curr_map_size);
 }
 
+
+void mutex_map_destroy (MutexMap theMap) {
+	for (int i = 0; i < MAX_INIT_BUCKETS; i++) {
+		if (theMap->map[i]) {
+			mutex_destroy(theMap->map[i]);
+		}
+	}
+	
+	free(theMap);
+}
