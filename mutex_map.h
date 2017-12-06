@@ -63,5 +63,8 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey);
 Mutex get_mutx(MutexMap theMap, int thekey);
 
 
+void mutex_map_destroy (MutexMap theMap);
+
+
 
 #endif
