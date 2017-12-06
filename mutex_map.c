@@ -159,7 +159,6 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 	{
 		return NULL;
 	}
-<<<<<<< HEAD
 	else if (theMap->map[key] == NULL && theMap->hadCol[key] == 1)
 	{
 	//	printf("Skipping nulls...\n");
@@ -183,9 +182,6 @@ Mutex take_n_remove_from_mutx_map(MutexMap theMap, int theKey)
 				
 	}
 	printf("Attempting to remove M%d from location %d.\n", theKey, key);
-=======
-	printf("Attempting to remove M%d from location %d.\r\n", theKey, key);
->>>>>>> 49767319d8060482398158b6773b4ec9e67e2c39
 	if((theMap->map[key]->mid != theKey))
 	{
 		int tmp = key; // If we hit here, we had a hash collision in the past 
@@ -246,12 +242,9 @@ Mutex get_mutx(MutexMap theMap, int theKey)
 	int key = findKey(theKey, theMap->curr_map_size);
 	if (theMap->map[key] == NULL && theMap->hadCol[key] == 0)
 	{
-<<<<<<< HEAD
-=======
 		//toStringMutexMap(theMap);
 		printf("Trying to get key %d from theKey %d, but found NULL in map\r\n", key, theKey);
 		// printf("in here2\n");
->>>>>>> 49767319d8060482398158b6773b4ec9e67e2c39
 		return NULL;
 	}
 	else if (theMap->map[key] == NULL && theMap->hadCol[key] == 1)
