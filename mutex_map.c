@@ -1,3 +1,10 @@
+/*
+	12/6/2017
+	Authors: Connor Lundberg, Jacob Ackerman, Jasmine Dacones
+	
+	This is a HashMap of Mutexes that we use to quickly store and retrieve the Mutexes we use.
+*/
+
 #include "mutex_map.h"
 #include <stdio.h>
 #include <stdlib.h>

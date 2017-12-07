@@ -1,3 +1,7 @@
+/*
+	12/6/2017
+	Authors: Connor Lundberg, Jacob Ackerman, Jasmine Dacones
+*/
 
 #ifndef THREADS_H
 #define THREADS_H

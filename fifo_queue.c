@@ -326,6 +326,10 @@ int q_contains_mutex (ReadyQueue queue, Mutex toFind) {
     }
 }
 
+
+/*
+	Prints out the ReadyQueue
+*/
 void toStringReadyQueue(ReadyQueue theQueue) {
     if(theQueue->first_node == 0) {
         printf("\r\n");
@@ -340,6 +344,9 @@ void toStringReadyQueue(ReadyQueue theQueue) {
 }
 
 
+/*
+	Prints out the ReadyQueue of Mutexes.
+*/
 void toStringReadyQueueMutexes(ReadyQueue theQueue) {
     if(theQueue->first_node == 0) {
         printf("\r\n");
