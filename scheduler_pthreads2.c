@@ -32,6 +32,7 @@ int isIOTrapPos = 0;
 int hasBlockedPCB = 0;
 int deadlockDetected = 0;
 
+
 time_t t;
 
 // The global counts of each PCB type, the final count at end of program run 
@@ -40,6 +41,7 @@ int compCount;
 int ioCount;
 int pairCount;
 int sharedCount;
+int deadlockCount;
 int contextSwitchCount;
 
 int incrementPair;
@@ -674,6 +676,7 @@ void schedulerDeconstructor (Scheduler theScheduler) {
 	printf("Number of remaining Mutexes in killedMutexes: %d\r\n", remainingMutexesInKilled);
 	if (deadlockDetected) {
 		printf("Deadlock detected in this run!\r\n");
+		printf("Deadlock occurence: %d\r\n", deadlockCount);
 	} else {
 		printf("No deadlock detected in this run!\r\n");
 	}
@@ -704,8 +707,8 @@ int isPrivileged(PCB pcb) {
 
 void main () {
 	
-	//FILE *f;
-    //f = freopen("scheduleTrace.txt", "w", stdout);
+	// FILE *f;
+    // f = freopen("scheduleTrace.txt", "w", stdout);
 	
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
@@ -1521,7 +1524,30 @@ int deadlockMonitor(Scheduler thisScheduler) {
 			}
 			
 		}	
+		
+		if (wasFound) {
+			deadlockCount++;
+			
+			remove_from_mutx_map(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
+			remove_from_mutx_map(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
+			
+			thisScheduler->running->term_count = thisScheduler->running->terminate;
+			if (thisScheduler->running == mutex1->pcb1) {
+				mutex1->pcb2->term_count = mutex1->pcb2->terminate;
+			} else {
+				mutex1->pcb1->term_count = mutex1->pcb1->terminate;
+			}
+			
+			q_enqueue_m(thisScheduler->killedMutexes, mutex1);
+			q_enqueue_m(thisScheduler->killedMutexes, mutex2);	
+			
+			free(mutex1);
+			free(mutex2);
+		
+		}
 	}
+	
+	
 	
 	return wasFound;
 }
