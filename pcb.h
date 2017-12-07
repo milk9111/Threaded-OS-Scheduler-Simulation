@@ -1,6 +1,6 @@
 /*
     10/28/2017
-	Authors: Connor Lundberg, Jacob Ackermans
+	Authors: Connor Lundberg, Jacob Ackerman, Jasmine Dacones
  */
 
 #ifndef PCB_H  /* Include guard */

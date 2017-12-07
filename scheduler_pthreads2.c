@@ -1,6 +1,6 @@
 /*
 	10/28/2017
-	Authors: Connor Lundberg, Jacob Ackerman
+	Authors: Connor Lundberg, Jacob Ackerman, Jasmine Dacones
 	
 	In this project we will be making an MLFQ scheduling algorithm
 	that will take a PriorityQueue of PCBs and run them through our scheduler.
@@ -150,7 +150,10 @@ int isWaitPC (unsigned int pc, PCB pcb) {
 }
 
 
-
+/*
+	Will look through the I/O trap arrays in the given pcb and see if 
+	they match the given PC value. If so, then return 1, 0 otherwise.
+*/
 int isTrapPC (unsigned int pc, PCB pcb) {
 	int isTrap = 0;
 	if (pcb) {
@@ -705,7 +708,9 @@ void schedulerDeconstructor (Scheduler theScheduler) {
 	}
 }
 
-
+/*
+	Displays the number of PCBs created for each type.
+*/
 void displayRoleCountResults() {
 	printf("\r\nTOTAL ROLE TYPES: %d\r\n\r\n", (compCount + ioCount + pairCount + sharedCount));
 	
@@ -1494,7 +1499,11 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 		//exit(0);
 }
 
-
+/*
+	After n number of context switches, the deadlock monitor is called to detect if
+	the currently running PCB and its paired PCB are in a deadlock. If deadlock, we
+	will terminate the pair PCBs.  Returrns 1 if a deadlock is detected, otherwise 0.
+*/
 int deadlockMonitor(Scheduler thisScheduler) {
 	int wasFound = 0;
 	
@@ -1511,20 +1520,19 @@ int deadlockMonitor(Scheduler thisScheduler) {
 			
 			
 			if (mutex1->isLocked && mutex2->isLocked) {
-			//	printf("mutex1 owned by: P%d, pointer: %p\n", mutex1->hasLock->pid, mutex1->hasLock);
-			//	printf("mutex2 owned by: P%d, pointer: %p\n", mutex2->hasLock->pid, mutex2->hasLock);
+		
 				if (thisScheduler->running == mutex1->pcb1) { // check if pcb1 also owns the other lock
 					if (mutex2->hasLock == mutex1->hasLock) {
-						// printf("pcb1 owns both locks\n");
+					
 						printf("PCB%d owns M1 and M2\r\n", thisScheduler->running->pid);
 						printf("NO DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 					} else if (mutex2->hasLock == mutex1->pcb2) {
-						// printf("pcb1 only owns mutex1\n");
+					
 						printf("PCB%d owns M1, failed to lock M2\r\n", thisScheduler->running->pid);
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 						wasFound = 1;
 					} else if (mutex1->hasLock == mutex1->pcb2) {
-						// printf("pcb1 only owns mutex2\n");
+					
 						printf("PCB%d owns M2, failed to lock M1\r\n", thisScheduler->running->pid);
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 						wasFound = 1;
@@ -1532,17 +1540,17 @@ int deadlockMonitor(Scheduler thisScheduler) {
 					
 				} else if (thisScheduler->running == mutex2->pcb2) { // check if pcb2 also owns the other lock
 					if (mutex1->hasLock == mutex2->hasLock) {
-						// printf("pcb2 owns both locks\n");
+						
 						printf("PCB%d owns M1 and M2\r\n", thisScheduler->running->pid);
 						printf("NO DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 
 					} else if (mutex1->hasLock == mutex2->pcb1) {
-						// printf("pcb2 only owns mutex2\n");
+					
 						printf("PCB%d owns M2, failed to lock M1\r\n", thisScheduler->running->pid);
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 						wasFound = 1;
 					} else if (mutex2->hasLock == mutex1->pcb1) {
-						// printf("pcb2 only has mutex1\n");
+						
 						printf("PCB%d owns M1, failed to lock M2\r\n", thisScheduler->running->pid);
 						printf("DEADLOCK DETECTED FOR PROCESSES PID%d & PID%d\r\n", mutex1->pcb1->pid, mutex1->pcb2->pid);
 						wasFound = 1;
@@ -1557,22 +1565,8 @@ int deadlockMonitor(Scheduler thisScheduler) {
 		if (wasFound) {
 			deadlockCount++;
 			
-			//remove_from_mutx_map(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
-			//remove_from_mutx_map(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
-			
 			thisScheduler->running->term_count = thisScheduler->running->terminate;
-			/*if (thisScheduler->running == mutex1->pcb1) {
-				mutex1->pcb2->term_count = mutex1->pcb2->terminate;
-			} else {
-				mutex1->pcb1->term_count = mutex1->pcb1->terminate;
-			}
-			
-			q_enqueue_m(thisScheduler->killedMutexes, mutex1);
-			q_enqueue_m(thisScheduler->killedMutexes, mutex2);	
-			
-			free(mutex1);
-			free(mutex2);*/
-		
+
 		}
 	}
 	

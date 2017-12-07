@@ -176,33 +176,43 @@ void mutex_destroy(Mutex mutex) {
 	}
 }
 
-
 ConditionVariable cond_var_create () {
 	ConditionVariable condVar = (ConditionVariable) malloc (sizeof(struct COND_VAR));
 	return condVar;
 }
 
-
+/*
+	Initializes the signal of a Condition Variable.
+*/
 void cond_var_init (ConditionVariable condVar) {
 	condVar->signal = 0;
 }
 
 
+/*
+	Displays the status of a Condition Variable's signal.
+*/
 void toStringConditionVariable (ConditionVariable condVar) {
 	printf("signal: %d\r\n", condVar->signal);
 }
 
-
+/*
+	Destroys the given Condition Variable
+*/
 void cond_var_destroy (ConditionVariable condVar) {
 	free(condVar);
 }
 
-
+/*
+	The Condition Variable is set to send a signal.
+*/
 void cond_var_signal (ConditionVariable condVar) {
 	condVar->signal = 1;
 }
 
-
+/*
+	The Condition Variable is set to wait.
+*/
 int cond_var_wait (ConditionVariable condVar) {
 	return condVar->signal;
 }

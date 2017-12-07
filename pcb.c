@@ -145,56 +145,10 @@ void initialize_pcb_type (PCB pcb, int isFirst, Mutex sharedMutexR1, Mutex share
 }
 
 
-/*void populateMutexLocations (PCB pcb) {
-	printf("Going to populate Mutex locations\n");
-	printf("max_pc: %d\n", pcb->max_pc);
-	unsigned int newLock = 0, newUnlock = 0, lastLock = 0, lastUnlock = 0, top = 0;
-	int max_pc_range = pcb->max_pc / 4;
-	for (int i = 0; i < TRAP_COUNT; i++) {
-		newLock = lastLock + (rand() % max_pc_range);
-		while (newLock >= pcb->max_pc) {
-			newLock = lastLock + (rand() % max_pc_range);		
-		}
-		
-		if (newLock == 0) {
-			newLock++;
-		}
-		
-		if (lastUnlock >= 0) {
-			while (newLock <= lastUnlock) {
-				newLock++;
-			}
-		}
-		pcb->lockR1[top] = newLock;
-		lastLock = newLock;
-		
-		newUnlock = newLock + (rand() % max_pc_range);
-		while (newUnlock >= pcb->max_pc) {
-			newUnlock = newLock + (rand() % max_pc_range);
-		}
-		
-		if (lastLock >= 0) {
-			while (newUnlock <= newLock) {
-				newUnlock++;
-			}
-		}
-		pcb->unlockR1[top] = newUnlock;
-		lastUnlock = newUnlock;
-		top++;
-	}
-	
-	top = 0;
-	lastLock = 0, lastUnlock = 0;;
-	printPCLocations(pcb->lockR1);
-	printPCLocations(pcb->unlockR1);
-	for (int i = 0; i < TRAP_COUNT; i++) {
-		
-	}
-	
-	
-}*/
 
-
+/*
+	Displays the PC trap values for a given trap array.
+*/
 void printPCLocations (unsigned int pcLocs[]) {
 	for (int i = 0; i < TRAP_COUNT; i++) {
 		printf("%d ", pcLocs[i]);
@@ -226,6 +180,10 @@ void populateIOTraps (PCB pcb, int ioTrapType) {
 }
 
 
+/*
+	Populates the mutex traps values for a PCB of type SHARED. Calling this function for both PCBs in a pair is
+	made for the purpose of a non-deadlock situation.
+*/
 void populateMutexTraps1221(PCB pcb, int step) {
 	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step, 9 * step, 13 * step}), 4 * sizeof(unsigned int));
 	memcpy(pcb->lockR2, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), 4 * sizeof(unsigned int));
@@ -233,6 +191,10 @@ void populateMutexTraps1221(PCB pcb, int step) {
 	memcpy(pcb->unlockR1, ((unsigned int[TRAP_COUNT]) {4 * step, 8 * step, 12 * step, 16 * step}), 4 * sizeof(unsigned int));
 }
 
+/*
+	Populates the mutex traps values for a PCB of type SHARED. Calling this function for one PCB of a pair is made
+	for the purpose of a deadlock situation.
+*/
 void populateMutexTraps2112(PCB pcb, int step) {
 	memcpy(pcb->lockR2, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step, 9 * step, 13 * step}), 4 * sizeof(unsigned int));
 	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {2 * step, 6 * step, 10 * step, 14 * step}), 4 * sizeof(unsigned int));
@@ -240,7 +202,9 @@ void populateMutexTraps2112(PCB pcb, int step) {
 	memcpy(pcb->unlockR2, ((unsigned int[TRAP_COUNT]) {4 * step, 8 * step, 12 * step, 16 * step}), 4 * sizeof(unsigned int));
 }
 
-
+/*
+	Populates the mutex traps values for a PCB of type PAIR. 
+*/
 void populateProducerConsumerTraps(PCB pcb, int step, int isProducer) {
 	memcpy(pcb->lockR1, ((unsigned int[TRAP_COUNT]) {1 * step, 5 * step,  9 * step, 13 * step}), 4 * sizeof(unsigned int)); 
 	if (!isProducer) {
