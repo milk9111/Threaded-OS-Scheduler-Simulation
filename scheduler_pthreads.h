@@ -1,6 +1,6 @@
 /*
 	10/28/2017
-	Authors: Connor Lundberg, Jacob Ackerman
+	Authors: Connor Lundberg, Jacob Ackerman, Jasmine Dacones
 	
 	In this project we will be making an MLFQ scheduling algorithm
 	that will take a PriorityQueue of PCBs and run them through our scheduler.
