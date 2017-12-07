@@ -690,6 +690,9 @@ void displayRoleCountResults() {
 	The main function that kicks off the program
 */
 void main () {
+	    FILE *f;
+    f = freopen("scheduleTrace.txt", "w", stdout);
+	
 	
 	setvbuf(stdout, NULL, _IONBF, 0);
 	srand((unsigned) time(&t));
@@ -1454,11 +1457,25 @@ int deadlockMonitor(Scheduler thisScheduler) {
 			
 		}	
 		
-		if (wasFound) {
+	if (wasFound) {
 			deadlockCount++;
 			
 			thisScheduler->running->term_count = thisScheduler->running->terminate;
-
+			
+			if (thisScheduler->running == mutex1->pcb1) {
+				mutex1->pcb2->term_count = mutex1->pcb2->terminate;
+				mutex1->pcb2->state = STATE_HALT;
+				 
+			} else {
+				mutex1->pcb1->term_count = mutex1->pcb1->terminate;
+				mutex1->pcb1->state = STATE_HALT;
+			}
+			
+			remove_from_mutx_map(thisScheduler->mutexes, thisScheduler->running->mutex_R1_id);
+			remove_from_mutx_map(thisScheduler->mutexes, thisScheduler->running->mutex_R2_id);
+			
+			dispatcher(thisScheduler);
+			
 		}
 	}
 	

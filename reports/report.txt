@@ -29,8 +29,7 @@ type, this was almost exactly what we were looking for.
 
 How many terminated normally?
 
-	With the exception of one pair in our deadlock9.txt trace (which is included), every Process 
-terminated normally. The reason we didn't have more occurences of deadlock is because the way 
+Every process terminated normally. The reason we didn't have more occurences of deadlock is because the way 
 the deadlock monitor is set up to work, it only looks for deadlock if the number of context switches 
 we make during our locking/unlocking attempts is more than 2. If that happens then we know we have 
 a case of deadlock and we will handle it. The problem is that nanosleep in the timer thread is so 
@@ -53,11 +52,8 @@ SHARED or PAIR types during its run which take up more iterations due to their l
 
 In the deadlock experiments, how many, on average, were experienced?
 
-	As was stated in 3rd question, we did not find deadlock very often in our deadlock-possible experiments. 
-We tried it with higher max PC and terminate values for the individual PCBs, which did increase the frequency 
-of deadlock occurences, but the issue with doing that was we significantly decreased the amount of PCBs 
-killed during each run. We found only a single occurence of deadlock in deadlock9.txt that spanned the 
-majority of the trace.
+On average, we found a couple of deadlocks. We tried with a higher max PC and terminate values for the individual PCBs, which did increase the frequency 
+of deadlock occurences, but the issue with doing that was we significantly decreased the amount of PCBs killed during each run. 
 
 
 If there were parts of the requirements that you were unable to complete, explain why.
