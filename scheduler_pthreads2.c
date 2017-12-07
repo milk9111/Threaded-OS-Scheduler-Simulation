@@ -31,6 +31,7 @@ int iteration = 0;
 int isIOTrapPos = 0;
 int hasBlockedPCB = 0;
 int deadlockDetected = 0;
+int isFirstRun = 0;
 
 
 time_t t;
@@ -190,10 +191,26 @@ int makePCBList (Scheduler theScheduler) {
 	PCB newPCB2 = PCB_create();
 	newPCB2->parent = newPCB1->pid;
 	
-	newPCB1->role = COMP;
-	newPCB2->role = COMP;
-	initialize_pcb_type (newPCB1, 1, sharedMutexR1, sharedMutexR2); 
-	initialize_pcb_type (newPCB2, 0, sharedMutexR1, sharedMutexR2); 
+	if (isFirstRun) {
+			newPCB1->role = SHARED;
+			newPCB2->role = SHARED;
+		
+			sharedMutexR1->pcb1 = newPCB1;
+			sharedMutexR2->pcb1 = newPCB1;
+				
+			sharedMutexR1->pcb2 = newPCB2;
+			sharedMutexR2->pcb2 = newPCB2;
+
+			newPCB1->mutex_R1_id = sharedMutexR1->mid;
+			newPCB1->mutex_R2_id = sharedMutexR2->mid;
+			
+			newPCB2->mutex_R1_id = sharedMutexR1->mid;
+			newPCB2->mutex_R2_id = sharedMutexR2->mid;
+			isFirstRun = 0;
+	} else {
+		initialize_pcb_type (newPCB1, 1, sharedMutexR1, sharedMutexR2); 
+		initialize_pcb_type (newPCB2, 0, sharedMutexR1, sharedMutexR2); 
+	}
 	
 	incrementRoleCount(newPCB1->role);
 	incrementRoleCount(newPCB2->role);
@@ -567,7 +584,7 @@ void dispatcher (Scheduler theScheduler) {
 		theScheduler->running = NULL; //do this so it doesn't continue to enqueue into the killed list an already enqueued PCB
 		theScheduler->interrupted = NULL;
 	} else {
-		printf("\n\t\t\tHit new case in dispatcher I wasn't expecting\n");
+		//printf("\n\t\t\tHit new case in dispatcher I wasn't expecting\n");
 		theScheduler->running = NULL; //do this so it doesn't continue to enqueue into the killed list an already enqueued PCB
 		theScheduler->interrupted = NULL;
 	}

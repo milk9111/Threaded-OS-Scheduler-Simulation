@@ -1,0 +1,19 @@
+Connor Lundberg, Jasmine Dacones, Jacob Ackerman
+12/6/2017
+TCSS422 Operating Systems
+Final Project Report Analysis
+
+
+How many total processes were created?
+1632 total. 768 from the no deadlock runs and 864 from the deadlock possible runs.
+
+Deadlock possible | No Deadlock | Total
+864          		 768		  1632
+
+How many of each kind were created?
+
+		Deadlock possible | NO Deadlock | Total
+COMP	462
+IO		194
+PAIR	98
+SHARED	0
