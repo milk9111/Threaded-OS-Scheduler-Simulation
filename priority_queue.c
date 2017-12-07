@@ -1,6 +1,6 @@
 /*
     10/28/2017
-	Authors: Connor Lundberg, Jacob Ackerman
+	Authors: Connor Lundberg, Jacob Ackerman, Jasmine Dacones
  */
 
 
@@ -47,6 +47,9 @@ PriorityQueue pq_create() {
 }
 
 
+/*
+	Returns the quantum size of the next non-empty ReadyQueue.
+*/
 int getNextQuantumSize (PriorityQueue PQ) {
 	int qSize = 0;
 	for (int i = 0; i < NUM_PRIORITIES; i++) {
@@ -58,6 +61,7 @@ int getNextQuantumSize (PriorityQueue PQ) {
 	}
 	return qSize;
 }
+
 
 /*
  * Destroys the provided priority queue, freeing all contents.
@@ -79,6 +83,7 @@ void pq_destroy(PriorityQueue PQ) {
 	PQ = NULL;
 }
 
+
 /*
  * Enqueues a PCB to the provided priority queue, into the correct priority bin.
  *
@@ -96,6 +101,7 @@ void pq_enqueue(PriorityQueue PQ, PCB pcb) {
 		}
 	}
 }
+
 
 /*
  * Dequeues a PCB from the provided priority queue.
@@ -158,31 +164,6 @@ PCB pq_remove_matching_pcb(PriorityQueue PQ, PCB toFind) {
 	
 	return found;
 }
-
-
-// a test for pq_remove_matching_pcb.
-/*void main() {
-	PriorityQueue pq = pq_create();
-	PCB catch = NULL;
-	PCB justMade = NULL;
-	PCB received = NULL;
-	
-	for (int i = 0; i < 10; i++) {
-		justMade = PCB_create();
-		if (i == 5) {
-			catch = justMade;
-		}
-		pq_enqueue(pq, justMade);
-	}
-	
-	printf("Before removing matching PCB p%d\n", catch->pid);
-	toStringPriorityQueue(pq);
-	received = pq_remove_matching_pcb(pq, catch);
-	printf("After removing matching PCB p%d\n", catch->pid); 
-	toStringPriorityQueue(pq);
-	printf("received PCB from remove: p%d\n", received->pid);
-}*/
-
 
 
 /*

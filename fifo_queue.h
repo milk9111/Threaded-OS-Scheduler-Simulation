@@ -1,6 +1,6 @@
 /*
 	10/28/2017
-	Authors: Connor Lundberg, Jacob Ackerman
+	Authors: Connor Lundberg, Jacob Ackerman, Jasmine Dacones
  */
 
 #ifndef FIFO_QUEUE_H

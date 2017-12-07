@@ -4,6 +4,9 @@
 
 unsigned int global_largest_MID;
 
+/*
+	This was used in testing to make sure everything was working as it should.
+*/
 void printNull2 (Mutex mutex) {
 	printf("pcb1 is null: %d\n", (mutex->pcb1 == NULL));
 	if (mutex->pcb1 != NULL) {
@@ -49,6 +52,9 @@ Mutex mutex_create () {
 }
 
 
+/*
+	Initializes the value and increments to MID.
+*/
 void mutex_init (Mutex mutex) {
 	mutex->isLocked = 0;
 	mutex->hasLock = NULL;
@@ -73,7 +79,6 @@ int mutex_lock (Mutex mutex, PCB pcb) {
 			{
 				printf("\r\n\r\n\t\tMUTEX IS ALREADY LOCKED!!!!!!!!!!\r\n\r\n");
 			}
-			//exit(0);
 			return 0;
 		} else {
 			mutex->isLocked = 1;
@@ -118,7 +123,6 @@ int mutex_unlock (Mutex mutex, PCB pcb) {
 	if (mutex) {
 		if (!mutex->isLocked) { 
 			printf("\r\n\r\n\t\tMUTEX IS ALREADY UNLOCKED\r\n\r\n");
-			//exit(0);
 			return 0;
 		} else if (mutex->isLocked && mutex->hasLock == pcb) {
 			mutex->isLocked = 0;
@@ -150,11 +154,6 @@ void toStringMutex (Mutex mutex) {
 	printf("pcb2: ");
 	toStringPCB(mutex->pcb2, 0);
 	printf("lock pc: %d, unlock pc: %d\r\n\r\n", mutex->pcb2->lock_pc, mutex->pcb2->unlock_pc);
-	
-	/*if (mutex->blocked) {
-		printf("blocked: ");
-		toStringPCB(mutex->blocked, 0);
-	}*/
 }
 
 
@@ -164,18 +163,20 @@ void toStringMutex (Mutex mutex) {
 void mutex_destroy(Mutex mutex) {
 	
 	if (mutex != NULL) {
-		//printf("destroying M%d\n", mutex->mid);
 		if (mutex && mutex->condVar) {
 			cond_var_destroy(mutex->condVar);
 		}
 		free (mutex);
 		mutex = NULL;
-		//printf("freed mutex\n");
 	} else {
 		printf("mutex was null\n");
 	}
 }
 
+
+/*
+	Creates the condition variable.
+*/
 ConditionVariable cond_var_create () {
 	ConditionVariable condVar = (ConditionVariable) malloc (sizeof(struct COND_VAR));
 	return condVar;

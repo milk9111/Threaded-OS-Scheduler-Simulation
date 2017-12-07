@@ -1,6 +1,6 @@
 /*
-    10/28/2017
-	Authors: Connor Lundberg, Jacob Ackerman
+    12/6/2017
+	Authors: Connor Lundberg, Jacob Ackerman, Jasmine Dacones
  */
 
 
@@ -70,11 +70,8 @@ void q_destroy_m(/* in-out */ ReadyQueue FIFOq) {
         last = curr;
 		
         curr = curr->next;
-		//printf("here\n");
         mutex_destroy(last->mutex);
-		//printf("freeing last\n");
         free(last);
-		//printf("freed last\n");
 		last = NULL;
     }
     free(FIFOq);
@@ -82,6 +79,9 @@ void q_destroy_m(/* in-out */ ReadyQueue FIFOq) {
 }
 
 
+/*
+	Sets the quantum size for the given ReadyQueue.
+*/
 void setQuantumSize (ReadyQueue queue, int quantumSize) {
 	queue->quantum_size = quantumSize;
 }
@@ -168,6 +168,9 @@ int q_enqueue_m(/* in */ ReadyQueue FIFOq, /* in */ Mutex mutex) {
 }
 
 
+/*
+	This prints the list of mutexes for the ReadyQueue if they have them.
+*/
 void printMutexList (ReadyQueue mutexes) {
 	ReadyQueueNode curr = mutexes->first_node;
 	while (curr) {
@@ -208,6 +211,10 @@ PCB q_dequeue(/* in-out */ ReadyQueue FIFOq) {
 }
 
 
+/*
+	Searches through the queue to check if it contains the given PCB. Not used very often
+	so it limits inefficiencies.
+*/
 int q_contains (ReadyQueue FIFOq, PCB pcb) {
 	ReadyQueueNode curr = FIFOq->first_node;
 	
@@ -264,14 +271,6 @@ Mutex q_find_mutex (ReadyQueue queue, PCB pcb) { //CHANGE NAME TO q_find_mutex_f
 	while (curr) {
 		if (curr->mutex->pcb1->pid == pcb->pid || curr->mutex->pcb2->pid == pcb->pid) { //if either of the PCB ids match
 			ret_mutex = curr->mutex;
-			
-			/*if (curr == queue->first_node) { //if the mutex is the first node in the list
-				queue->first_node = curr->next;
-			} else { //otherwise
-				last->next = curr->next;
-			}
-			
-			free(curr);*/
 			break;
 		}
 		
@@ -283,13 +282,13 @@ Mutex q_find_mutex (ReadyQueue queue, PCB pcb) { //CHANGE NAME TO q_find_mutex_f
 }
 
 
+/*
+	Same as q_contains but with Mutexes.
+*/
 int q_contains_mutex (ReadyQueue queue, Mutex toFind) {
 	int mutexFound = 0;
-	//printf("in here\n");
 	ReadyQueueNode curr = queue->first_node;
 	while (curr) {
-		//printf("curr->mutex->mid = %d\n", curr->mutex->mid);
-		//printf("toFind->mid = %d\n", toFind->mid);
 		if (curr->mutex == toFind) { //if the mutex is the same
 			mutexFound = 1;
 			break;
