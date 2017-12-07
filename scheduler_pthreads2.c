@@ -525,7 +525,7 @@ void scheduling (int interrupt_code, Scheduler theScheduler) {
 	
 	if (theScheduler->interrupted != NULL && theScheduler->interrupted->state == STATE_HALT) {
 		//printf("entering handleKilledQueueInsertion\n");
-		printf("\nInserting P%d into the Killed queue\n\n", theScheduler->interrupted);
+		printf("\nInserting P%d into the Killed queue\n\n", theScheduler->interrupted->pid);
 		handleKilledQueueInsertion(theScheduler);
 		//printf("finished handleKilledQueueInsertion\n");
 	}
@@ -797,7 +797,7 @@ void osLoop () {
 		if (isRunning) {
 			pthread_mutex_lock(&schedulerMutex);
 				if (scheduler && scheduler->running && (scheduler->running->role == PAIR || scheduler->running->role == SHARED)) {
-					printf("Going to useMutex\n");
+					//printf("Going to useMutex\n");
 					isSwitched = useMutex(scheduler);
 					
 					
@@ -1314,8 +1314,10 @@ void handleKilledQueueInsertion (Scheduler theScheduler) {
 		
 		if (theScheduler->interrupted->role == SHARED) { //if the role is SHARED then I want to check if mutex2 is NULL
 			if (mutex1 && mutex2 && mutex1->pcb2 == theScheduler->interrupted) { //if interrupted is the pcb2 in the mutex, find the matching pcb1
+				printf("looking for pcb1\n");
 				found = pq_remove_matching_pcb(theScheduler->ready, mutex1->pcb1);
 			} else { //otherwise the interrupted is pcb1, so find pcb2
+				printf("looking for pcb2\n");
 				found = pq_remove_matching_pcb(theScheduler->ready, mutex1->pcb2);
 			}
 		} else { //if the role is PAIR then I don't want to check if mutex2 is NULL because it will always be NULL
@@ -1350,19 +1352,22 @@ void handleKilledQueueInsertion (Scheduler theScheduler) {
 void handleKilledQueueEmptying (Scheduler theScheduler) {
 	
 	//PCB emptying
-	printf("Emptying killed PCB list\r\n");
+	printf("Emptying Killed queue\r\n");
 	PCB toKill = NULL;
 	if (!(theScheduler->killed)) {
 		printf("\r\n\t\t\tkilled PCB queue is NULL!\r\n\r\n");
 		exit(0);
 	}
 	
-	if (theScheduler->killed && !q_is_empty(theScheduler->killed)) {
+	/*if (theScheduler->killed && !q_is_empty(theScheduler->killed)) {
 		toKill = q_dequeue(theScheduler->killed);
-	}
+	}*/
 	
 	if (theScheduler->killed && !q_is_empty(theScheduler->killed)) {
 		while(!q_is_empty(theScheduler->killed)) {
+			printf("Killed List: ");
+			toStringReadyQueue(theScheduler->killed);
+			toKill = q_dequeue(theScheduler->killed);
 			//if (theScheduler->killed->size > 1) {
 				//printf("pid to kill: P%d\n", toKill->pid);
 			if (toKill) {
@@ -1375,17 +1380,18 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 				//printf("toKill == null: %d\n", (toKill == NULL));
 				//printf("pid after kill: P%d\n\n", toKill->pid);
 			//}
-			printf("Killed List: ");
-			toStringReadyQueue(theScheduler->killed);
-			toKill = q_dequeue(theScheduler->killed);
+			
 		} 
 	} else {
-		if (toKill) {
+		
+		printf("Something went wrong while emptying Killed queue\n");
+		exit(0);
+		/*if (toKill) {
 			PCB_destroy(toKill);
 		} else {
 			printf("\r\n\t\t\ttoKill PCB was NULL after trying to kill a single one!\r\n\r\n");
 			exit(0);
-		}
+		}*/
 	}
 	/*printf("After emptying\n");
 	printf("Killed List: ");
@@ -1406,12 +1412,15 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 		exit(0);
 	}
 	
-	if (theScheduler->killedMutexes && !q_is_empty(theScheduler->killedMutexes)) {
+	/*if (theScheduler->killedMutexes && !q_is_empty(theScheduler->killedMutexes)) {
 		toKillMutex = q_dequeue_m(theScheduler->killedMutexes);
-	}
+	}*/
 	
 	if (theScheduler->killedMutexes && !q_is_empty(theScheduler->killedMutexes)) {
 		while(!q_is_empty(theScheduler->killedMutexes)) {
+			printf("Killed List: ");
+			toStringReadyQueueMutexes(theScheduler->killedMutexes);
+			toKillMutex = q_dequeue_m(theScheduler->killedMutexes);
 			//if (theScheduler->killed->size > 1) {
 				//printf("pid to kill: P%d\n", toKill->pid);
 			if (toKillMutex) {
@@ -1424,19 +1433,21 @@ void handleKilledQueueEmptying (Scheduler theScheduler) {
 				//printf("toKill == null: %d\n", (toKill == NULL));
 				//printf("pid after kill: P%d\n\n", toKill->pid);
 			//}
-			printf("Killed List: ");
-			toStringReadyQueueMutexes(theScheduler->killedMutexes);
-			toKillMutex = q_dequeue_m(theScheduler->killedMutexes);
+			
 		} 
 	} else {
-		if (toKillMutex) {
+		if (!(theScheduler->killedMutexes)) {
+			printf("Something went wrong while emptying Killed Mutex queue\n");
+			exit(0);
+		}
+		/*if (toKillMutex) {
 			mutex_destroy(toKillMutex);
 		} else {
 			if (!q_is_empty(theScheduler->killedMutexes)) {
 				printf("\r\n\t\t\tor here toKill MUTEX was NULL!\r\n\r\n");
 				exit(0);
 			}
-		}
+		}*/
 	}
 	
 	/*printf("After emptying\n");

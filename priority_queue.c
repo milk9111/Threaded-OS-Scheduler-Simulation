@@ -132,12 +132,15 @@ PCB pq_remove_matching_pcb(PriorityQueue PQ, PCB toFind) {
 		last = NULL;
 		while (curr) { //searches through the linked list
 			if (curr->pcb == toFind) {
-				if (curr == PQ->queues[i]->first_node) { //if the mutex is the first node in the list
-					//printf("found at start of queue\n");
+				if (curr == PQ->queues[i]->first_node) { //if the PCB is the first node in the list
+					printf("found at start of queue\n");
 					//toStringPriorityQueue(PQ);
 					PQ->queues[i]->first_node = curr->next;
+					if (PQ->queues[i]->last_node == curr) { //if the PCB is the first and last node in the list
+						PQ->queues[i]->last_node = NULL;
+					}
 				} else { //otherwise
-					//printf("not found at start of queue\n");
+					printf("not found at start of queue\n");
 					//toStringPriorityQueue(PQ);
 					last->next = curr->next;
 				}
