@@ -5,15 +5,89 @@ Final Project Report Analysis
 
 
 How many total processes were created?
+
 1632 total. 768 from the no deadlock runs and 864 from the deadlock possible runs.
 
-Deadlock possible | No Deadlock | Total
-864          		 768		  1632
+			Deadlock possible | No Deadlock | Total
+Total made  864          		 768		  1632
+
 
 How many of each kind were created?
 
-		Deadlock possible | NO Deadlock | Total
-COMP	462
-IO		194
-PAIR	98
-SHARED	0
+		Deadlock possible | No Deadlock | Total | Percent
+COMP	462					394			  856		.53
+IO		194					198			  392		.24
+PAIR	98					72			  170		.10
+SHARED	110					104			  214		.13
+
+	This is a correct distribution of PCB types that we were expecting from our algorithm. To sum
+it up, we are supposed to be making 50% as the Computationally-intensive, 25% as I/O, and 
+12.5% as Producer/Consumer (PAIR) and Shared resource each. Looking at the Percent column above,
+we are pretty close to the estimated margins. With the exception of a couple outliers in the SHARED
+type, this was almost exactly what we were looking for.
+
+
+How many terminated normally?
+
+	With the exception of one pair in our deadlock9.txt trace (which is included), every Process 
+terminated normally. The reason we didn't have more occurences of deadlock is because the way 
+the deadlock monitor is set up to work, it only looks for deadlock if the number of context switches 
+we make during our locking/unlocking attempts is more than 2. If that happens then we know we have 
+a case of deadlock and we will handle it. The problem is that nanosleep in the timer thread is so 
+slow (even at 1) that the majority of SHARED processes will be able to run all the way through until 
+they get put into the Killed queue. This means they won't even have a chance to be deadlocked as that
+can only happen if one SHARED PCB has a lock, the timer happens, then it gets put to the back 
+of the MLFQ and its partner tries to then lock.
+
+
+How many were in each priority queue at the end of the run?
+
+					Deadlock possible | No Deadlock | Total
+Remaining in MLFQ	213					134			  347
+
+	Similar to the distribution of PCB types we had, this was pretty close to what we planned. This shows 
+that the Scheduler was able to correctly terminate the majority of the Processes by the time it reaches 
+the max iteration count of 100,000. It may look high, but that's because of some outliers that had extra 
+SHARED or PAIR types during its run which take up more iterations due to their locking/unlocking/signaling/waiting.
+
+
+In the deadlock experiments, how many, on average, were experienced?
+
+	As was stated in 3rd question, we did not find deadlock very often in our deadlock-possible experiments. 
+We tried it with higher max PC and terminate values for the individual PCBs, which did increase the frequency 
+of deadlock occurences, but the issue with doing that was we significantly decreased the amount of PCBs 
+killed during each run. We found only a single occurence of deadlock in deadlock9.txt that spanned the 
+majority of the trace.
+
+
+If there were parts of the requirements that you were unable to complete, explain why.
+
+	Trylock:
+			Due to lack of time and other extrenuating circumstances, we did not get the trylock 
+		implemented into the tests. We have the code written for the mutex_trylock function in 
+		threads.c, but we felt it was more important to get the lock, unlock, signal, and wait 
+		functional first. If we had more time, we would get it working by following the same format
+		as the other Mutex operations. Check if we're at the position, if so then test the lock. If
+		it's already locked then print the event out and return a fail code. Not a fail code that 
+		terminates the program, but one to show that we tried to lock, but it was taken already.
+		
+	Breaks in some runs:
+			Also due to a lack of time, there is a bug in the program that will cause the program 
+		to Abort when it tries to make a new process on certain instances. I believe it isn't actually 
+		from the PCB creation, but that something might be changing values in other threads that is 
+		causing it to abort. This is most likely a synchronization problem that could be addressed if
+		we had more time to search through and find it. This only happens in very few cases. 
+		For the most part though it will run through all the way with the appropriate events happening. 
+		
+		
+
+		
+NOTE:
+
+	Here is a list of key phrases to search for in the traces to easily find the events:
+	
+	Starting ISR in timer
+	Starting ISR in ioTrap
+	Starting ISR in ioInterrupt
+	DEADLOCK DETECTED
+	Emptying Killed queue
