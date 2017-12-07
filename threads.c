@@ -164,7 +164,7 @@ void toStringMutex (Mutex mutex) {
 void mutex_destroy(Mutex mutex) {
 	
 	if (mutex != NULL) {
-		printf("destroying M%d\n", mutex->mid);
+		//printf("destroying M%d\n", mutex->mid);
 		if (mutex && mutex->condVar) {
 			cond_var_destroy(mutex->condVar);
 		}

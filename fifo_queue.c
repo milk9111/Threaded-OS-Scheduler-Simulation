@@ -208,6 +208,22 @@ PCB q_dequeue(/* in-out */ ReadyQueue FIFOq) {
 }
 
 
+int q_contains (ReadyQueue FIFOq, PCB pcb) {
+	ReadyQueueNode curr = FIFOq->first_node;
+	
+	int isFound = 0;
+	while (curr) {
+		if (curr->pcb == pcb) {
+			isFound = 1;
+			break;
+		}
+		curr = curr->next;
+	}
+	
+	return isFound;
+}
+
+
 /*
  * Dequeues and returns a PCB from the queue, unless the queue is empty in which case null is returned.
  *

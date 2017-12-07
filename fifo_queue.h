@@ -109,6 +109,8 @@ PCB q_peek(ReadyQueue FIFOq);
 
 int q_contains_mutex (ReadyQueue queue, Mutex toFind);
 
+int q_contains (ReadyQueue FIFOq, PCB pcb);
+
 /*
  * Creates and returns an output string representation of the FIFO queue.
  *

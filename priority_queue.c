@@ -26,7 +26,7 @@ PriorityQueue pq_create() {
                 failed = i;
                 break;
             }
-			if (!i) { //i = 0
+			if (!i) { //i == 0
 				setQuantumSize(new_pq->queues[i], MIN_PRIORITY_JUMP);
 			} else {
 				setQuantumSize(new_pq->queues[i], i * PRIORITY_JUMP_EXTRA);
