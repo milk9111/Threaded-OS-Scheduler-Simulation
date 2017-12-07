@@ -1,5 +1,5 @@
 /*
-    10/28/2017
+	12/6/2017
 	Authors: Connor Lundberg, Jasmine Dacones, Jacob Ackerman
  */
 
@@ -281,17 +281,12 @@ PCB PCB_create() {
  */
 void PCB_destroy(/* in-out */ PCB pcb) {
 	if (pcb) {
-		//printf("pcb not null\n");
-		//printf("pid before context free: P%d\n", pcb->pid);
 		if (pcb->context) {
 			free(pcb->context); 
 		}	
-		//printf("pid before free: P%d\n", pcb->pid);
-		free(pcb);// that thing
+		free(pcb);
 		
 		pcb = NULL;
-		//printf("pcb == null: %d\n", (pcb == NULL));
-		//printf("pid after free: P%d\n\n", pcb->pid);
 	}
 }
 
@@ -440,6 +435,9 @@ void toStringPCB(PCB thisPCB, int showCpu) {
 }
 
 
+/*
+	Prints the CPU context
+*/
 void toStringCPUContext(CPU_context_p context) {
 	printf(" CPU context values: ");
 	printf("ir:  %d, ", context->ir);
